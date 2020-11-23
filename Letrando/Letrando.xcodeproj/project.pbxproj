@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
+		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
 		77951FC22568088100BC7367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC12568088100BC7367 /* AppDelegate.swift */; };
 		77951FC42568088100BC7367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC32568088100BC7367 /* SceneDelegate.swift */; };
 		77951FC92568088100BC7367 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77951FC72568088100BC7367 /* Home.storyboard */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
 		77951FBE2568088100BC7367 /* Letrando.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Letrando.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77951FC12568088100BC7367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77951FC32568088100BC7367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 		77951FC02568088100BC7367 /* Letrando */ = {
 			isa = PBXGroup;
 			children = (
+				0B07357C256BE97E0002AC05 /* words.json */,
 				77951FFD25680A3800BC7367 /* View */,
 				77951FFE25680A3D00BC7367 /* Controller */,
 				7795200025680A5300BC7367 /* Model */,
@@ -345,6 +350,7 @@
 				7795206C25680D2A00BC7367 /* ReportRepository.swift */,
 				7795207425680D3200BC7367 /* Word.swift */,
 				7795207925680D3C00BC7367 /* CloudKit.swift */,
+				0B073584256BF2300002AC05 /* JsonData.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B07357D256BE97E0002AC05 /* words.json in Resources */,
 				77951FF82568093900BC7367 /* .swiftlint.yml in Resources */,
 				7795200725680B0E00BC7367 /* Alert.storyboard in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
@@ -524,6 +531,7 @@
 				7795205425680C5400BC7367 /* SearchView+ARDelegate.swift in Sources */,
 				7795203425680C0500BC7367 /* AlertViewController.swift in Sources */,
 				77951FC22568088100BC7367 /* AppDelegate.swift in Sources */,
+				0B073585256BF2300002AC05 /* JsonData.swift in Sources */,
 				7795208925680D6000BC7367 /* Report.swift in Sources */,
 				7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */,
 				7795202525680BCB00BC7367 /* Sounds.swift in Sources */,
