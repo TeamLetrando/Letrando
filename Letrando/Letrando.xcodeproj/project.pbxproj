@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
 		77951FC22568088100BC7367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC12568088100BC7367 /* AppDelegate.swift */; };
 		77951FC42568088100BC7367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC32568088100BC7367 /* SceneDelegate.swift */; };
 		77951FC92568088100BC7367 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77951FC72568088100BC7367 /* Home.storyboard */; };
 		77951FCC2568088100BC7367 /* Letrando.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77951FCA2568088100BC7367 /* Letrando.xcdatamodeld */; };
 		77951FCE2568088100BC7367 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77951FCD2568088100BC7367 /* Assets.xcassets */; };
 		77951FD12568088100BC7367 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77951FCF2568088100BC7367 /* LaunchScreen.storyboard */; };
-		77951FDC2568088200BC7367 /* LetrandoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FDB2568088200BC7367 /* LetrandoTests.swift */; };
 		77951FE72568088200BC7367 /* LetrandoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FE62568088200BC7367 /* LetrandoUITests.swift */; };
 		77951FF82568093900BC7367 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 77951FF72568093900BC7367 /* .swiftlint.yml */; };
 		7795200725680B0E00BC7367 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7795200625680B0E00BC7367 /* Alert.storyboard */; };
@@ -36,6 +36,7 @@
 		7795207F25680D4D00BC7367 /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795207E25680D4D00BC7367 /* ARModel.swift */; };
 		7795208425680D5800BC7367 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208325680D5800BC7367 /* Notifications.swift */; };
 		7795208925680D6000BC7367 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208825680D6000BC7367 /* Report.swift */; };
+		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7768A764256A1077005EA237 /* ARModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelTests.swift; sourceTree = "<group>"; };
 		77951FBE2568088100BC7367 /* Letrando.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Letrando.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77951FC12568088100BC7367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77951FC32568088100BC7367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +67,6 @@
 		77951FD02568088100BC7367 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77951FD22568088100BC7367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77951FD72568088200BC7367 /* LetrandoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetrandoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		77951FDB2568088200BC7367 /* LetrandoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetrandoTests.swift; sourceTree = "<group>"; };
 		77951FDD2568088200BC7367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77951FE22568088200BC7367 /* LetrandoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetrandoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77951FE62568088200BC7367 /* LetrandoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetrandoUITests.swift; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		7795207E25680D4D00BC7367 /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		7795208325680D5800BC7367 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		7795208825680D6000BC7367 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		77D621FD256BE14F007D905C /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,8 +158,9 @@
 		77951FDA2568088200BC7367 /* LetrandoTests */ = {
 			isa = PBXGroup;
 			children = (
-				77951FDB2568088200BC7367 /* LetrandoTests.swift */,
 				77951FDD2568088200BC7367 /* Info.plist */,
+				7768A764256A1077005EA237 /* ARModelTests.swift */,
+				77D621FD256BE14F007D905C /* WordTests.swift */,
 			);
 			path = LetrandoTests;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 					};
 					77951FD62568088200BC7367 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 						TestTargetID = 77951FBD2568088100BC7367;
 					};
 					77951FE12568088200BC7367 = {
@@ -541,7 +545,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77951FDC2568088200BC7367 /* LetrandoTests.swift in Sources */,
+				7768A765256A1077005EA237 /* ARModelTests.swift in Sources */,
+				77D621FE256BE14F007D905C /* WordTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +752,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = LetrandoTests/Info.plist;
@@ -758,6 +764,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ronaldoGomes.LetrandoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Letrando.app/Letrando";
@@ -769,6 +776,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = LetrandoTests/Info.plist;
