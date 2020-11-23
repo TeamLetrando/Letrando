@@ -12,7 +12,7 @@ class WordTests: XCTestCase {
 
     func test_breakWordsInLetters_wordBola_returnBolaSeparated() {
         //Given
-        let sut = Word(word: "Bola")
+        let sut = Word(word: "Bola", accessFrequency: 1)
 
         //When
         let wordBreak = sut.breakInLetters()
