@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
+		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
+		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
 		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
 		77951FC22568088100BC7367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC12568088100BC7367 /* AppDelegate.swift */; };
 		77951FC42568088100BC7367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC32568088100BC7367 /* SceneDelegate.swift */; };
@@ -57,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
+		0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
 		7768A764256A1077005EA237 /* ARModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelTests.swift; sourceTree = "<group>"; };
 		77951FBE2568088100BC7367 /* Letrando.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Letrando.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77951FC12568088100BC7367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +155,7 @@
 				77951FFF25680A4B00BC7367 /* Utils */,
 				77951FFC25680A3100BC7367 /* Shared */,
 				77951FF72568093900BC7367 /* .swiftlint.yml */,
+				0B07357C256BE97E0002AC05 /* words.json */,
 				77951FD22568088100BC7367 /* Info.plist */,
 				77951FCA2568088100BC7367 /* Letrando.xcdatamodeld */,
 			);
@@ -161,6 +168,7 @@
 				77951FDD2568088200BC7367 /* Info.plist */,
 				7768A764256A1077005EA237 /* ARModelTests.swift */,
 				77D621FD256BE14F007D905C /* WordTests.swift */,
+				0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */,
 			);
 			path = LetrandoTests;
 			sourceTree = "<group>";
@@ -348,6 +356,7 @@
 				7795206C25680D2A00BC7367 /* ReportRepository.swift */,
 				7795207425680D3200BC7367 /* Word.swift */,
 				7795207925680D3C00BC7367 /* CloudKit.swift */,
+				0B073584256BF2300002AC05 /* JsonData.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -467,6 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B07357D256BE97E0002AC05 /* words.json in Resources */,
 				77951FF82568093900BC7367 /* .swiftlint.yml in Resources */,
 				7795200725680B0E00BC7367 /* Alert.storyboard in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
@@ -528,6 +538,7 @@
 				7795205425680C5400BC7367 /* SearchView+ARDelegate.swift in Sources */,
 				7795203425680C0500BC7367 /* AlertViewController.swift in Sources */,
 				77951FC22568088100BC7367 /* AppDelegate.swift in Sources */,
+				0B073585256BF2300002AC05 /* JsonData.swift in Sources */,
 				7795208925680D6000BC7367 /* Report.swift in Sources */,
 				7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */,
 				7795202525680BCB00BC7367 /* Sounds.swift in Sources */,
@@ -545,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */,
 				7768A765256A1077005EA237 /* ARModelTests.swift in Sources */,
 				77D621FE256BE14F007D905C /* WordTests.swift in Sources */,
 			);
@@ -715,7 +727,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69Y77S7YQP;
+				DEVELOPMENT_TEAM = JCC32S9S9V;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -734,7 +746,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69Y77S7YQP;
+				DEVELOPMENT_TEAM = JCC32S9S9V;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
