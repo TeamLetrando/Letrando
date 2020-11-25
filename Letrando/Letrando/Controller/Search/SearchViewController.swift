@@ -9,18 +9,100 @@ import UIKit
 import ARKit
 import SceneKit
 
-class SearchViewController: UIViewController, ARSCNViewDelegate {
-    var letters = ["A", "B", "C", "D", "E"]
+class SearchViewController: UIViewController {
+    var letters: [String] = []
     var imageLetters: [UIImageView] = []
+    var word: Word?
     @IBOutlet weak var sceneView: ARSCNView!
+    var stack: UIStackView!
+    var sceneController = Scene()
+    var lettersAdded: Bool = false
+    var planeAdded: Bool = false
+    var plane: Plane?
+    let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    let coachingOverlay = ARCoachingOverlayView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        sceneView.delegate = self
+        if let scene = sceneController.scene {
+            sceneView.scene = scene
+        }
+
+        word = JsonData().randomWord()
+        letters = word?.breakInLetters() ?? []
+
         makeImage(letters: letters)
+        stack.isHidden = true
+
+        feedbackGenerator.prepare()
+        setupCoachingOverlay()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureSession()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sceneView.session.pause()
+    }
+
+    func configureSession() {
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        sceneView.session.delegate = self
+        sceneView.session.run(configuration)
+    }
+
+    func isPointValid (point: CGPoint, array: [CGPoint]) -> Bool {
+        var isValidPoint = true
+        array.forEach { (localPoint) in
+            if localPoint.distance(to: point) < 300 {
+                isValidPoint = false
+            }
+        }
+        return isValidPoint
+    }
+
+    func generateRandomPoint() -> CGPoint {
+        return CGPoint(x: CGFloat.random(in: -1000...1000), y: CGFloat.random(in: -1000...1000))
+    }
+
+    func addWord(letters: [String]) {
+        if planeAdded {
+            var points: [CGPoint] = []
+            letters.forEach { (letter) in
+                var pointInPlane = false
+                while !pointInPlane {
+                    let tapLocation = generateRandomPoint()
+                    let hitTestResults = sceneView.hitTest(tapLocation)
+
+                    if let node = hitTestResults.first?.node,
+                       let plane = node.parent as? Plane,
+                       isPointValid(point: tapLocation, array: points) {
+                        pointInPlane = true
+                        points.append(tapLocation)
+                        if let planeParent = plane.parent, let hitResult = hitTestResults.first {
+                            let textPos = SCNVector3Make(
+                                hitResult.worldCoordinates.x,
+                                hitResult.worldCoordinates.y,
+                                hitResult.worldCoordinates.z
+                            )
+                            sceneController.addLetterToScene(letter: letter, parent: planeParent, position: textPos)
+                            self.feedbackGenerator.impactOccurred()
+
+                        }
+                    } else {
+                        continue
+                    }
+                }
+            }
+        }
+    }
+
     func makeImage(letters: [String]) {
         for oneLetter in letters {
             if let imageLetter = UIImage(named: "lettersEmpty/\(oneLetter).pdf") {
@@ -39,7 +121,7 @@ class SearchViewController: UIViewController, ARSCNViewDelegate {
         setupConstraints(imageLetters: imageLetters)
     }
     func setupConstraints(imageLetters: [UIImageView]) {
-        let stack = UIStackView()
+        stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         stack.spacing = 5
