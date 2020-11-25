@@ -40,6 +40,10 @@
 		7795208425680D5800BC7367 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208325680D5800BC7367 /* Notifications.swift */; };
 		7795208925680D6000BC7367 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208825680D6000BC7367 /* Report.swift */; };
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
+		AFE007E3256E794000C2DA6C /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007E2256E794000C2DA6C /* Plane.swift */; };
+		AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007EF256E7B7B00C2DA6C /* Scene.swift */; };
+		AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007F5256E7D2800C2DA6C /* CGPoint.swift */; };
+		AFE007FE256E7D5D00C2DA6C /* SearchView+ARCoaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */; };
 		7B001C7D256E091A00363F1B /* BubblegumSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B001C6D256DF9EC00363F1B /* BubblegumSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +104,10 @@
 		7795208325680D5800BC7367 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		7795208825680D6000BC7367 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		77D621FD256BE14F007D905C /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
+		AFE007E2256E794000C2DA6C /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		AFE007EF256E7B7B00C2DA6C /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		AFE007F5256E7D2800C2DA6C /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView+ARCoaching.swift"; sourceTree = "<group>"; };
 		7B001C6D256DF9EC00363F1B /* BubblegumSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BubblegumSans-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +230,7 @@
 		77951FFF25680A4B00BC7367 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AFE007F4256E7D1A00C2DA6C /* Extensions */,
 				7795202925680BCF00BC7367 /* Fonts */,
 				7795202325680BC300BC7367 /* Sounds */,
 				7795201D25680BB100BC7367 /* Colors */,
@@ -333,6 +342,7 @@
 			children = (
 				7795204B25680C3000BC7367 /* SearchViewController.swift */,
 				7795205325680C5400BC7367 /* SearchView+ARDelegate.swift */,
+				AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -370,8 +380,18 @@
 				7795207E25680D4D00BC7367 /* ARModel.swift */,
 				7795208325680D5800BC7367 /* Notifications.swift */,
 				7795208825680D6000BC7367 /* Report.swift */,
+				AFE007E2256E794000C2DA6C /* Plane.swift */,
+				AFE007EF256E7B7B00C2DA6C /* Scene.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		AFE007F4256E7D1A00C2DA6C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AFE007F5256E7D2800C2DA6C /* CGPoint.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -534,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7795202B25680BD500BC7367 /* Fonts.swift in Sources */,
+				AFE007FE256E7D5D00C2DA6C /* SearchView+ARCoaching.swift in Sources */,
 				7795206D25680D2A00BC7367 /* ReportRepository.swift in Sources */,
 				7795207525680D3200BC7367 /* Word.swift in Sources */,
 				7795204C25680C3000BC7367 /* SearchViewController.swift in Sources */,
@@ -543,10 +564,13 @@
 				7795203425680C0500BC7367 /* AlertViewController.swift in Sources */,
 				77951FC22568088100BC7367 /* AppDelegate.swift in Sources */,
 				0B073585256BF2300002AC05 /* JsonData.swift in Sources */,
+				AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */,
 				7795208925680D6000BC7367 /* Report.swift in Sources */,
 				7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */,
 				7795202525680BCB00BC7367 /* Sounds.swift in Sources */,
+				AFE007E3256E794000C2DA6C /* Plane.swift in Sources */,
 				77951FCC2568088100BC7367 /* Letrando.xcdatamodeld in Sources */,
+				AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */,
 				7795208425680D5800BC7367 /* Notifications.swift in Sources */,
 				7795204625680C2100BC7367 /* ReportViewController.swift in Sources */,
 				7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */,
@@ -731,7 +755,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JCC32S9S9V;
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -750,7 +774,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JCC32S9S9V;
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

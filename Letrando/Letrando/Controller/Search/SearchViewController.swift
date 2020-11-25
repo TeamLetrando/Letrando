@@ -9,19 +9,85 @@ import UIKit
 import ARKit
 import SceneKit
 
-class SearchViewController: UIViewController, ARSCNViewDelegate {
-    //var letters: Word?
-    var letters = ["A", "B", "C", "D", "E"]
+class SearchViewController: UIViewController {
+    var letters: [String] = []
     var imageLetters: [UIImageView] = []
+    var word: Word?
     @IBOutlet weak var sceneView: ARSCNView!
+    var stack: UIStackView!
+    var sceneController = Scene()
+    var lettersAdded: Bool = false
+    var planeAdded: Bool = false
+    var plane: Plane?
+    let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    let coachingOverlay = ARCoachingOverlayView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //guard let lettersFromWord = letters?.breakInLetters() else {return}
+
+        sceneView.delegate = self
+        if let scene = sceneController.scene {
+            sceneView.scene = scene
+        }
+
+        word = JsonData().randomWord()
+        letters = word?.breakInLetters() ?? []
+
         makeImage(letters: letters)
+        stack.isHidden = true
+
+        feedbackGenerator.prepare()
+        setupCoachingOverlay()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureSession()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sceneView.session.pause()
+    }
+
+    func configureSession() {
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        sceneView.session.delegate = self
+        sceneView.session.run(configuration)
+    }
+
+    func addWord(letters: [String]) {
+        if planeAdded {
+            var points: [CGPoint] = []
+            letters.forEach { (letter) in
+                var pointInPlane = false
+                while !pointInPlane {
+                    let tapLocation: CGPoint = .generateRandomPoint()
+                    let hitTestResults = sceneView.hitTest(tapLocation)
+
+                    if let node = hitTestResults.first?.node,
+                       let plane = node.parent as? Plane,
+                       tapLocation.isPointValid(array: points) {
+                        pointInPlane = true
+                        points.append(tapLocation)
+                        if let planeParent = plane.parent, let hitResult = hitTestResults.first {
+                            let textPos = SCNVector3Make(
+                                hitResult.worldCoordinates.x,
+                                hitResult.worldCoordinates.y,
+                                hitResult.worldCoordinates.z
+                            )
+                            sceneController.addLetterToScene(letter: letter, parent: planeParent, position: textPos)
+                            self.feedbackGenerator.impactOccurred()
+
+                        }
+                    } else {
+                        continue
+                    }
+                }
+            }
+        }
+    }
+
     @IBAction func backButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "home")
@@ -47,7 +113,7 @@ class SearchViewController: UIViewController, ARSCNViewDelegate {
         setupConstraints(imageLetters: imageLetters)
     }
     func setupConstraints(imageLetters: [UIImageView]) {
-        let stack = UIStackView()
+        stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         stack.spacing = 5

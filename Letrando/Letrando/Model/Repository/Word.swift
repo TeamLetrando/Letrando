@@ -12,8 +12,8 @@ struct Word: Codable {
     let word: String
     let accessFrequency: Int
 
-    public func breakInLetters() -> [String] {
-        return word.map { String($0) }
+    func breakInLetters() -> [String] {
+        return word.map { String($0).uppercased() }
     }
 
 }
