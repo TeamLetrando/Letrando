@@ -13,7 +13,7 @@ struct Word: Codable {
     let accessFrequency: Int
 
     func breakInLetters() -> [String] {
-        return word.map { String($0) }
+        return word.map { String($0).uppercased() }
     }
 
 }
