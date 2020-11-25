@@ -39,7 +39,6 @@ class SearchViewController: UIViewController {
         feedbackGenerator.prepare()
         setupCoachingOverlay()
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureSession()
@@ -89,6 +88,13 @@ class SearchViewController: UIViewController {
         }
     }
 
+    @IBAction func backButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let viewC =  storyboard.instantiateViewController(identifier: "home")
+                as? HomeViewController else {fatalError()}
+        viewC.modalPresentationStyle = .fullScreen
+        self.present(viewC, animated: true, completion: nil)
+    }
     func makeImage(letters: [String]) {
         for oneLetter in letters {
             if let imageLetter = UIImage(named: "lettersEmpty/\(oneLetter).pdf") {
@@ -113,7 +119,7 @@ class SearchViewController: UIViewController {
         stack.spacing = 5
         view.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 58).isActive = true
         stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
         stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25).isActive = true
