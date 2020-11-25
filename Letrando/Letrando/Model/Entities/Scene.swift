@@ -10,6 +10,7 @@ import SceneKit
 struct Scene {
 
     var scene: SCNScene?
+    var textNode: [SCNNode] = []
 
     init() {
         scene = self.initializeScene()
@@ -46,12 +47,13 @@ struct Scene {
         scene.rootNode.addChildNode(directionalNode)
     }
 
-    func addLetterToScene(letter: String, parent: SCNNode, position: SCNVector3 = SCNVector3Zero) {
+    mutating func addLetterToScene(letter: String, parent: SCNNode, position: SCNVector3 = SCNVector3Zero) {
         guard let scene = self.scene else { return }
 
-            let textNode = createTextNode(string: letter)
-            textNode.position = scene.rootNode.convertPosition(position, to: parent)
-            parent.addChildNode(textNode)
+            let letterNode = createTextNode(string: letter)
+            letterNode.position = scene.rootNode.convertPosition(position, to: parent)
+            parent.addChildNode(letterNode)
+            textNode.append(letterNode)
 
     }
 
@@ -78,8 +80,7 @@ struct Scene {
 
         return textNode
     }
-    
-    
+
     func isPointValid (point: CGPoint, array: [CGPoint]) -> Bool {
         var isValidPoint = true
         array.forEach { (localPoint) in
