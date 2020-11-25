@@ -80,19 +80,4 @@ struct Scene {
 
         return textNode
     }
-
-    func isPointValid (point: CGPoint, array: [CGPoint]) -> Bool {
-        var isValidPoint = true
-        array.forEach { (localPoint) in
-            if localPoint.distance(to: point) < 300 {
-                isValidPoint = false
-            }
-        }
-        return isValidPoint
-    }
-
-    func generateRandomPoint() -> CGPoint {
-        return CGPoint(x: CGFloat.random(in: -1000...1000), y: CGFloat.random(in: -1000...1000))
-    }
-
 }

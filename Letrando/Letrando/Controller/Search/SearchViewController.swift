@@ -57,32 +57,18 @@ class SearchViewController: UIViewController {
         sceneView.session.run(configuration)
     }
 
-    func isPointValid (point: CGPoint, array: [CGPoint]) -> Bool {
-        var isValidPoint = true
-        array.forEach { (localPoint) in
-            if localPoint.distance(to: point) < 300 {
-                isValidPoint = false
-            }
-        }
-        return isValidPoint
-    }
-
-    func generateRandomPoint() -> CGPoint {
-        return CGPoint(x: CGFloat.random(in: -1000...1000), y: CGFloat.random(in: -1000...1000))
-    }
-
     func addWord(letters: [String]) {
         if planeAdded {
             var points: [CGPoint] = []
             letters.forEach { (letter) in
                 var pointInPlane = false
                 while !pointInPlane {
-                    let tapLocation = generateRandomPoint()
+                    let tapLocation: CGPoint = .generateRandomPoint()
                     let hitTestResults = sceneView.hitTest(tapLocation)
 
                     if let node = hitTestResults.first?.node,
                        let plane = node.parent as? Plane,
-                       isPointValid(point: tapLocation, array: points) {
+                       tapLocation.isPointValid(array: points) {
                         pointInPlane = true
                         points.append(tapLocation)
                         if let planeParent = plane.parent, let hitResult = hitTestResults.first {
