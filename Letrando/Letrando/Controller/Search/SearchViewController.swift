@@ -10,16 +10,24 @@ import ARKit
 import SceneKit
 
 class SearchViewController: UIViewController, ARSCNViewDelegate {
+    //var letters: Word?
     var letters = ["A", "B", "C", "D", "E"]
     var imageLetters: [UIImageView] = []
     @IBOutlet weak var sceneView: ARSCNView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //guard let lettersFromWord = letters?.breakInLetters() else {return}
         makeImage(letters: letters)
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    @IBAction func backButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let viewC =  storyboard.instantiateViewController(identifier: "home")
+                as? HomeViewController else {fatalError()}
+        viewC.modalPresentationStyle = .fullScreen
+        self.present(viewC, animated: true, completion: nil)
     }
     func makeImage(letters: [String]) {
         for oneLetter in letters {
@@ -45,7 +53,7 @@ class SearchViewController: UIViewController, ARSCNViewDelegate {
         stack.spacing = 5
         view.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 58).isActive = true
         stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
         stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25).isActive = true
