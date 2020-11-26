@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Suj-PU-mDl">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="kQ6-IT-W1M">
+            <objects>
+                <viewController storyboardIdentifier="search" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Suj-PU-mDl" customClass="SearchViewController" customModule="Letrando" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0aP-Bl-ZZM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXD-RT-ZCz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpX-Mi-gtd">
+                                <rect key="frame" x="20" y="56" width="30" height="30"/>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="Suj-PU-mDl" eventType="touchUpInside" id="ypt-E6-9KJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ygi-ks-sP6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RXD-RT-ZCz" firstAttribute="leading" secondItem="0aP-Bl-ZZM" secondAttribute="leading" id="88Q-dY-FlP"/>
+                            <constraint firstItem="RXD-RT-ZCz" firstAttribute="bottom" secondItem="0aP-Bl-ZZM" secondAttribute="bottom" id="Ljz-5T-COL"/>
+                            <constraint firstItem="hpX-Mi-gtd" firstAttribute="leading" secondItem="ygi-ks-sP6" secondAttribute="leading" constant="20" id="QQY-uU-OJW"/>
+                            <constraint firstItem="RXD-RT-ZCz" firstAttribute="top" secondItem="0aP-Bl-ZZM" secondAttribute="top" id="TR2-Kk-3nG"/>
+                            <constraint firstItem="hpX-Mi-gtd" firstAttribute="top" secondItem="ygi-ks-sP6" secondAttribute="top" constant="12" id="V0O-Q3-yPA"/>
+                            <constraint firstItem="RXD-RT-ZCz" firstAttribute="trailing" secondItem="0aP-Bl-ZZM" secondAttribute="trailing" id="x1g-2v-eyf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="RXD-RT-ZCz" id="F1B-Ya-SLr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B4j-yO-LXy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115.94202898550725" y="123.88392857142857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="30" height="30"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
