@@ -16,7 +16,9 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
                 plane = Plane(planeAnchor)
                 node.addChildNode(plane!)
                 self.planeAdded = true
-                stack.isHidden = false
+                DispatchQueue.main.async {
+                    self.stack.isHidden = false
+                }
             }
         }
 

@@ -11,7 +11,7 @@ import SceneKit
 
 class SearchViewController: UIViewController {
     var letters: [String] = []
-    var imageLetters: [UIImageView] = []
+    var imageViewLetters: [UIImageView] = []
     var word: Word?
     @IBOutlet weak var sceneView: ARSCNView!
     var stack: UIStackView!
@@ -28,12 +28,14 @@ class SearchViewController: UIViewController {
         sceneView.delegate = self
         if let scene = sceneController.scene {
             sceneView.scene = scene
+            sceneView.showsStatistics = true
         }
 
         word = JsonData().randomWord()
         letters = word?.breakInLetters() ?? []
 
-        makeImage(letters: letters)
+        let imageViewLetters = makeImage(letters: letters)
+        getNodeView(imageViewLetters)
         stack.isHidden = true
 
         feedbackGenerator.prepare()
@@ -89,13 +91,10 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func backButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "home")
-                as? HomeViewController else {fatalError()}
-        viewC.modalPresentationStyle = .fullScreen
-        self.present(viewC, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
-    func makeImage(letters: [String]) {
+    func makeImage(letters: [String]) -> [UIImageView] {
+        var imageLetters: [UIImageView] = []
         for oneLetter in letters {
             if let imageLetter = UIImage(named: "lettersEmpty/\(oneLetter).pdf") {
                 let image = UIImageView(image: imageLetter)
@@ -107,12 +106,12 @@ class SearchViewController: UIViewController {
                 image.clipsToBounds = true
                 image.translatesAutoresizingMaskIntoConstraints = false
                 image.layer.zPosition = 20
-                self.imageLetters.append(image)
+                imageLetters.append(image)
             }
         }
-        setupConstraints(imageLetters: imageLetters)
+        return setupConstraints(imageLetters: imageLetters)
     }
-    func setupConstraints(imageLetters: [UIImageView]) {
+    func setupConstraints(imageLetters: [UIImageView]) -> [UIImageView] {
         stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
@@ -127,6 +126,16 @@ class SearchViewController: UIViewController {
             imageLetters[ipp].translatesAutoresizingMaskIntoConstraints = false
             imageLetters[ipp].heightAnchor.constraint(equalTo: imageLetters[ipp].widthAnchor).isActive = true
             stack.addArrangedSubview(imageLetters[ipp])
+        }
+        return imageLetters
+    }
+    func getNodeView(_ imageViewLetters: [UIImageView]) {
+        for ipp in 0...(imageViewLetters.count - 1) {
+            let plane = SCNPlane(width: 0.1, height: 0.1)
+            plane.firstMaterial?.diffuse.contents = imageViewLetters[ipp]
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.position = SCNVector3(0, 0, 10)
+            self.sceneView.scene.rootNode.addChildNode(planeNode)
         }
     }
 }
