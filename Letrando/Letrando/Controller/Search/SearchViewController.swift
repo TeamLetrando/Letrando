@@ -38,6 +38,8 @@ class SearchViewController: UIViewController {
 
         feedbackGenerator.prepare()
         setupCoachingOverlay()
+        
+        addMoveGesture()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,6 +49,28 @@ class SearchViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+    }
+
+    func addMoveGesture() {
+        let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(moveLetterGesture(_:)))
+        sceneView.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
+        let location = gesture.location(in: self.sceneView)
+
+        switch gesture.state {
+
+        case .changed:
+            let hitResult = sceneView.hitTest(location)
+            if !hitResult.isEmpty {
+                guard let hitResult = hitResult.first?.node else { return }
+                hitResult.position = SCNVector3Make(location.x, location.y, 0)
+            }
+
+        default:
+            break
+        }
     }
 
     func configureSession() {
