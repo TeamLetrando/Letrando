@@ -28,7 +28,7 @@ class SearchViewController: UIViewController {
         sceneView.delegate = self
         if let scene = sceneController.scene {
             sceneView.scene = scene
-            sceneView.showsStatistics = true
+            //sceneView.showsStatistics = true
         }
 
         word = JsonData().randomWord()

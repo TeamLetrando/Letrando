@@ -18,7 +18,7 @@ class WordTests: XCTestCase {
         let wordBreak = sut.breakInLetters()
 
         //Then
-        XCTAssertEqual(wordBreak, ["B", "o", "l", "a"])
+        XCTAssertEqual(wordBreak, ["B", "O", "L", "A"])
     }
 
 }
