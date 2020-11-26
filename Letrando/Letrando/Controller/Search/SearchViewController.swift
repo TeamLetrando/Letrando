@@ -11,6 +11,7 @@ import SceneKit
 
 class SearchViewController: UIViewController {
     var letters: [String] = []
+    var points: [CGPoint] = []
     var imageViewLetters: [UIImageView] = []
     var word: Word?
     @IBOutlet weak var sceneView: ARSCNView!
@@ -21,6 +22,9 @@ class SearchViewController: UIViewController {
     var plane: Plane?
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let coachingOverlay = ARCoachingOverlayView()
+    var panStartZ: CGFloat = 0
+    var draggingNode: SCNNode = SCNNode()
+    var lastPanLocation: SCNVector3 = SCNVector3(0, 0, 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,16 +63,24 @@ class SearchViewController: UIViewController {
     }
 
     @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
+        guard let view = gesture.view as? SCNView else { return }
         let location = gesture.location(in: self.sceneView)
+        guard let hitNodeResult = view.hitTest(location, options: nil).first else { return }
 
         switch gesture.state {
-
-        case .changed:
-            let hitResult = sceneView.hitTest(location)
-            if !hitResult.isEmpty {
-                guard let hitResult = hitResult.first?.node else { return }
-                hitResult.position = SCNVector3Make(location.x, location.y, 0)
+        case .began:
+            let lettersNodes = sceneController.textNode
+            for index in (0...lettersNodes.count-1) {
+                if lettersNodes[index].contains(hitNodeResult.node) {
+                    panStartZ = CGFloat(view.projectPoint(hitNodeResult.node.position).z)
+                    draggingNode = hitNodeResult.node
+                    lastPanLocation = hitNodeResult.worldCoordinates
+                }
             }
+        case .changed:
+            let worldTouchPosition = view.unprojectPoint(SCNVector3(location.x, location.y, panStartZ))
+            draggingNode.worldPosition = worldTouchPosition
+            lastPanLocation = worldTouchPosition
 
         default:
             break
@@ -84,7 +96,7 @@ class SearchViewController: UIViewController {
 
     func addWord(letters: [String]) {
         if planeAdded {
-            var points: [CGPoint] = []
+            
             letters.forEach { (letter) in
                 var pointInPlane = false
                 while !pointInPlane {
