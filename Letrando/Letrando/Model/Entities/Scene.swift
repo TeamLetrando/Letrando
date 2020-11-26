@@ -54,7 +54,6 @@ struct Scene {
             letterNode.position = scene.rootNode.convertPosition(position, to: parent)
             parent.addChildNode(letterNode)
             textNode.append(letterNode)
-
     }
 
 }

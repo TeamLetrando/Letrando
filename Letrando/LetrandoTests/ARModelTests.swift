@@ -10,26 +10,26 @@ import XCTest
 
 class ARModelTests: XCTestCase {
 
-    func test_transformWordInSCNText_returnArrayNotEmpty() {
-        //Given
-        let sut = ARModel()
-        sut.word = Word(word: "Bola", accessFrequency: 1)
-
-        //When
-        let scnTextArray = sut.transformWordInSCNText()
-
-        //Then
-        XCTAssertNotEqual(scnTextArray, [])
-    }
-
-    func test_transformWordInSCNText_returnArrayEmpty() {
-        //Given
-        let sut = ARModel()
-
-        //When
-        let scnTextArray = sut.transformWordInSCNText()
-
-        //Then
-        XCTAssertEqual(scnTextArray, [])
-    }
+//    func test_transformWordInSCNText_returnArrayNotEmpty() {
+//        //Given
+//        let sut = ARModel()
+//        sut.word = Word(word: "Bola", accessFrequency: 1)
+//
+//        //When
+//        let scnTextArray = sut.transformWordInSCNText()
+//
+//        //Then
+//        XCTAssertNotEqual(scnTextArray, [])
+//    }
+//
+//    func test_transformWordInSCNText_returnArrayEmpty() {
+//        //Given
+//        let sut = ARModel()
+//
+//        //When
+//        let scnTextArray = sut.transformWordInSCNText()
+//
+//        //Then
+//        XCTAssertEqual(scnTextArray, [])
+//    }
 }
