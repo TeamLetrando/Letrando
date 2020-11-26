@@ -16,7 +16,9 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
                 plane = Plane(planeAnchor)
                 node.addChildNode(plane!)
                 self.planeAdded = true
-                stack.isHidden = false
+                DispatchQueue.main.async {
+                    self.stack.isHidden = false
+                }
             }
         }
 
@@ -24,7 +26,7 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
             if !self.lettersAdded {
                 self.lettersAdded = true
                 self.addWord(letters: self.letters)
-                print(self.sceneController.textNode)
+                //print(self.sceneController.textNode)
             }
         }
     }
