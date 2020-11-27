@@ -30,13 +30,13 @@ class ARModel {
 
         return textNode
     }
-    
+
     static func configureText(_ string: String) -> SCNText {
         let text = SCNText(string: string, extrusionDepth: 0.3)
         text.font = UIFont.systemFont(ofSize: 3.0)
         text.flatness = 0.01
         text.firstMaterial?.diffuse.contents = UIColor.white
-        
+
         return text
     }
 }
