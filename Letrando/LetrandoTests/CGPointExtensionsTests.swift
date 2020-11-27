@@ -6,28 +6,61 @@
 //
 
 import XCTest
-
+import UIKit
+@testable import Letrando
 class CGPointExtensionsTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_generateRandomPoint_returnValueBetweenValues() {
+        //given
+        let sut = CGPoint.generateRandomPoint()
+        //when
+        let pointX = sut.x
+        let pointY = sut.y
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        //then
+        XCTAssertTrue(pointX >= -1000 && pointX <= 1000)
+        XCTAssertTrue(pointY >= -1000 && pointY <= 1000)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_distance_returnDistanceBetweenTwoPoints() {
+        //given
+        let pointOne = CGPoint(x: 0, y: 1)
+        let pointTwo = CGPoint(x: 2, y: -4)
+        let respost = CGFloat(5.385164807134504)
+
+        //when
+        let distance = pointOne.distance(to: pointTwo)
+
+        //then
+       XCTAssertEqual(distance, respost)
+
+    }
+    func test_isPointValid_returnTrue() {
+        //given
+        let pointOne = CGPoint(x: 100, y: 10)
+        let pointTwo = CGPoint(x: -20, y: -400)
+        let pointThree = CGPoint(x: 400, y: 285)
+
+        let points = [pointTwo, pointThree]
+
+        let respost = pointOne.isPointValid(array: points)
+
+       XCTAssertTrue(respost)
+
     }
 
-    func testExample() throws {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_isPointValid_returnFalse() {
+        //given
+        let pointOne = CGPoint(x: 10, y: 10)
+        let pointTwo = CGPoint(x: -20, y: -40)
+        let pointThree = CGPoint(x: 40, y: 25)
+
+        let points = [pointTwo, pointThree]
+
+        let respost = pointOne.isPointValid(array: points)
+
+       XCTAssertFalse(respost)
+
     }
 
 }
