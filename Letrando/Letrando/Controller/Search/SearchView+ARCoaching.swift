@@ -10,7 +10,21 @@ import SceneKit
 import ARKit
 @available(iOS 13.0, *)
 extension SearchViewController: ARCoachingOverlayViewDelegate {
-    /// - Tag: HideUI
+    
+//    /// - Tag: HideUI
+//    func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
+//        upperControlsView.isHidden = true
+//    }
+//
+//    /// - Tag: PresentUI
+//    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+//        upperControlsView.isHidden = false
+//    }
+//
+//    /// - Tag: StartOver
+//    func coachingOverlayViewDidRequestSessionReset(_ coachingOverlayView: ARCoachingOverlayView) {
+//        restartExperience()
+//    }
 
     func setupCoachingOverlay() {
         // Set up coaching view

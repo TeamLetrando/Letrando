@@ -25,6 +25,7 @@ class SearchViewController: UIViewController {
     var panStartZ: CGFloat = 0
     var draggingNode: SCNNode = SCNNode()
     var lastPanLocation: SCNVector3 = SCNVector3(0, 0, 0)
+    var locationBegan: CGPoint = CGPoint(x: 0, y: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,25 +64,54 @@ class SearchViewController: UIViewController {
     }
 
     @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
-        guard let view = gesture.view as? SCNView else { return }
+        //guard let view = gesture.view as? SCNView else { return }
         let location = gesture.location(in: self.sceneView)
-        guard let hitNodeResult = view.hitTest(location, options: nil).first else { return }
-
+        //guard let hitNodeResult = sceneView.hitTest(location, options: nil).last else { return }
+        guard let hitNodeResult = sceneView.raycastQuery(from: location, allowing: .estimatedPlane, alignment: .horizontal) else {return}
+        let hitNode = sceneView.hitTest(location).first
         switch gesture.state {
         case .began:
-            let lettersNodes = sceneController.textNode
-            for index in (0...lettersNodes.count-1) {
-                if lettersNodes[index].contains(hitNodeResult.node) {
-                    panStartZ = CGFloat(view.projectPoint(hitNodeResult.node.position).z)
-                    draggingNode = hitNodeResult.node
-                    lastPanLocation = hitNodeResult.worldCoordinates
+            //determinando 3d para 2d
+            let translation = hitNodeResult.direction
+            panStartZ = CGFloat(hitNodeResult.direction.z)
+            //locationBegan = location
+            sceneController.textNode.forEach { (node) in
+                if node == hitNode?.node {
+                    node.position = SCNVector3Make(translation.x, translation.y, translation.z)
+                    draggingNode = node
+                    print(node.position)
+                    sceneView.scene.rootNode.addChildNode(draggingNode)
                 }
             }
+//            locationBegan = location
+//            let lettersNodes = sceneController.textNode
+//            for index in (0...lettersNodes.count-1) {
+//                if lettersNodes[index].contains(hitNodeResult.node) {
+//                    panStartZ = CGFloat(sceneView.projectPoint(hitNodeResult.node.position).z)
+//                    draggingNode = hitNodeResult.node
+//                    lastPanLocation = hitNodeResult.worldCoordinates
+//                    print("began")
+//                    print(lastPanLocation)
+//                    print(location)
+//                    print(locationBegan)
+//                }
+//            }
         case .changed:
-            let worldTouchPosition = view.unprojectPoint(SCNVector3(location.x, location.y, panStartZ))
-            draggingNode.worldPosition = worldTouchPosition
-            lastPanLocation = worldTouchPosition
-
+            let hitResult = sceneView.hitTest(location, types: .existingPlane)
+            if !hitResult.isEmpty {
+                guard let newHitResult = hitResult.last else {return}
+                draggingNode.position = SCNVector3Make(newHitResult.worldTransform.columns.3.x, newHitResult.worldTransform.columns.3.y, newHitResult.worldTransform.columns.3.z)
+                print(draggingNode.position)
+            }
+            
+//            let worldTouchPosition = sceneView.unprojectPoint(SCNVector3(locationBegan.x, locationBegan.y, -panStartZ))
+//            draggingNode.worldPosition = worldTouchPosition
+//            lastPanLocation = worldTouchPosition
+//            print("changed")
+//            print(location)
+//            print(locationBegan)
+//            print(panStartZ)
+//            print(lastPanLocation)
         default:
             break
         }
@@ -96,7 +126,6 @@ class SearchViewController: UIViewController {
 
     func addWord(letters: [String]) {
         if planeAdded {
-            
             letters.forEach { (letter) in
                 var pointInPlane = false
                 while !pointInPlane {
