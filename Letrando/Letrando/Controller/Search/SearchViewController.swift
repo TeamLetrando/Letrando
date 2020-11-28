@@ -22,10 +22,8 @@ class SearchViewController: UIViewController {
     var plane: Plane?
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let coachingOverlay = ARCoachingOverlayView()
-    var panStartZ: CGFloat = 0
-    var draggingNode: SCNNode = SCNNode()
-    var lastPanLocation: SCNVector3 = SCNVector3(0, 0, 0)
-    var locationBegan: CGPoint = CGPoint(x: 0, y: 0)
+    var actualNode: SCNNode = SCNNode()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +43,7 @@ class SearchViewController: UIViewController {
 
         feedbackGenerator.prepare()
         setupCoachingOverlay()
-        
+
         addMoveGesture()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -64,54 +62,34 @@ class SearchViewController: UIViewController {
     }
 
     @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
-        //guard let view = gesture.view as? SCNView else { return }
-        let location = gesture.location(in: self.sceneView)
-        //guard let hitNodeResult = sceneView.hitTest(location, options: nil).last else { return }
-        guard let hitNodeResult = sceneView.raycastQuery(from: location, allowing: .estimatedPlane, alignment: .horizontal) else {return}
-        let hitNode = sceneView.hitTest(location).first
+        let tapLocation = gesture.location(in: self.sceneView)
+        guard let nodeResult = sceneView.raycastQuery(from: tapLocation,
+                                                         allowing: .estimatedPlane,
+                                                         alignment: .horizontal) else {return}
+        let hitNode = sceneView.hitTest(tapLocation)
+
         switch gesture.state {
+
         case .began:
-            //determinando 3d para 2d
-            let translation = hitNodeResult.direction
-            panStartZ = CGFloat(hitNodeResult.direction.z)
-            //locationBegan = location
             sceneController.textNode.forEach { (node) in
-                if node == hitNode?.node {
-                    node.position = SCNVector3Make(translation.x, translation.y, translation.z)
-                    draggingNode = node
-                    print(node.position)
-                    sceneView.scene.rootNode.addChildNode(draggingNode)
+                if node == hitNode.first?.node {
+                    node.position = SCNVector3Make(nodeResult.direction.x,
+                                                   nodeResult.direction.y,
+                                                   nodeResult.direction.z)
+                    actualNode = node
+                    sceneView.scene.rootNode.addChildNode(actualNode)
                 }
             }
-//            locationBegan = location
-//            let lettersNodes = sceneController.textNode
-//            for index in (0...lettersNodes.count-1) {
-//                if lettersNodes[index].contains(hitNodeResult.node) {
-//                    panStartZ = CGFloat(sceneView.projectPoint(hitNodeResult.node.position).z)
-//                    draggingNode = hitNodeResult.node
-//                    lastPanLocation = hitNodeResult.worldCoordinates
-//                    print("began")
-//                    print(lastPanLocation)
-//                    print(location)
-//                    print(locationBegan)
-//                }
-//            }
+
         case .changed:
-            let hitResult = sceneView.hitTest(location, types: .existingPlane)
-            if !hitResult.isEmpty {
-                guard let newHitResult = hitResult.last else {return}
-                draggingNode.position = SCNVector3Make(newHitResult.worldTransform.columns.3.x, newHitResult.worldTransform.columns.3.y, newHitResult.worldTransform.columns.3.z)
-                print(draggingNode.position)
+            let newNodeResult = sceneView.session.raycast(nodeResult).last
+            if !hitNode.isEmpty {
+                guard let newHitResult = newNodeResult else {return}
+                actualNode.position = SCNVector3Make(newHitResult.worldTransform.columns.3.x,
+                                                     newHitResult.worldTransform.columns.3.y,
+                                                     newHitResult.worldTransform.columns.3.z)
             }
-            
-//            let worldTouchPosition = sceneView.unprojectPoint(SCNVector3(locationBegan.x, locationBegan.y, -panStartZ))
-//            draggingNode.worldPosition = worldTouchPosition
-//            lastPanLocation = worldTouchPosition
-//            print("changed")
-//            print(location)
-//            print(locationBegan)
-//            print(panStartZ)
-//            print(lastPanLocation)
+
         default:
             break
         }
