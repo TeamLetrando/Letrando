@@ -63,28 +63,54 @@
                                     <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U8R-xz-PGf"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hck-6x-sof" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="20" y="399.5" width="374" height="401.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="coffee"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vamos buscar letrinhas?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-hn-4uI">
+                                <rect key="frame" x="20" y="236" width="374" height="143.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.81568627450980391" green="0.8901960784313725" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="8ik-sU-uR6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3KA-DN-h5A"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hck-6x-sof" secondAttribute="trailing" constant="20" id="4W5-zN-Zcv"/>
+                            <constraint firstItem="fJE-hn-4uI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8ge-bA-A9T"/>
                             <constraint firstItem="XRk-1Z-NUS" firstAttribute="centerX" secondItem="8ik-sU-uR6" secondAttribute="centerX" id="B4b-dS-yFN"/>
                             <constraint firstItem="XRk-1Z-NUS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="DbK-fg-I88"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XRk-1Z-NUS" secondAttribute="trailing" constant="20" id="FRp-DE-kIH"/>
                             <constraint firstItem="8ik-sU-uR6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="O8I-fB-ix2"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="ube-XH-bSh" secondAttribute="bottom" constant="-34" id="S8O-Yg-nOL"/>
+                            <constraint firstItem="fJE-hn-4uI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="PGL-Rc-VWF"/>
+                            <constraint firstAttribute="bottom" secondItem="ube-XH-bSh" secondAttribute="bottom" id="S8O-Yg-nOL"/>
+                            <constraint firstItem="ube-XH-bSh" firstAttribute="top" secondItem="Hck-6x-sof" secondAttribute="bottom" constant="20" id="V9W-M1-6Xi"/>
                             <constraint firstItem="XRk-1Z-NUS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="VOf-Mb-xNe"/>
+                            <constraint firstItem="fJE-hn-4uI" firstAttribute="top" secondItem="8ik-sU-uR6" secondAttribute="bottom" constant="20" id="W7t-RQ-FeB"/>
+                            <constraint firstItem="Hck-6x-sof" firstAttribute="top" secondItem="fJE-hn-4uI" secondAttribute="bottom" constant="20" id="WKb-oh-1ld"/>
                             <constraint firstItem="ube-XH-bSh" firstAttribute="centerX" secondItem="8ik-sU-uR6" secondAttribute="centerX" id="YIb-Xs-WNK"/>
+                            <constraint firstItem="Hck-6x-sof" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aZO-ew-XZZ"/>
                             <constraint firstItem="ube-XH-bSh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eDi-0z-CmN"/>
                             <constraint firstItem="XRk-1Z-NUS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="m8V-81-R6t"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="animationView" destination="Hck-6x-sof" id="lEQ-p9-XUr"/>
+                        <outlet property="initialLabel" destination="fJE-hn-4uI" id="gQo-kE-E1F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="94"/>
+            <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Hck-6x-sof"/>
+    </designables>
     <resources>
         <image name="audio" width="30" height="30"/>
         <image name="logo" width="285" height="137"/>
