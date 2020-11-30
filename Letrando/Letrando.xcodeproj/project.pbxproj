@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -167,7 +167,6 @@
 				6DD18F4F843C0359DCC8490D /* Pods-LetrandoTests.debug.xcconfig */,
 				97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -955,7 +954,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69Y77S7YQP;
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = LetrandoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -980,7 +979,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69Y77S7YQP;
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = LetrandoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1002,7 +1001,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69Y77S7YQP;
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = LetrandoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1023,7 +1022,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69Y77S7YQP;
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = LetrandoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
