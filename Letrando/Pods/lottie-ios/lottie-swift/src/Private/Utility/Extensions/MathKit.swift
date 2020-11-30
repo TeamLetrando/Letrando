@@ -5,7 +5,7 @@
 //  Created by Brandon Withrow on 10/10/18.
 //
 // From https://github.com/buba447/UIToolBox
-
+//swiftlint:disable all
 import Foundation
 import CoreGraphics
 

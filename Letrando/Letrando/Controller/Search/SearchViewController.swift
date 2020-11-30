@@ -24,7 +24,6 @@ class SearchViewController: UIViewController {
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

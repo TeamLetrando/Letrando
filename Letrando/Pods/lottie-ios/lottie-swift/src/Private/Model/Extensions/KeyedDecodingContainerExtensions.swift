@@ -1,5 +1,5 @@
 // From: https://medium.com/@kewindannerfjordremeczki/swift-4-0-decodable-heterogeneous-collections-ecc0e6b468cf
-
+//swiftlint:disable all
 import Foundation
 
 /// To support a new class family, create an enum that conforms to this protocol and contains the different types.

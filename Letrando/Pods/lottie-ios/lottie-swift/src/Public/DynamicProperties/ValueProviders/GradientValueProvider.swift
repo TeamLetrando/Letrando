@@ -3,7 +3,7 @@
 //  lottie-swift
 //
 //  Created by Enrique Bermúdez on 10/27/19.
-//
+//swiftlint:disable all
 
 import Foundation
 import CoreGraphics

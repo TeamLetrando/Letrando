@@ -3,7 +3,7 @@
 //  lottie-ios-iOS
 //
 //  Created by Alexandr Goncharov on 07/06/2019.
-//
+//swiftlint:disable all
 
 import Foundation
 

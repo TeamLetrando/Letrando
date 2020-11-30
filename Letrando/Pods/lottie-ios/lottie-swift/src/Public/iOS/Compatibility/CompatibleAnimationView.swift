@@ -3,7 +3,7 @@
 //  Lottie_iOS
 //
 //  Created by Tyler Hedrick on 3/6/19.
-//
+//swiftlint:disable all
 
 import Foundation
 #if os(iOS) || os(tvOS) || os(watchOS)

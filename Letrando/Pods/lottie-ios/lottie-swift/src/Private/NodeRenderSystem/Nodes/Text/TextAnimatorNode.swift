@@ -3,7 +3,7 @@
 //  lottie-ios-iOS
 //
 //  Created by Brandon Withrow on 2/19/19.
-//
+//swiftlint:disable all
 
 import Foundation
 import CoreGraphics

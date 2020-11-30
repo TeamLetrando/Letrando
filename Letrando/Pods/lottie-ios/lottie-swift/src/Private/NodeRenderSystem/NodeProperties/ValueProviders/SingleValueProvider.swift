@@ -3,7 +3,7 @@
 //  lottie-swift
 //
 //  Created by Brandon Withrow on 1/30/19.
-//
+//swiftlint:disable all
 
 import Foundation
 import QuartzCore
