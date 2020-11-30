@@ -10,6 +10,7 @@
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
 		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
+		14C42DB4D3883BD297860320 /* Pods_LetrandoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */; };
 		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
 		77951FC22568088100BC7367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC12568088100BC7367 /* AppDelegate.swift */; };
 		77951FC42568088100BC7367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC32568088100BC7367 /* SceneDelegate.swift */; };
@@ -41,6 +42,7 @@
 		7795208925680D6000BC7367 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208825680D6000BC7367 /* Report.swift */; };
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
 		7B001C7D256E091A00363F1B /* BubblegumSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B001C6D256DF9EC00363F1B /* BubblegumSans-Regular.ttf */; };
+		97EFDA539F1740823407DE79 /* Pods_Letrando_LetrandoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */; };
 		AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */; };
 		AFC234ED2571AD6E005EC149 /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234EC2571AD6E005EC149 /* SceneTests.swift */; };
 		AFC234F22571AFD5005EC149 /* PlaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234F12571AFD5005EC149 /* PlaneTests.swift */; };
@@ -48,6 +50,7 @@
 		AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007EF256E7B7B00C2DA6C /* Scene.swift */; };
 		AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007F5256E7D2800C2DA6C /* CGPoint.swift */; };
 		AFE007FE256E7D5D00C2DA6C /* SearchView+ARCoaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */; };
+		FF3733BF377790C110FFCD1F /* Pods_Letrando.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1196D6BE461625AF540961D9 /* Pods_Letrando.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,10 @@
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
 		0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
+		1196D6BE461625AF540961D9 /* Pods_Letrando.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letrando.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetrandoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69936A939CC4425A751CA6E4 /* Pods-Letrando-LetrandoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6DD18F4F843C0359DCC8490D /* Pods-LetrandoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetrandoTests.debug.xcconfig"; path = "Target Support Files/Pods-LetrandoTests/Pods-LetrandoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7768A764256A1077005EA237 /* ARModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelTests.swift; sourceTree = "<group>"; };
 		77951FBE2568088100BC7367 /* Letrando.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Letrando.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77951FC12568088100BC7367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +115,9 @@
 		7795208825680D6000BC7367 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		77D621FD256BE14F007D905C /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		7B001C6D256DF9EC00363F1B /* BubblegumSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BubblegumSans-Regular.ttf"; sourceTree = "<group>"; };
+		810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.release.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9429CFF4C488ED851F5D28CC /* Pods-Letrando.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.release.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.release.xcconfig"; sourceTree = "<group>"; };
+		97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetrandoTests.release.xcconfig"; path = "Target Support Files/Pods-LetrandoTests/Pods-LetrandoTests.release.xcconfig"; sourceTree = "<group>"; };
 		AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtensionsTests.swift; sourceTree = "<group>"; };
 		AFC234EC2571AD6E005EC149 /* SceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTests.swift; sourceTree = "<group>"; };
 		AFC234F12571AFD5005EC149 /* PlaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneTests.swift; sourceTree = "<group>"; };
@@ -115,6 +125,8 @@
 		AFE007EF256E7B7B00C2DA6C /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		AFE007F5256E7D2800C2DA6C /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView+ARCoaching.swift"; sourceTree = "<group>"; };
+		BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letrando_LetrandoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7E3D8BD3C368A009AA793A /* Pods-Letrando.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.debug.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3733BF377790C110FFCD1F /* Pods_Letrando.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14C42DB4D3883BD297860320 /* Pods_LetrandoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,12 +150,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97EFDA539F1740823407DE79 /* Pods_Letrando_LetrandoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		372D210B45EC417F109935DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FA7E3D8BD3C368A009AA793A /* Pods-Letrando.debug.xcconfig */,
+				9429CFF4C488ED851F5D28CC /* Pods-Letrando.release.xcconfig */,
+				69936A939CC4425A751CA6E4 /* Pods-Letrando-LetrandoUITests.debug.xcconfig */,
+				810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */,
+				6DD18F4F843C0359DCC8490D /* Pods-LetrandoTests.debug.xcconfig */,
+				97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		77951FB52568088100BC7367 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +178,8 @@
 				77951FDA2568088200BC7367 /* LetrandoTests */,
 				77951FE52568088200BC7367 /* LetrandoUITests */,
 				77951FBF2568088100BC7367 /* Products */,
+				372D210B45EC417F109935DF /* Pods */,
+				89CE08703C5A101EB5E7653E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -395,6 +426,16 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		89CE08703C5A101EB5E7653E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1196D6BE461625AF540961D9 /* Pods_Letrando.framework */,
+				BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */,
+				12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AFE007F4256E7D1A00C2DA6C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,10 +451,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77951FEB2568088200BC7367 /* Build configuration list for PBXNativeTarget "Letrando" */;
 			buildPhases = (
+				1C4D0C5564FBB821AF70B2E2 /* [CP] Check Pods Manifest.lock */,
 				77951FBA2568088100BC7367 /* Sources */,
 				77951FBB2568088100BC7367 /* Frameworks */,
 				77951FBC2568088100BC7367 /* Resources */,
 				7795209025680DDA00BC7367 /* ShellScript */,
+				D81B225A952561CE5DD85A82 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -428,6 +471,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77951FEE2568088200BC7367 /* Build configuration list for PBXNativeTarget "LetrandoTests" */;
 			buildPhases = (
+				19F05DEE058D7682843DA264 /* [CP] Check Pods Manifest.lock */,
 				77951FD32568088200BC7367 /* Sources */,
 				77951FD42568088200BC7367 /* Frameworks */,
 				77951FD52568088200BC7367 /* Resources */,
@@ -446,9 +490,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77951FF12568088200BC7367 /* Build configuration list for PBXNativeTarget "LetrandoUITests" */;
 			buildPhases = (
+				4C6E9EF9E713E3547EB1BD56 /* [CP] Check Pods Manifest.lock */,
 				77951FDE2568088200BC7367 /* Sources */,
 				77951FDF2568088200BC7367 /* Frameworks */,
 				77951FE02568088200BC7367 /* Resources */,
+				26401C68BB0E33C70C8B7B6C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -538,6 +584,89 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		19F05DEE058D7682843DA264 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LetrandoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1C4D0C5564FBB821AF70B2E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Letrando-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		26401C68BB0E33C70C8B7B6C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C6E9EF9E713E3547EB1BD56 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Letrando-LetrandoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7795209025680DDA00BC7367 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -554,6 +683,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: Swiftlint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		D81B225A952561CE5DD85A82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Letrando/Pods-Letrando-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Letrando/Pods-Letrando-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Letrando/Pods-Letrando-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -763,6 +909,7 @@
 		};
 		77951FEC2568088200BC7367 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA7E3D8BD3C368A009AA793A /* Pods-Letrando.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -782,6 +929,7 @@
 		};
 		77951FED2568088200BC7367 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9429CFF4C488ED851F5D28CC /* Pods-Letrando.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -801,6 +949,7 @@
 		};
 		77951FEF2568088200BC7367 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DD18F4F843C0359DCC8490D /* Pods-LetrandoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -825,6 +974,7 @@
 		};
 		77951FF02568088200BC7367 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -848,6 +998,7 @@
 		};
 		77951FF22568088200BC7367 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69936A939CC4425A751CA6E4 /* Pods-Letrando-LetrandoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -868,6 +1019,7 @@
 		};
 		77951FF32568088200BC7367 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
