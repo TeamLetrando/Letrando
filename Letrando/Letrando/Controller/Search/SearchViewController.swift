@@ -22,9 +22,8 @@ class SearchViewController: UIViewController {
     var plane: Plane?
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let coachingOverlay = ARCoachingOverlayView()
-    var panStartZ: CGFloat = 0
-    var draggingNode: SCNNode = SCNNode()
-    var lastPanLocation: SCNVector3 = SCNVector3(0, 0, 0)
+    var actualNode: SCNNode = SCNNode()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +43,7 @@ class SearchViewController: UIViewController {
 
         feedbackGenerator.prepare()
         setupCoachingOverlay()
-        
+
         addMoveGesture()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -63,24 +62,33 @@ class SearchViewController: UIViewController {
     }
 
     @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
-        guard let view = gesture.view as? SCNView else { return }
-        let location = gesture.location(in: self.sceneView)
-        guard let hitNodeResult = view.hitTest(location, options: nil).first else { return }
+        let tapLocation = gesture.location(in: self.sceneView)
+        guard let nodeResult = sceneView.raycastQuery(from: tapLocation,
+                                                         allowing: .estimatedPlane,
+                                                         alignment: .horizontal) else {return}
+        let hitNode = sceneView.hitTest(tapLocation)
 
         switch gesture.state {
+
         case .began:
-            let lettersNodes = sceneController.textNode
-            for index in (0...lettersNodes.count-1) {
-                if lettersNodes[index].contains(hitNodeResult.node) {
-                    panStartZ = CGFloat(view.projectPoint(hitNodeResult.node.position).z)
-                    draggingNode = hitNodeResult.node
-                    lastPanLocation = hitNodeResult.worldCoordinates
+            sceneController.textNode.forEach { (node) in
+                if node == hitNode.first?.node {
+                    node.position = SCNVector3Make(nodeResult.direction.x,
+                                                   nodeResult.direction.y,
+                                                   nodeResult.direction.z)
+                    actualNode = node
+                    sceneView.scene.rootNode.addChildNode(actualNode)
                 }
             }
+
         case .changed:
-            let worldTouchPosition = view.unprojectPoint(SCNVector3(location.x, location.y, panStartZ))
-            draggingNode.worldPosition = worldTouchPosition
-            lastPanLocation = worldTouchPosition
+            let newNodeResult = sceneView.session.raycast(nodeResult).last
+            if !hitNode.isEmpty {
+                guard let newHitResult = newNodeResult else {return}
+                actualNode.position = SCNVector3Make(newHitResult.worldTransform.columns.3.x,
+                                                     newHitResult.worldTransform.columns.3.y,
+                                                     newHitResult.worldTransform.columns.3.z)
+            }
 
         default:
             break
@@ -96,7 +104,6 @@ class SearchViewController: UIViewController {
 
     func addWord(letters: [String]) {
         if planeAdded {
-            
             letters.forEach { (letter) in
                 var pointInPlane = false
                 while !pointInPlane {
