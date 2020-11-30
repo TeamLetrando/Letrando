@@ -23,7 +23,8 @@ class SearchViewController: UIViewController {
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
-
+    var initialPosition = SCNVector3(0, 0, 0)
+    var resultLetters: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +72,7 @@ class SearchViewController: UIViewController {
         switch gesture.state {
 
         case .began:
+            initialPosition = SCNVector3(nodeResult.direction.x, nodeResult.direction.y, nodeResult.direction.z)
             sceneController.textNode.forEach { (node) in
                 if node == hitNode.first?.node {
                     node.position = SCNVector3Make(nodeResult.direction.x,
@@ -89,9 +91,53 @@ class SearchViewController: UIViewController {
                                                      newHitResult.worldTransform.columns.3.y,
                                                      newHitResult.worldTransform.columns.3.z)
             }
+            actualNode.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
+            //print(actualNode.position.z)
+
+        case .ended:
+            let indexImage: Int! = Int(stack.restorationIdentifier!)
+            //frame.intersection
+            //stack.contains(actualNode)
+            //answer.frame.contains(image.center)
+            
+            if actualNode.contains(stack) {
+                checkAnswer(actualNode, initialPosition)
+            }
+            actualNode.scale = SCNVector3(Float(0.07), Float(0.07), Float(0.07))
 
         default:
             break
+        }
+    }
+
+    func checkAnswer(_ object: SCNNode, _ location: SCNVector3) {
+        let indexImage: Int! = Int(stack.restorationIdentifier!)
+        if object.name == stack.layer.name {
+            object.removeFromParentNode()
+
+            let newImage = UIImageView()
+            newImage.image = UIImage(named: "lettersFull/\(object.name).pdf")
+            newImage.contentMode = .scaleAspectFill
+            newImage.layer.masksToBounds = true
+            newImage.layer.cornerRadius = 5.0
+            newImage.layer.borderWidth = 1.0
+            newImage.layer.borderColor = UIColor.lightGray.cgColor
+            newImage.clipsToBounds = true
+            newImage.translatesAutoresizingMaskIntoConstraints = false
+            newImage.layer.zPosition = 0
+            stack.insertSubview(newImage, at: indexImage)
+
+//            resultLetters.append(object.name!)
+//            if resultLetters == letters {
+//                //chamar função
+//            }
+            
+            //Criar vetor para add as letras do tipo string a cada interação
+
+        } else {
+            let action = SCNAction.move(to: location, duration: 3)
+            action.timingMode = .easeInEaseOut
+            object.runAction(action)
         }
     }
 
@@ -136,6 +182,7 @@ class SearchViewController: UIViewController {
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     func makeImage(letters: [String]) -> [UIImageView] {
         var imageLetters: [UIImageView] = []
         for oneLetter in letters {
@@ -148,12 +195,14 @@ class SearchViewController: UIViewController {
                 image.layer.borderColor = UIColor.lightGray.cgColor
                 image.clipsToBounds = true
                 image.translatesAutoresizingMaskIntoConstraints = false
-                image.layer.zPosition = 20
+                image.layer.zPosition = 0
+                image.layer.name = oneLetter
                 imageLetters.append(image)
             }
         }
         return setupConstraints(imageLetters: imageLetters)
     }
+    
     func setupConstraints(imageLetters: [UIImageView]) -> [UIImageView] {
         stack = UIStackView()
         stack.axis = .horizontal
@@ -168,6 +217,8 @@ class SearchViewController: UIViewController {
         for ipp in 0...(imageLetters.count - 1) {
             imageLetters[ipp].translatesAutoresizingMaskIntoConstraints = false
             imageLetters[ipp].heightAnchor.constraint(equalTo: imageLetters[ipp].widthAnchor).isActive = true
+            stack.restorationIdentifier = String(ipp)
+            stack.layer.name = imageLetters[ipp].layer.name
             stack.addArrangedSubview(imageLetters[ipp])
         }
         return imageLetters

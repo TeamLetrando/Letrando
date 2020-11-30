@@ -28,6 +28,8 @@ class ARModel {
             minVec.z + (maxVec.z - minVec.z)/2
         )
 
+        textNode.name = string
+
         return textNode
     }
 
