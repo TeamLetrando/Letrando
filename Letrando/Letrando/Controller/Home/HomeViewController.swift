@@ -19,9 +19,13 @@ class HomeViewController: UIViewController {
     }
 
     func animateDog() {
-        animationView.contentMode = .scaleAspectFit
+        animationView.contentMode = .scaleAspectFill
         animationView.loopMode = .loop
-        animationView.animationSpeed = 0.5
+        animationView.animationSpeed = 0.8
+        animationView.play()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
         animationView.play()
     }
 

@@ -41,10 +41,10 @@
 		7795208925680D6000BC7367 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208825680D6000BC7367 /* Report.swift */; };
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
 		97EFDA539F1740823407DE79 /* Pods_Letrando_LetrandoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */; };
+		AF78AB862576714F00D2F85E /* caoAnima.json in Resources */ = {isa = PBXBuildFile; fileRef = AF78AB852576714F00D2F85E /* caoAnima.json */; };
 		AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */; };
 		AFC234ED2571AD6E005EC149 /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234EC2571AD6E005EC149 /* SceneTests.swift */; };
 		AFC234F22571AFD5005EC149 /* PlaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234F12571AFD5005EC149 /* PlaneTests.swift */; };
-		AFDC55D2257562DD00F68374 /* coffee.json in Resources */ = {isa = PBXBuildFile; fileRef = AFDC55D1257562DD00F68374 /* coffee.json */; };
 		AFDC55EF2575689E00F68374 /* BubblegumSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFDC55EE2575688A00F68374 /* BubblegumSans-Regular.ttf */; };
 		AFE007E3256E794000C2DA6C /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007E2256E794000C2DA6C /* Plane.swift */; };
 		AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007EF256E7B7B00C2DA6C /* Scene.swift */; };
@@ -116,10 +116,10 @@
 		810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.release.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9429CFF4C488ED851F5D28CC /* Pods-Letrando.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.release.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.release.xcconfig"; sourceTree = "<group>"; };
 		97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetrandoTests.release.xcconfig"; path = "Target Support Files/Pods-LetrandoTests/Pods-LetrandoTests.release.xcconfig"; sourceTree = "<group>"; };
+		AF78AB852576714F00D2F85E /* caoAnima.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = caoAnima.json; sourceTree = "<group>"; };
 		AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtensionsTests.swift; sourceTree = "<group>"; };
 		AFC234EC2571AD6E005EC149 /* SceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTests.swift; sourceTree = "<group>"; };
 		AFC234F12571AFD5005EC149 /* PlaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneTests.swift; sourceTree = "<group>"; };
-		AFDC55D1257562DD00F68374 /* coffee.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coffee.json; sourceTree = "<group>"; };
 		AFDC55EE2575688A00F68374 /* BubblegumSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BubblegumSans-Regular.ttf"; sourceTree = "<group>"; };
 		AFE007E2256E794000C2DA6C /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		AFE007EF256E7B7B00C2DA6C /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -438,7 +438,7 @@
 		AF151AB82575621900E389E0 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				AFDC55D1257562DD00F68374 /* coffee.json */,
+				AF78AB852576714F00D2F85E /* caoAnima.json */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -567,11 +567,11 @@
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
 				7795201925680B8200BC7367 /* SearchResult.storyboard in Resources */,
 				77951FD12568088100BC7367 /* LaunchScreen.storyboard in Resources */,
+				AF78AB862576714F00D2F85E /* caoAnima.json in Resources */,
 				7795201425680B7300BC7367 /* Search.storyboard in Resources */,
 				77951FCE2568088100BC7367 /* Assets.xcassets in Resources */,
 				77951FC92568088100BC7367 /* Home.storyboard in Resources */,
 				AFDC55EF2575689E00F68374 /* BubblegumSans-Regular.ttf in Resources */,
-				AFDC55D2257562DD00F68374 /* coffee.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
