@@ -90,35 +90,51 @@ class SearchViewController: UIViewController {
                 actualNode.position = SCNVector3Make(newHitResult.worldTransform.columns.3.x,
                                                      newHitResult.worldTransform.columns.3.y,
                                                      newHitResult.worldTransform.columns.3.z)
+                print(actualNode.position)
             }
             actualNode.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
-            
-            imageViewLetters.forEach { (image) in
-                let distance = tapLocation.distance(to: image.layer.position)
-                print(distance)
-                if distance <= 450 {
-                    checkAnswer(actualNode, initialPosition)
+
+        case .ended:
+            stack.subviews.forEach { (view) in
+                if let image = view as? UIImageView {
+                    let convertPosition = stack.convert(image.layer.position, to: sceneView)
+                    let distance = tapLocation.distance(to: convertPosition)
+                    if distance <= 50 {
+                        animateView(image)
+                        checkAnswer(actualNode, image)
+                    } else {
+                        let action = SCNAction.move(to: initialPosition, duration: 2)
+                        action.timingMode = .easeInEaseOut
+                        actualNode.runAction(action)
+                    }
                 }
             }
+
+            actualNode.scale = SCNVector3(Float(0.07), Float(0.07), Float(0.07))
 
         default:
             break
         }
     }
 
-    func checkAnswer(_ object: SCNNode, _ location: SCNVector3) {
+    func checkAnswer(_ object: SCNNode, _ image: UIImageView) {
         guard let name = object.name else {return}
-        imageViewLetters.forEach { (image) in
-            if name == image.layer.name {
-                object.removeFromParentNode()
-                image.image = UIImage(named: "lettersFull/\(name)_full")
-            } else {
-                let action = SCNAction.move(to: location, duration: 3)
-                action.timingMode = .easeInEaseOut
-                object.runAction(action)
-            }
+        if name == image.layer.name {
+            object.removeFromParentNode()
+            image.image = UIImage(named: "lettersFull/\(name)_full")
+            image.layer.name = "\(name)_full"
+            feedbackGenerator.impactOccurred()
         }
+    }
 
+    func animateView(_ image: UIImageView) {
+        let width = image.frame.size.width
+        let height = image.frame.size.height
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            image.frame.size = CGSize(width: width*1.4, height: height*1.2)
+        }, completion: { _ in
+            image.frame.size = CGSize(width: width, height: height)
+        })
     }
 
     func configureSession() {
@@ -175,12 +191,11 @@ class SearchViewController: UIViewController {
                 image.layer.borderColor = UIColor.lightGray.cgColor
                 image.clipsToBounds = true
                 image.translatesAutoresizingMaskIntoConstraints = false
-               // image.layer.zPosition = 20
+                image.layer.zPosition = -0.001
                 image.layer.name = oneLetter
                 imageLetters.append(image)
             }
         }
-        
         setupConstraints(imageLetters: imageLetters)
     }
 
@@ -202,15 +217,5 @@ class SearchViewController: UIViewController {
         }
         imageViewLetters = imageLetters
     }
-
-//    func getNodeView(_ imageViewLetters: [UIImageView]) {
-//        for ipp in 0...(imageViewLetters.count - 1) {
-//            let plane = SCNPlane(width: 0.01, height: 0.01)
-//            plane.firstMaterial?.diffuse.contents = imageViewLetters[ipp]
-//            let planeNode = SCNNode(geometry: plane)
-//            planeNode.position = SCNVector3(0, 0, 2)
-//            self.sceneView.scene.rootNode.addChildNode(planeNode)
-//        }
-//    }
 
 }
