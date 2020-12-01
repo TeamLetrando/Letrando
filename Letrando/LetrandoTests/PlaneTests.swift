@@ -17,7 +17,7 @@ class PlaneTests: XCTestCase {
         let newAnchor = ARAnchor(name: "test", transform: simd_float4x4.init())
         let newPlaneAnchor = ARPlaneAnchor(anchor: newAnchor)
         let sut = Plane(newPlaneAnchor)
-        
+
         //when
         let planeAnchor = sut.planeAnchor
         let planeGeometry = sut.planeGeometry
