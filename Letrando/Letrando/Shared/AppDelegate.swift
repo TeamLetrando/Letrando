@@ -40,9 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            viewController.blurView.isHidden = true
 //        }
 //    }
-    
-    
-    
+
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication,

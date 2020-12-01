@@ -39,7 +39,7 @@ class SearchViewController: UIViewController {
         letters = word?.breakInLetters() ?? []
 
         let imageViewLetters = makeImage(letters: letters)
-        getNodeView(imageViewLetters)
+        //getNodeView(imageViewLetters)
         stack.isHidden = true
 
         feedbackGenerator.prepare()
@@ -96,42 +96,59 @@ class SearchViewController: UIViewController {
 
         case .ended:
             let indexImage: Int! = Int(stack.restorationIdentifier!)
-            //frame.intersection
-            //stack.contains(actualNode)
-            //answer.frame.contains(image.center)
-            
-            if actualNode.contains(stack) {
+            let imageLetterPosition = stack.convert(stack.subviews[indexImage].center, to: sceneView)
+            let distance = tapLocation.distance(to: CGPoint(x: imageLetterPosition.x, y: imageLetterPosition.y))
+            print(distance)
+
+            if distance <= 50 {
                 checkAnswer(actualNode, initialPosition)
             }
             actualNode.scale = SCNVector3(Float(0.07), Float(0.07), Float(0.07))
 
+            //frame.intersection
+            //stack.contains(actualNode)
+            //answer.frame.contains(image.center)
+            //
+//            let projectedPoint = sceneView.projectPoint(actualNode.position)
+//            let pt1 = CGPoint(x: CGFloat(projectedPoint.x), y: CGFloat(projectedPoint.y))
+//            let pt2 = stack.convert(stack.subviews[indexImage].center, to: sceneView)
+//
+//            print(pt1, pt2)
+//            print(CGPointDistanceSquared(from: pt1, to: pt2))
+//
+//            let rect = CGRect(x: pt2.x, y: pt2.y, width: subv.frame.width, height: subv.frame.height)
+//
+//
+//            print(rect, pt1)
+//            if rect.contains(CGPoint(x: CGFloat(pt1.x), y: CGFloat(pt1.y))) {
+//                checkAnswer(actualNode, initialPosition)
+//            }
+//            if actualNode.frame.contains() {
+//                checkAnswer(actualNode, initialPosition)
+//            }
         default:
             break
         }
     }
 
+//    func CGPointDistanceSquared(from: CGPoint, to: CGPoint) -> CGFloat {
+//        return (from.x - to.x) * (from.x - to.x) + (from.y - to.y) * (from.y - to.y)
+//    }
+
     func checkAnswer(_ object: SCNNode, _ location: SCNVector3) {
         let indexImage: Int! = Int(stack.restorationIdentifier!)
-        if object.name == stack.layer.name {
+        guard let stackImage = stack.subviews[indexImage] as? UIImageView else { return }
+    
+       if let stackName = stack.layer.name, let objectName = object.name, stackName == objectName {
             object.removeFromParentNode()
-
-            let newImage = UIImageView()
-            newImage.image = UIImage(named: "lettersFull/\(object.name).pdf")
-            newImage.contentMode = .scaleAspectFill
-            newImage.layer.masksToBounds = true
-            newImage.layer.cornerRadius = 5.0
-            newImage.layer.borderWidth = 1.0
-            newImage.layer.borderColor = UIColor.lightGray.cgColor
-            newImage.clipsToBounds = true
-            newImage.translatesAutoresizingMaskIntoConstraints = false
-            newImage.layer.zPosition = 0
-            stack.insertSubview(newImage, at: indexImage)
-
+            
+            stackImage.image = UIImage(named: "lettersFull/\(objectName)_full")
+    
 //            resultLetters.append(object.name!)
 //            if resultLetters == letters {
 //                //chamar função
 //            }
-            
+
             //Criar vetor para add as letras do tipo string a cada interação
 
         } else {
@@ -182,7 +199,7 @@ class SearchViewController: UIViewController {
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     func makeImage(letters: [String]) -> [UIImageView] {
         var imageLetters: [UIImageView] = []
         for oneLetter in letters {
@@ -195,41 +212,44 @@ class SearchViewController: UIViewController {
                 image.layer.borderColor = UIColor.lightGray.cgColor
                 image.clipsToBounds = true
                 image.translatesAutoresizingMaskIntoConstraints = false
-                image.layer.zPosition = 0
+               // image.layer.zPosition = 20
                 image.layer.name = oneLetter
                 imageLetters.append(image)
             }
         }
         return setupConstraints(imageLetters: imageLetters)
     }
-    
+
     func setupConstraints(imageLetters: [UIImageView]) -> [UIImageView] {
         stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 5
-        view.addSubview(stack)
+        stack.spacing = 8
+        sceneView.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.heightAnchor.constraint(equalToConstant: 58).isActive = true
-        stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stack.centerXAnchor.constraint(equalTo: sceneView.centerXAnchor).isActive = true
         stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-        stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25).isActive = true
+        stack.bottomAnchor.constraint(equalTo: sceneView.bottomAnchor, constant: -25).isActive = true
         for ipp in 0...(imageLetters.count - 1) {
             imageLetters[ipp].translatesAutoresizingMaskIntoConstraints = false
             imageLetters[ipp].heightAnchor.constraint(equalTo: imageLetters[ipp].widthAnchor).isActive = true
             stack.restorationIdentifier = String(ipp)
             stack.layer.name = imageLetters[ipp].layer.name
+            imageLetters[ipp].restorationIdentifier = String(ipp)
             stack.addArrangedSubview(imageLetters[ipp])
         }
         return imageLetters
     }
+
     func getNodeView(_ imageViewLetters: [UIImageView]) {
         for ipp in 0...(imageViewLetters.count - 1) {
-            let plane = SCNPlane(width: 0.1, height: 0.1)
+            let plane = SCNPlane(width: 0.01, height: 0.01)
             plane.firstMaterial?.diffuse.contents = imageViewLetters[ipp]
             let planeNode = SCNNode(geometry: plane)
-            planeNode.position = SCNVector3(0, 0, 10)
+            planeNode.position = SCNVector3(0, 0, 2)
             self.sceneView.scene.rootNode.addChildNode(planeNode)
         }
     }
+
 }
