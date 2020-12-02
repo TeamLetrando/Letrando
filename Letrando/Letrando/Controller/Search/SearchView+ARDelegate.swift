@@ -26,7 +26,6 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
             if !self.lettersAdded {
                 self.lettersAdded = true
                 self.addWord(letters: self.letters)
-                //print(self.sceneController.textNode)
             }
         }
     }

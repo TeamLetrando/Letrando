@@ -11,10 +11,7 @@ import SceneKit
 class ARModel {
 
     static func createTextNode(string: String) -> SCNNode {
-        let text = SCNText(string: string, extrusionDepth: 0.3)
-        text.font = UIFont.systemFont(ofSize: 3.0)
-        text.flatness = 0.01
-        text.firstMaterial?.diffuse.contents = UIColor.white
+        let text = configureText(string)
 
         let textNode = SCNNode(geometry: text)
         textNode.castsShadow = true
@@ -31,6 +28,17 @@ class ARModel {
             minVec.z + (maxVec.z - minVec.z)/2
         )
 
+        textNode.name = string
+
         return textNode
+    }
+
+    static func configureText(_ string: String) -> SCNText {
+        let text = SCNText(string: string, extrusionDepth: 0.3)
+        text.font = UIFont.systemFont(ofSize: 3.0)
+        text.flatness = 0.01
+        text.firstMaterial?.diffuse.contents = UIColor.purpleLetters
+
+        return text
     }
 }
