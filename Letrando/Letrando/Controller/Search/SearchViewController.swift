@@ -25,6 +25,7 @@ class SearchViewController: UIViewController {
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
     var resultLetters: [String] = []
+    var score = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +91,6 @@ class SearchViewController: UIViewController {
                 actualNode.position = SCNVector3Make(newHitResult.worldTransform.columns.3.x,
                                                      newHitResult.worldTransform.columns.3.y,
                                                      newHitResult.worldTransform.columns.3.z)
-                print(actualNode.position)
             }
             actualNode.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
 
@@ -103,7 +103,9 @@ class SearchViewController: UIViewController {
                         animateView(image)
                         checkAnswer(actualNode, image)
                     } else {
-                        let action = SCNAction.move(to: initialPosition, duration: 2)
+//                        let notification = UINotificationFeedbackGenerator()
+//                        notification.notificationOccurred(.error)
+                        let action = SCNAction.move(to: initialPosition, duration: 0.5)
                         action.timingMode = .easeInEaseOut
                         actualNode.runAction(action)
                     }
@@ -124,6 +126,12 @@ class SearchViewController: UIViewController {
             image.image = UIImage(named: "lettersFull/\(name)_full")
             image.layer.name = "\(name)_full"
             feedbackGenerator.impactOccurred()
+            score+=1
+            resultLetters.append(name)
+            
+            if score == letters.count {
+                // Call the transition function here
+            }
         }
     }
 
@@ -165,7 +173,6 @@ class SearchViewController: UIViewController {
                             )
                             sceneController.addLetterToScene(letter: letter, parent: planeParent, position: textPos)
                             self.feedbackGenerator.impactOccurred()
-
                         }
                     } else {
                         continue
