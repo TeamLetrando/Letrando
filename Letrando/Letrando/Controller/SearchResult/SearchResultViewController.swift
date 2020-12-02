@@ -15,6 +15,7 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var outButton: UIButton!
     @IBOutlet weak var animationView: AnimationView!
+    var wordResult: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +44,9 @@ class SearchResultViewController: UIViewController {
     func setupLayoutOfItems() {
         mensageLabel.textColor = .bronwLetters
         mensageLabel.font = UIFont(name: "BubblegumSans-Regular", size: 60)
-
+        
         wordLabel.textColor = .purpleLetters
-        wordLabel.text = wordLabel.text?.uppercased()
+        wordLabel.text = wordResult.uppercased()
         wordLabel.font = .systemFont(ofSize: 90)
 
         searchButton.backgroundColor = .greenButtons

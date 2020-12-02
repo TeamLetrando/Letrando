@@ -24,7 +24,6 @@ class SearchViewController: UIViewController {
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
-    var resultLetters: [String] = []
     var score = 0
 
     override func viewDidLoad() {
@@ -127,10 +126,8 @@ class SearchViewController: UIViewController {
             image.layer.name = "\(name)_full"
             feedbackGenerator.impactOccurred()
             score+=1
-            resultLetters.append(name)
-            
-            if score == letters.count {
-                // Call the transition function here
+            if score == letters.count, let word = word {
+                transitionForResultScreen(word: word.word)
             }
         }
     }
@@ -225,15 +222,11 @@ class SearchViewController: UIViewController {
         imageViewLetters = imageLetters
     }
 
-    func transitionForResultScreen(wordArray: [String]) {
-        var word: String = ""
-        for letter in wordArray {
-            word += letter
-        }
+    func transitionForResultScreen(word: String) {
         let storyboard = UIStoryboard(name: "SearchResult", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "searchResult")
                 as? SearchResultViewController else {fatalError()}
-        viewC.wordLabel.text = word
+        viewC.wordResult = word
         viewC.modalPresentationStyle = .fullScreen
         self.present(viewC, animated: true, completion: nil)
     }
