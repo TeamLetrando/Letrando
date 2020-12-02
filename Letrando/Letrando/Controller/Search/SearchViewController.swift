@@ -225,4 +225,16 @@ class SearchViewController: UIViewController {
         imageViewLetters = imageLetters
     }
 
+    func transitionForResultScreen(wordArray: [String]) {
+        var word: String = ""
+        for letter in wordArray {
+            word += letter
+        }
+        let storyboard = UIStoryboard(name: "SearchResult", bundle: nil)
+        guard let viewC =  storyboard.instantiateViewController(identifier: "searchResult")
+                as? SearchResultViewController else {fatalError()}
+        viewC.wordLabel.text = word
+        viewC.modalPresentationStyle = .fullScreen
+        self.present(viewC, animated: true, completion: nil)
+    }
 }
