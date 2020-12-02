@@ -23,6 +23,8 @@ class SearchViewController: UIViewController {
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
+    var initialPosition = SCNVector3(0, 0, 0)
+    var score = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +38,8 @@ class SearchViewController: UIViewController {
         word = JsonData().randomWord()
         letters = word?.breakInLetters() ?? []
 
-        let imageViewLetters = makeImage(letters: letters)
-        getNodeView(imageViewLetters)
+        makeImage(letters: letters)
+
         stack.isHidden = true
 
         feedbackGenerator.prepare()
@@ -70,6 +72,7 @@ class SearchViewController: UIViewController {
         switch gesture.state {
 
         case .began:
+            initialPosition = SCNVector3(nodeResult.direction.x, nodeResult.direction.y, nodeResult.direction.z)
             sceneController.textNode.forEach { (node) in
                 if node == hitNode.first?.node {
                     node.position = SCNVector3Make(nodeResult.direction.x,
@@ -88,10 +91,55 @@ class SearchViewController: UIViewController {
                                                      newHitResult.worldTransform.columns.3.y,
                                                      newHitResult.worldTransform.columns.3.z)
             }
+            actualNode.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
+
+        case .ended:
+            stack.subviews.forEach { (view) in
+                if let image = view as? UIImageView {
+                    let convertPosition = stack.convert(image.layer.position, to: sceneView)
+                    let distance = tapLocation.distance(to: convertPosition)
+                    if distance <= 50 {
+                        animateView(image)
+                        checkAnswer(actualNode, image)
+                    } else {
+//                        let notification = UINotificationFeedbackGenerator()
+//                        notification.notificationOccurred(.error)
+                        let action = SCNAction.move(to: initialPosition, duration: 0.5)
+                        action.timingMode = .easeInEaseOut
+                        actualNode.runAction(action)
+                    }
+                }
+            }
+
+            actualNode.scale = SCNVector3(Float(0.07), Float(0.07), Float(0.07))
 
         default:
             break
         }
+    }
+
+    func checkAnswer(_ object: SCNNode, _ image: UIImageView) {
+        guard let name = object.name else {return}
+        if name == image.layer.name {
+            object.removeFromParentNode()
+            image.image = UIImage(named: "lettersFull/\(name)_full")
+            image.layer.name = "\(name)_full"
+            feedbackGenerator.impactOccurred()
+            score+=1
+            if score == letters.count, let word = word {
+                transitionForResultScreen(word: word.word)
+            }
+        }
+    }
+
+    func animateView(_ image: UIImageView) {
+        let width = image.frame.size.width
+        let height = image.frame.size.height
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            image.frame.size = CGSize(width: width*1.4, height: height*1.2)
+        }, completion: { _ in
+            image.frame.size = CGSize(width: width, height: height)
+        })
     }
 
     func configureSession() {
@@ -122,7 +170,6 @@ class SearchViewController: UIViewController {
                             )
                             sceneController.addLetterToScene(letter: letter, parent: planeParent, position: textPos)
                             self.feedbackGenerator.impactOccurred()
-
                         }
                     } else {
                         continue
@@ -135,7 +182,8 @@ class SearchViewController: UIViewController {
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    func makeImage(letters: [String]) -> [UIImageView] {
+
+    func makeImage(letters: [String]) {
         var imageLetters: [UIImageView] = []
         for oneLetter in letters {
             if let imageLetter = UIImage(named: "lettersEmpty/\(oneLetter).pdf") {
@@ -147,49 +195,38 @@ class SearchViewController: UIViewController {
                 image.layer.borderColor = UIColor.lightGray.cgColor
                 image.clipsToBounds = true
                 image.translatesAutoresizingMaskIntoConstraints = false
-                image.layer.zPosition = 20
+                image.layer.zPosition = -0.001
+                image.layer.name = oneLetter
                 imageLetters.append(image)
             }
         }
-        return setupConstraints(imageLetters: imageLetters)
+        setupConstraints(imageLetters: imageLetters)
     }
-    func setupConstraints(imageLetters: [UIImageView]) -> [UIImageView] {
+
+    func setupConstraints(imageLetters: [UIImageView]) {
         stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 5
-        view.addSubview(stack)
+        stack.spacing = 15
+        sceneView.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.heightAnchor.constraint(equalToConstant: 58).isActive = true
-        stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stack.centerXAnchor.constraint(equalTo: sceneView.centerXAnchor).isActive = true
         stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-        stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25).isActive = true
+        stack.bottomAnchor.constraint(equalTo: sceneView.bottomAnchor, constant: -25).isActive = true
         for ipp in 0...(imageLetters.count - 1) {
             imageLetters[ipp].translatesAutoresizingMaskIntoConstraints = false
             imageLetters[ipp].heightAnchor.constraint(equalTo: imageLetters[ipp].widthAnchor).isActive = true
             stack.addArrangedSubview(imageLetters[ipp])
         }
-        return imageLetters
-    }
-    func getNodeView(_ imageViewLetters: [UIImageView]) {
-        for ipp in 0...(imageViewLetters.count - 1) {
-            let plane = SCNPlane(width: 0.1, height: 0.1)
-            plane.firstMaterial?.diffuse.contents = imageViewLetters[ipp]
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.position = SCNVector3(0, 0, 10)
-            self.sceneView.scene.rootNode.addChildNode(planeNode)
-        }
+        imageViewLetters = imageLetters
     }
 
-    func transitionForResultScreen(wordArray: [String]) {
-        var word: String = ""
-        for letter in wordArray {
-            word += letter
-        }
+    func transitionForResultScreen(word: String) {
         let storyboard = UIStoryboard(name: "SearchResult", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "searchResult")
                 as? SearchResultViewController else {fatalError()}
-        viewC.wordLabel.text = word
+        viewC.wordResult = word
         viewC.modalPresentationStyle = .fullScreen
         self.present(viewC, animated: true, completion: nil)
     }

@@ -28,6 +28,8 @@ class ARModel {
             minVec.z + (maxVec.z - minVec.z)/2
         )
 
+        textNode.name = string
+
         return textNode
     }
 
@@ -35,7 +37,7 @@ class ARModel {
         let text = SCNText(string: string, extrusionDepth: 0.3)
         text.font = UIFont.systemFont(ofSize: 3.0)
         text.flatness = 0.01
-        text.firstMaterial?.diffuse.contents = UIColor.white
+        text.firstMaterial?.diffuse.contents = UIColor.purpleLetters
 
         return text
     }
