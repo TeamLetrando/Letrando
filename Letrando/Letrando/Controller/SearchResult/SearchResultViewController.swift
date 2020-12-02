@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class SearchResultViewController: UIViewController {
 
@@ -13,11 +14,30 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var outButton: UIButton!
+    @IBOutlet weak var animationView: AnimationView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupLayoutOfItems()
+        animateDog()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animationView.play()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        animationView.pause()
+    }
+
+    func animateDog() {
+        animationView.contentMode = .scaleAspectFill
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 0.8
+        animationView.play()
     }
 
     func setupLayoutOfItems() {
@@ -48,5 +68,10 @@ class SearchResultViewController: UIViewController {
     }
 
     @IBAction func exitScrenn(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let viewC =  storyboard.instantiateViewController(identifier: "home")
+                as? HomeViewController else {fatalError()}
+        viewC.modalPresentationStyle = .fullScreen
+        self.present(viewC, animated: true, completion: nil)
     }
 }
