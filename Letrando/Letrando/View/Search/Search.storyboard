@@ -20,7 +20,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpX-Mi-gtd">
-                                <rect key="frame" x="20" y="56" width="30" height="30"/>
+                                <rect key="frame" x="20" y="56" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="KV8-Ef-NaH"/>
+                                    <constraint firstAttribute="height" constant="50" id="w8f-uo-6q6"/>
+                                </constraints>
                                 <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="Suj-PU-mDl" eventType="touchUpInside" id="ypt-E6-9KJ"/>
@@ -48,7 +52,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="30" height="30"/>
+        <image name="back" width="72" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
