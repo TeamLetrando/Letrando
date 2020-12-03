@@ -180,7 +180,11 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func backButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let viewC =  storyboard.instantiateViewController(identifier: "home")
+                as? HomeViewController else {fatalError()}
+        viewC.modalPresentationStyle = .fullScreen
+        self.present(viewC, animated: true, completion: nil)
     }
 
     func makeImage(letters: [String]) {
