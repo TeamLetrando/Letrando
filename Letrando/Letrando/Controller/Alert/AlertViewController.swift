@@ -9,9 +9,21 @@ import UIKit
 
 class AlertViewController: UIViewController {
 
+    @IBOutlet weak var viewAlert: UIView!
+    @IBOutlet weak var text: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        text.textColor = .bronwLetters
+        guard let customFont = UIFont(name: "BubblegumSans-Regular", size: 40) else {
+            fatalError("""
+                Failed to load the "BubblegumSans-Regular" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        text.font = UIFontMetrics.default.scaledFont(for: customFont)
         // Do any additional setup after loading the view.
     }
 
