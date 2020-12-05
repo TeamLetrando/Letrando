@@ -49,4 +49,13 @@ class HomeViewController: UIViewController {
         viewC.modalPresentationStyle = .fullScreen
         self.present(viewC, animated: true, completion: nil)
     }
+    
+    @IBAction func reportButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Report", bundle: nil)
+        guard let viewC =  storyboard.instantiateViewController(identifier: "report")
+                as? ReportViewController else {fatalError()}
+        viewC.modalPresentationStyle = .popover
+        self.present(viewC, animated: true, completion: nil)
+    }
+    
 }
