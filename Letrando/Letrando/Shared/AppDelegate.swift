@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        if let viewController = self.window?.rootViewController as? SearchViewController {
 //            viewController.blurView.isHidden = true
 //        }
-//    }
+ //   }
 
     // MARK: UISceneSession Lifecycle
 
