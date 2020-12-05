@@ -100,6 +100,9 @@
             <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Hck-6x-sof"/>
+    </designables>
     <resources>
         <image name="audio" width="72" height="72"/>
         <image name="logo" width="285" height="137"/>

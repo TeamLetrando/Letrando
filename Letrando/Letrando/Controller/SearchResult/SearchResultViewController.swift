@@ -15,7 +15,7 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var outButton: UIButton!
     @IBOutlet weak var animationView: AnimationView!
-    var wordResult: String = ""
+    var wordResult: String = "LABEL"
 
     override func viewDidLoad() {
         super.viewDidLoad()
