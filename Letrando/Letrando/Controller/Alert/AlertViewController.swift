@@ -9,6 +9,7 @@ import UIKit
 
 class AlertViewController: UIViewController {
 
+    @IBOutlet weak var imageAlert: UIImageView!
     @IBOutlet weak var viewAlert: UIView!
     @IBOutlet weak var text: UILabel!
     

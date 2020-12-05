@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CLF-dZ-qJj">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,49 +13,50 @@
             <objects>
                 <viewController id="CLF-dZ-qJj" customClass="AlertViewController" customModule="Letrando" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NfC-Q2-PfL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eg0-Qa-L5i">
-                                <rect key="frame" x="57" y="583" width="300" height="254"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuidado com os objetos ao redor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBq-sJ-E3Q">
-                                        <rect key="frame" x="25" y="106.5" width="250" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="AuAu1" translatesAutoresizingMaskIntoConstraints="NO" id="aay-O3-5sv">
+                                <rect key="frame" x="39" y="40" width="216" height="250"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eg0-Qa-L5i">
+                                <rect key="frame" x="10" y="303" width="300" height="257"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="WBq-sJ-E3Q" firstAttribute="centerY" secondItem="Eg0-Qa-L5i" secondAttribute="centerY" id="Gx1-1h-xgZ"/>
-                                    <constraint firstItem="WBq-sJ-E3Q" firstAttribute="centerX" secondItem="Eg0-Qa-L5i" secondAttribute="centerX" id="NM3-do-xyC"/>
-                                    <constraint firstAttribute="trailing" secondItem="WBq-sJ-E3Q" secondAttribute="trailing" constant="25" id="aSg-2m-4t1"/>
-                                    <constraint firstItem="WBq-sJ-E3Q" firstAttribute="leading" secondItem="Eg0-Qa-L5i" secondAttribute="leading" constant="25" id="nXd-Tp-CJK"/>
-                                </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddV-Ed-Hgk">
+                                <rect key="frame" x="24" y="533" width="41.5" height="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xJu-Wp-UNz"/>
                         <color key="backgroundColor" red="0.82745098039215681" green="0.88627450980392153" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Eg0-Qa-L5i" firstAttribute="top" secondItem="xJu-Wp-UNz" secondAttribute="top" constant="539" id="GmR-OZ-14N"/>
-                            <constraint firstItem="xJu-Wp-UNz" firstAttribute="bottom" secondItem="Eg0-Qa-L5i" secondAttribute="bottom" constant="25" id="RT2-sB-Zhd"/>
-                            <constraint firstItem="Eg0-Qa-L5i" firstAttribute="leading" secondItem="xJu-Wp-UNz" secondAttribute="leading" constant="57" id="Stv-fV-Id6"/>
-                            <constraint firstItem="Eg0-Qa-L5i" firstAttribute="centerX" secondItem="NfC-Q2-PfL" secondAttribute="centerX" id="Vjm-K0-8Gs"/>
+                            <constraint firstItem="Eg0-Qa-L5i" firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ddV-Ed-Hgk" secondAttribute="trailing" constant="8" id="CqS-2N-UW1"/>
+                            <constraint firstItem="ddV-Ed-Hgk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Eg0-Qa-L5i" secondAttribute="leadingMargin" constant="8" id="EKQ-Sz-TY9"/>
+                            <constraint firstItem="ddV-Ed-Hgk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Eg0-Qa-L5i" secondAttribute="topMargin" constant="16" id="Mg8-YM-vhB"/>
+                            <constraint firstItem="Eg0-Qa-L5i" firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="ddV-Ed-Hgk" secondAttribute="bottom" constant="-16" id="Tws-Jm-yP5"/>
+                            <constraint firstItem="Eg0-Qa-L5i" firstAttribute="top" secondItem="aay-O3-5sv" secondAttribute="bottom" constant="13" id="Uvu-aM-neR"/>
+                            <constraint firstItem="Eg0-Qa-L5i" firstAttribute="centerX" secondItem="xJu-Wp-UNz" secondAttribute="centerX" id="ami-nR-Dz0"/>
+                            <constraint firstItem="aay-O3-5sv" firstAttribute="centerY" secondItem="xJu-Wp-UNz" secondAttribute="centerY" id="hnw-CO-lr2"/>
+                            <constraint firstItem="aay-O3-5sv" firstAttribute="top" secondItem="xJu-Wp-UNz" secondAttribute="top" constant="40" id="jnh-77-OqT"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="text" destination="WBq-sJ-E3Q" id="oap-Qh-AUD"/>
+                        <outlet property="imageAlert" destination="aay-O3-5sv" id="8P9-t4-YFA"/>
+                        <outlet property="text" destination="ddV-Ed-Hgk" id="j3g-Vl-wLb"/>
                         <outlet property="viewAlert" destination="Eg0-Qa-L5i" id="BtG-yz-8Mt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUD-3G-PXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144.92753623188406" y="-204.24107142857142"/>
+            <point key="canvasLocation" x="144.375" y="-204.92957746478874"/>
         </scene>
     </scenes>
     <resources>
+        <image name="AuAu1" width="170" height="174"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
