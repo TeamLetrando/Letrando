@@ -7,6 +7,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="BubblegumSans-Regular.ttf">
+            <string>BubblegumSans-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Report View Controller-->
         <scene sceneID="caD-22-j1P">
@@ -19,7 +24,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RELATÓRIO SEMANAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-wR-JRt">
                                 <rect key="frame" x="75" y="56" width="333" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.43529411764705883" green="0.37647058823529411" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-W9-uAE">
@@ -38,11 +43,59 @@
                                         <subviews>
                                             <view contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w8W-Bh-Fkh">
                                                 <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="251"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Palavras Aprendidas" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aj-64-xxx">
+                                                        <rect key="frame" x="0.0" y="10" width="186.66666666666666" height="48"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <color key="textColor" red="0.43529411759999997" green="0.37647058820000001" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIP-6w-dnp">
+                                                        <rect key="frame" x="0.0" y="90.666666666666657" width="186.66666666666666" height="70"/>
+                                                        <fontDescription key="fontDescription" name="BubblegumSans-Regular" family="Bubblegum Sans" pointSize="60"/>
+                                                        <color key="textColor" red="0.5607843137254902" green="0.38039215686274508" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="5aj-64-xxx" secondAttribute="trailing" id="1k8-bC-1i9"/>
+                                                    <constraint firstItem="mIP-6w-dnp" firstAttribute="centerX" secondItem="w8W-Bh-Fkh" secondAttribute="centerX" id="8fA-F4-iG4"/>
+                                                    <constraint firstItem="mIP-6w-dnp" firstAttribute="centerY" secondItem="w8W-Bh-Fkh" secondAttribute="centerY" id="Lvp-B2-BAk"/>
+                                                    <constraint firstItem="5aj-64-xxx" firstAttribute="centerX" secondItem="w8W-Bh-Fkh" secondAttribute="centerX" id="TbV-WA-b8W"/>
+                                                    <constraint firstItem="mIP-6w-dnp" firstAttribute="leading" secondItem="w8W-Bh-Fkh" secondAttribute="leading" id="lc4-ht-YGW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="mIP-6w-dnp" secondAttribute="trailing" id="pzM-NI-gKt"/>
+                                                    <constraint firstItem="5aj-64-xxx" firstAttribute="leading" secondItem="w8W-Bh-Fkh" secondAttribute="leading" id="vBA-zn-HK9"/>
+                                                    <constraint firstItem="5aj-64-xxx" firstAttribute="top" secondItem="w8W-Bh-Fkh" secondAttribute="top" constant="10" id="zyQ-ds-r2H"/>
+                                                </constraints>
                                             </view>
                                             <view contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAV-aP-F92">
                                                 <rect key="frame" x="201.66666666666663" y="0.0" width="186.33333333333337" height="251"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Média de palavras por dia " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkw-Nw-soa">
+                                                        <rect key="frame" x="0.0" y="10" width="186.33333333333334" height="48"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <color key="textColor" red="0.43529411759999997" green="0.37647058820000001" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1h-Xe-LxJ">
+                                                        <rect key="frame" x="0.0" y="90.666666666666657" width="186.33333333333334" height="70"/>
+                                                        <fontDescription key="fontDescription" name="BubblegumSans-Regular" family="Bubblegum Sans" pointSize="60"/>
+                                                        <color key="textColor" red="0.56078431370000004" green="0.3803921569" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="pkw-Nw-soa" secondAttribute="trailing" id="0ys-R0-exQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="L1h-Xe-LxJ" secondAttribute="trailing" id="2B4-z7-GG9"/>
+                                                    <constraint firstItem="L1h-Xe-LxJ" firstAttribute="centerX" secondItem="YAV-aP-F92" secondAttribute="centerX" id="7JQ-6m-dr6"/>
+                                                    <constraint firstItem="L1h-Xe-LxJ" firstAttribute="centerY" secondItem="YAV-aP-F92" secondAttribute="centerY" id="KKc-qd-dPO"/>
+                                                    <constraint firstItem="pkw-Nw-soa" firstAttribute="leading" secondItem="YAV-aP-F92" secondAttribute="leading" id="ZFH-Ww-s3X"/>
+                                                    <constraint firstItem="L1h-Xe-LxJ" firstAttribute="leading" secondItem="YAV-aP-F92" secondAttribute="leading" id="khr-LR-SN7"/>
+                                                    <constraint firstItem="pkw-Nw-soa" firstAttribute="centerX" secondItem="YAV-aP-F92" secondAttribute="centerX" id="qM4-px-Vj1"/>
+                                                    <constraint firstItem="pkw-Nw-soa" firstAttribute="top" secondItem="YAV-aP-F92" secondAttribute="top" constant="10" id="swb-6R-Avl"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -56,7 +109,20 @@
                                     </stackView>
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="54O-gc-Qpv">
                                         <rect key="frame" x="0.0" y="261" width="388" height="251"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking de palavras" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6Y-bn-oG2">
+                                                <rect key="frame" x="0.0" y="10" width="388" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" red="0.43529411759999997" green="0.37647058820000001" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Z6Y-bn-oG2" firstAttribute="top" secondItem="54O-gc-Qpv" secondAttribute="top" constant="10" id="dC4-zt-zVS"/>
+                                            <constraint firstItem="Z6Y-bn-oG2" firstAttribute="leading" secondItem="54O-gc-Qpv" secondAttribute="leading" id="kIO-ig-BJ1"/>
+                                            <constraint firstAttribute="trailing" secondItem="Z6Y-bn-oG2" secondAttribute="trailing" id="znq-2q-EbC"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-hT-0qd">
                                         <rect key="frame" x="0.0" y="522" width="388" height="251"/>
