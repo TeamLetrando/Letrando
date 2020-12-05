@@ -15,12 +15,12 @@
         <!--Report View Controller-->
         <scene sceneID="caD-22-j1P">
             <objects>
-                <viewController id="JgM-24-dEu" customClass="ReportViewController" customModule="Letrando" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="report" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JgM-24-dEu" customClass="ReportViewController" customModule="Letrando" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X5I-1k-Yjg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RELATÓRIO SEMANAL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-wR-JRt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RELATÓRIO SEMANAL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-wR-JRt">
                                 <rect key="frame" x="75" y="56" width="319" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.43529411764705883" green="0.37647058823529411" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,6 +33,9 @@
                                     <constraint firstAttribute="width" secondItem="yuw-W9-uAE" secondAttribute="height" multiplier="1:1" id="OBk-QV-MTt"/>
                                 </constraints>
                                 <state key="normal" image="back1"/>
+                                <connections>
+                                    <action selector="backButton:" destination="JgM-24-dEu" eventType="touchUpInside" id="YtG-44-r9X"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="771" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6GR-hV-8w7">
                                 <rect key="frame" x="20" y="109" width="374" height="743"/>
@@ -146,6 +149,12 @@
                             <constraint firstItem="sXI-wR-JRt" firstAttribute="top" secondItem="LpH-YD-cud" secondAttribute="top" constant="12" id="wQB-Bo-JOa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="acessGraphicView" destination="Krg-hT-0qd" id="WTK-6T-bcs"/>
+                        <outlet property="knowWords" destination="mIP-6w-dnp" id="txx-xv-gpH"/>
+                        <outlet property="rangeWords" destination="L1h-Xe-LxJ" id="667-I8-amP"/>
+                        <outlet property="rankView" destination="54O-gc-Qpv" id="17V-KT-Nhl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDO-ee-zcj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

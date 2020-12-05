@@ -9,20 +9,18 @@ import UIKit
 
 class ReportViewController: UIViewController {
 
+    @IBOutlet weak var rangeWords: UILabel!
+    @IBOutlet weak var knowWords: UILabel!
+    @IBOutlet weak var rankView: UIView!
+    @IBOutlet weak var acessGraphicView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func backButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
-    */
-
+    
 }
