@@ -12,6 +12,7 @@
 		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
 		14C42DB4D3883BD297860320 /* Pods_LetrandoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */; };
 		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
+		778CFB21257D80DD003A825E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778CFB20257D80DD003A825E /* CloudKit.framework */; };
 		77951FC22568088100BC7367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC12568088100BC7367 /* AppDelegate.swift */; };
 		77951FC42568088100BC7367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77951FC32568088100BC7367 /* SceneDelegate.swift */; };
 		77951FC92568088100BC7367 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77951FC72568088100BC7367 /* Home.storyboard */; };
@@ -38,7 +39,6 @@
 		7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795207925680D3C00BC7367 /* CloudKit.swift */; };
 		7795207F25680D4D00BC7367 /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795207E25680D4D00BC7367 /* ARModel.swift */; };
 		7795208425680D5800BC7367 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208325680D5800BC7367 /* Notifications.swift */; };
-		7795208925680D6000BC7367 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208825680D6000BC7367 /* Report.swift */; };
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
 		7B2D41EB257970870022AB13 /* caoConfetti1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D41EA257970870022AB13 /* caoConfetti1.json */; };
 		97EFDA539F1740823407DE79 /* Pods_Letrando_LetrandoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */; };
@@ -80,6 +80,8 @@
 		69936A939CC4425A751CA6E4 /* Pods-Letrando-LetrandoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6DD18F4F843C0359DCC8490D /* Pods-LetrandoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetrandoTests.debug.xcconfig"; path = "Target Support Files/Pods-LetrandoTests/Pods-LetrandoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7768A764256A1077005EA237 /* ARModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelTests.swift; sourceTree = "<group>"; };
+		778CFB1C257D80DA003A825E /* Letrando.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Letrando.entitlements; sourceTree = "<group>"; };
+		778CFB20257D80DD003A825E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		77951FBE2568088100BC7367 /* Letrando.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Letrando.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77951FC12568088100BC7367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77951FC32568088100BC7367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +114,6 @@
 		7795207925680D3C00BC7367 /* CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
 		7795207E25680D4D00BC7367 /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		7795208325680D5800BC7367 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		7795208825680D6000BC7367 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		77D621FD256BE14F007D905C /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		7B2D41EA257970870022AB13 /* caoConfetti1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = caoConfetti1.json; sourceTree = "<group>"; };
 		810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.release.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF3733BF377790C110FFCD1F /* Pods_Letrando.framework in Frameworks */,
+				778CFB21257D80DD003A825E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +199,7 @@
 		77951FC02568088100BC7367 /* Letrando */ = {
 			isa = PBXGroup;
 			children = (
+				778CFB1C257D80DA003A825E /* Letrando.entitlements */,
 				77951FFD25680A3800BC7367 /* View */,
 				77951FFE25680A3D00BC7367 /* Controller */,
 				7795200025680A5300BC7367 /* Model */,
@@ -420,7 +423,6 @@
 			children = (
 				7795207E25680D4D00BC7367 /* ARModel.swift */,
 				7795208325680D5800BC7367 /* Notifications.swift */,
-				7795208825680D6000BC7367 /* Report.swift */,
 				AFE007E2256E794000C2DA6C /* Plane.swift */,
 				AFE007EF256E7B7B00C2DA6C /* Scene.swift */,
 			);
@@ -430,6 +432,7 @@
 		89CE08703C5A101EB5E7653E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				778CFB20257D80DD003A825E /* CloudKit.framework */,
 				1196D6BE461625AF540961D9 /* Pods_Letrando.framework */,
 				BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */,
 				12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */,
@@ -731,7 +734,6 @@
 				77951FC22568088100BC7367 /* AppDelegate.swift in Sources */,
 				0B073585256BF2300002AC05 /* JsonData.swift in Sources */,
 				AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */,
-				7795208925680D6000BC7367 /* Report.swift in Sources */,
 				7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */,
 				7795202525680BCB00BC7367 /* Sounds.swift in Sources */,
 				AFE007E3256E794000C2DA6C /* Plane.swift in Sources */,
@@ -924,8 +926,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 937MK3AF6X;
+				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -945,8 +948,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 937MK3AF6X;
+				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
