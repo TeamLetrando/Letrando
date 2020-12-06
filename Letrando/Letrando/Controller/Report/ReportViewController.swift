@@ -15,6 +15,13 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var rankView: UIView!
     @IBOutlet weak var acessGraphicView: UIView!
     
+    var rankChartView: BarsChart!
+    var rank = [
+        ("Bola", 30.0),
+        ("Amor", 40.0),
+        ("Quilo", 10.0)
+    ]
+    
     var chartView: BarsChart!
     var bar = [
         ("Seg", 20.0),
@@ -29,17 +36,53 @@ class ReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawGraphic()
+        drawRanking()
+        
     }
     
     @IBAction func backButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
+    func drawRanking() {
+        let frame = getFrame(rankView)
+        let axisX = frame.width
+        let axisY = frame.height
+        let minX = frame.minX
+        let minY = frame.minY
+        
+        let settings = configureGraphic()
+        
+        let labelSettings = configureLabelLines()
+        
+        let lines = GuidelinesConfig(dotted: false, lineWidth: 0.0, lineColor: UIColor.bronwLetters)
+        
+        let chartConfig = BarsChartConfig(
+            chartSettings: settings,
+            valsAxisConfig: ChartAxisConfig(from: 0, to: 50, by: 10),
+            xAxisLabelSettings:labelSettings ,
+            yAxisLabelSettings: labelSettings,
+            guidelinesConfig: lines)
+        
+        let chart = BarsChart(
+            frame: CGRect(x: minX, y:minY, width: axisX , height: axisY),
+            chartConfig: chartConfig,
+            xTitle: "",
+            yTitle: "",
+            bars: self.rank,
+            color: UIColor.purpleLetters,
+            barWidth: self.rankView.bounds.width/7 - 15
+        )
+        self.rankView.addSubview(chart.view)
+        self.rankChartView = chart
+    }
+    
     func drawGraphic() {
-        let axisX = self.acessGraphicView.bounds.width
-        let axisY = self.acessGraphicView.bounds.height
-        let minX = self.acessGraphicView.bounds.minX
-        let minY = self.acessGraphicView.bounds.minY
+        let frame = getFrame(acessGraphicView)
+        let axisX = frame.width
+        let axisY = frame.height
+        let minX = frame.minX
+        let minY = frame.minY
         
         let settings = configureGraphic()
         
@@ -91,6 +134,10 @@ class ReportViewController: UIViewController {
         labelSettings.fontColor = UIColor.bronwLetters
         labelSettings.font = UIFont.systemFont(ofSize: 17)
         return labelSettings
+    }
+    
+    func getFrame(_ view: UIView) -> CGRect {
+        return view.bounds
     }
     
 }
