@@ -41,6 +41,7 @@
 		7795208925680D6000BC7367 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208825680D6000BC7367 /* Report.swift */; };
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
 		7B2D41EB257970870022AB13 /* caoConfetti1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D41EA257970870022AB13 /* caoConfetti1.json */; };
+		7B4C2DEA257E654E00B3D4CE /* Curious_Kiddo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */; };
 		97EFDA539F1740823407DE79 /* Pods_Letrando_LetrandoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */; };
 		AF78AB862576714F00D2F85E /* caoAnima.json in Resources */ = {isa = PBXBuildFile; fileRef = AF78AB852576714F00D2F85E /* caoAnima.json */; };
 		AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */; };
@@ -115,6 +116,7 @@
 		7795208825680D6000BC7367 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		77D621FD256BE14F007D905C /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		7B2D41EA257970870022AB13 /* caoConfetti1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = caoConfetti1.json; sourceTree = "<group>"; };
+		7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Curious_Kiddo.mp3; sourceTree = "<group>"; };
 		810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.release.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9429CFF4C488ED851F5D28CC /* Pods-Letrando.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.release.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.release.xcconfig"; sourceTree = "<group>"; };
 		97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetrandoTests.release.xcconfig"; path = "Target Support Files/Pods-LetrandoTests/Pods-LetrandoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		77951FFC25680A3100BC7367 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7B4C2DE8257E653A00B3D4CE /* Sounds */,
 				AF151AB82575621900E389E0 /* Animation */,
 				77951FC12568088100BC7367 /* AppDelegate.swift */,
 				77951FC32568088100BC7367 /* SceneDelegate.swift */,
@@ -427,6 +430,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		7B4C2DE8257E653A00B3D4CE /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		89CE08703C5A101EB5E7653E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +583,7 @@
 				7795201925680B8200BC7367 /* SearchResult.storyboard in Resources */,
 				77951FD12568088100BC7367 /* LaunchScreen.storyboard in Resources */,
 				AF78AB862576714F00D2F85E /* caoAnima.json in Resources */,
+				7B4C2DEA257E654E00B3D4CE /* Curious_Kiddo.mp3 in Resources */,
 				7795201425680B7300BC7367 /* Search.storyboard in Resources */,
 				77951FCE2568088100BC7367 /* Assets.xcassets in Resources */,
 				77951FC92568088100BC7367 /* Home.storyboard in Resources */,

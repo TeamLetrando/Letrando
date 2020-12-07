@@ -152,7 +152,9 @@
                     <connections>
                         <outlet property="acessGraphicView" destination="Krg-hT-0qd" id="WTK-6T-bcs"/>
                         <outlet property="knowWords" destination="mIP-6w-dnp" id="txx-xv-gpH"/>
+                        <outlet property="knowWordsView" destination="w8W-Bh-Fkh" id="yM3-xe-Nwc"/>
                         <outlet property="rangeWords" destination="L1h-Xe-LxJ" id="667-I8-amP"/>
+                        <outlet property="rangeWordsView" destination="YAV-aP-F92" id="Dhz-Tm-kpW"/>
                         <outlet property="rankView" destination="54O-gc-Qpv" id="17V-KT-Nhl"/>
                     </connections>
                 </viewController>
