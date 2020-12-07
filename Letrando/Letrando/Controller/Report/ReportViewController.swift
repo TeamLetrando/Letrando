@@ -16,25 +16,15 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var acessGraphicView: UIView!
     
     var rankChartView: BarsChart!
-    var rank = [
-        (Report.getMostSearchWords()![1], 30.0),
-        (Report.getMostSearchWords()![0], 40.0),
-        (Report.getMostSearchWords()![2], 10.0)
-    ]
-
+    var rank: [(String, Double)]? = [("", 0.0)]
+    
     var chartView: BarsChart!
-    var bar = [
-        ("Dom", Double((Report.getWordsADay()![1]!*100)/Report.numberOfLearnedWords()!)),
-        ("Seg", Double((Report.getWordsADay()![2]!*100)/Report.numberOfLearnedWords()!)),
-        ("Ter", Double((Report.getWordsADay()![3]!*100)/Report.numberOfLearnedWords()!)),
-        ("Qua", Double((Report.getWordsADay()![4]!*100)/Report.numberOfLearnedWords()!)),
-        ("Qui", Double((Report.getWordsADay()![5]!*100)/Report.numberOfLearnedWords()!)),
-        ("Sex", Double((Report.getWordsADay()![6]!*100)/Report.numberOfLearnedWords()!)),
-        ("Sab", Double((Report.getWordsADay()![7]!*100)/Report.numberOfLearnedWords()!))
-    ]
+    var bar: [(String, Double)]? = [("", 0.0)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getRank()
+        getBar()
         drawGraphic()
         drawRanking()
         
@@ -45,6 +35,8 @@ class ReportViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getRank()
+        getBar()
         knowWords.text = "\(Report.numberOfLearnedWords()!)"
         rangeWords.text = "\(Report.mediaOfWordsInWeek()!)"
     }
@@ -77,7 +69,7 @@ class ReportViewController: UIViewController {
             chartConfig: chartConfig,
             xTitle: "",
             yTitle: "",
-            bars: self.rank,
+            bars: self.rank ?? [("", 0.0)],
             color: UIColor.purpleLetters,
             barWidth: self.rankView.bounds.width/7 - 15
         )
@@ -110,7 +102,7 @@ class ReportViewController: UIViewController {
             chartConfig: chartConfig,
             xTitle: "Dias da Semana",
             yTitle: "Total de palavras",
-            bars: self.bar,
+            bars: self.bar ?? [("", 0.0)],
             color: UIColor.purpleLetters,
             barWidth: self.acessGraphicView.bounds.width/7 - 15
         )
@@ -148,4 +140,28 @@ class ReportViewController: UIViewController {
         return view.bounds
     }
     
+    func getRank() {
+        guard let report = Report.getMostSearchWords() else {
+            rank = [("",0.0)]
+            return
+        }
+        
+        let size = [40.0, 30.0, 10.0]
+        for index in 0...2 {
+            rank?.append((report[index], size[index]))
+        }
+    }
+    
+    func getBar() {
+        guard let workADay = Report.getWordsADay(), let learnedWords = Report.numberOfLearnedWords() else {
+            bar = [("", 0.0)]
+            return
+        }
+        
+        let weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"]
+        
+        for index in 1...7 {
+            bar?.append((weekDays[index - 1], Double(((workADay[index] ?? 0) * 100) / learnedWords)))
+        }
+    }
 }
