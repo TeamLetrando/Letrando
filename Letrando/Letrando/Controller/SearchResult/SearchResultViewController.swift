@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import ARKit
 
 class SearchResultViewController: UIViewController {
 
@@ -27,11 +28,20 @@ class SearchResultViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animationView.play()
+        reproduceSound(string: wordResult)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         animationView.pause()
+    }
+    
+    func reproduceSound(string: String) {
+        let utterance =  AVSpeechUtterance(string: string)
+        let voice = AVSpeechSynthesisVoice(language: "pt-BR")
+        utterance.voice = voice
+        let sintetizer = AVSpeechSynthesizer()
+        sintetizer.speak(utterance)
     }
 
     func animateDog() {

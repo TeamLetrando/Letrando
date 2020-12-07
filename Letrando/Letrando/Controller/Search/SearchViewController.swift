@@ -24,8 +24,9 @@ class SearchViewController: UIViewController {
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
+    @IBOutlet weak var buttonHand: UIButton!
     var score = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +47,9 @@ class SearchViewController: UIViewController {
         setupCoachingOverlay()
 
         addMoveGesture()
+        addTapGesture()
+        configureUserDefaults()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -56,7 +60,80 @@ class SearchViewController: UIViewController {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
+    
+    func configureUserDefaults() {
+        if UserDefaults.standard.object(forKey: "showAnimationFeedback") == nil {
+            UserDefaults.standard.setValue(true, forKey: "showAnimationFeedback")
+        } else if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool {
+            configureHandImageButton(isAnimationEnable)
+        }
+    }
+    
+    @IBAction func showAnimationFeedback(_ sender: Any) {
+        if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool {
+            UserDefaults.standard.setValue(!isAnimationEnable, forKey: "showAnimationFeedback")
+            configureHandImageButton(!isAnimationEnable)
+        }
+    }
+    
+    func configureHandImageButton(_ isAnimationEnable: Bool) {
+        if isAnimationEnable {
+            buttonHand.setImage(UIImage(named: "handButtonOn"), for: .normal)
+        } else {
+            buttonHand.setImage(UIImage(named: "handButtonOff"), for: .normal)
+        }
+    }
+    
+    func animateFeedBack(initialPosition: CGPoint, letter: String) {
+        if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool,
+           isAnimationEnable == false { return }
+        stack.subviews.forEach { view in
+            if let tappedLetter = view as? UIImageView,
+               let letterName = tappedLetter.layer.name,
+               letterName == letter {
+                let finalPosition = stack.convert(tappedLetter.layer.position, to: sceneView)
+                
+                let handImage = UIImageView(frame: CGRect(x: initialPosition.x,
+                                                          y: initialPosition.y,
+                                                          width: 50,
+                                                          height: 80))
+                handImage.image = UIImage(named: "hand")
+                
+                sceneView.addSubview(handImage)
+                
+                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) {
+                    handImage.layer.position = finalPosition
+                } completion: { _ in
+                    handImage.removeFromSuperview()
+                }
+            }
+        }
+    }
+    
+    func reproduceSound(string: String) {
+        let utterance =  AVSpeechUtterance(string: string)
+        let voice = AVSpeechSynthesisVoice(language: "pt-BR")
+        utterance.voice = voice
+        let sintetizer = AVSpeechSynthesizer()
+        sintetizer.speak(utterance)
+    }
 
+    func addTapGesture() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func didTapScreen(gesture: UITapGestureRecognizer) {
+            let tapLocation = gesture.location(in: sceneView)
+            let hitTestResults = sceneView.hitTest(tapLocation)
+            if let node = hitTestResults.first?.node, let name = node.name {
+                reproduceSound(string: name.lowercased())
+                animateFeedBack(initialPosition: tapLocation,
+                                        letter: name)
+                
+            }
+    }
+    
     func addMoveGesture() {
         let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(moveLetterGesture(_:)))
         sceneView.addGestureRecognizer(tapGesture)
@@ -80,6 +157,12 @@ class SearchViewController: UIViewController {
                                                    nodeResult.direction.z)
                     actualNode = node
                     sceneView.scene.rootNode.addChildNode(actualNode)
+                    if let name = node.name {
+                        animateFeedBack(initialPosition: tapLocation,
+                                            letter: name)
+                        reproduceSound(string: name.lowercased())
+                        
+                    }
                 }
             }
 
