@@ -86,7 +86,7 @@ open class ChartLabelDrawer: ChartContextDrawer {
     }
 
     override open func draw(context: CGContext, chart: Chart) {
-        let labelSize = size
+        _ = size
 
         let labelX = screenLoc.x
         let labelY = screenLoc.y

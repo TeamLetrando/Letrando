@@ -43,9 +43,9 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func search(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Search", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "search")
-                as? SearchViewController else {fatalError()}
+        let storyboard = UIStoryboard(name: "Alert", bundle: nil)
+        guard let viewC =  storyboard.instantiateViewController(identifier: "alert")
+                as? AlertViewController else {fatalError()}
         viewC.modalPresentationStyle = .fullScreen
         self.present(viewC, animated: true, completion: nil)
     }
