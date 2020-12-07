@@ -17,20 +17,20 @@ class ReportViewController: UIViewController {
     
     var rankChartView: BarsChart!
     var rank = [
-        ("Bola", 30.0),
-        ("Amor", 40.0),
-        ("Quilo", 10.0)
+        (Report.getMostSearchWords()![1], 30.0),
+        (Report.getMostSearchWords()![0], 40.0),
+        (Report.getMostSearchWords()![2], 10.0)
     ]
-    
+
     var chartView: BarsChart!
     var bar = [
-        ("Seg", 20.0),
-        ("Ter", 30.0),
-        ("Qua", 2.0),
-        ("Qui", 7.0),
-        ("Sex", 15.0),
-        ("Sab", 50.0),
-        ("Dom", 45.0)
+        ("Dom", Double((Report.getWordsADay()![1]!*100)/Report.numberOfLearnedWords()!)),
+        ("Seg", Double((Report.getWordsADay()![2]!*100)/Report.numberOfLearnedWords()!)),
+        ("Ter", Double((Report.getWordsADay()![3]!*100)/Report.numberOfLearnedWords()!)),
+        ("Qua", Double((Report.getWordsADay()![4]!*100)/Report.numberOfLearnedWords()!)),
+        ("Qui", Double((Report.getWordsADay()![5]!*100)/Report.numberOfLearnedWords()!)),
+        ("Sex", Double((Report.getWordsADay()![6]!*100)/Report.numberOfLearnedWords()!)),
+        ("Sab", Double((Report.getWordsADay()![7]!*100)/Report.numberOfLearnedWords()!))
     ]
     
     override func viewDidLoad() {
@@ -38,6 +38,15 @@ class ReportViewController: UIViewController {
         drawGraphic()
         drawRanking()
         
+        knowWords.text = "\(Report.numberOfLearnedWords()!)"
+        rangeWords.text = "\(Report.mediaOfWordsInWeek()!)"
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        knowWords.text = "\(Report.numberOfLearnedWords()!)"
+        rangeWords.text = "\(Report.mediaOfWordsInWeek()!)"
     }
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -61,7 +70,6 @@ class ReportViewController: UIViewController {
             chartSettings: settings,
             valsAxisConfig: ChartAxisConfig(from: 0, to: 50, by: 10),
             xAxisLabelSettings:labelSettings ,
-            yAxisLabelSettings: labelSettings,
             guidelinesConfig: lines)
         
         let chart = BarsChart(
@@ -92,7 +100,7 @@ class ReportViewController: UIViewController {
         
         let chartConfig = BarsChartConfig(
             chartSettings: settings,
-            valsAxisConfig: ChartAxisConfig(from: 0, to: 50, by: 10),
+            valsAxisConfig: ChartAxisConfig(from: 0, to: 100, by: 20),
             xAxisLabelSettings: labelSettings,
             yAxisLabelSettings: labelSettings,
             guidelinesConfig: lines)

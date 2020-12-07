@@ -22,6 +22,7 @@ class SearchResultViewController: UIViewController {
 
         setupLayoutOfItems()
         animateDog()
+        Report.createReport(word: wordLabel.text!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
