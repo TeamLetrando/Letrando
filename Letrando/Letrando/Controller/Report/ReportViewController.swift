@@ -14,7 +14,8 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var knowWords: UILabel!
     @IBOutlet weak var rankView: UIView!
     @IBOutlet weak var acessGraphicView: UIView!
-    
+    @IBOutlet weak var rangeWordsView: UIView!
+    @IBOutlet weak var knowWordsView: UIView!
     var rankChartView: BarsChart!
     var rank = [
         ("Bola", 30.0),
@@ -35,6 +36,10 @@ class ReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        acessGraphicView.layer.cornerRadius = 20.0
+        rankView.layer.cornerRadius = 20.0
+        rangeWordsView.layer.cornerRadius = 20.0
+        knowWordsView.layer.cornerRadius = 20.0
         drawGraphic()
         drawRanking()
         
@@ -46,13 +51,13 @@ class ReportViewController: UIViewController {
     
     func drawRanking() {
         let frame = getFrame(rankView)
-        let axisX = frame.width
-        let axisY = frame.height
-        let minX = frame.minX
-        let minY = frame.minY
+        let axisX = frame.width - 40
+        let axisY = frame.height - 70
+        let minX = frame.maxX / 2 - frame.width / 2
+        let minY = frame.maxY / 2 - frame.height / 2 + 30
         
         let settings = configureGraphic()
-        
+    
         let labelSettings = configureLabelLines()
         
         let lines = GuidelinesConfig(dotted: false, lineWidth: 0.0, lineColor: UIColor.bronwLetters)
@@ -79,10 +84,10 @@ class ReportViewController: UIViewController {
     
     func drawGraphic() {
         let frame = getFrame(acessGraphicView)
-        let axisX = frame.width
-        let axisY = frame.height
-        let minX = frame.minX
-        let minY = frame.minY
+        let axisX = frame.width - 40
+        let axisY = frame.height - 70
+        let minX = frame.maxX / 2 - frame.width / 2
+        let minY = frame.maxY / 2 - frame.height / 2 + 30
         
         let settings = configureGraphic()
         
@@ -100,7 +105,7 @@ class ReportViewController: UIViewController {
         let chart = BarsChart(
             frame: CGRect(x: minX, y:minY, width: axisX , height: axisY),
             chartConfig: chartConfig,
-            xTitle: "Dias da Semana",
+            xTitle: "",
             yTitle: "Total de palavras",
             bars: self.bar,
             color: UIColor.purpleLetters,
@@ -118,17 +123,17 @@ class ReportViewController: UIViewController {
         settings.trailing = 10.0
         settings.labelsToAxisSpacingX = 5
         settings.labelsToAxisSpacingY = 5
-        settings.axisTitleLabelsToLabelsSpacing = 4
+        settings.axisTitleLabelsToLabelsSpacing = 2
         settings.axisStrokeWidth = 0.2
         settings.spacingBetweenAxesX = 8
         settings.spacingBetweenAxesY = 8
-        settings.labelsSpacing = 0
+        settings.labelsSpacing = 8
         settings.zoomPan.zoomEnabled = false
         settings.zoomPan.panEnabled = true
-        
+
         return settings
     }
-    
+
     func configureLabelLines() -> ChartLabelSettings {
         var labelSettings = ChartLabelSettings()
         labelSettings.fontColor = UIColor.bronwLetters
