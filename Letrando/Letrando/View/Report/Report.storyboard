@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -17,17 +17,17 @@
             <objects>
                 <viewController storyboardIdentifier="report" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JgM-24-dEu" customClass="ReportViewController" customModule="Letrando" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X5I-1k-Yjg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RELATÓRIO SEMANAL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-wR-JRt">
-                                <rect key="frame" x="75" y="56" width="319" height="24"/>
+                                <rect key="frame" x="75" y="12" width="225" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.43529411764705883" green="0.37647058823529411" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-W9-uAE">
-                                <rect key="frame" x="20" y="49" width="40" height="40"/>
+                                <rect key="frame" x="20" y="5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7OB-qE-NWT"/>
                                     <constraint firstAttribute="width" secondItem="yuw-W9-uAE" secondAttribute="height" multiplier="1:1" id="OBk-QV-MTt"/>
@@ -38,25 +38,25 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="771" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6GR-hV-8w7">
-                                <rect key="frame" x="20" y="109" width="374" height="743"/>
+                                <rect key="frame" x="20" y="65" width="280" height="493"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Pzw-TD-pEP">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="241"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="157.5"/>
                                         <subviews>
                                             <view contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w8W-Bh-Fkh">
-                                                <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="241"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="157.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Rmq-7U-ZTm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="241"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="157.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Palavras Aprendidas" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aj-64-xxx">
-                                                                <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="119.66666666666667"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="78"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <color key="textColor" red="0.43529411759999997" green="0.37647058820000001" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIP-6w-dnp">
-                                                                <rect key="frame" x="0.0" y="121.66666666666666" width="179.66666666666666" height="119.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="80" width="132.5" height="77.5"/>
                                                                 <fontDescription key="fontDescription" name="BubblegumSans-Regular" family="Bubblegum Sans" pointSize="70"/>
                                                                 <color key="textColor" red="0.5607843137254902" green="0.38039215686274508" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -73,19 +73,19 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAV-aP-F92">
-                                                <rect key="frame" x="194.66666666666663" y="0.0" width="179.33333333333337" height="241"/>
+                                                <rect key="frame" x="147.5" y="0.0" width="132.5" height="157.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="s5O-98-VpC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="179.33333333333334" height="241"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="157.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Média de palavras por dia " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkw-Nw-soa" userLabel="Média de palavras por dia">
-                                                                <rect key="frame" x="0.0" y="0.0" width="179.33333333333334" height="119.66666666666667"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="78"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <color key="textColor" red="0.43529411759999997" green="0.37647058820000001" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1h-Xe-LxJ">
-                                                                <rect key="frame" x="0.0" y="121.66666666666666" width="179.33333333333334" height="119.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="80" width="132.5" height="77.5"/>
                                                                 <fontDescription key="fontDescription" name="BubblegumSans-Regular" family="Bubblegum Sans" pointSize="70"/>
                                                                 <color key="textColor" red="0.56078431370000004" green="0.3803921569" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -112,10 +112,10 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="54O-gc-Qpv">
-                                        <rect key="frame" x="0.0" y="251" width="374" height="241"/>
+                                        <rect key="frame" x="0.0" y="167.5" width="280" height="158"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking de palavras" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6Y-bn-oG2">
-                                                <rect key="frame" x="0.0" y="10" width="374" height="24"/>
+                                                <rect key="frame" x="0.0" y="10" width="280" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" red="0.43529411759999997" green="0.37647058820000001" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -129,7 +129,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-hT-0qd">
-                                        <rect key="frame" x="0.0" y="502" width="374" height="241"/>
+                                        <rect key="frame" x="0.0" y="335.5" width="280" height="157.5"/>
                                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>

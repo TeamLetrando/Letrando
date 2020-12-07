@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import AVFoundation
 
 class SearchResultViewController: UIViewController {
 
@@ -15,20 +16,30 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var outButton: UIButton!
     @IBOutlet weak var animationView: AnimationView!
+    @IBOutlet weak var soundButton: UIButton!
     var wordResult: String = "LABEL"
-
+    var sound = Sounds()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupLayoutOfItems()
         animateDog()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animationView.play()
+        
+        if sound.checkAudio() {
+            soundButton.setImage(UIImage(named: "audio"), for: .normal)
+            self.sound.myAudio().play()
+        } else {
+            soundButton.setImage(UIImage(named: "audioOff"), for: .normal)
+            self.sound.myAudio().pause()
+        }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         animationView.pause()
@@ -75,4 +86,18 @@ class SearchResultViewController: UIViewController {
         viewC.modalPresentationStyle = .fullScreen
         self.present(viewC, animated: true, completion: nil)
     }
+    
+    @IBAction func soundPressed(_ sender: UIButton) {
+        switch sound.checkAudio() {
+        case true:
+            sender.setImage(UIImage(named: "audioOff"), for: .normal)
+            UserDefaults.standard.set(false, forKey: "checkSound")
+            sound.player.pause()
+        default:
+            sender.setImage(UIImage(named: "audio"), for: .normal)
+            UserDefaults.standard.set(true, forKey: "checkSound")
+            sound.player.play()
+        }
+    }
+    
 }

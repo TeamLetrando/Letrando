@@ -7,17 +7,30 @@
 
 import UIKit
 import Lottie
+import AVFoundation
+
 class HomeViewController: UIViewController {
     @IBOutlet weak var initialLabel: UILabel!
     @IBOutlet weak var animationView: AnimationView!
+    var sound = Sounds()
+    @IBOutlet weak var soundButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         animateDog()
         configureInitalLabel()
-        // Do any additional setup after loading the view.
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if sound.checkAudio() {
+            soundButton.setImage(UIImage(named: "audio"), for: .normal)
+            self.sound.myAudio().play()
+        } else {
+            soundButton.setImage(UIImage(named: "audioOff"), for: .normal)
+            self.sound.myAudio().pause()
+        }
+    }
+    
     func animateDog() {
         animationView.contentMode = .scaleAspectFill
         animationView.loopMode = .loop
@@ -58,4 +71,16 @@ class HomeViewController: UIViewController {
         self.present(viewC, animated: true, completion: nil)
     }
     
+    @IBAction func soundPressed(_ sender: UIButton) {
+        switch sound.checkAudio() {
+        case true:
+            sender.setImage(UIImage(named: "audioOff"), for: .normal)
+            UserDefaults.standard.set(false, forKey: "checkSound")
+            sound.player.pause()
+        default:
+            sender.setImage(UIImage(named: "audio"), for: .normal)
+            UserDefaults.standard.set(true, forKey: "checkSound")
+            sound.player.play()
+        }
+    }
 }

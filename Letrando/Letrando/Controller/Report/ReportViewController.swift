@@ -40,6 +40,7 @@ class ReportViewController: UIViewController {
         rankView.layer.cornerRadius = 20.0
         rangeWordsView.layer.cornerRadius = 20.0
         knowWordsView.layer.cornerRadius = 20.0
+
         drawGraphic()
         drawRanking()
         
@@ -118,7 +119,7 @@ class ReportViewController: UIViewController {
     func configureGraphic() -> ChartSettings {
         var settings = ChartSettings()
         settings.top = 15.0
-        settings.bottom = 10.0
+        settings.bottom = 15.0
         settings.leading = 10.0
         settings.trailing = 10.0
         settings.labelsToAxisSpacingX = 5

@@ -27,6 +27,9 @@
                                     <constraint firstAttribute="height" constant="43" id="xod-ho-GBs"/>
                                 </constraints>
                                 <state key="normal" image="audio"/>
+                                <connections>
+                                    <action selector="soundPressed:" destination="lce-a5-X46" eventType="touchUpInside" id="xl7-6D-Dbj"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWW-1D-iHf">
                                 <rect key="frame" x="20" y="214.5" width="339" height="108"/>
@@ -107,6 +110,7 @@ Você achou</string>
                         <outlet property="mensageLabel" destination="HnW-O9-mjs" id="8Xj-G2-7IQ"/>
                         <outlet property="outButton" destination="2Qh-Bp-VQ6" id="hbQ-Rm-bYe"/>
                         <outlet property="searchButton" destination="nx5-a1-QL8" id="rVQ-gL-3gB"/>
+                        <outlet property="soundButton" destination="WdO-bD-SZm" id="QiL-Mp-kvU"/>
                         <outlet property="wordLabel" destination="OWW-1D-iHf" id="j1i-6w-2CU"/>
                     </connections>
                 </viewController>
