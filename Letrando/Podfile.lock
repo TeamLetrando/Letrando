@@ -1,20 +1,16 @@
 PODS:
   - lottie-ios (3.1.8)
-  - SwiftCharts (0.6.5)
 
 DEPENDENCIES:
   - lottie-ios
-  - SwiftCharts
 
 SPEC REPOS:
   trunk:
     - lottie-ios
-    - SwiftCharts
 
 SPEC CHECKSUMS:
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
-  SwiftCharts: 2e755ea292f0b87d3e4b2c1eb5afc080a20cdc15
 
-PODFILE CHECKSUM: 32cde0648889a09aa28c89c080540254e69740b7
+PODFILE CHECKSUM: f26dd7e1d9f83fe23ce43741636dfb4b5e43adb2
 
 COCOAPODS: 1.10.0.rc.1

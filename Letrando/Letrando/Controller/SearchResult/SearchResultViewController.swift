@@ -10,7 +10,7 @@ import Lottie
 import AVFoundation
 
 class SearchResultViewController: UIViewController {
-
+    
     @IBOutlet weak var mensageLabel: UILabel!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
@@ -19,12 +19,21 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var soundButton: UIButton!
     var wordResult: String = "LABEL"
     var sound = Sounds()
+    var music = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLayoutOfItems()
         animateDog()
+        
+        guard let musicBackgroud = AVPlayer(name: "Curious_Kiddo", extension: "mp3") else {return}
+        self.music = musicBackgroud
+        if sound.checkAudio() {
+            music.playLoop()
+        } else {
+            music.endLoop()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,10 +42,8 @@ class SearchResultViewController: UIViewController {
         
         if sound.checkAudio() {
             soundButton.setImage(UIImage(named: "audio"), for: .normal)
-            self.sound.myAudio().play()
         } else {
             soundButton.setImage(UIImage(named: "audioOff"), for: .normal)
-            self.sound.myAudio().pause()
         }
     }
     
@@ -72,6 +79,7 @@ class SearchResultViewController: UIViewController {
     }
 
     @IBAction func searchAgain(_ sender: UIButton) {
+        self.music.endLoop()
         let storyboard = UIStoryboard(name: "Search", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "search")
                 as? SearchViewController else {fatalError()}
@@ -80,6 +88,7 @@ class SearchResultViewController: UIViewController {
     }
 
     @IBAction func exitScrenn(_ sender: UIButton) {
+        self.music.endLoop()
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "home")
                 as? HomeViewController else {fatalError()}
@@ -88,15 +97,15 @@ class SearchResultViewController: UIViewController {
     }
     
     @IBAction func soundPressed(_ sender: UIButton) {
-        switch sound.checkAudio() {
+        switch self.sound.checkAudio() {
         case true:
             sender.setImage(UIImage(named: "audioOff"), for: .normal)
             UserDefaults.standard.set(false, forKey: "checkSound")
-            sound.player.pause()
+            self.music.endLoop()
         default:
             sender.setImage(UIImage(named: "audio"), for: .normal)
             UserDefaults.standard.set(true, forKey: "checkSound")
-            sound.player.play()
+            self.music.playLoop()
         }
     }
     

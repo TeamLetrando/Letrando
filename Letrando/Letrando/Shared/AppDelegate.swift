@@ -16,13 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval: 3.0)
-        print(UserDefaults.standard.bool(forKey: "checkSound"))
         let isFirstLaunch = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? false
         if !isFirstLaunch {
             UserDefaults.standard.set(true, forKey: "FirstLaunch")
             UserDefaults.standard.set(true, forKey: "checkSound")
-            print("First Launch")
-            print(UserDefaults.standard.bool(forKey: "checkSound"))
         }
 
         guard ARWorldTrackingConfiguration.isSupported else {
