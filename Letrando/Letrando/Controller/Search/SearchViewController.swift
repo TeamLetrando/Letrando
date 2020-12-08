@@ -50,6 +50,8 @@ class SearchViewController: UIViewController {
         setupCoachingOverlay()
 
         addMoveGesture()
+        addTapGesture()
+        configureUserDefaults()
 
         guard let musicBackgroud = AVPlayer(name: "Curious_Kiddo", extension: "mp3") else {return}
         self.music = musicBackgroud
