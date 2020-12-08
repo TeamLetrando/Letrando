@@ -8,6 +8,7 @@
 import UIKit
 import ARKit
 import SceneKit
+import AVFoundation
 
 class SearchViewController: UIViewController {
     var letters: [String] = []
@@ -26,7 +27,9 @@ class SearchViewController: UIViewController {
     var initialPosition = SCNVector3(0, 0, 0)
     @IBOutlet weak var buttonHand: UIButton!
     var score = 0
-    
+    var music = AVPlayer()
+    var sound = Sounds()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,9 +50,14 @@ class SearchViewController: UIViewController {
         setupCoachingOverlay()
 
         addMoveGesture()
-        addTapGesture()
-        configureUserDefaults()
-        
+
+        guard let musicBackgroud = AVPlayer(name: "Curious_Kiddo", extension: "mp3") else {return}
+        self.music = musicBackgroud
+        if sound.checkAudio() {
+            music.playLoop()
+        } else {
+            music.endLoop()
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -263,6 +271,8 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func backButton(_ sender: UIButton) {
+        UserDefaults.standard.setValue(false, forKey: "Launch")
+        music.endLoop()
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "home")
                 as? HomeViewController else {fatalError()}
@@ -310,6 +320,7 @@ class SearchViewController: UIViewController {
     }
 
     func transitionForResultScreen(word: String) {
+        music.endLoop()
         let storyboard = UIStoryboard(name: "SearchResult", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "searchResult")
                 as? SearchResultViewController else {fatalError()}
