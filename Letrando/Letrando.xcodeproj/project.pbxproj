@@ -10,6 +10,7 @@
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
 		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
+		0BFD5EAE25810CAE00000B11 /* cao.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0BFD5EAD25810CAE00000B11 /* cao.pdf */; };
 		14C42DB4D3883BD297860320 /* Pods_LetrandoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */; };
 		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
 		778CC4D0257E66780042334F /* ReportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778CC4CF257E66780042334F /* ReportProtocol.swift */; };
@@ -79,6 +80,7 @@
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
 		0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
+		0BFD5EAD25810CAE00000B11 /* cao.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cao.pdf; sourceTree = "<group>"; };
 		1196D6BE461625AF540961D9 /* Pods_Letrando.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letrando.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetrandoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69936A939CC4425A751CA6E4 /* Pods-Letrando-LetrandoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BFD5EAC25810C8B00000B11 /* LocalNotification */ = {
+			isa = PBXGroup;
+			children = (
+				0BFD5EAD25810CAE00000B11 /* cao.pdf */,
+			);
+			path = LocalNotification;
+			sourceTree = "<group>";
+		};
 		372D210B45EC417F109935DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +296,7 @@
 		77951FFF25680A4B00BC7367 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0BFD5EAC25810C8B00000B11 /* LocalNotification */,
 				AFE007F4256E7D1A00C2DA6C /* Extensions */,
 				7795202925680BCF00BC7367 /* Fonts */,
 				7795202325680BC300BC7367 /* Sounds */,
@@ -599,6 +610,7 @@
 				77951FF82568093900BC7367 /* .swiftlint.yml in Resources */,
 				7B2D41EB257970870022AB13 /* caoConfetti1.json in Resources */,
 				7795200725680B0E00BC7367 /* Alert.storyboard in Resources */,
+				0BFD5EAE25810CAE00000B11 /* cao.pdf in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
 				7795201925680B8200BC7367 /* SearchResult.storyboard in Resources */,
 				77951FD12568088100BC7367 /* LaunchScreen.storyboard in Resources */,

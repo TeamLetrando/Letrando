@@ -5,9 +5,13 @@
 	<key>aps-environment</key>
 	<string>development</string>
 	<key>com.apple.developer.icloud-container-identifiers</key>
+<<<<<<< HEAD
 	<array>
 		<string>iCloud.com.lidiane.Letrando</string>
 	</array>
+=======
+	<array/>
+>>>>>>> 1bdb9b27eb061c14e0df4b0e091f7c89a9a8dfe4
 	<key>com.apple.developer.icloud-services</key>
 	<array>
 		<string>CloudKit</string>
