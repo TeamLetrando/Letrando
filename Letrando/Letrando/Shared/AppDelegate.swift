@@ -10,11 +10,18 @@ import CoreData
 import ARKit
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Thread.sleep(forTimeInterval: 3.0)
+        let isFirstLaunch = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? false
+        if !isFirstLaunch {
+            UserDefaults.standard.set(true, forKey: "FirstLaunch")
+            UserDefaults.standard.set(true, forKey: "checkSound")
+        }
+
         guard ARWorldTrackingConfiguration.isSupported else {
             fatalError("""
                 ARKit is not available on this device. For apps that require ARKit
@@ -26,6 +33,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 determine whether to show UI for launching AR experiences.
             """) // For details, see https://developer.apple.com/documentation/arkit
         }
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(granted, _ ) in
+            if granted {
+                print("User gave permissions for local notifications")
+            }
+        }
+        
+        let notification = NotificationsController()
+        notification.schenduleNotification()
+
         return true
     }
 
@@ -39,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        if let viewController = self.window?.rootViewController as? SearchViewController {
 //            viewController.blurView.isHidden = true
 //        }
-//    }
+ //   }
 
     // MARK: UISceneSession Lifecycle
 
@@ -74,6 +92,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
+    //Permite a chamada da variavel de forma mais simples
+    static var persistentContainer: NSPersistentContainer {
+        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    }
+    
+    static var viewContext: NSManagedObjectContext {
+        let viewContext = persistentContainer.viewContext
+        viewContext.automaticallyMergesChangesFromParent = true
+        return viewContext
+    }
 
     // MARK: - Core Data Saving support
 

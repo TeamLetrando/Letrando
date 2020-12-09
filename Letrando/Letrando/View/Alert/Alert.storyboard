@@ -1,8 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <customFonts key="customFonts">
+        <array key="BubblegumSans-Regular.ttf">
+            <string>BubblegumSans-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Alert View Controller-->
+        <scene sceneID="ZSU-e5-Hsb">
+            <objects>
+                <viewController storyboardIdentifier="alert" useStoryboardIdentifierAsRestorationIdentifier="YES" id="isU-cU-xAp" customClass="AlertViewController" customModule="Letrando" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oM2-kT-oF7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="PnX-5s-JDX">
+                                <rect key="frame" x="20" y="94" width="374" height="718"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuAu1" translatesAutoresizingMaskIntoConstraints="NO" id="pzQ-Ml-QDj">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="344"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="mmm-5u-B1U"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="qKp-Wj-JDh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rw-RE-JB8">
+                                        <rect key="frame" x="0.0" y="374" width="374" height="344"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuidado com os objetos ao seu redor." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc6-q7-srx">
+                                                <rect key="frame" x="0.0" y="20" width="374" height="304"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="AWZ-b5-pL9"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="W6l-1V-h5u"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BubblegumSans-Regular" family="Bubblegum Sans" pointSize="45"/>
+                                                <color key="textColor" red="0.43529411759999997" green="0.37647058820000001" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="vc6-q7-srx" firstAttribute="top" secondItem="2Rw-RE-JB8" secondAttribute="top" constant="20" id="3KR-KZ-cno"/>
+                                            <constraint firstAttribute="bottom" secondItem="vc6-q7-srx" secondAttribute="bottom" constant="20" id="6Ld-wo-cqb"/>
+                                            <constraint firstAttribute="trailing" secondItem="vc6-q7-srx" secondAttribute="trailing" id="DfP-3T-am8"/>
+                                            <constraint firstItem="vc6-q7-srx" firstAttribute="leading" secondItem="2Rw-RE-JB8" secondAttribute="leading" id="UVD-bt-Mor"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="XG0-SO-zuo"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="u3b-Hp-Zib"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pzQ-Ml-QDj" secondAttribute="trailing" id="Afr-FP-ieO"/>
+                                    <constraint firstItem="pzQ-Ml-QDj" firstAttribute="top" secondItem="PnX-5s-JDX" secondAttribute="top" id="pPn-ZN-2QJ"/>
+                                    <constraint firstItem="pzQ-Ml-QDj" firstAttribute="leading" secondItem="PnX-5s-JDX" secondAttribute="leading" id="zSs-Vq-sYo"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vSH-L1-dJD"/>
+                        <color key="backgroundColor" red="0.81568627449999997" green="0.89019607840000003" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vSH-L1-dJD" firstAttribute="bottom" secondItem="PnX-5s-JDX" secondAttribute="bottom" constant="50" id="O4L-CA-8W5"/>
+                            <constraint firstItem="PnX-5s-JDX" firstAttribute="leading" secondItem="vSH-L1-dJD" secondAttribute="leading" constant="20" id="dAH-G0-wZ2"/>
+                            <constraint firstItem="PnX-5s-JDX" firstAttribute="top" secondItem="vSH-L1-dJD" secondAttribute="top" constant="50" id="dNG-CI-Jpu"/>
+                            <constraint firstItem="vSH-L1-dJD" firstAttribute="trailing" secondItem="PnX-5s-JDX" secondAttribute="trailing" constant="20" id="niN-5p-Hoy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alertView" destination="oM2-kT-oF7" id="nIu-P3-nIj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6kn-cQ-34E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.724637681159422" y="141.96428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AuAu1" width="170" height="174"/>
+    </resources>
 </document>

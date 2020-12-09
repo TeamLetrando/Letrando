@@ -30,9 +30,9 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
         }
     }
 
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        if let planeAnchor = anchor as? ARPlaneAnchor {
-            plane?.update(planeAnchor)
-        }
-    }
+//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+//        if let planeAnchor = anchor as? ARPlaneAnchor {
+//            plane?.update(planeAnchor)
+//        }
+//    }
 }

@@ -20,10 +20,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpX-Mi-gtd">
-                                <rect key="frame" x="20" y="56" width="30" height="30"/>
+                                <rect key="frame" x="20" y="56" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="KV8-Ef-NaH"/>
+                                    <constraint firstAttribute="height" constant="50" id="w8f-uo-6q6"/>
+                                </constraints>
                                 <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="Suj-PU-mDl" eventType="touchUpInside" id="ypt-E6-9KJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx8-cL-hnz">
+                                <rect key="frame" x="344" y="56" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="mRb-Fx-0hJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="yFA-Ru-BPr"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="handButtonOn"/>
+                                <connections>
+                                    <action selector="showAnimationFeedback:" destination="Suj-PU-mDl" eventType="touchUpInside" id="FEt-JG-pjL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -31,14 +46,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RXD-RT-ZCz" firstAttribute="leading" secondItem="0aP-Bl-ZZM" secondAttribute="leading" id="88Q-dY-FlP"/>
+                            <constraint firstItem="gx8-cL-hnz" firstAttribute="trailing" secondItem="RXD-RT-ZCz" secondAttribute="trailing" constant="-20" id="LJa-lT-6Dn"/>
                             <constraint firstItem="RXD-RT-ZCz" firstAttribute="bottom" secondItem="0aP-Bl-ZZM" secondAttribute="bottom" id="Ljz-5T-COL"/>
                             <constraint firstItem="hpX-Mi-gtd" firstAttribute="leading" secondItem="ygi-ks-sP6" secondAttribute="leading" constant="20" id="QQY-uU-OJW"/>
                             <constraint firstItem="RXD-RT-ZCz" firstAttribute="top" secondItem="0aP-Bl-ZZM" secondAttribute="top" id="TR2-Kk-3nG"/>
                             <constraint firstItem="hpX-Mi-gtd" firstAttribute="top" secondItem="ygi-ks-sP6" secondAttribute="top" constant="12" id="V0O-Q3-yPA"/>
+                            <constraint firstItem="gx8-cL-hnz" firstAttribute="top" secondItem="ygi-ks-sP6" secondAttribute="top" constant="12" id="jCE-lS-kl7"/>
                             <constraint firstItem="RXD-RT-ZCz" firstAttribute="trailing" secondItem="0aP-Bl-ZZM" secondAttribute="trailing" id="x1g-2v-eyf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonHand" destination="gx8-cL-hnz" id="dWm-v1-vhH"/>
                         <outlet property="sceneView" destination="RXD-RT-ZCz" id="F1B-Ya-SLr"/>
                     </connections>
                 </viewController>
@@ -48,7 +66,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="30" height="30"/>
+        <image name="back" width="72" height="72"/>
+        <image name="handButtonOn" width="144" height="144"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
