@@ -60,11 +60,11 @@ public class Report: NSManagedObject,ReportProtocol {
          
          for _ in 0..<3 {
              let word =  wordsDictionary.max { one, two in one.value < two.value}
-             guard let newWord = word else {
+            guard let newWord = word?.key else {
                  return nil
              }
-             listOfMostWords.append((newWord.key)!)
-             wordsDictionary.removeValue(forKey: (newWord.key)!)
+             listOfMostWords.append((newWord))
+             wordsDictionary.removeValue(forKey: (newWord))
          }
          
          return listOfMostWords
@@ -78,7 +78,7 @@ public class Report: NSManagedObject,ReportProtocol {
         }
         allReports.forEach { (report) in
             guard let newReport = report.date else {
-                return
+                return 
             }
             wordsADay[getDayWeek(date: newReport)]! += 1
         }

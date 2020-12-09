@@ -40,6 +40,8 @@
 		7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795207925680D3C00BC7367 /* CloudKit.swift */; };
 		7795207F25680D4D00BC7367 /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795207E25680D4D00BC7367 /* ARModel.swift */; };
 		7795208425680D5800BC7367 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208325680D5800BC7367 /* Notifications.swift */; };
+		77B90175257FA52700DC16F7 /* ReportMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B90174257FA52700DC16F7 /* ReportMock.swift */; };
+		77B9017D257FA5E400DC16F7 /* ReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B9017C257FA5E400DC16F7 /* ReportTests.swift */; };
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
 		7B2D41EB257970870022AB13 /* caoConfetti1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D41EA257970870022AB13 /* caoConfetti1.json */; };
 		97EFDA539F1740823407DE79 /* Pods_Letrando_LetrandoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */; };
@@ -116,6 +118,8 @@
 		7795207925680D3C00BC7367 /* CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
 		7795207E25680D4D00BC7367 /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		7795208325680D5800BC7367 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		77B90174257FA52700DC16F7 /* ReportMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMock.swift; sourceTree = "<group>"; };
+		77B9017C257FA5E400DC16F7 /* ReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTests.swift; sourceTree = "<group>"; };
 		77D621FD256BE14F007D905C /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		7B2D41EA257970870022AB13 /* caoConfetti1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = caoConfetti1.json; sourceTree = "<group>"; };
 		810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.release.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 		77951FDA2568088200BC7367 /* LetrandoTests */ = {
 			isa = PBXGroup;
 			children = (
+				77B90173257FA51400DC16F7 /* Mocks */,
 				77951FDD2568088200BC7367 /* Info.plist */,
 				7768A764256A1077005EA237 /* ARModelTests.swift */,
 				77D621FD256BE14F007D905C /* WordTests.swift */,
@@ -225,6 +230,7 @@
 				AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */,
 				AFC234EC2571AD6E005EC149 /* SceneTests.swift */,
 				AFC234F12571AFD5005EC149 /* PlaneTests.swift */,
+				77B9017C257FA5E400DC16F7 /* ReportTests.swift */,
 			);
 			path = LetrandoTests;
 			sourceTree = "<group>";
@@ -430,6 +436,14 @@
 				AFE007EF256E7B7B00C2DA6C /* Scene.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		77B90173257FA51400DC16F7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				77B90174257FA52700DC16F7 /* ReportMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		89CE08703C5A101EB5E7653E /* Frameworks */ = {
@@ -758,6 +772,8 @@
 			files = (
 				0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */,
 				7768A765256A1077005EA237 /* ARModelTests.swift in Sources */,
+				77B90175257FA52700DC16F7 /* ReportMock.swift in Sources */,
+				77B9017D257FA5E400DC16F7 /* ReportTests.swift in Sources */,
 				AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */,
 				77D621FE256BE14F007D905C /* WordTests.swift in Sources */,
 				AFC234F22571AFD5005EC149 /* PlaneTests.swift in Sources */,
@@ -976,7 +992,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JCC32S9S9V;
+				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = LetrandoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1001,7 +1017,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JCC32S9S9V;
+				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = LetrandoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1023,7 +1039,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JCC32S9S9V;
+				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = LetrandoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1044,7 +1060,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JCC32S9S9V;
+				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = LetrandoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
