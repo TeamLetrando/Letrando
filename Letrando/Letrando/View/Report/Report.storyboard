@@ -114,23 +114,32 @@
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="54O-gc-Qpv">
                                         <rect key="frame" x="0.0" y="251" width="374" height="241"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking de palavras" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6Y-bn-oG2">
-                                                <rect key="frame" x="0.0" y="10" width="374" height="24"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <color key="textColor" red="0.43529411759999997" green="0.37647058820000001" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6B-CP-20g">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="241"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Z6Y-bn-oG2" firstAttribute="top" secondItem="54O-gc-Qpv" secondAttribute="top" constant="10" id="dC4-zt-zVS"/>
-                                            <constraint firstItem="Z6Y-bn-oG2" firstAttribute="leading" secondItem="54O-gc-Qpv" secondAttribute="leading" id="kIO-ig-BJ1"/>
-                                            <constraint firstAttribute="trailing" secondItem="Z6Y-bn-oG2" secondAttribute="trailing" id="znq-2q-EbC"/>
+                                            <constraint firstItem="a6B-CP-20g" firstAttribute="top" secondItem="54O-gc-Qpv" secondAttribute="top" id="2Ko-dW-Vzk"/>
+                                            <constraint firstAttribute="trailing" secondItem="a6B-CP-20g" secondAttribute="trailing" id="Btq-Jt-dwW"/>
+                                            <constraint firstAttribute="bottom" secondItem="a6B-CP-20g" secondAttribute="bottom" id="VfQ-h1-qUj"/>
+                                            <constraint firstItem="a6B-CP-20g" firstAttribute="leading" secondItem="54O-gc-Qpv" secondAttribute="leading" id="pKK-Cm-kaE"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-hT-0qd">
                                         <rect key="frame" x="0.0" y="502" width="374" height="241"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wb2-Ww-bin">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="241"/>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="wb2-Ww-bin" firstAttribute="leading" secondItem="Krg-hT-0qd" secondAttribute="leading" id="PAL-Oz-p9d"/>
+                                            <constraint firstAttribute="bottom" secondItem="wb2-Ww-bin" secondAttribute="bottom" id="fbU-z9-1iE"/>
+                                            <constraint firstAttribute="trailing" secondItem="wb2-Ww-bin" secondAttribute="trailing" id="oGx-C0-kvN"/>
+                                            <constraint firstItem="wb2-Ww-bin" firstAttribute="top" secondItem="Krg-hT-0qd" secondAttribute="top" id="vl1-AR-PAy"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -150,15 +159,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="acessGraphicImageView" destination="wb2-Ww-bin" id="KlQ-yJ-j7C"/>
                         <outlet property="acessGraphicView" destination="Krg-hT-0qd" id="WTK-6T-bcs"/>
                         <outlet property="knowWords" destination="mIP-6w-dnp" id="txx-xv-gpH"/>
+                        <outlet property="knowWordsView" destination="w8W-Bh-Fkh" id="yM3-xe-Nwc"/>
                         <outlet property="rangeWords" destination="L1h-Xe-LxJ" id="667-I8-amP"/>
+                        <outlet property="rangeWordsView" destination="YAV-aP-F92" id="Dhz-Tm-kpW"/>
+                        <outlet property="rankGraphicView" destination="a6B-CP-20g" id="90g-gF-y9Q"/>
                         <outlet property="rankView" destination="54O-gc-Qpv" id="17V-KT-Nhl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDO-ee-zcj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281.15942028985512" y="172.82608695652175"/>
+            <point key="canvasLocation" x="279.375" y="172.18309859154931"/>
         </scene>
     </scenes>
     <resources>

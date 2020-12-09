@@ -7,8 +7,7 @@ target 'Letrando' do
 
   # Pods for Letrando
 	pod 'lottie-ios'
-  pod 'SwiftCharts'
-  
+ 
   target 'LetrandoTests' do
     inherit! :search_paths
     # Pods for testing
