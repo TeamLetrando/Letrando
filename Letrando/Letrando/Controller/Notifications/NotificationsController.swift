@@ -33,10 +33,10 @@ class NotificationsController: UIViewController {
               
         let date = Date().addingTimeInterval(24 * 60 * 60) // -> 24 horas
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
         //Add image
-        guard let path = Bundle.main.path(forResource: "cao", ofType: "pdf") else {return}
+        guard let path = Bundle.main.path(forResource: "cao", ofType: "jpeg") else {return}
         let imageUrl = URL(fileURLWithPath: path)
         
         do {
