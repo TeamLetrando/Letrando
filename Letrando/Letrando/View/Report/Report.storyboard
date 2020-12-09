@@ -15,7 +15,7 @@
         <!--Report View Controller-->
         <scene sceneID="caD-22-j1P">
             <objects>
-                <viewController storyboardIdentifier="report" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JgM-24-dEu" customClass="ReportViewController" customModule="Letrando" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="report" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JgM-24-dEu" customClass="ReportViewController" customModule="Letrando" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X5I-1k-Yjg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
