@@ -35,6 +35,7 @@ class SearchResultViewController: UIViewController {
         } else {
             music.endLoop()
         }
+        Report.createReport(word: wordLabel.text!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
