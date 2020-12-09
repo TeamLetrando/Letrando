@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        _ = Report.readReports()
         animateDog()
         configureInitalLabel()
         guard let musicBackgroud = AVPlayer(name: "Curious_Kiddo", extension: "mp3") else {return}
@@ -81,7 +82,7 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Report", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "report")
                 as? ReportViewController else {fatalError()}
-        viewC.modalPresentationStyle = .popover
+        viewC.modalPresentationStyle = .fullScreen
         self.present(viewC, animated: true, completion: nil)
     }
     
