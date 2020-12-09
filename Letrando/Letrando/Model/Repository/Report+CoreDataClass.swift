@@ -71,8 +71,8 @@ public class Report: NSManagedObject,ReportProtocol {
      }
     
     // Testar
-    static func getWordsADay(reports: [ReportProtocol]? = readReports()) -> [Int: Int]? {
-        var wordsADay = [1: 0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0]
+    static func getWordsADay(reports: [ReportProtocol]? = readReports()) -> [Int]? {
+        var wordsADay = [0, 0, 0, 0, 0, 0, 0]
         guard let allReports = reports else {
             return nil
         }
@@ -80,7 +80,7 @@ public class Report: NSManagedObject,ReportProtocol {
             guard let newReport = report.date else {
                 return 
             }
-            wordsADay[getDayWeek(date: newReport)]! += 1
+            wordsADay[getDayWeek(date: newReport) - 1] += 1
         }
         return wordsADay
     }

@@ -19,10 +19,15 @@ class ReportViewController: UIViewController {
     
     @IBOutlet weak var acessGraphicImageView: UIImageView!
     @IBOutlet weak var rankGraphicView: UIImageView!
-    var bar: [CGFloat] = [0.2, 0.3, 0.6, 0.7, 0.15, 1, 0.9]
+    var bar: [CGFloat] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    var ranking: [String]? = ["","",""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        rangeWords.text = "\(Report.mediaOfWordsInWeek() ?? 0)"
+        knowWords.text = "\(Report.numberOfLearnedWords() ?? 0)"
+        getBar()
+        getRank()
         acessGraphicView.layer.cornerRadius = 20.0
         rankView.layer.cornerRadius = 20.0
         rangeWordsView.layer.cornerRadius = 20.0
@@ -30,6 +35,10 @@ class ReportViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        rangeWords.text = "\(Report.mediaOfWordsInWeek() ?? 0)"
+        knowWords.text = "\(Report.numberOfLearnedWords() ?? 0)"
+        getBar()
+        getRank()
         drawGraphic()
         drawRanking()
     }
@@ -69,11 +78,11 @@ class ReportViewController: UIViewController {
                 let attsWords = [ NSAttributedString.Key.font: fontWords, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
                 let attsTitle = [ NSAttributedString.Key.font: fontTitle, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
                 ("1" as NSString).draw(at:CGPoint(x: xRect1 + (cellLength / 2.15), y: 0.60 * viewHeight), withAttributes: atts)
-                ("Bola" as NSString).draw(at:CGPoint(x: xRect1 + 10, y: viewHeight * 0.12), withAttributes: attsWords)
+                ((ranking?[0] ?? "") as NSString).draw(at:CGPoint(x: xRect1 + 5, y: viewHeight * 0.12), withAttributes: attsWords)
                 ("2" as NSString).draw(at:CGPoint(x: xRect2 + (cellLength / 2.15), y: 0.675 * viewHeight), withAttributes: atts)
-                ("Amor" as NSString).draw(at:CGPoint(x: xRect2 + 10, y: viewHeight * 0.27), withAttributes: attsWords)
+                ((ranking?[1] ?? "") as NSString).draw(at:CGPoint(x: xRect2 + 5, y: viewHeight * 0.27), withAttributes: attsWords)
                 ("3" as NSString).draw(at:CGPoint(x: xRect3 + (cellLength / 2.15), y: 0.75 * viewHeight), withAttributes: atts)
-                ("Escola" as NSString).draw(at:CGPoint(x: xRect3 + 10, y: viewHeight * 0.52), withAttributes: attsWords)
+                ((ranking?[2] ?? "") as NSString).draw(at:CGPoint(x: xRect3 + 5, y: viewHeight * 0.52), withAttributes: attsWords)
                 ("Ranking de Palavras" as NSString).draw(at:CGPoint(x: (viewWidth/5), y: 0.0), withAttributes: attsTitle)
             }
             rankGraphicView.image = img
@@ -133,13 +142,13 @@ class ReportViewController: UIViewController {
                 let attsWords = [ NSAttributedString.Key.font: fontWords, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
                 let attsTitle = [ NSAttributedString.Key.font: fontTitle, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
                 ("Percentual de Palavras por dia" as NSString).draw(at:CGPoint(x: (viewWidth/8), y: 0.0), withAttributes: attsTitle)
-                ("Seg" as NSString).draw(at:CGPoint(x: xRect1 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
-                ("Ter" as NSString).draw(at:CGPoint(x: xRect2 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
-                ("Qua" as NSString).draw(at:CGPoint(x: xRect3 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
-                ("Qui" as NSString).draw(at:CGPoint(x: xRect4 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
-                ("Sex" as NSString).draw(at:CGPoint(x: xRect5 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
-                ("Sab" as NSString).draw(at:CGPoint(x: xRect6 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
-                ("Dom" as NSString).draw(at:CGPoint(x: xRect7 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
+                ("Dom" as NSString).draw(at:CGPoint(x: xRect1 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
+                ("Seg" as NSString).draw(at:CGPoint(x: xRect2 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
+                ("Ter" as NSString).draw(at:CGPoint(x: xRect3 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
+                ("Qua" as NSString).draw(at:CGPoint(x: xRect4 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
+                ("Qui" as NSString).draw(at:CGPoint(x: xRect5 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
+                ("Sex" as NSString).draw(at:CGPoint(x: xRect6 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
+                ("Sab" as NSString).draw(at:CGPoint(x: xRect7 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
 
                 ("100%" as NSString).draw(at:CGPoint(x: xRect1 - (cellLength * 1.2), y: 30), withAttributes: attsWords)
                 ("80%" as NSString).draw(at:CGPoint(x: xRect1 - (cellLength * 1.2), y: viewHeight * 0.2 + 30), withAttributes: attsWords)
@@ -151,28 +160,25 @@ class ReportViewController: UIViewController {
             acessGraphicImageView.image = img
     }
     
-    func getRank() {
-        guard let report = Report.getMostSearchWords() else {
-            rank = [("",0.0)]
+    func getBar() {
+        guard let workADay = Report.getWordsADay(), let learnedWords = Report.numberOfLearnedWords() else {
+            bar = []
             return
         }
         
-        let size = [40.0, 30.0, 10.0]
-        for index in 0...2 {
-            rank?.append((report[index], size[index]))
+        for index in 0...6 {
+            bar.insert(((CGFloat(workADay[index])) / CGFloat(learnedWords)), at: index)
         }
     }
     
-    func getBar() {
-        guard let workADay = Report.getWordsADay(), let learnedWords = Report.numberOfLearnedWords() else {
-            bar = [("", 0.0)]
+    func getRank() {
+        guard let report = Report.getMostSearchWords() else {
+            ranking = nil
             return
         }
-        
-        let weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"]
-        
-        for index in 1...7 {
-            bar?.append((weekDays[index - 1], Double(((workADay[index] ?? 0) * 100) / learnedWords)))
+
+        for index in 0...2 {
+            ranking?.insert(report[index], at: index)
         }
     }
 }
