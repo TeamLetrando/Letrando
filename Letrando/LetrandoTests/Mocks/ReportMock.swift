@@ -11,9 +11,9 @@ import CoreData
 
 class ReportMock: ReportProtocol {
     var word: String?
-    
+
     var date: Date?
-    
+
     init(word: String?, date: Date?) {
         self.word = word
         self.date = date
