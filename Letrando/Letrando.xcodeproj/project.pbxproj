@@ -10,7 +10,6 @@
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
 		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
-		0BFD5EAE25810CAE00000B11 /* cao.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0BFD5EAD25810CAE00000B11 /* cao.pdf */; };
 		14C42DB4D3883BD297860320 /* Pods_LetrandoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */; };
 		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
 		778CC4D0257E66780042334F /* ReportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778CC4CF257E66780042334F /* ReportProtocol.swift */; };
@@ -41,6 +40,7 @@
 		7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795207925680D3C00BC7367 /* CloudKit.swift */; };
 		7795207F25680D4D00BC7367 /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795207E25680D4D00BC7367 /* ARModel.swift */; };
 		7795208425680D5800BC7367 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795208325680D5800BC7367 /* Notifications.swift */; };
+		77999C1B25811291006B0B26 /* cao.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 77999C1A25811291006B0B26 /* cao.jpeg */; };
 		77B90175257FA52700DC16F7 /* ReportMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B90174257FA52700DC16F7 /* ReportMock.swift */; };
 		77B9017D257FA5E400DC16F7 /* ReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B9017C257FA5E400DC16F7 /* ReportTests.swift */; };
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
@@ -80,7 +80,6 @@
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
 		0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
-		0BFD5EAD25810CAE00000B11 /* cao.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cao.pdf; sourceTree = "<group>"; };
 		1196D6BE461625AF540961D9 /* Pods_Letrando.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letrando.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetrandoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69936A939CC4425A751CA6E4 /* Pods-Letrando-LetrandoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,11 +120,13 @@
 		7795207925680D3C00BC7367 /* CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
 		7795207E25680D4D00BC7367 /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		7795208325680D5800BC7367 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		77999C1A25811291006B0B26 /* cao.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cao.jpeg; sourceTree = "<group>"; };
 		77B90174257FA52700DC16F7 /* ReportMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMock.swift; sourceTree = "<group>"; };
 		77B9017C257FA5E400DC16F7 /* ReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTests.swift; sourceTree = "<group>"; };
 		77D621FD256BE14F007D905C /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
 		7B2D41EA257970870022AB13 /* caoConfetti1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = caoConfetti1.json; sourceTree = "<group>"; };
 		7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Curious_Kiddo.mp3; sourceTree = "<group>"; };
+		7BA489ED2582C92600328DF0 /* LetrandoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LetrandoRelease.entitlements; sourceTree = "<group>"; };
 		810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.release.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9429CFF4C488ED851F5D28CC /* Pods-Letrando.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.release.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.release.xcconfig"; sourceTree = "<group>"; };
 		97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetrandoTests.release.xcconfig"; path = "Target Support Files/Pods-LetrandoTests/Pods-LetrandoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,7 +175,7 @@
 		0BFD5EAC25810C8B00000B11 /* LocalNotification */ = {
 			isa = PBXGroup;
 			children = (
-				0BFD5EAD25810CAE00000B11 /* cao.pdf */,
+				77999C1A25811291006B0B26 /* cao.jpeg */,
 			);
 			path = LocalNotification;
 			sourceTree = "<group>";
@@ -217,6 +218,7 @@
 		77951FC02568088100BC7367 /* Letrando */ = {
 			isa = PBXGroup;
 			children = (
+				7BA489ED2582C92600328DF0 /* LetrandoRelease.entitlements */,
 				778CFB1C257D80DA003A825E /* Letrando.entitlements */,
 				77951FFD25680A3800BC7367 /* View */,
 				77951FFE25680A3D00BC7367 /* Controller */,
@@ -609,8 +611,8 @@
 				0B07357D256BE97E0002AC05 /* words.json in Resources */,
 				77951FF82568093900BC7367 /* .swiftlint.yml in Resources */,
 				7B2D41EB257970870022AB13 /* caoConfetti1.json in Resources */,
+				77999C1B25811291006B0B26 /* cao.jpeg in Resources */,
 				7795200725680B0E00BC7367 /* Alert.storyboard in Resources */,
-				0BFD5EAE25810CAE00000B11 /* cao.pdf in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
 				7795201925680B8200BC7367 /* SearchResult.storyboard in Resources */,
 				77951FD12568088100BC7367 /* LaunchScreen.storyboard in Resources */,
@@ -899,7 +901,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -954,7 +956,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -972,7 +974,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -992,9 +995,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Letrando/LetrandoRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 69Y77S7YQP;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

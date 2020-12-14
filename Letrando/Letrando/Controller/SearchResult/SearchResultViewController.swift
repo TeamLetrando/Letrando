@@ -19,22 +19,13 @@ class SearchResultViewController: UIViewController {
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var soundButton: UIButton!
     var wordResult: String = "LABEL"
-    var sound = Sounds()
-    var music = AVPlayer()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLayoutOfItems()
         animateDog()
         
-        guard let musicBackgroud = AVPlayer(name: "Curious_Kiddo", extension: "mp3") else {return}
-        self.music = musicBackgroud
-        if sound.checkAudio() {
-            music.playLoop()
-        } else {
-            music.endLoop()
-        }
         Report.createReport(word: wordLabel.text!)
     }
     
@@ -43,7 +34,7 @@ class SearchResultViewController: UIViewController {
         animationView.play()
         reproduceSound(string: wordResult)
         
-        if sound.checkAudio() {
+        if Sounds.checkAudio() {
             soundButton.setImage(UIImage(named: "audio"), for: .normal)
         } else {
             soundButton.setImage(UIImage(named: "audioOff"), for: .normal)
@@ -90,7 +81,6 @@ class SearchResultViewController: UIViewController {
     }
 
     @IBAction func searchAgain(_ sender: UIButton) {
-        self.music.endLoop()
         let storyboard = UIStoryboard(name: "Search", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "search")
                 as? SearchViewController else {fatalError()}
@@ -99,7 +89,6 @@ class SearchResultViewController: UIViewController {
     }
 
     @IBAction func exitScrenn(_ sender: UIButton) {
-        self.music.endLoop()
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "home")
                 as? HomeViewController else {fatalError()}
@@ -108,15 +97,15 @@ class SearchResultViewController: UIViewController {
     }
     
     @IBAction func soundPressed(_ sender: UIButton) {
-        switch self.sound.checkAudio() {
+        switch Sounds.checkAudio() {
         case true:
             sender.setImage(UIImage(named: "audioOff"), for: .normal)
             UserDefaults.standard.set(false, forKey: "checkSound")
-            self.music.endLoop()
+            Sounds.audioFinish()
         default:
             sender.setImage(UIImage(named: "audio"), for: .normal)
             UserDefaults.standard.set(true, forKey: "checkSound")
-            self.music.playLoop()
+            Sounds.playAudio()
         }
     }
     
