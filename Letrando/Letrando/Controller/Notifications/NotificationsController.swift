@@ -14,6 +14,9 @@ enum Message: String, CaseIterable {
     case text3 = "Tô ansioso para aprendermos juntos uma palavra nova!"
     case text4 = "Quem disse que aprender não pode ser  divertido?"
     case text5 = "Hey, estou com saudades de você. Vamos brincar?"
+    case text6 = "Olá amigo, estou te esperando para brincar."
+    case text7 = "Ai fico tão feliz quando você brica comigo! Vamos?"
+    case text8 = "Está pronto para letrar comigo?"
 }
 
 class NotificationsController: UIViewController {
@@ -27,7 +30,7 @@ class NotificationsController: UIViewController {
         let center = UNUserNotificationCenter.current()
               
         let content = UNMutableNotificationContent()
-        content.title = "Viagem espacial"
+        content.title = "Aprender brincando"
         content.body = Message.allCases.randomElement()!.rawValue
         content.sound = .default
               
