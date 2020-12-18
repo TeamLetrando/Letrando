@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import ARKit
+import AVFoundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval: 3.0)
         let isFirstLaunch = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? false
+        UserDefaults.standard.set(true, forKey: "Launch")
         if !isFirstLaunch {
             UserDefaults.standard.set(true, forKey: "FirstLaunch")
             UserDefaults.standard.set(true, forKey: "checkSound")
@@ -43,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let notification = NotificationsController()
         notification.schenduleNotification()
-
+        
         return true
     }
 
