@@ -120,7 +120,7 @@ class SearchViewController: UIViewController {
 
     func addTapGesture() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
-        self.view.addGestureRecognizer(tapRecognizer)
+        self.sceneView.addGestureRecognizer(tapRecognizer)
     }
     
     @objc func didTapScreen(gesture: UITapGestureRecognizer) {
