@@ -11,28 +11,21 @@ import ARKit
 @available(iOS 13.0, *)
 extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
     func renderer (_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if !planeAdded {
-            if let planeAnchor = anchor as? ARPlaneAnchor {
-                plane = Plane(planeAnchor)
-                node.addChildNode(plane!)
-                self.planeAdded = true
-                DispatchQueue.main.async {
-                    self.stack.isHidden = false
-                }
-            }
-        }
-
-        DispatchQueue.main.async {
-            if !self.lettersAdded {
-                self.lettersAdded = true
-                self.addWord(letters: self.letters)
-            }
-        }
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        let plane = Plane(planeAnchor)
+        self.planes.append(plane)
+        node.addChildNode(plane)
     }
 
-//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-//        if let planeAnchor = anchor as? ARPlaneAnchor {
-//            plane?.update(planeAnchor)
-//        }
-//    }
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        guard let plane  = self.planes.filter({ plane -> Bool in
+            return plane.planeAnchor.identifier == anchor.identifier}).first else { return }
+        addWord(letters: letters, plane: plane)
+        if lettersAdded {
+            self.stack.isHidden = false
+        }
+        plane.update(planeAnchor)
+        
+    }
 }

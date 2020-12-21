@@ -12,29 +12,25 @@ import AVFoundation
 
 class SearchViewController: UIViewController {
     var letters: [String] = []
-    var points: [CGPoint] = []
     var imageViewLetters: [UIImageView] = []
     var word: Word?
     @IBOutlet weak var sceneView: ARSCNView!
     var stack: UIStackView!
     var sceneController = Scene()
     var lettersAdded: Bool = false
-    var planeAdded: Bool = false
-    var plane: Plane?
+    var planes = [Plane]()
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
     @IBOutlet weak var buttonHand: UIButton!
     var score = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         sceneView.delegate = self
         if let scene = sceneController.scene {
             sceneView.scene = scene
-            //sceneView.showsStatistics = true
         }
 
         word = JsonData().randomWord()
@@ -124,14 +120,15 @@ class SearchViewController: UIViewController {
     }
     
     @objc func didTapScreen(gesture: UITapGestureRecognizer) {
-            let tapLocation = gesture.location(in: sceneView)
-            let hitTestResults = sceneView.hitTest(tapLocation)
-            if let node = hitTestResults.first?.node, let name = node.name {
-                reproduceSound(string: name.lowercased())
-                animateFeedBack(initialPosition: tapLocation,
-                                        letter: name)
-                
-            }
+        let tapLocation = gesture.location(in: sceneView)
+        let hitTestResult = sceneView.hitTest(tapLocation)
+        
+        if let hitResult = hitTestResult.first, let name = hitResult.node.name {
+            reproduceSound(string: name.lowercased())
+            animateFeedBack(initialPosition: tapLocation,
+                            letter: name)
+            
+        }
     }
     
     func addMoveGesture() {
@@ -185,8 +182,6 @@ class SearchViewController: UIViewController {
                         animateView(image)
                         checkAnswer(actualNode, image)
                     } else {
-//                        let notification = UINotificationFeedbackGenerator()
-//                        notification.notificationOccurred(.error)
                         let action = SCNAction.move(to: initialPosition, duration: 0.5)
                         action.timingMode = .easeInEaseOut
                         actualNode.runAction(action)
@@ -232,33 +227,50 @@ class SearchViewController: UIViewController {
         sceneView.session.run(configuration)
     }
 
-    func addWord(letters: [String]) {
-        if planeAdded {
-            letters.forEach { (letter) in
-                var pointInPlane = false
-                while !pointInPlane {
-                    let tapLocation: CGPoint = .generateRandomPoint()
-                    let hitTestResults = sceneView.hitTest(tapLocation)
-
-                    if let node = hitTestResults.first?.node,
-                       let plane = node.parent as? Plane,
-                       tapLocation.isPointValid(array: points) {
-                        pointInPlane = true
-                        points.append(tapLocation)
-                        if let planeParent = plane.parent, let hitResult = hitTestResults.first {
-                            let textPos = SCNVector3Make(
-                                hitResult.worldCoordinates.x,
-                                hitResult.worldCoordinates.y,
-                                hitResult.worldCoordinates.z
-                            )
-                            sceneController.addLetterToScene(letter: letter, parent: planeParent, position: textPos)
-                            self.feedbackGenerator.impactOccurred()
-                        }
-                    } else {
-                        continue
-                    }
+    func addWord(letters: [String], plane: Plane) {
+        
+        var lettersNode = [SCNNode]()
+        letters.forEach { (letter) in
+            let node = ARModel.createTextNode(string: String(letter))
+            lettersNode.append(node)
+        }
+        
+        if plane.planeGeometry.width >= 1 {
+            
+            generatePositionX(width: Float(plane.planeGeometry.width), nodes: lettersNode)
+            generatePositionZ(heigth: Float(plane.planeGeometry.height), nodes: lettersNode)
+            generatePositionY(plane: plane, nodes: lettersNode)
+        
+            if !lettersAdded {
+                lettersAdded = true
+                lettersNode.forEach { node in
+                    plane.addChildNode(node)
                 }
             }
+        }
+      
+    }
+    
+    func generatePositionX(width: Float, nodes: [SCNNode]) {
+        let inter = 2 * (width / Float(nodes.count + 2))
+        var value = -width
+        nodes.forEach { node in
+            value += inter
+            node.position.x = value
+        }
+    }
+    
+    func generatePositionY(plane: SCNNode, nodes: [SCNNode]) {
+        nodes.forEach { node in
+            node.position.y = plane.position.y
+        }
+    }
+    
+    func generatePositionZ(heigth: Float, nodes: [SCNNode]) {
+        let inter = heigth / Float(nodes.count)
+        let value = heigth - inter
+        nodes.forEach { node in
+            node.position.z = Float.random(in: -value...value)
         }
     }
 

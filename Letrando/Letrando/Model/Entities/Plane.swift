@@ -23,12 +23,12 @@ class Plane: SCNNode {
 
         self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.transparentLightBlue
+        material.diffuse.contents = UIColor.red
         self.planeGeometry.materials = [material]
 
         self.planeGeometry.firstMaterial?.transparency = 0.5
         self.planeNode = SCNNode(geometry: planeGeometry)
-        self.planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1, 0, 0)
+        self.planeNode.transform = SCNMatrix4MakeRotation(Float(-Double.pi / 2), 1.0, 0.0, 0.0)
         self.planeNode.castsShadow = false
 
         self.shadowPlaneGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
@@ -49,7 +49,7 @@ class Plane: SCNNode {
         self.addChildNode(planeNode)
         self.addChildNode(shadowNode)
 
-        self.position = SCNVector3(anchor.center.x, -0.002, anchor.center.z) // 2 mm below the origin of plane.
+        self.position = SCNVector3(anchor.center.x, 0, anchor.center.z)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -65,7 +65,7 @@ class Plane: SCNNode {
         self.shadowPlaneGeometry.width = CGFloat(anchor.extent.x)
         self.shadowPlaneGeometry.height = CGFloat(anchor.extent.z)
 
-        self.position = SCNVector3Make(anchor.center.x, -0.002, anchor.center.z)
+        self.position = SCNVector3Make(anchor.center.x, 0, anchor.center.z)
     }
 
     func setPlaneVisibility(_ visible: Bool) {
