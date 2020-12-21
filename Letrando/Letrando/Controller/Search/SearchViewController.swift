@@ -3,7 +3,7 @@
 //  Letrando
 //
 //  Created by Ronaldo Gomes on 20/11/20.
-//
+//swiftlint:disable multiple_closures_with_trailing_closure
 
 import UIKit
 import ARKit
@@ -118,82 +118,10 @@ class SearchViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
         self.sceneView.addGestureRecognizer(tapRecognizer)
     }
-    
-    @objc func didTapScreen(gesture: UITapGestureRecognizer) {
-        let tapLocation = gesture.location(in: sceneView)
-        let hitTestResult = sceneView.hitTest(tapLocation)
-        
-        if let hitResult = hitTestResult.first, let name = hitResult.node.name {
-            reproduceSound(string: name.lowercased())
-            animateFeedBack(initialPosition: tapLocation,
-                            letter: name)
-            
-        }
-    }
-    
+
     func addMoveGesture() {
         let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(moveLetterGesture(_:)))
         sceneView.addGestureRecognizer(tapGesture)
-    }
-
-    @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
-        let tapLocation = gesture.location(in: self.sceneView)
-        guard let nodeResult = sceneView.raycastQuery(from: tapLocation,
-                                                         allowing: .estimatedPlane,
-                                                         alignment: .horizontal) else {return}
-        let hitNode = sceneView.hitTest(tapLocation)
-
-        switch gesture.state {
-
-        case .began:
-            initialPosition = SCNVector3(nodeResult.direction.x, nodeResult.direction.y, nodeResult.direction.z)
-            sceneController.textNode.forEach { (node) in
-                if node == hitNode.first?.node {
-                    node.position = SCNVector3Make(nodeResult.direction.x,
-                                                   nodeResult.direction.y,
-                                                   nodeResult.direction.z)
-                    actualNode = node
-                    sceneView.scene.rootNode.addChildNode(actualNode)
-                    if let name = node.name {
-                        animateFeedBack(initialPosition: tapLocation,
-                                            letter: name)
-                        reproduceSound(string: name.lowercased())
-                        
-                    }
-                }
-            }
-
-        case .changed:
-            let newNodeResult = sceneView.session.raycast(nodeResult).last
-            if !hitNode.isEmpty {
-                guard let newHitResult = newNodeResult else {return}
-                actualNode.position = SCNVector3Make(newHitResult.worldTransform.columns.3.x,
-                                                     newHitResult.worldTransform.columns.3.y,
-                                                     newHitResult.worldTransform.columns.3.z)
-            }
-            actualNode.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
-
-        case .ended:
-            stack.subviews.forEach { (view) in
-                if let image = view as? UIImageView {
-                    let convertPosition = stack.convert(image.layer.position, to: sceneView)
-                    let distance = tapLocation.distance(to: convertPosition)
-                    if distance <= 50 {
-                        animateView(image)
-                        checkAnswer(actualNode, image)
-                    } else {
-                        let action = SCNAction.move(to: initialPosition, duration: 0.5)
-                        action.timingMode = .easeInEaseOut
-                        actualNode.runAction(action)
-                    }
-                }
-            }
-
-            actualNode.scale = SCNVector3(Float(0.07), Float(0.07), Float(0.07))
-
-        default:
-            break
-        }
     }
 
     func checkAnswer(_ object: SCNNode, _ image: UIImageView) {
