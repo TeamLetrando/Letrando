@@ -15,6 +15,7 @@ enum BodyType: Int {
     case  plane = 2
 }
 class SearchViewController: UIViewController {
+    @IBOutlet weak var messageLabel: UILabel!
     var letters: [String] = []
     var imageViewLetters: [UIImageView] = []
     var word: Word?
@@ -43,10 +44,10 @@ class SearchViewController: UIViewController {
         makeImage(letters: letters)
 
         stack.isHidden = true
-
+        messageLabel.isHidden = true
         feedbackGenerator.prepare()
         setupCoachingOverlay()
-
+        setupMessageLabel()
         addMoveGesture()
         addTapGesture()
         configureUserDefaults()
@@ -69,6 +70,12 @@ class SearchViewController: UIViewController {
         }
     }
     
+    func setupMessageLabel() {
+        messageLabel.text = "Procure um local mais espaçoso"
+        messageLabel.textColor = .whiteViews
+        messageLabel.font = UIFont(name: "BubblegumSans-Regular", size: 40)
+        messageLabel.backgroundColor = .purpleLetters
+    }
     @IBAction func showAnimationFeedback(_ sender: Any) {
         if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool {
             UserDefaults.standard.setValue(!isAnimationEnable, forKey: "showAnimationFeedback")

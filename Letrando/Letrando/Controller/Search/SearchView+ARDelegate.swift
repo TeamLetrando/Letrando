@@ -13,8 +13,10 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
     func renderer (_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         let plane = Plane(planeAnchor)
-        self.planes.append(plane)
-        node.addChildNode(plane)
+        if !lettersAdded {
+            self.planes.append(plane)
+            node.addChildNode(plane)
+        }
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
@@ -24,8 +26,11 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
         addWord(letters: letters, plane: plane)
         if lettersAdded {
             self.stack.isHidden = false
+            self.messageLabel.isHidden = true
         } else {
-            plane.update(planeAnchor)
+            messageLabel.isHidden = false
+          
         }
+        plane.update(planeAnchor)
     }
 }
