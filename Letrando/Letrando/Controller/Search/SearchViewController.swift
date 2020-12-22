@@ -10,6 +10,10 @@ import ARKit
 import SceneKit
 import AVFoundation
 
+enum BodyType: Int {
+    case letter = 1
+    case  plane = 2
+}
 class SearchViewController: UIViewController {
     var letters: [String] = []
     var imageViewLetters: [UIImageView] = []
@@ -160,6 +164,9 @@ class SearchViewController: UIViewController {
         var lettersNode = [SCNNode]()
         letters.forEach { (letter) in
             let node = ARModel.createTextNode(string: String(letter))
+            node.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+            node.physicsBody?.categoryBitMask = BodyType.letter.rawValue
+            
             lettersNode.append(node)
             sceneController.addLetterToScene(letterNode: node)
         }

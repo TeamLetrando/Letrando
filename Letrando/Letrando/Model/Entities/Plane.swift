@@ -23,13 +23,17 @@ class Plane: SCNNode {
 
         self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.red
+        material.diffuse.contents = UIColor.transparentLightBlue
         self.planeGeometry.materials = [material]
-
         self.planeGeometry.firstMaterial?.transparency = 0.5
+        
         self.planeNode = SCNNode(geometry: planeGeometry)
         self.planeNode.transform = SCNMatrix4MakeRotation(Float(-Double.pi / 2), 1.0, 0.0, 0.0)
         self.planeNode.castsShadow = false
+        self.planeNode.physicsBody = SCNPhysicsBody(type: .static,
+                                                    shape: SCNPhysicsShape(geometry: self.planeGeometry,
+                                                                           options: nil))
+        self.planeNode.physicsBody?.categoryBitMask = BodyType.plane.rawValue
 
         self.shadowPlaneGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         let shadowMaterial = SCNMaterial()
@@ -66,6 +70,12 @@ class Plane: SCNNode {
         self.shadowPlaneGeometry.height = CGFloat(anchor.extent.z)
 
         self.position = SCNVector3Make(anchor.center.x, 0, anchor.center.z)
+        
+        let planeNode = self.childNodes.first!
+        planeNode.physicsBody = SCNPhysicsBody(type: .static,
+                                               shape: SCNPhysicsShape(geometry: planeGeometry,
+                                                                      options: nil))
+            planeNode.physicsBody?.categoryBitMask = BodyType.plane.rawValue
     }
 
     func setPlaneVisibility(_ visible: Bool) {

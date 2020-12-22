@@ -24,8 +24,8 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
         addWord(letters: letters, plane: plane)
         if lettersAdded {
             self.stack.isHidden = false
+        } else {
+            plane.update(planeAnchor)
         }
-        plane.update(planeAnchor)
-        
     }
 }
