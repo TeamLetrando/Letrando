@@ -3,7 +3,7 @@
 //  Letrando
 //
 //  Created by Ronaldo Gomes on 20/11/20.
-//swiftlint:disable multiple_closures_with_trailing_closure
+//swiftlint:disable all
 
 import UIKit
 import ARKit
