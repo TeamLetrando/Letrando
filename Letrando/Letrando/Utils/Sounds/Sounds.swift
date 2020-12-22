@@ -40,4 +40,3 @@ class Sounds {
             Sounds.audioPlayer?.stop()
            }
 }
-

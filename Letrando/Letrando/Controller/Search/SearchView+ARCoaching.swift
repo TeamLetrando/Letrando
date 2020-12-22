@@ -10,24 +10,8 @@ import SceneKit
 import ARKit
 @available(iOS 13.0, *)
 extension SearchViewController: ARCoachingOverlayViewDelegate {
-
-//    /// - Tag: HideUI
-//    func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
-//        upperControlsView.isHidden = true
-//    }
-//
-//    /// - Tag: PresentUI
-//    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
-//        upperControlsView.isHidden = false
-//    }
-//
-//    /// - Tag: StartOver
-//    func coachingOverlayViewDidRequestSessionReset(_ coachingOverlayView: ARCoachingOverlayView) {
-//        restartExperience()
-//    }
-
+    
     func setupCoachingOverlay() {
-        // Set up coaching view
         coachingOverlay.session = sceneView.session
         coachingOverlay.delegate = self
 
@@ -42,9 +26,6 @@ extension SearchViewController: ARCoachingOverlayViewDelegate {
             ])
 
         setActivatesAutomatically()
-
-        // Most of the virtual objects in this sample require a horizontal surface,
-        // therefore coach the user to find a horizontal plane.
         setGoal()
     }
 

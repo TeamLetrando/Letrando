@@ -48,6 +48,7 @@
 		7B4C2DEA257E654E00B3D4CE /* Curious_Kiddo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */; };
 		97EFDA539F1740823407DE79 /* Pods_Letrando_LetrandoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */; };
 		AF78AB862576714F00D2F85E /* caoAnima.json in Resources */ = {isa = PBXBuildFile; fileRef = AF78AB852576714F00D2F85E /* caoAnima.json */; };
+		AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */; };
 		AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */; };
 		AFC234ED2571AD6E005EC149 /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234EC2571AD6E005EC149 /* SceneTests.swift */; };
 		AFC234F22571AFD5005EC149 /* PlaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234F12571AFD5005EC149 /* PlaneTests.swift */; };
@@ -131,6 +132,7 @@
 		9429CFF4C488ED851F5D28CC /* Pods-Letrando.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.release.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.release.xcconfig"; sourceTree = "<group>"; };
 		97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetrandoTests.release.xcconfig"; path = "Target Support Files/Pods-LetrandoTests/Pods-LetrandoTests.release.xcconfig"; sourceTree = "<group>"; };
 		AF78AB852576714F00D2F85E /* caoAnima.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = caoAnima.json; sourceTree = "<group>"; };
+		AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Gestures.swift"; sourceTree = "<group>"; };
 		AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtensionsTests.swift; sourceTree = "<group>"; };
 		AFC234EC2571AD6E005EC149 /* SceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTests.swift; sourceTree = "<group>"; };
 		AFC234F12571AFD5005EC149 /* PlaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneTests.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				7795204B25680C3000BC7367 /* SearchViewController.swift */,
 				7795205325680C5400BC7367 /* SearchView+ARDelegate.swift */,
 				AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */,
+				AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */,
 				7795208425680D5800BC7367 /* Notifications.swift in Sources */,
 				7795204625680C2100BC7367 /* ReportViewController.swift in Sources */,
+				AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */,
 				7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */,
 				7795207F25680D4D00BC7367 /* ARModel.swift in Sources */,
 				7795205A25680C7700BC7367 /* SearchResultViewController.swift in Sources */,
@@ -972,17 +976,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = 69Y77S7YQP;
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.patriciasampaio.Letrando;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.Letrando;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -995,17 +999,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Letrando/LetrandoRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = 69Y77S7YQP;
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.patriciasampaio.Letrando;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.Letrando;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

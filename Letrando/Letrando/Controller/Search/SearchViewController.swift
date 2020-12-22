@@ -3,38 +3,39 @@
 //  Letrando
 //
 //  Created by Ronaldo Gomes on 20/11/20.
-//
+//swiftlint:disable multiple_closures_with_trailing_closure
 
 import UIKit
 import ARKit
 import SceneKit
 import AVFoundation
 
+enum BodyType: Int {
+    case letter = 1
+    case  plane = 2
+}
 class SearchViewController: UIViewController {
+    @IBOutlet weak var messageLabel: UILabel!
     var letters: [String] = []
-    var points: [CGPoint] = []
     var imageViewLetters: [UIImageView] = []
     var word: Word?
     @IBOutlet weak var sceneView: ARSCNView!
     var stack: UIStackView!
     var sceneController = Scene()
     var lettersAdded: Bool = false
-    var planeAdded: Bool = false
-    var plane: Plane?
+    var planes = [Plane]()
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
     @IBOutlet weak var buttonHand: UIButton!
     var score = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         sceneView.delegate = self
         if let scene = sceneController.scene {
             sceneView.scene = scene
-            //sceneView.showsStatistics = true
         }
 
         word = JsonData().randomWord()
@@ -43,10 +44,10 @@ class SearchViewController: UIViewController {
         makeImage(letters: letters)
 
         stack.isHidden = true
-
+        messageLabel.isHidden = true
         feedbackGenerator.prepare()
         setupCoachingOverlay()
-
+        setupMessageLabel()
         addMoveGesture()
         addTapGesture()
         configureUserDefaults()
@@ -69,6 +70,12 @@ class SearchViewController: UIViewController {
         }
     }
     
+    func setupMessageLabel() {
+        messageLabel.text = "Procure um local mais espaçoso"
+        messageLabel.textColor = .whiteViews
+        messageLabel.font = UIFont(name: "BubblegumSans-Regular", size: 40)
+        messageLabel.backgroundColor = .purpleLetters
+    }
     @IBAction func showAnimationFeedback(_ sender: Any) {
         if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool {
             UserDefaults.standard.setValue(!isAnimationEnable, forKey: "showAnimationFeedback")
@@ -120,85 +127,12 @@ class SearchViewController: UIViewController {
 
     func addTapGesture() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
-        self.view.addGestureRecognizer(tapRecognizer)
+        self.sceneView.addGestureRecognizer(tapRecognizer)
     }
-    
-    @objc func didTapScreen(gesture: UITapGestureRecognizer) {
-            let tapLocation = gesture.location(in: sceneView)
-            let hitTestResults = sceneView.hitTest(tapLocation)
-            if let node = hitTestResults.first?.node, let name = node.name {
-                reproduceSound(string: name.lowercased())
-                animateFeedBack(initialPosition: tapLocation,
-                                        letter: name)
-                
-            }
-    }
-    
+
     func addMoveGesture() {
         let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(moveLetterGesture(_:)))
-        sceneView.addGestureRecognizer(tapGesture)
-    }
-
-    @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
-        let tapLocation = gesture.location(in: self.sceneView)
-        guard let nodeResult = sceneView.raycastQuery(from: tapLocation,
-                                                         allowing: .estimatedPlane,
-                                                         alignment: .horizontal) else {return}
-        let hitNode = sceneView.hitTest(tapLocation)
-
-        switch gesture.state {
-
-        case .began:
-            initialPosition = SCNVector3(nodeResult.direction.x, nodeResult.direction.y, nodeResult.direction.z)
-            sceneController.textNode.forEach { (node) in
-                if node == hitNode.first?.node {
-                    node.position = SCNVector3Make(nodeResult.direction.x,
-                                                   nodeResult.direction.y,
-                                                   nodeResult.direction.z)
-                    actualNode = node
-                    sceneView.scene.rootNode.addChildNode(actualNode)
-                    if let name = node.name {
-                        animateFeedBack(initialPosition: tapLocation,
-                                            letter: name)
-                        reproduceSound(string: name.lowercased())
-                        
-                    }
-                }
-            }
-
-        case .changed:
-            let newNodeResult = sceneView.session.raycast(nodeResult).last
-            if !hitNode.isEmpty {
-                guard let newHitResult = newNodeResult else {return}
-                actualNode.position = SCNVector3Make(newHitResult.worldTransform.columns.3.x,
-                                                     newHitResult.worldTransform.columns.3.y,
-                                                     newHitResult.worldTransform.columns.3.z)
-            }
-            actualNode.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
-
-        case .ended:
-            stack.subviews.forEach { (view) in
-                if let image = view as? UIImageView {
-                    let convertPosition = stack.convert(image.layer.position, to: sceneView)
-                    let distance = tapLocation.distance(to: convertPosition)
-                    if distance <= 50 {
-                        animateView(image)
-                        checkAnswer(actualNode, image)
-                    } else {
-//                        let notification = UINotificationFeedbackGenerator()
-//                        notification.notificationOccurred(.error)
-                        let action = SCNAction.move(to: initialPosition, duration: 0.5)
-                        action.timingMode = .easeInEaseOut
-                        actualNode.runAction(action)
-                    }
-                }
-            }
-
-            actualNode.scale = SCNVector3(Float(0.07), Float(0.07), Float(0.07))
-
-        default:
-            break
-        }
+        self.sceneView.addGestureRecognizer(tapGesture)
     }
 
     func checkAnswer(_ object: SCNNode, _ image: UIImageView) {
@@ -232,33 +166,54 @@ class SearchViewController: UIViewController {
         sceneView.session.run(configuration)
     }
 
-    func addWord(letters: [String]) {
-        if planeAdded {
-            letters.forEach { (letter) in
-                var pointInPlane = false
-                while !pointInPlane {
-                    let tapLocation: CGPoint = .generateRandomPoint()
-                    let hitTestResults = sceneView.hitTest(tapLocation)
-
-                    if let node = hitTestResults.first?.node,
-                       let plane = node.parent as? Plane,
-                       tapLocation.isPointValid(array: points) {
-                        pointInPlane = true
-                        points.append(tapLocation)
-                        if let planeParent = plane.parent, let hitResult = hitTestResults.first {
-                            let textPos = SCNVector3Make(
-                                hitResult.worldCoordinates.x,
-                                hitResult.worldCoordinates.y,
-                                hitResult.worldCoordinates.z
-                            )
-                            sceneController.addLetterToScene(letter: letter, parent: planeParent, position: textPos)
-                            self.feedbackGenerator.impactOccurred()
-                        }
-                    } else {
-                        continue
-                    }
+    func addWord(letters: [String], plane: Plane) {
+        
+        var lettersNode = [SCNNode]()
+        letters.forEach { (letter) in
+            let node = ARModel.createTextNode(string: String(letter))
+            node.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+            node.physicsBody?.categoryBitMask = BodyType.letter.rawValue
+            
+            lettersNode.append(node)
+            sceneController.addLetterToScene(letterNode: node)
+        }
+        
+        if plane.planeGeometry.width >= 1 {
+            
+            generatePositionX(width: Float(plane.planeGeometry.width), nodes: lettersNode)
+            generatePositionZ(heigth: Float(plane.planeGeometry.height), nodes: lettersNode)
+            generatePositionY(plane: plane, nodes: lettersNode)
+        
+            if !lettersAdded {
+                lettersAdded = true
+                lettersNode.forEach { node in
+                    plane.addChildNode(node)
                 }
             }
+        }
+      
+    }
+    
+    func generatePositionX(width: Float, nodes: [SCNNode]) {
+        let inter = 2 * (width / Float(nodes.count + 2))
+        var value = -width
+        nodes.forEach { node in
+            value += inter
+            node.position.x = value
+        }
+    }
+    
+    func generatePositionY(plane: SCNNode, nodes: [SCNNode]) {
+        nodes.forEach { node in
+            node.position.y = plane.position.y
+        }
+    }
+    
+    func generatePositionZ(heigth: Float, nodes: [SCNNode]) {
+        let inter = heigth / Float(nodes.count)
+        let value = heigth - inter
+        nodes.forEach { node in
+            node.position.z = Float.random(in: -value...value)
         }
     }
 

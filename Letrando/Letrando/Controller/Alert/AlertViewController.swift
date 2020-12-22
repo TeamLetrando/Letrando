@@ -16,7 +16,11 @@ class AlertViewController: UIViewController {
     }
     
     func transitionSearch() {
-        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(timerWork), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 4.0,
+                             target: self,
+                             selector: #selector(timerWork),
+                             userInfo: nil,
+                             repeats: false)
     }
     
     @objc func timerWork() {
