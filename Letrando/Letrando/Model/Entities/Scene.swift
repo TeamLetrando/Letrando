@@ -47,12 +47,7 @@ struct Scene {
         scene.rootNode.addChildNode(directionalNode)
     }
 
-    mutating func addLetterToScene(letter: String, parent: SCNNode, position: SCNVector3 = SCNVector3Zero) {
-        guard let scene = self.scene else { return }
-
-        let letterNode = ARModel.createTextNode(string: letter)
-            letterNode.position = scene.rootNode.convertPosition(position, to: parent)
-            parent.addChildNode(letterNode)
+    mutating func addLetterToScene(letterNode: SCNNode) {
             textNode.append(letterNode)
     }
 

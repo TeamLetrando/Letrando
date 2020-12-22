@@ -14,9 +14,13 @@ extension SearchViewController {
     @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
         let tapLocation = gesture.location(in: self.sceneView)
         guard let nodeResult = sceneView.raycastQuery(from: tapLocation,
-                                                         allowing: .estimatedPlane,
+                                                      allowing: .existingPlaneGeometry,
                                                          alignment: .horizontal) else {return}
-        let hitNode = sceneView.hitTest(tapLocation)
+//        let hitNode = sceneView.hitTest(tapLocation)
+    //    let tapLocation = gesture.location(in: sceneView)
+    //    let hitNode = sceneView.hitTest(tapLocation)
+        
+         let hitNode = sceneView.hitTest(tapLocation)
 
         switch gesture.state {
 

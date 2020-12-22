@@ -121,7 +121,7 @@ class SearchViewController: UIViewController {
 
     func addMoveGesture() {
         let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(moveLetterGesture(_:)))
-        sceneView.addGestureRecognizer(tapGesture)
+        self.sceneView.addGestureRecognizer(tapGesture)
     }
 
     func checkAnswer(_ object: SCNNode, _ image: UIImageView) {
@@ -161,6 +161,7 @@ class SearchViewController: UIViewController {
         letters.forEach { (letter) in
             let node = ARModel.createTextNode(string: String(letter))
             lettersNode.append(node)
+            sceneController.addLetterToScene(letterNode: node)
         }
         
         if plane.planeGeometry.width >= 1 {
