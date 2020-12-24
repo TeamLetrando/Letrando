@@ -78,11 +78,11 @@ class ReportViewController: UIViewController {
                 let attsWords = [ NSAttributedString.Key.font: fontWords, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
                 let attsTitle = [ NSAttributedString.Key.font: fontTitle, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
                 ("1" as NSString).draw(at:CGPoint(x: xRect1 + (cellLength / 2.15), y: 0.60 * viewHeight), withAttributes: atts)
-                ((ranking?[0] ?? "") as NSString).draw(at:CGPoint(x: xRect1 + 5, y: viewHeight * 0.12), withAttributes: attsWords)
+                ((ranking?[0] ?? "") as NSString).draw(at:CGPoint(x: 1.03 * xRect1, y: viewHeight * 0.12), withAttributes: attsWords)
                 ("2" as NSString).draw(at:CGPoint(x: xRect2 + (cellLength / 2.15), y: 0.675 * viewHeight), withAttributes: atts)
-                ((ranking?[1] ?? "") as NSString).draw(at:CGPoint(x: xRect2 + 5, y: viewHeight * 0.27), withAttributes: attsWords)
+                ((ranking?[1] ?? "") as NSString).draw(at:CGPoint(x: 1.03 * xRect2, y: viewHeight * 0.27), withAttributes: attsWords)
                 ("3" as NSString).draw(at:CGPoint(x: xRect3 + (cellLength / 2.15), y: 0.75 * viewHeight), withAttributes: atts)
-                ((ranking?[2] ?? "") as NSString).draw(at:CGPoint(x: xRect3 + 5, y: viewHeight * 0.52), withAttributes: attsWords)
+                ((ranking?[2] ?? "") as NSString).draw(at:CGPoint(x: 1.03 * xRect3, y: viewHeight * 0.52), withAttributes: attsWords)
                 ("Ranking de Palavras" as NSString).draw(at:CGPoint(x: (viewWidth/5), y: 0.0), withAttributes: attsTitle)
             }
             rankGraphicView.image = img
