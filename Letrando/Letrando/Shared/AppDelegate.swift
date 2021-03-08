@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         guard ARWorldTrackingConfiguration.isSupported else {
-            fatalError("""
+g            fatalError("""
                 ARKit is not available on this device. For apps that require ARKit
                 for core functionality, use the `arkit` key in the key in the
                 `UIRequiredDeviceCapabilities` section of the Info.plist to prevent
