@@ -16,8 +16,8 @@ jobs:
     steps:
     - name: Test
       uses: actions/checkout@master
-	# Quando trocarmos para SPM, vamos tirar essa action
-	- name: Install Pods
+    # Quando trocarmos para SPM, vamos tirar essa action
+    - name: Install Pods
       run: |
         pod install
     - name: Build and Test
