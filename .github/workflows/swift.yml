@@ -2,8 +2,8 @@ name: Swift
 
 on:
   pull_request:
-		# Rodar CI/CD antes de PR para essas branches
-    branches: [ main, testflight, develop]
+     # Rodar CI/CD antes de PR para essas branches
+     branches: [ main, testflight, develop]
 
 jobs:
   build:
@@ -16,8 +16,8 @@ jobs:
     steps:
     - name: Test
       uses: actions/checkout@master
-		# Quando trocarmos para SPM, vamos tirar essa action
-		- name: Install Pods
+	# Quando trocarmos para SPM, vamos tirar essa action
+	- name: Install Pods
       run: |
         pod install
     - name: Build and Test
