@@ -22,19 +22,19 @@ class SceneTests: XCTestCase {
        XCTAssertNotNil(scene)
     }
 
-    func test_textNode_isNotEmpty() {
-        //given
-        var sut = Scene()
-        let parent = SCNNode()
-        let position = SCNVector3Zero
-        let letter = "C"
-
-        //when
-        sut.addLetterToScene(letter: letter, parent: parent, position: position)
-        let result = sut.textNode
-
-        //then
-        XCTAssertNotEqual(result, [])
-    }
+//    func test_textNode_isNotEmpty() {
+//        //given
+//        var sut = Scene()
+//        let parent = SCNNode()
+//        let position = SCNVector3Zero
+//        let letter = "C"
+//
+//        //when
+//        //sut.addLetterToScene(letter: letter, parent: parent, position: position)
+//        let result = sut.textNode
+//
+//        //then
+//        XCTAssertNotEqual(result, [])
+//    }
 
 }
