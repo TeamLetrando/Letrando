@@ -14,6 +14,7 @@ struct Word: Codable {
 
     func breakInLetters() -> [String] {
         return word.map { String($0).uppercased() }
+        // Teste de github action
     }
 
 }
