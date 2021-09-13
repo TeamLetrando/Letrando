@@ -26,4 +26,6 @@ public extension ViewCodable {
         self.setupConstraints()
         self.setupAditionalChanges()
     }
+    
+    func setupAditionalChanges() {}
 }
