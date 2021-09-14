@@ -47,6 +47,7 @@
 		7B2D41EB257970870022AB13 /* caoConfetti1.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D41EA257970870022AB13 /* caoConfetti1.json */; };
 		7B4C2DEA257E654E00B3D4CE /* Curious_Kiddo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */; };
 		97EFDA539F1740823407DE79 /* Pods_Letrando_LetrandoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */; };
+		AF00FC8426F0C55A00DC4CA4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC8326F0C55A00DC4CA4 /* HomeView.swift */; };
 		AF78AB862576714F00D2F85E /* caoAnima.json in Resources */ = {isa = PBXBuildFile; fileRef = AF78AB852576714F00D2F85E /* caoAnima.json */; };
 		AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */; };
 		AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */; };
@@ -132,6 +133,7 @@
 		810EC28FAACD16DDFB221BDA /* Pods-Letrando-LetrandoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.release.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9429CFF4C488ED851F5D28CC /* Pods-Letrando.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.release.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.release.xcconfig"; sourceTree = "<group>"; };
 		97880FEA2CD830DA2E171AAF /* Pods-LetrandoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetrandoTests.release.xcconfig"; path = "Target Support Files/Pods-LetrandoTests/Pods-LetrandoTests.release.xcconfig"; sourceTree = "<group>"; };
+		AF00FC8326F0C55A00DC4CA4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AF78AB852576714F00D2F85E /* caoAnima.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = caoAnima.json; sourceTree = "<group>"; };
 		AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Gestures.swift"; sourceTree = "<group>"; };
 		AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtensionsTests.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				77951FC72568088100BC7367 /* Home.storyboard */,
+				AF00FC8326F0C55A00DC4CA4 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */,
 				7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */,
 				7795202525680BCB00BC7367 /* Sounds.swift in Sources */,
+				AF00FC8426F0C55A00DC4CA4 /* HomeView.swift in Sources */,
 				AFE007E3256E794000C2DA6C /* Plane.swift in Sources */,
 				77951FCC2568088100BC7367 /* Letrando.xcdatamodeld in Sources */,
 				AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */,
