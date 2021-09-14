@@ -11,7 +11,7 @@ enum LocalizableBundle: String {
     
     case homeTitle
     
-    var localiza: String {
+    var localize: String {
         return rawValue.localize(bundle: Bundle(for: HomeViewController.self))
     }
 }
