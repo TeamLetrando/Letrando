@@ -9,7 +9,7 @@ import Foundation
 
 enum LocalizableBundle: String {
     
-    case homeTile
+    case homeTitle
     
     var localiza: String {
         return rawValue.localize(bundle: Bundle(for: HomeViewController.self))
