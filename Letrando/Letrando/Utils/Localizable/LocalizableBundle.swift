@@ -8,6 +8,7 @@
 import Foundation
 
 enum LocalizableBundle: String {
+    
     case homeTile
     
     var localiza: String {
