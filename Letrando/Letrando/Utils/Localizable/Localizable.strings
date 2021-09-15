@@ -7,3 +7,13 @@
 */
 
 "homeTitle" = "Vamos buscar letrinhas?";
+"mascotImage" = "mascot_home";
+"lettersImage" = "letters_home";
+"searchButtonTitle" = "Buscar";
+"mascotHomeAnimation" = "mascot_home_animation";
+
+// MARK: - UserDefaults
+"userDefautlsKeySound" = "checkSound";
+
+// MARK: - Icons
+"configButtonIcon" = "gearshape.fill";
