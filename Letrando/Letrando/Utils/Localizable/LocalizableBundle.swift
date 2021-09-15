@@ -10,6 +10,8 @@ import Foundation
 enum LocalizableBundle: String {
     
     case homeTitle
+    case alertMessage
+    case alertImageName
     
     var localize: String {
         return rawValue.localize(bundle: Bundle(for: HomeViewController.self))

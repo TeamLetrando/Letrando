@@ -7,3 +7,5 @@
 */
 
 "homeTitle" = "Vamos buscar letrinhas?";
+"alertMessage" = "Cuidado com os objetos ao seu redor";
+"alertImageName"= "alert_mascot";

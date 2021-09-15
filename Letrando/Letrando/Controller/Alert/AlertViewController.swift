@@ -9,7 +9,12 @@ import UIKit
 
 class AlertViewController: UIViewController {
     
-    @IBOutlet var alertView: UIView!
+    let alertView = AlertView()
+    
+    override func loadView() {
+        self.view = alertView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         transitionSearch()
