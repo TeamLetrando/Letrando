@@ -10,7 +10,7 @@ import Lottie
 import AVFoundation
 
 class HomeViewController: UIViewController {
-   
+    
     private let homeView = HomeView()
     
     override func loadView() {
@@ -20,13 +20,18 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView.delegate = self
+        configSounds()
     }
 }
 
 extension HomeViewController: HomeViewDelegate {
     
-    func showConfigurations() {
-        /* not implemented */
+    func configSounds() {
+        if Sounds.checkAudio() {
+            Sounds.playAudio()
+        } else {
+            Sounds.audioFinish()
+        }
     }
     
     func startGame() {

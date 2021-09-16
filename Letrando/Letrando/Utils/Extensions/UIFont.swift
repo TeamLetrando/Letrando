@@ -8,11 +8,16 @@
 import UIKit
 
 extension UIFont {
-    static func set(size: CGFloat, weight: Weight) -> UIFont {
+    static func set(size: CGFloat, weight: UIFont.Weight, textStyle: UIFont.TextStyle) -> UIFont {
+        var roundedFont: UIFont?
         let systemFont = systemFont(ofSize: size, weight: weight)
+        
         if let fontDescriptor = systemFont.fontDescriptor.withDesign(.rounded) {
-            return UIFont(descriptor: fontDescriptor, size: size)
+           roundedFont = UIFont(descriptor: fontDescriptor, size: size)
         }
-        return systemFont
+        guard let roundedFont = roundedFont else {
+            return UIFontMetrics(forTextStyle: textStyle).scaledFont(for: systemFont)
+        }
+        return UIFontMetrics(forTextStyle: textStyle).scaledFont(for: roundedFont)
     }
 }

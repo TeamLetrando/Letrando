@@ -16,4 +16,5 @@
 "userDefautlsKeySound" = "checkSound";
 
 // MARK: - Icons
-"configButtonIcon" = "gearshape.fill";
+"activatedSoundIcon" = "speaker.wave.2.circle.fill";
+"diabledSoundIcon" = "speaker.slash.circle.fill";

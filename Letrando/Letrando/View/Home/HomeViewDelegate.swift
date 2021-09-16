@@ -8,6 +8,6 @@
 import Foundation
 
 protocol HomeViewDelegate: AnyObject {
-    func showConfigurations()
+    func configSounds()
     func startGame()
 }

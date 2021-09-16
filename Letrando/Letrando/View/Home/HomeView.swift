@@ -9,18 +9,14 @@ import Lottie
 import UIKit
 
 class HomeView: UIView, ViewCodable {
-    
-    let labelFontSize = CGFloat(32)
-    let animationSpeed = CGFloat(0.8)
-    
+
     weak var delegate: HomeViewDelegate?
    
-    private lazy var configButton: UIButton = {
+    private lazy var soundButton: UIButton = {
         let button = UIButton()
         button.tintColor = .greenActionLetrando
-        button.setBackgroundImage(UIImage(systemName: LocalizableBundle.configButtonIcon.localize), for: .normal)
+        button.addTarget(self, action: #selector(setAudio), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(showConfig), for: .touchUpInside)
         return button
     }()
     
@@ -30,7 +26,8 @@ class HomeView: UIView, ViewCodable {
         label.textAlignment = .center
         label.numberOfLines = .zero
         label.textColor = .customBrown
-        label.font = .set(size: labelFontSize, weight: .bold)
+        label.font = .set(size: 34, weight: .bold, textStyle: .largeTitle)
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -40,7 +37,7 @@ class HomeView: UIView, ViewCodable {
         animation.frame = superview?.frame ?? .zero
         animation.contentMode = .scaleAspectFit
         animation.loopMode = .loop
-        animation.animationSpeed = animationSpeed
+        animation.animationSpeed = 0.8
         animation.play()
         return animation
     }()
@@ -58,7 +55,8 @@ class HomeView: UIView, ViewCodable {
         button.backgroundColor = .greenActionLetrando
         button.setTitle(LocalizableBundle.searchButtonTitle.localize, for: .normal)
         button.titleLabel?.textColor = .white
-        button.titleLabel?.font = .set(size: labelFontSize, weight: .bold)
+        button.titleLabel?.font = UIFont.set(size: 32, weight: .bold, textStyle: .headline)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.addTarget(self, action: #selector(search), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -69,19 +67,19 @@ class HomeView: UIView, ViewCodable {
     }
     
     func buildViewHierarchy() {
-        addSubview(configButton)
-        addSubview(titleLabel)
         addSubview(lettersImage)
         addSubview(mascotAnimation)
+        addSubview(soundButton)
+        addSubview(titleLabel)
         addSubview(searchButton)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            configButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            configButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            configButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
-            configButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
+            soundButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            soundButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            soundButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13),
+            soundButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13),
             
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 80),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -102,13 +100,24 @@ class HomeView: UIView, ViewCodable {
     
     func setupAditionalChanges() {
         backgroundColor = .lightGreenBackgroundLetrando
+        updateButtonSoundImage(Sounds.checkAudio())
     }
     
-    @objc private func showConfig() {
-        delegate?.showConfigurations()
+    @objc private func setAudio() {
+        UserDefaults.standard.set(!Sounds.checkAudio(), forKey:LocalizableBundle.userDefautlsKeySound.localize)
+        delegate?.configSounds()
+        updateButtonSoundImage(Sounds.checkAudio())
     }
     
     @objc private func search() {
         delegate?.startGame()
     }
+    
+    private func updateButtonSoundImage(_ isActive: Bool) {
+        let buttonSoundImage = isActive ? LocalizableBundle.activatedSoundIcon.localize :
+                LocalizableBundle.diabledSoundIcon.localize
+        
+        soundButton.setBackgroundImage(UIImage(systemName: buttonSoundImage), for: .normal)
+    }
+    
 }
