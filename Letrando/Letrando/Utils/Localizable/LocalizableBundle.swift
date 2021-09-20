@@ -12,7 +12,18 @@ enum LocalizableBundle: String {
     case homeTitle
     case alertMessage
     case alertImageName
+    case mascotImage
+    case lettersImage
+    case searchButtonTitle
+    case mascotHomeAnimation
     
+    // MARK: - UserDefaults
+    case userDefautlsKeySound
+    
+    // MARK: - Icons
+    case activatedSoundIcon
+    case disabledSoundIcon
+ 
     var localize: String {
         return rawValue.localize(bundle: Bundle(for: HomeViewController.self))
     }

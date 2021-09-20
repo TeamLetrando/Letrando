@@ -9,3 +9,16 @@
 "homeTitle" = "Vamos buscar letrinhas?";
 "alertMessage" = "Cuidado com os objetos ao seu redor";
 "alertImageName"= "alert_mascot";
+
+"mascotImage" = "mascot_home";
+"lettersImage" = "letters_home";
+"searchButtonTitle" = "Buscar";
+"mascotHomeAnimation" = "mascot_home_animation";
+
+// MARK: - UserDefaults
+"userDefautlsKeySound" = "checkSound";
+
+// MARK: - Icons
+"activatedSoundIcon" = "speaker.wave.2.circle.fill";
+"disabledSoundIcon" = "speaker.slash.circle.fill";
+
