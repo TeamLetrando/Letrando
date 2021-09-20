@@ -115,7 +115,7 @@ class HomeView: UIView, ViewCodable {
     
     private func updateButtonSoundImage(_ isActive: Bool) {
         let buttonSoundImage = isActive ? LocalizableBundle.activatedSoundIcon.localize :
-                LocalizableBundle.diabledSoundIcon.localize
+                LocalizableBundle.disabledSoundIcon.localize
         
         soundButton.setBackgroundImage(UIImage(systemName: buttonSoundImage), for: .normal)
     }

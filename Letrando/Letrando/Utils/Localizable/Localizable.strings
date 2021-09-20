@@ -17,4 +17,4 @@
 
 // MARK: - Icons
 "activatedSoundIcon" = "speaker.wave.2.circle.fill";
-"diabledSoundIcon" = "speaker.slash.circle.fill";
+"disabledSoundIcon" = "speaker.slash.circle.fill";

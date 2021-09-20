@@ -36,9 +36,9 @@ extension HomeViewController: HomeViewDelegate {
     
     func startGame() {
         let storyboard = UIStoryboard(name: "Alert", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "alert")
+        guard let alertViewController =  storyboard.instantiateViewController(identifier: "alert")
                 as? AlertViewController else {fatalError()}
-        viewC.modalPresentationStyle = .fullScreen
-        self.present(viewC, animated: true, completion: nil)
+        alertViewController.modalPresentationStyle = .fullScreen
+        self.present(alertViewController, animated: true, completion: nil)
     } 
 }
