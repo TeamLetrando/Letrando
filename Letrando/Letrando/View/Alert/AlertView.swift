@@ -19,10 +19,11 @@ final class AlertView: UIView, ViewCodable {
     
     private lazy var message: UILabel = {
         let message = UILabel()
+        let messageTextStyle = UIFont.TextStyle(rawValue: LocalizableBundle.alertMessage.localize)
         message.text = LocalizableBundle.alertMessage.localize
         message.textAlignment = .center
         message.numberOfLines = 0
-        message.font = .systemFont(ofSize: 32)
+        message.font = UIFont.set(size: 32, weight: .bold, textStyle: messageTextStyle)
         message.textColor = .customBrown
         message.translatesAutoresizingMaskIntoConstraints = false
         return message
