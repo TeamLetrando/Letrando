@@ -14,9 +14,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard let _ = (scene as? UIWindowScene) else {
-            return
+        guard let scene = (scene as? UIWindowScene) else {
+            fatalError("Scene cannot be created")
         }
+        
+        window = UIWindow(windowScene: scene)
+        window?.rootViewController = HomeViewController()
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
