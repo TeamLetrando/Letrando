@@ -105,6 +105,7 @@ class HomeView: UIView, ViewCodable {
     
     @objc private func setAudio() {
         UserDefaults.standard.set(!Sounds.checkAudio(), forKey:LocalizableBundle.userDefautlsKeySound.localize)
+        
         delegate?.configSounds()
         updateButtonSoundImage(Sounds.checkAudio())
     }

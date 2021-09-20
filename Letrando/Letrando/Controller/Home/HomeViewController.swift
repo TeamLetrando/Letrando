@@ -11,7 +11,7 @@ import AVFoundation
 
 class HomeViewController: UIViewController {
     
-    private let homeView = HomeView()
+    private lazy var homeView = HomeView()
     
     override func loadView() {
         self.view = homeView
@@ -27,11 +27,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewDelegate {
     
     func configSounds() {
-        if Sounds.checkAudio() {
-            Sounds.playAudio()
-        } else {
-            Sounds.audioFinish()
-        }
+        Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
     }
     
     func startGame() {

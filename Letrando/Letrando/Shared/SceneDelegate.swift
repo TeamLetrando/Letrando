@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let scene = (scene as? UIWindowScene) else {
-            return
+            fatalError("Scene cannot be created")
         }
         
         window = UIWindow(windowScene: scene)
