@@ -60,6 +60,7 @@
 		AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007EF256E7B7B00C2DA6C /* Scene.swift */; };
 		AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007F5256E7D2800C2DA6C /* CGPoint.swift */; };
 		AFE007FE256E7D5D00C2DA6C /* SearchView+ARCoaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */; };
+		AFE7339826F4E1FA0044E435 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE7339726F4E1FA0044E435 /* ResultView.swift */; };
 		D10E873926EF75E000BABE51 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E873826EF75E000BABE51 /* ViewCodable.swift */; };
 		FF3733BF377790C110FFCD1F /* Pods_Letrando.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1196D6BE461625AF540961D9 /* Pods_Letrando.framework */; };
 /* End PBXBuildFile section */
@@ -148,6 +149,7 @@
 		AFE007EF256E7B7B00C2DA6C /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		AFE007F5256E7D2800C2DA6C /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView+ARCoaching.swift"; sourceTree = "<group>"; };
+		AFE7339726F4E1FA0044E435 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letrando_LetrandoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10E873826EF75E000BABE51 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		FA7E3D8BD3C368A009AA793A /* Pods-Letrando.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.debug.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.debug.xcconfig"; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		77951FFD25680A3800BC7367 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AFE7339626F4E1E00044E435 /* Result */,
 				7795200425680AD700BC7367 /* LauchScreen */,
 				7795200B25680B1700BC7367 /* Home */,
 				7795200525680AFC00BC7367 /* Alert */,
@@ -364,7 +367,6 @@
 			isa = PBXGroup;
 			children = (
 				7795201325680B7300BC7367 /* Search.storyboard */,
-				7795201825680B8200BC7367 /* SearchResult.storyboard */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -519,6 +521,15 @@
 				AF00FC9926F0DB9100DC4CA4 /* String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AFE7339626F4E1E00044E435 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				7795201825680B8200BC7367 /* SearchResult.storyboard */,
+				AFE7339726F4E1FA0044E435 /* ResultView.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		D10E873726EF741E00BABE51 /* Protocol */ = {
@@ -803,6 +814,7 @@
 				7795207525680D3200BC7367 /* Word.swift in Sources */,
 				AF00FC9A26F0DB9100DC4CA4 /* String.swift in Sources */,
 				7795204C25680C3000BC7367 /* SearchViewController.swift in Sources */,
+				AFE7339826F4E1FA0044E435 /* ResultView.swift in Sources */,
 				7795201F25680BBD00BC7367 /* Colors.swift in Sources */,
 				778CC523257E6A9B0042334F /* Report+CoreDataClass.swift in Sources */,
 				7795206325680C9D00BC7367 /* NotificationsController.swift in Sources */,
