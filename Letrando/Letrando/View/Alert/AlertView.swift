@@ -9,7 +9,7 @@ import UIKit
 
 final class AlertView: UIView, ViewCodable {
     
-    private let mascot: UIImageView = {
+    private lazy var mascot: UIImageView = {
         let mascot = UIImageView()
         mascot.image = UIImage(named: LocalizableBundle.alertImageName.localize)
         mascot.contentMode = .scaleAspectFit
@@ -17,14 +17,7 @@ final class AlertView: UIView, ViewCodable {
         return mascot
     }()
     
-    private let messageView: UIView = {
-        let messageView = UIView()
-        messageView.backgroundColor = .lightGreenBackgroundLetrando
-        messageView.translatesAutoresizingMaskIntoConstraints = false
-        return messageView
-    }()
-    
-    private let message: UILabel = {
+    private lazy var message: UILabel = {
         let message = UILabel()
         message.text = LocalizableBundle.alertMessage.localize
         message.textAlignment = .center

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
+		0B46BA9B26F8D24B004F176D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46BA9A26F8D24B004F176D /* AlertView.swift */; };
 		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
 		14C42DB4D3883BD297860320 /* Pods_LetrandoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */; };
 		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
+		0B46BA9A26F8D24B004F176D /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
 		1196D6BE461625AF540961D9 /* Pods_Letrando.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letrando.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetrandoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +341,7 @@
 		7795200525680AFC00BC7367 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				0B46BA9A26F8D24B004F176D /* AlertView.swift */,
 				7795200625680B0E00BC7367 /* Alert.storyboard */,
 			);
 			path = Alert;
@@ -807,6 +810,7 @@
 				778CC523257E6A9B0042334F /* Report+CoreDataClass.swift in Sources */,
 				7795206325680C9D00BC7367 /* NotificationsController.swift in Sources */,
 				778CC4D0257E66780042334F /* ReportProtocol.swift in Sources */,
+				0B46BA9B26F8D24B004F176D /* AlertView.swift in Sources */,
 				7795205425680C5400BC7367 /* SearchView+ARDelegate.swift in Sources */,
 				7795203425680C0500BC7367 /* AlertViewController.swift in Sources */,
 				77951FC22568088100BC7367 /* AppDelegate.swift in Sources */,
