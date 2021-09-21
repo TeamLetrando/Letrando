@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol GameViewDelegate: AnyObject {
+protocol HomeViewDelegate: AnyObject {
     func startGame()
 }
