@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol ResultViewDelegate: AnyObject {
+    func startGame()
+    func exitGame()
+}
