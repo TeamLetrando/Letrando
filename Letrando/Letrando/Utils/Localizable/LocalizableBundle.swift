@@ -21,6 +21,7 @@ enum LocalizableBundle: String {
     // MARK: - Icons
     case activatedSoundIcon
     case disabledSoundIcon
+    case searchButtonIcon
  
     var localize: String {
         return rawValue.localize(bundle: Bundle(for: HomeViewController.self))

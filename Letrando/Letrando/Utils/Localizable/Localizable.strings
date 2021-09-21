@@ -18,3 +18,4 @@
 // MARK: - Icons
 "activatedSoundIcon" = "musicOn";
 "disabledSoundIcon" = "musicOff";
+"searchButtonIcon" = "play.fill";
