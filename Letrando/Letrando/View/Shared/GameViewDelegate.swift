@@ -7,7 +7,6 @@
 
 import Foundation
 
-protocol HomeViewDelegate: AnyObject {
-    func configSounds()
+protocol GameViewDelegate: AnyObject {
     func startGame()
 }
