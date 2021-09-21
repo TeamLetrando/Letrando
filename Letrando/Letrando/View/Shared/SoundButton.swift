@@ -17,7 +17,9 @@ class SoundButton: UIView, ViewCodable {
     }
     
     private lazy var roundedButton: RoundedButton = {
-        let button = RoundedButton(backgroundImage: currentBackgroundImage, buttonAction: setAudio, backgroundColor: .greenActionLetrando)
+        let button = RoundedButton(backgroundImage: currentBackgroundImage,
+                                   buttonAction: setAudio,
+                                   tintColor: .greenActionLetrando)
         button.setBackgroundImage(currentBackgroundImage, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

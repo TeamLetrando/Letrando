@@ -12,11 +12,12 @@ class RoundedButton: UIButton {
     private lazy var backgroundImage: UIImage? = UIImage()
     private lazy var buttonAction: (() -> Void) = {}
    
-    convenience init(backgroundImage: UIImage?, buttonAction: @escaping (() -> Void), backgroundColor: UIColor) {
+    convenience init(backgroundImage: UIImage?, buttonAction: @escaping (() -> Void), tintColor: UIColor) {
         self.init()
         self.backgroundImage = backgroundImage
         self.buttonAction = buttonAction
-        tintColor = backgroundColor
+        self.tintColor = tintColor
+        self.backgroundColor = .white
         addTarget(self, action: #selector(setButtonAction), for: .touchUpInside)
         self.setBackgroundImage(backgroundImage, for: .normal)
     }
