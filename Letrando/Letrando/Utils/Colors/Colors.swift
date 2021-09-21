@@ -31,5 +31,6 @@ extension UIColor {
     static let customBrown = UIColor(red: 111/255, green: 96/255, blue: 94/255, alpha: 1)
     static let greenActionLetrando = UIColor(red: 96/255, green: 193/255, blue: 96/255, alpha: 1)
     static let greenBackgroundLetrando = UIColor(red: 197/255, green: 237/255, blue: 223/255, alpha: 1)
+    static let darkGreenLetrando = UIColor(red: 24/255, green: 157/255, blue: 51/255, alpha: 1)
     
 }
