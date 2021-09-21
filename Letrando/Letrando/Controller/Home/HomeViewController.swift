@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: GameViewDelegate {
+extension HomeViewController: HomeViewDelegate {
     func startGame() {
         let storyboard = UIStoryboard(name: "Alert", bundle: nil)
         guard let alertViewController =  storyboard.instantiateViewController(identifier: "alert")

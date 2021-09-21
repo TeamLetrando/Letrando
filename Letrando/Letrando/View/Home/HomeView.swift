@@ -10,7 +10,7 @@ import UIKit
 
 class HomeView: UIView, ViewCodable {
 
-    weak var delegate: GameViewDelegate?
+    weak var delegate: HomeViewDelegate?
    
     private lazy var soundButton: SoundButton = {
         let button = SoundButton()
