@@ -22,14 +22,13 @@ class HomeViewController: UIViewController {
         homeView.delegate = self
         configSounds()
     }
-}
-
-extension HomeViewController: HomeViewDelegate {
     
-    func configSounds() {
+    private func configSounds() {
         Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
     }
-    
+}
+
+extension HomeViewController: GameViewDelegate {
     func startGame() {
         let storyboard = UIStoryboard(name: "Alert", bundle: nil)
         guard let alertViewController =  storyboard.instantiateViewController(identifier: "alert")
