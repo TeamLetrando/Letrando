@@ -16,5 +16,5 @@
 "userDefautlsKeySound" = "checkSound";
 
 // MARK: - Icons
-"activatedSoundIcon" = "speaker.wave.2.circle.fill";
-"disabledSoundIcon" = "speaker.slash.circle.fill";
+"activatedSoundIcon" = "musicOn";
+"disabledSoundIcon" = "musicOff";

@@ -52,6 +52,8 @@
 		AF00FC9A26F0DB9100DC4CA4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9926F0DB9100DC4CA4 /* String.swift */; };
 		AF00FC9C26F0E15D00DC4CA4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9B26F0E15D00DC4CA4 /* HomeView.swift */; };
 		AF00FC9E26F0E66100DC4CA4 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9D26F0E66100DC4CA4 /* UIFont.swift */; };
+		AF52F3CB26F8BA2B002394CC /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */; };
+		AF52F3CD26F8D0AA002394CC /* SoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CC26F8D0AA002394CC /* SoundButton.swift */; };
 		AF78AB862576714F00D2F85E /* mascot_home_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = AF78AB852576714F00D2F85E /* mascot_home_animation.json */; };
 		AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */; };
 		AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */; };
@@ -144,6 +146,8 @@
 		AF00FC9926F0DB9100DC4CA4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF00FC9B26F0E15D00DC4CA4 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AF00FC9D26F0E66100DC4CA4 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		AF52F3CC26F8D0AA002394CC /* SoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundButton.swift; sourceTree = "<group>"; };
 		AF78AB852576714F00D2F85E /* mascot_home_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mascot_home_animation.json; sourceTree = "<group>"; };
 		AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Gestures.swift"; sourceTree = "<group>"; };
 		AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtensionsTests.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 		77951FFD25680A3800BC7367 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AF52F3C926F8B9FC002394CC /* Shared */,
 				AFE7339626F4E1E00044E435 /* Result */,
 				7795200425680AD700BC7367 /* LauchScreen */,
 				7795200B25680B1700BC7367 /* Home */,
@@ -520,6 +525,15 @@
 				AF78AB852576714F00D2F85E /* mascot_home_animation.json */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		AF52F3C926F8B9FC002394CC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */,
+				AF52F3CC26F8D0AA002394CC /* SoundButton.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		AFE007F4256E7D1A00C2DA6C /* Extensions */ = {
@@ -825,6 +839,7 @@
 				7795207525680D3200BC7367 /* Word.swift in Sources */,
 				AF00FC9A26F0DB9100DC4CA4 /* String.swift in Sources */,
 				7795204C25680C3000BC7367 /* SearchViewController.swift in Sources */,
+				AF52F3CD26F8D0AA002394CC /* SoundButton.swift in Sources */,
 				AFE7339826F4E1FA0044E435 /* ResultView.swift in Sources */,
 				7795201F25680BBD00BC7367 /* Colors.swift in Sources */,
 				778CC523257E6A9B0042334F /* Report+CoreDataClass.swift in Sources */,
@@ -845,6 +860,7 @@
 				7795204625680C2100BC7367 /* ReportViewController.swift in Sources */,
 				AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */,
 				7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */,
+				AF52F3CB26F8BA2B002394CC /* RoundedButton.swift in Sources */,
 				AF00FC9E26F0E66100DC4CA4 /* UIFont.swift in Sources */,
 				7795207F25680D4D00BC7367 /* ARModel.swift in Sources */,
 				7795205A25680C7700BC7367 /* SearchResultViewController.swift in Sources */,
