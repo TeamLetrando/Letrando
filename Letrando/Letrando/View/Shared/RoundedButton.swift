@@ -9,26 +9,36 @@ import UIKit
 
 class RoundedButton: UIButton {
     
-    private var selectedImage: String?
-    private var disabledImage: String?
-    
-    override var buttonType: UIButton.ButtonType {
-        .roundedRect
-    }
+    private lazy var backgroundImage: UIImage? = UIImage()
+    private lazy var buttonAction: (() -> Void) = {}
    
-    convenience init(image: UIImage?) {
+    convenience init(backgroundImage: UIImage?, buttonAction: @escaping (() -> Void), backgroundColor: UIColor) {
         self.init()
-        tintColor = .greenActionLetrando
-        setBackgroundImage(image, for: .normal)
-        layer.borderWidth = 2
+        self.backgroundImage = backgroundImage
+        self.buttonAction = buttonAction
+        tintColor = backgroundColor
+        addTarget(self, action: #selector(setButtonAction), for: .touchUpInside)
+        self.setBackgroundImage(backgroundImage, for: .normal)
+    }
+ 
+    @objc func setButtonAction() {
+        buttonAction()
+        animateButton()
+    }
+
+    override func setNeedsLayout() {
+        layer.borderWidth = frame.width * 0.1
         layer.borderColor = UIColor.white.cgColor
-        addTarget(self, action: #selector(setAudio), for: .touchUpInside)
+        layer.cornerRadius = frame.width / 2
+        layer.masksToBounds = true
     }
     
-    @objc private func setAudio() {
-        UserDefaults.standard.set(!Sounds.checkAudio(), forKey:LocalizableBundle.userDefautlsKeySound.localize)
-        
-        Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
-      //  updateButtonSoundImage(Sounds.checkAudio())
+    private func animateButton() {
+        let center = self.center
+        UIView.animate(withDuration: 0.5, animations: {
+            self.frame.size.width -= 3
+            self.frame.size.height -= 3
+            self.center = center
+        })
     }
 }
