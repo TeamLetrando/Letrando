@@ -10,7 +10,8 @@
 "mascotImage" = "mascot_home";
 "lettersImage" = "letters_home";
 "searchButtonTitle" = "Buscar";
-"mascotHomeAnimation" = "mascot_home_animation";
+"mascotHomeAnimation" = "mascoteHome";
+"messageResult" = "PARABÉNS! você achou";
 
 // MARK: - UserDefaults
 "userDefautlsKeySound" = "checkSound";
@@ -18,4 +19,5 @@
 // MARK: - Icons
 "activatedSoundIcon" = "musicOn";
 "disabledSoundIcon" = "musicOff";
-"searchButtonIcon" = "play.fill";
+"searchButtonIcon" = "play.circle.fill";
+"homeButtonIcon" = "house.circle.fill";
