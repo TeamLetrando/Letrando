@@ -18,7 +18,7 @@ class ResultView: UIView, ViewCodable {
         return button
     }()
 
-    private lazy var resultMessage: UILabel = {
+    private lazy var resultMessageLabel: UILabel = {
         let label = UILabel()
         label.text = LocalizableBundle.messageResult.localize
         label.textAlignment = .center
@@ -40,7 +40,7 @@ class ResultView: UIView, ViewCodable {
         return label
     }()
     
-    private var animationView: AnimationLottieView = {
+    private lazy var animationView: AnimationLottieView = {
         let view = AnimationLottieView(named: LocalizableBundle.mascotResultAnimation.localize)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -75,9 +75,8 @@ class ResultView: UIView, ViewCodable {
     }
     
     func buildViewHierarchy() {
-      
         addSubview(soundButton)
-        addSubview(resultMessage)
+        addSubview(resultMessageLabel)
         addSubview(wordResultLabel)
         addSubview(animationView)
         addSubview(searchButton)
@@ -91,12 +90,12 @@ class ResultView: UIView, ViewCodable {
             soundButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13),
             soundButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13),
             
-            resultMessage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 80),
-            resultMessage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-            resultMessage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            resultMessage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15),
+            resultMessageLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 80),
+            resultMessageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            resultMessageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            resultMessageLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15),
             
-            wordResultLabel.topAnchor.constraint(equalTo: resultMessage.bottomAnchor, constant: 5),
+            wordResultLabel.topAnchor.constraint(equalTo: resultMessageLabel.bottomAnchor, constant: 5),
             wordResultLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             wordResultLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             wordResultLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),

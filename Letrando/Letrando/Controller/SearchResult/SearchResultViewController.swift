@@ -12,9 +12,14 @@ import ARKit
 
 class SearchResultViewController: UIViewController {
  
-    var wordResult = String()
+    var wordResult: String?
    
-    private lazy var resultView = ResultView(wordResult: wordResult)
+    private lazy var resultView = ResultView(wordResult: wordResult ?? String())
+    
+    convenience init(wordResult: String) {
+        self.init()
+        self.wordResult = wordResult
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +32,7 @@ class SearchResultViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Sounds.reproduceSound(string: wordResult)
+        Sounds.reproduceSound(string: wordResult ?? String())
         configSounds()
     }
     
