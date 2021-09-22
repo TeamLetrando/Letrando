@@ -229,7 +229,7 @@ class SearchViewController: UIViewController {
     func makeImage(letters: [String]) {
         var imageLetters: [UIImageView] = []
         for oneLetter in letters {
-            if let imageLetter = UIImage(named: "lettersEmpty/\(oneLetter).pdf") {
+            if let imageLetter = UIImage(named: "lettersEmpty/\(oneLetter).png") {
                 let image = UIImageView(image: imageLetter)
                 image.contentMode = .scaleAspectFill
                 image.layer.masksToBounds = true
