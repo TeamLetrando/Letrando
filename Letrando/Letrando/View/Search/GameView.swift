@@ -35,6 +35,7 @@ class GameView: UIView, ViewCodable {
         button.setImage(UIImage(named: "handButtonOn"), for: .normal)
         button.imageView?.contentMode = .center
         button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handButtonAction), for: .touchUpInside)
         return button
     }()
@@ -44,6 +45,7 @@ class GameView: UIView, ViewCodable {
         button.setImage(UIImage(named: "back"), for: .normal)
         button.imageView?.contentMode = .center
         button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(backToHomeButtonAction), for: .touchUpInside)
         return button
     }()
@@ -69,13 +71,15 @@ class GameView: UIView, ViewCodable {
         NSLayoutConstraint.activate([
             backToHomeButton.heightAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             backToHomeButton.widthAnchor.constraint(equalToConstant: 50 * Multipliers.height),
-            backToHomeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15 * Multipliers.height),
-            backToHomeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20 * Multipliers.widht),
+            backToHomeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16 * Multipliers.height),
+            backToHomeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16 * Multipliers.widht),
+//            backToHomeButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            backToHomeButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
             handButton.heightAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             handButton.widthAnchor.constraint(equalToConstant: 50 * Multipliers.height),
-            backToHomeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15 * Multipliers.height),
-            handButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20 * Multipliers.widht),
+            handButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16 * Multipliers.height),
+            handButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16 * Multipliers.widht),
             
             findAnotherPlaceMessageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             findAnotherPlaceMessageLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20 * Multipliers.height),
@@ -164,6 +168,6 @@ extension GameView: GameViewDelegate {
  
 enum Multipliers {
     static let screenSize = UIScreen.main.bounds.size
-    static let height = UIScreen.main.bounds.height / 375
-    static let widht = UIScreen.main.bounds.width / 812
+    static let height = UIScreen.main.bounds.height / 812
+    static let widht = UIScreen.main.bounds.width / 375
 }
