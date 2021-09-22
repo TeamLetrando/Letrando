@@ -10,11 +10,15 @@
 "mascotImage" = "mascot_home";
 "lettersImage" = "letters_home";
 "searchButtonTitle" = "Buscar";
-"mascotHomeAnimation" = "mascot_home_animation";
+"mascotHomeAnimation" = "mascoteHome";
+"mascotResultAnimation" = "mascoteResult";
+"messageResult" = "PARABÉNS! você achou";
 
 // MARK: - UserDefaults
 "userDefautlsKeySound" = "checkSound";
 
 // MARK: - Icons
-"activatedSoundIcon" = "speaker.wave.2.circle.fill";
-"disabledSoundIcon" = "speaker.slash.circle.fill";
+"activatedSoundIcon" = "musicOn";
+"disabledSoundIcon" = "musicOff";
+"searchButtonIcon" = "play.circle.fill";
+"homeButtonIcon" = "house.circle.fill";
