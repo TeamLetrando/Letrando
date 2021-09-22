@@ -36,10 +36,10 @@ class RoundedButton: UIButton {
     
     private func animateButton() {
         let center = self.center
-        UIView.animate(withDuration: 0.5, animations: {
-            self.frame.size.width -= 3
-            self.frame.size.height -= 3
-            self.center = center
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.frame.size.width -= 3
+            self?.frame.size.height -= 3
+            self?.center = center
         })
     }
 }
