@@ -10,8 +10,10 @@ import Foundation
 enum LocalizableBundle: String {
     
     case homeTitle
+    
     case alertMessage
     case alertImageName
+    
     case mascotImage
     case lettersImage
     case searchButtonTitle

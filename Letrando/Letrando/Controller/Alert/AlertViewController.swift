@@ -9,7 +9,7 @@ import UIKit
 
 class AlertViewController: UIViewController {
     
-    let alertView = AlertView()
+    private lazy var alertView = AlertView()
     
     override func loadView() {
         self.view = alertView

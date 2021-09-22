@@ -6,10 +6,10 @@
   
 */
 
-"homeTitle" = "Vamos buscar letrinhas?";
 "alertMessage" = "Cuidado com os objetos ao seu redor";
 "alertImageName"= "alert_mascot";
 
+"homeTitle" = "Vamos buscar letrinhas?";
 "mascotImage" = "mascot_home";
 "lettersImage" = "letters_home";
 "searchButtonTitle" = "Buscar";

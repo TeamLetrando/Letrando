@@ -9,51 +9,51 @@ import UIKit
 
 final class AlertView: UIView, ViewCodable {
     
-    private lazy var mascot: UIImageView = {
-        let mascot = UIImageView()
-        mascot.image = UIImage(named: LocalizableBundle.alertImageName.localize)
-        mascot.contentMode = .scaleAspectFit
-        mascot.translatesAutoresizingMaskIntoConstraints = false
-        return mascot
+    private lazy var mascotAnimation: UIImageView = {
+        let mascotAnimation = UIImageView()
+        mascotAnimation.image = UIImage(named: LocalizableBundle.alertImageName.localize)
+        mascotAnimation.contentMode = .scaleAspectFit
+        mascotAnimation.translatesAutoresizingMaskIntoConstraints = false
+        return mascotAnimation
     }()
     
-    private lazy var message: UILabel = {
-        let message = UILabel()
+    private lazy var messageAlert: UILabel = {
+        let messageAlert = UILabel()
         let messageTextStyle = UIFont.TextStyle(rawValue: LocalizableBundle.alertMessage.localize)
-        message.text = LocalizableBundle.alertMessage.localize
-        message.textAlignment = .center
-        message.numberOfLines = 0
-        message.font = UIFont.set(size: 32, weight: .bold, textStyle: messageTextStyle)
-        message.textColor = .customBrown
-        message.translatesAutoresizingMaskIntoConstraints = false
-        return message
+        messageAlert.text = LocalizableBundle.alertMessage.localize
+        messageAlert.textAlignment = .center
+        messageAlert.numberOfLines = .zero
+        messageAlert.font = UIFont.set(size: 32, weight: .bold, textStyle: messageTextStyle)
+        messageAlert.textColor = .customBrown
+        messageAlert.translatesAutoresizingMaskIntoConstraints = false
+        return messageAlert
     }()
     
     override func didMoveToSuperview() {
-        self.setupView()
+        setupView()
     }
     
     func buildViewHierarchy() {
-        addSubview(mascot)
-        addSubview(message)
+        addSubview(mascotAnimation)
+        addSubview(messageAlert)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            mascot.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            mascot.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            mascot.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 80),
-            mascot.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.5),
+            mascotAnimation.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            mascotAnimation.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            mascotAnimation.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 80),
+            mascotAnimation.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.5),
 
-            message.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            message.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            message.topAnchor.constraint(equalTo: mascot.bottomAnchor, constant: 25),
-            message.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
+            messageAlert.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            messageAlert.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            messageAlert.topAnchor.constraint(equalTo: mascotAnimation.bottomAnchor, constant: 25),
+            messageAlert.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
         ])
     }
     
     func setupAditionalChanges() {
-        backgroundColor = UIColor.lightGreenBackgroundLetrando
+        backgroundColor = .lightGreenBackgroundLetrando
     }
     
 }
