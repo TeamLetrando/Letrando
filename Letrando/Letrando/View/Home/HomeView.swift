@@ -48,14 +48,11 @@ class HomeView: UIView, ViewCodable {
         return imageView
     }()
     
-    private lazy var searchButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .greenActionLetrando
-        button.setTitle(LocalizableBundle.searchButtonTitle.localize, for: .normal)
-        button.titleLabel?.textColor = .white
-        button.titleLabel?.font = UIFont.set(size: 32, weight: .bold, textStyle: .headline)
-        button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.addTarget(self, action: #selector(startGame), for: .touchUpInside)
+    private lazy var searchButton: RoundedButton = {
+        let buttonImage = UIImage(systemName: LocalizableBundle.searchButtonIcon.localize)
+        let button = RoundedButton(backgroundImage: buttonImage,
+                                   buttonAction: startGame,
+                                   tintColor: .greenActionLetrando)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -84,15 +81,15 @@ class HomeView: UIView, ViewCodable {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             
-            searchButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),
-            searchButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            searchButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            searchButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            searchButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            searchButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            searchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            searchButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
 
-            lettersImage.bottomAnchor.constraint(equalTo: searchButton.topAnchor),
+            lettersImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             lettersImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             lettersImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            lettersImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
+            lettersImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5)
         ])
     }
     
