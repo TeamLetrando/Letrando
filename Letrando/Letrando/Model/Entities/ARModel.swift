@@ -15,6 +15,7 @@ class ARModel {
 
         let textNode = SCNNode(geometry: text)
         textNode.castsShadow = true
+        textNode.geometry?.subdivisionLevel = 2
 
         let fontSize = Float(0.07)
         textNode.scale = SCNVector3(fontSize, fontSize, fontSize)
@@ -34,10 +35,11 @@ class ARModel {
     }
 
     static func configureText(_ string: String) -> SCNText {
+        let colors: [UIColor] = [.purpleCustom, .yellowCustom, .pinkBaby,.blueCustom, .redCustom]
         let text = SCNText(string: string, extrusionDepth: 0.3)
         text.font = UIFont.systemFont(ofSize: 3.0)
         text.flatness = 0.01
-        text.firstMaterial?.diffuse.contents = UIColor.purpleLetters
+        text.firstMaterial?.diffuse.contents = UIColor.random(from: colors)
 
         return text
     }

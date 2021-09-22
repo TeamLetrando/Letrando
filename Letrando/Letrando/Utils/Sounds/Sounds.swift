@@ -19,24 +19,31 @@ class Sounds {
             return false
         }
     }
-        static func playAudio() {
-            do {
-                let audioSession = AVAudioSession.sharedInstance()
-                //try audioSession.setCategory(.playback, mode: .moviePlayback, options: [])
-                try audioSession.setCategory(.ambient)
-                try audioSession.setActive(true)
-                
-                guard let url = Bundle.main.url(forResource: "Curious_Kiddo", withExtension: "mp3") else {return}
-                Sounds.audioPlayer = try? AVAudioPlayer(contentsOf: url)
-                Sounds.audioPlayer?.numberOfLoops = -1
-                Sounds.audioPlayer?.prepareToPlay()
-                Sounds.audioPlayer?.play()
-            } catch {
-                print("Failed to set audio session category.")
-            }
+    static func playAudio() {
+        do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.ambient)
+            try audioSession.setActive(true)
+            
+            guard let url = Bundle.main.url(forResource: "Curious_Kiddo", withExtension: "mp3") else {return}
+            Sounds.audioPlayer = try? AVAudioPlayer(contentsOf: url)
+            Sounds.audioPlayer?.numberOfLoops = -1
+            Sounds.audioPlayer?.prepareToPlay()
+            Sounds.audioPlayer?.play()
+        } catch {
+            print("Failed to set audio session category.")
         }
-        
-        static func audioFinish() {
-            Sounds.audioPlayer?.stop()
-           }
+    }
+    
+    static func audioFinish() {
+        Sounds.audioPlayer?.stop()
+    }
+    
+    static func reproduceSound(string: String) {
+        let utterance =  AVSpeechUtterance(string: string)
+        let voice = AVSpeechSynthesisVoice(language: "pt-BR")
+        utterance.voice = voice
+        let sintetizer = AVSpeechSynthesizer()
+        sintetizer.speak(utterance)
+    }
 }

@@ -12,10 +12,8 @@ class HomeView: UIView, ViewCodable {
 
     weak var delegate: HomeViewDelegate?
    
-    private lazy var soundButton: UIButton = {
-        let button = UIButton()
-        button.tintColor = .greenActionLetrando
-        button.addTarget(self, action: #selector(setAudio), for: .touchUpInside)
+    private lazy var soundButton: SoundButton = {
+        let button = SoundButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -57,7 +55,7 @@ class HomeView: UIView, ViewCodable {
         button.titleLabel?.textColor = .white
         button.titleLabel?.font = UIFont.set(size: 32, weight: .bold, textStyle: .headline)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.addTarget(self, action: #selector(search), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startGame), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -100,25 +98,9 @@ class HomeView: UIView, ViewCodable {
     
     func setupAditionalChanges() {
         backgroundColor = .lightGreenBackgroundLetrando
-        updateButtonSoundImage(Sounds.checkAudio())
     }
-    
-    @objc private func setAudio() {
-        UserDefaults.standard.set(!Sounds.checkAudio(), forKey:LocalizableBundle.userDefautlsKeySound.localize)
-        
-        delegate?.configSounds()
-        updateButtonSoundImage(Sounds.checkAudio())
-    }
-    
-    @objc private func search() {
+ 
+    @objc private func startGame() {
         delegate?.startGame()
     }
-    
-    private func updateButtonSoundImage(_ isActive: Bool) {
-        let buttonSoundImage = isActive ? LocalizableBundle.activatedSoundIcon.localize :
-                LocalizableBundle.disabledSoundIcon.localize
-        
-        soundButton.setBackgroundImage(UIImage(systemName: buttonSoundImage), for: .normal)
-    }
-    
 }
