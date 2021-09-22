@@ -20,6 +20,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         configSounds()
     }
     

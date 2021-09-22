@@ -15,6 +15,7 @@ enum LocalizableBundle: String {
     case searchButtonTitle
     case mascotHomeAnimation
     case messageResult
+    case mascotResultAnimation
     
     // MARK: - UserDefaults
     case userDefautlsKeySound

@@ -11,84 +11,33 @@ import AVFoundation
 import ARKit
 
 class SearchResultViewController: UIViewController {
-    
-    @IBOutlet weak var mensageLabel: UILabel!
-    @IBOutlet weak var wordLabel: UILabel!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var outButton: UIButton!
-    @IBOutlet weak var animationView: AnimationView!
-    @IBOutlet weak var soundButton: UIButton!
-    var wordResult: String = "LABEL"
+ 
+    var wordResult = String()
    
+    private lazy var resultView = ResultView(wordResult: wordResult)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupLayoutOfItems()
-        animateDog()
-        
-        Report.createReport(word: wordLabel.text!)
+        resultView.delegate = self
+    }
+    
+    override func loadView() {
+        self.view = resultView
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        animationView.play()
-        reproduceSound(string: wordResult)
-        
-        if Sounds.checkAudio() {
-            soundButton.setImage(UIImage(named: "audio"), for: .normal)
-        } else {
-            soundButton.setImage(UIImage(named: "audioOff"), for: .normal)
-        }
+        Sounds.reproduceSound(string: wordResult)
+        configSounds()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        animationView.pause()
+    private func configSounds() {
+        Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
     }
-    
-    func reproduceSound(string: String) {
-        let utterance =  AVSpeechUtterance(string: string)
-        let voice = AVSpeechSynthesisVoice(language: "pt-BR")
-        utterance.voice = voice
-        let sintetizer = AVSpeechSynthesizer()
-        sintetizer.speak(utterance)
-    }
+}
 
-    func animateDog() {
-        animationView.contentMode = .scaleAspectFill
-        animationView.loopMode = .loop
-        animationView.animationSpeed = 0.8
-        animationView.play()
-    }
-
-    func setupLayoutOfItems() {
-        mensageLabel.textColor = .bronwLetters
-        mensageLabel.font = UIFont(name: "BubblegumSans-Regular", size: 60)
-        
-        wordLabel.textColor = .purpleLetters
-        wordLabel.text = wordResult.uppercased()
-        wordLabel.font = .systemFont(ofSize: 90)
-
-        searchButton.backgroundColor = .greenButtons
-        searchButton.titleLabel?.textColor = .white
-        searchButton.titleLabel?.font = UIFont(name: "BubblegumSans-Regular", size: 40)
-        searchButton.layer.cornerRadius = 10
-
-        outButton.backgroundColor = .bronwLetters
-        outButton.titleLabel?.textColor = .white
-        outButton.titleLabel?.font = UIFont(name: "BubblegumSans-Regular", size: 40)
-        outButton.layer.cornerRadius = 10
-    }
-
-    @IBAction func searchAgain(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Search", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "search")
-                as? SearchViewController else {fatalError()}
-        viewC.modalPresentationStyle = .fullScreen
-        self.present(viewC, animated: true, completion: nil)
-    }
-
-    @IBAction func exitScrenn(_ sender: UIButton) {
+extension SearchResultViewController: ResultViewDelegate {
+    func exitGame() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "home")
                 as? HomeViewController else {fatalError()}
@@ -96,17 +45,11 @@ class SearchResultViewController: UIViewController {
         self.present(viewC, animated: true, completion: nil)
     }
     
-    @IBAction func soundPressed(_ sender: UIButton) {
-        switch Sounds.checkAudio() {
-        case true:
-            sender.setImage(UIImage(named: "audioOff"), for: .normal)
-            UserDefaults.standard.set(false, forKey: "checkSound")
-            Sounds.audioFinish()
-        default:
-            sender.setImage(UIImage(named: "audio"), for: .normal)
-            UserDefaults.standard.set(true, forKey: "checkSound")
-            Sounds.playAudio()
-        }
+    func startGame() {
+        let storyboard = UIStoryboard(name: "Search", bundle: nil)
+        guard let viewC =  storyboard.instantiateViewController(identifier: "search")
+                as? SearchViewController else {fatalError()}
+        viewC.modalPresentationStyle = .fullScreen
+        self.present(viewC, animated: true, completion: nil)
     }
-    
 }

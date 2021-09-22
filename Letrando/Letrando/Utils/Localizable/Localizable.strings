@@ -11,6 +11,7 @@
 "lettersImage" = "letters_home";
 "searchButtonTitle" = "Buscar";
 "mascotHomeAnimation" = "mascoteHome";
+"mascotResultAnimation" = "result";
 "messageResult" = "PARABÉNS! você achou";
 
 // MARK: - UserDefaults
