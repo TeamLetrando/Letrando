@@ -83,7 +83,7 @@ class GameView: UIView, ViewCodable {
             
             lettersStackView.heightAnchor.constraint(equalToConstant: 58 * Multipliers.height),
             lettersStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            lettersStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 20),
+            lettersStackView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
             lettersStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25)
         ])
     }
@@ -164,6 +164,6 @@ extension GameView: GameViewDelegate {
  
 enum Multipliers {
     static let screenSize = UIScreen.main.bounds.size
-    static let height = UIScreen.main.bounds.height
-    static let widht = UIScreen.main.bounds.width
+    static let height = UIScreen.main.bounds.height / 375
+    static let widht = UIScreen.main.bounds.width / 812
 }

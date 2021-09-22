@@ -31,6 +31,7 @@ class AlertViewController: UIViewController {
 //        self.present(viewC, animated: true, completion: nil)
         
         let controller = SearchViewController()
+        controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: true, completion: nil)
     }
 }

@@ -38,6 +38,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.modalPresentationStyle = .fullScreen
+        
         gameView.addSubview(sceneView)
         sceneView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
