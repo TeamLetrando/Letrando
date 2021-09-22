@@ -24,10 +24,13 @@ class AlertViewController: UIViewController {
     }
     
     @objc func timerWork() {
-        let storyboard = UIStoryboard(name: "Search", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "search")
-                as? SearchViewController else {fatalError()}
-        viewC.modalPresentationStyle = .fullScreen
-        self.present(viewC, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "Search", bundle: nil)
+//        guard let viewC =  storyboard.instantiateViewController(identifier: "search")
+//                as? SearchViewController else {fatalError()}
+//        viewC.modalPresentationStyle = .fullScreen
+//        self.present(viewC, animated: true, completion: nil)
+        
+        let controller = SearchViewController()
+        self.present(controller, animated: true, completion: nil)
     }
 }

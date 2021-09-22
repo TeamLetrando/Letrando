@@ -58,6 +58,9 @@
 		AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007F5256E7D2800C2DA6C /* CGPoint.swift */; };
 		AFE007FE256E7D5D00C2DA6C /* SearchView+ARCoaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */; };
 		D10E873926EF75E000BABE51 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E873826EF75E000BABE51 /* ViewCodable.swift */; };
+		D12AC55626F0D36D0026967F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AC55526F0D36D0026967F /* GameView.swift */; };
+		D12AC55826F0E21A0026967F /* LettersStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12AC55726F0E21A0026967F /* LettersStackView.swift */; };
+		D1CFDB4626FA06E30018F836 /* GameViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CFDB4526FA06E30018F836 /* GameViewDelegate.swift */; };
 		FF3733BF377790C110FFCD1F /* Pods_Letrando.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1196D6BE461625AF540961D9 /* Pods_Letrando.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +147,9 @@
 		AFE007FD256E7D5D00C2DA6C /* SearchView+ARCoaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchView+ARCoaching.swift"; sourceTree = "<group>"; };
 		BF3AD8199C19E364D9152619 /* Pods_Letrando_LetrandoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letrando_LetrandoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10E873826EF75E000BABE51 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
+		D12AC55526F0D36D0026967F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		D12AC55726F0E21A0026967F /* LettersStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LettersStackView.swift; sourceTree = "<group>"; };
+		D1CFDB4526FA06E30018F836 /* GameViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewDelegate.swift; sourceTree = "<group>"; };
 		FA7E3D8BD3C368A009AA793A /* Pods-Letrando.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando.debug.xcconfig"; path = "Target Support Files/Pods-Letrando/Pods-Letrando.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -358,6 +364,9 @@
 			children = (
 				7795201325680B7300BC7367 /* Search.storyboard */,
 				7795201825680B8200BC7367 /* SearchResult.storyboard */,
+				D12AC55526F0D36D0026967F /* GameView.swift */,
+				D12AC55726F0E21A0026967F /* LettersStackView.swift */,
+				D1CFDB4526FA06E30018F836 /* GameViewDelegate.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -793,6 +802,7 @@
 				77951FC22568088100BC7367 /* AppDelegate.swift in Sources */,
 				0B073585256BF2300002AC05 /* JsonData.swift in Sources */,
 				AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */,
+				D1CFDB4626FA06E30018F836 /* GameViewDelegate.swift in Sources */,
 				7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */,
 				7795202525680BCB00BC7367 /* Sounds.swift in Sources */,
 				AFE007E3256E794000C2DA6C /* Plane.swift in Sources */,
@@ -803,7 +813,9 @@
 				AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */,
 				7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */,
 				7795207F25680D4D00BC7367 /* ARModel.swift in Sources */,
+				D12AC55826F0E21A0026967F /* LettersStackView.swift in Sources */,
 				7795205A25680C7700BC7367 /* SearchResultViewController.swift in Sources */,
+				D12AC55626F0D36D0026967F /* GameView.swift in Sources */,
 				77951FC42568088100BC7367 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

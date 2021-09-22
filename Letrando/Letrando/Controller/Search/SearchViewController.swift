@@ -15,42 +15,58 @@ enum BodyType: Int {
     case  plane = 2
 }
 class SearchViewController: UIViewController {
-    @IBOutlet weak var messageLabel: UILabel!
-    var letters: [String] = []
-    var imageViewLetters: [UIImageView] = []
+    //@IBOutlet weak var messageLabel: UILabel!
+   // var letters: [String] = []
+    //var imageViewLetters: [UIImageView] = []
     var word: Word?
-    @IBOutlet weak var sceneView: ARSCNView!
-    var stack: UIStackView!
+    //@IBOutlet weak var sceneView: ARSCNView!
+    //var stack: UIStackView!
     var sceneController = Scene()
     var lettersAdded: Bool = false
     var planes = [Plane]()
-    let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    //let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
-    @IBOutlet weak var buttonHand: UIButton!
+    //@IBOutlet weak var buttonHand: UIButton!
     var score = 0
+    
+    var sceneView = ARSCNView()
+    
+    lazy var gameView = GameView()
+    weak var delegate: GameViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameView.addSubview(sceneView)
+        sceneView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sceneView.widthAnchor.constraint(equalTo: gameView.widthAnchor),
+            sceneView.heightAnchor.constraint(equalTo: gameView.heightAnchor),
+            sceneView.centerYAnchor.constraint(equalTo: gameView.centerYAnchor),
+            sceneView.centerXAnchor.constraint(equalTo: gameView.centerXAnchor)
+        ])
         sceneView.delegate = self
         if let scene = sceneController.scene {
             sceneView.scene = scene
         }
 
         word = JsonData().randomWord()
-        letters = word?.breakInLetters() ?? []
+        gameView.letters = word?.breakInLetters() ?? []
 
-        makeImage(letters: letters)
+        //smakeImage(letters: letters)
 
-        stack.isHidden = true
-        messageLabel.isHidden = true
-        feedbackGenerator.prepare()
+        //stack.isHidden = true
+        //messageLabel.isHidden = true
+        //feedbackGenerator.prepare()
         setupCoachingOverlay()
-        setupMessageLabel()
+        //setupMessageLabel()
         addMoveGesture()
         addTapGesture()
         configureUserDefaults()
+        
+        
+        delegate = gameView
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,6 +78,10 @@ class SearchViewController: UIViewController {
         sceneView.session.pause()
     }
     
+    override func loadView() {
+        self.view = gameView
+    }
+    
     func configureUserDefaults() {
         if UserDefaults.standard.object(forKey: "showAnimationFeedback") == nil {
             UserDefaults.standard.setValue(true, forKey: "showAnimationFeedback")
@@ -70,12 +90,12 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func setupMessageLabel() {
-        messageLabel.text = "Procure um local mais espaçoso"
-        messageLabel.textColor = .whiteViews
-        messageLabel.font = UIFont(name: "BubblegumSans-Regular", size: 40)
-        messageLabel.backgroundColor = .purpleLetters
-    }
+//    func setupMessageLabel() {
+//        messageLabel.text = "Procure um local mais espaçoso"
+//        messageLabel.textColor = .whiteViews
+//        messageLabel.font = UIFont(name: "BubblegumSans-Regular", size: 40)
+//        messageLabel.backgroundColor = .purpleLetters
+//    }
     @IBAction func showAnimationFeedback(_ sender: Any) {
         if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool {
             UserDefaults.standard.setValue(!isAnimationEnable, forKey: "showAnimationFeedback")
@@ -84,38 +104,40 @@ class SearchViewController: UIViewController {
     }
     
     func configureHandImageButton(_ isAnimationEnable: Bool) {
-        if isAnimationEnable {
-            buttonHand.setImage(UIImage(named: "handButtonOn"), for: .normal)
-        } else {
-            buttonHand.setImage(UIImage(named: "handButtonOff"), for: .normal)
-        }
+        delegate?.setHandButtonImage(for: isAnimationEnable ? "handButtonOn" : "handButtonOff")
+        
+//        if isAnimationEnable {
+//            buttonHand.setImage(UIImage(named: "handButtonOn"), for: .normal)
+//        } else {
+//            buttonHand.setImage(UIImage(named: "handButtonOff"), for: .normal)
+//        }
     }
     
-    func animateFeedBack(initialPosition: CGPoint, letter: String) {
-        if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool,
-           isAnimationEnable == false { return }
-        stack.subviews.forEach { view in
-            if let tappedLetter = view as? UIImageView,
-               let letterName = tappedLetter.layer.name,
-               letterName == letter {
-                let finalPosition = stack.convert(tappedLetter.layer.position, to: sceneView)
-                
-                let handImage = UIImageView(frame: CGRect(x: initialPosition.x,
-                                                          y: initialPosition.y,
-                                                          width: 50,
-                                                          height: 80))
-                handImage.image = UIImage(named: "hand")
-                
-                sceneView.addSubview(handImage)
-                
-                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) {
-                    handImage.layer.position = finalPosition
-                } completion: { _ in
-                    handImage.removeFromSuperview()
-                }
-            }
-        }
-    }
+//    func animateFeedBack(initialPosition: CGPoint, letter: String) {
+//        if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool,
+//           isAnimationEnable == false { return }
+//        stack.subviews.forEach { view in
+//            if let tappedLetter = view as? UIImageView,
+//               let letterName = tappedLetter.layer.name,
+//               letterName == letter {
+//                let finalPosition = stack.convert(tappedLetter.layer.position, to: sceneView)
+//                
+//                let handImage = UIImageView(frame: CGRect(x: initialPosition.x,
+//                                                          y: initialPosition.y,
+//                                                          width: 50,
+//                                                          height: 80))
+//                handImage.image = UIImage(named: "hand")
+//                
+//                sceneView.addSubview(handImage)
+//                
+//                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) {
+//                    handImage.layer.position = finalPosition
+//                } completion: { _ in
+//                    handImage.removeFromSuperview()
+//                }
+//            }
+//        }
+//    }
     
     func reproduceSound(string: String) {
         let utterance =  AVSpeechUtterance(string: string)
@@ -141,11 +163,15 @@ class SearchViewController: UIViewController {
             object.removeFromParentNode()
             image.image = UIImage(named: "lettersFull/\(name)_full")
             image.layer.name = "\(name)_full"
-            feedbackGenerator.impactOccurred()
+            gameView.feedbackGeneratorImpactOccurred()
             score+=1
-            if score == letters.count, let word = word {
+            if let word = word {
                 transitionForResultScreen(word: word.word)
             }
+            
+//            if score == letters.count, let word = word {
+//                transitionForResultScreen(word: word.word)
+//            }
         }
     }
 
@@ -247,22 +273,22 @@ class SearchViewController: UIViewController {
     }
 
     func setupConstraints(imageLetters: [UIImageView]) {
-        stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.spacing = 15
-        sceneView.addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.heightAnchor.constraint(equalToConstant: 58).isActive = true
-        stack.centerXAnchor.constraint(equalTo: sceneView.centerXAnchor).isActive = true
-        stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-        stack.bottomAnchor.constraint(equalTo: sceneView.bottomAnchor, constant: -25).isActive = true
-        for ipp in 0...(imageLetters.count - 1) {
-            imageLetters[ipp].translatesAutoresizingMaskIntoConstraints = false
-            imageLetters[ipp].heightAnchor.constraint(equalTo: imageLetters[ipp].widthAnchor).isActive = true
-            stack.addArrangedSubview(imageLetters[ipp])
-        }
-        imageViewLetters = imageLetters
+//        stack = UIStackView()
+//        stack.axis = .horizontal
+//        stack.distribution = .fillEqually
+//        stack.spacing = 15
+//        sceneView.addSubview(stack)
+//        stack.translatesAutoresizingMaskIntoConstraints = false
+//        stack.heightAnchor.constraint(equalToConstant: 58).isActive = true
+//        stack.centerXAnchor.constraint(equalTo: sceneView.centerXAnchor).isActive = true
+//        stack.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
+//        stack.bottomAnchor.constraint(equalTo: sceneView.bottomAnchor, constant: -25).isActive = true
+//        for ipp in 0...(imageLetters.count - 1) {
+//            imageLetters[ipp].translatesAutoresizingMaskIntoConstraints = false
+//            imageLetters[ipp].heightAnchor.constraint(equalTo: imageLetters[ipp].widthAnchor).isActive = true
+//            stack.addArrangedSubview(imageLetters[ipp])
+//        }
+        //imageViewLetters = imageLetters
     }
 
     func transitionForResultScreen(word: String) {
