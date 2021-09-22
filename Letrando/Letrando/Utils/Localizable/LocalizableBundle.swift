@@ -12,7 +12,7 @@ enum LocalizableBundle: String {
     case homeTitle
     
     case alertMessage
-    case alertImageName
+    case alertAnimation
     
     case mascotImage
     case lettersImage

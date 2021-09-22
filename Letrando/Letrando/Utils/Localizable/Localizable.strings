@@ -7,7 +7,7 @@
 */
 
 "alertMessage" = "Cuidado com os objetos ao seu redor";
-"alertImageName"= "alert_mascot";
+"alertAnimation" = "mascotAlert";
 
 "homeTitle" = "Vamos buscar letrinhas?";
 "mascotImage" = "mascot_home";

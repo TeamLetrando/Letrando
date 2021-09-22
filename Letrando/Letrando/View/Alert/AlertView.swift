@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import Lottie
 
 final class AlertView: UIView, ViewCodable {
     
-    private lazy var mascotAnimation: UIImageView = {
-        let mascotAnimation = UIImageView()
-        mascotAnimation.image = UIImage(named: LocalizableBundle.alertImageName.localize)
-        mascotAnimation.contentMode = .scaleAspectFit
-        mascotAnimation.translatesAutoresizingMaskIntoConstraints = false
-        return mascotAnimation
+    private lazy var mascotAnimation: AnimationView = {
+        let animation = AnimationView(name: LocalizableBundle.alertAnimation.localize)
+        animation.contentMode = .scaleAspectFit
+        animation.loopMode = .loop
+        animation.animationSpeed = 0.8
+        animation.play()
+        animation.translatesAutoresizingMaskIntoConstraints = false
+        return animation
     }()
     
     private lazy var messageAlert: UILabel = {
