@@ -89,7 +89,7 @@ class HomeView: UIView, ViewCodable {
             lettersImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             lettersImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             lettersImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            lettersImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5)
+            lettersImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
         ])
     }
     

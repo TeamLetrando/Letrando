@@ -31,7 +31,7 @@ class ResultView: UIView, ViewCodable {
     
     private lazy var wordResultLabel: UILabel = {
         let label = UILabel()
-        label.text = wordResult
+        label.text = wordResult.uppercased()
         label.textAlignment = .center
         label.numberOfLines = .zero
         label.textColor = .darkGreenLetrando

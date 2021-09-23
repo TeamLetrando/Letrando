@@ -15,7 +15,6 @@ class ARModel {
 
         let textNode = SCNNode(geometry: text)
         textNode.castsShadow = true
-        textNode.geometry?.subdivisionLevel = 2
 
         let fontSize = Float(0.07)
         textNode.scale = SCNVector3(fontSize, fontSize, fontSize)
