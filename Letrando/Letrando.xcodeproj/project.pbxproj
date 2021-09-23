@@ -52,7 +52,7 @@
 		AF00FC9A26F0DB9100DC4CA4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9926F0DB9100DC4CA4 /* String.swift */; };
 		AF00FC9C26F0E15D00DC4CA4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9B26F0E15D00DC4CA4 /* HomeView.swift */; };
 		AF00FC9E26F0E66100DC4CA4 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9D26F0E66100DC4CA4 /* UIFont.swift */; };
-		AF177AD626FCC62A00C9581D /* cao.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AF177AD526FCC62900C9581D /* cao.jpeg */; };
+		AF177AD826FCC7BB00C9581D /* cao.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AF177AD726FCC7BB00C9581D /* cao.jpeg */; };
 		AF52F3CB26F8BA2B002394CC /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */; };
 		AF52F3CD26F8D0AA002394CC /* SoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CC26F8D0AA002394CC /* SoundButton.swift */; };
 		AF52F3CF26FA08D5002394CC /* ResultViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CE26FA08D5002394CC /* ResultViewDelegate.swift */; };
@@ -150,7 +150,7 @@
 		AF00FC9926F0DB9100DC4CA4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF00FC9B26F0E15D00DC4CA4 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AF00FC9D26F0E66100DC4CA4 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
-		AF177AD526FCC62900C9581D /* cao.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cao.jpeg; path = ../../../../../../Downloads/cao.jpeg; sourceTree = "<group>"; };
+		AF177AD726FCC7BB00C9581D /* cao.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cao.jpeg; sourceTree = "<group>"; };
 		AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		AF52F3CC26F8D0AA002394CC /* SoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundButton.swift; sourceTree = "<group>"; };
 		AF52F3CE26FA08D5002394CC /* ResultViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewDelegate.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 		0BFD5EAC25810C8B00000B11 /* LocalNotification */ = {
 			isa = PBXGroup;
 			children = (
-				AF177AD526FCC62900C9581D /* cao.jpeg */,
+				AF177AD726FCC7BB00C9581D /* cao.jpeg */,
 			);
 			path = LocalNotification;
 			sourceTree = "<group>";
@@ -689,7 +689,6 @@
 				77951FF82568093900BC7367 /* .swiftlint.yml in Resources */,
 				7795200725680B0E00BC7367 /* Alert.storyboard in Resources */,
 				AFC9656C26FB575900ED8FD2 /* mascoteResult.json in Resources */,
-				AF177AD626FCC62A00C9581D /* cao.jpeg in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
 				7795201925680B8200BC7367 /* SearchResult.storyboard in Resources */,
 				0BEDD1F126FB7D7100F24E04 /* mascotAlert.json in Resources */,
@@ -701,6 +700,7 @@
 				77951FCE2568088100BC7367 /* Assets.xcassets in Resources */,
 				77951FC92568088100BC7367 /* Home.storyboard in Resources */,
 				AFDC55EF2575689E00F68374 /* BubblegumSans-Regular.ttf in Resources */,
+				AF177AD826FCC7BB00C9581D /* cao.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
