@@ -167,8 +167,8 @@ class SearchViewController: UIViewController {
             image.image = UIImage(named: "lettersFull/\(name)_full")
             image.layer.name = "\(name)_full"
             gameView.feedbackGeneratorImpactOccurred()
-            score+=1
-            if let word = word {
+            score += 1
+            if let word = word, score == word.word.count {
                 transitionForResultScreen(word: word.word)
             }
             
@@ -255,25 +255,25 @@ class SearchViewController: UIViewController {
         self.present(viewC, animated: true, completion: nil)
     }
 
-    func makeImage(letters: [String]) {
-        var imageLetters: [UIImageView] = []
-        for oneLetter in letters {
-            if let imageLetter = UIImage(named: "lettersEmpty/\(oneLetter).png") {
-                let image = UIImageView(image: imageLetter)
-                image.contentMode = .scaleAspectFill
-                image.layer.masksToBounds = true
-                image.layer.cornerRadius = 5.0
-                image.layer.borderWidth = 1.0
-                image.layer.borderColor = UIColor.lightGray.cgColor
-                image.clipsToBounds = true
-                image.translatesAutoresizingMaskIntoConstraints = false
-                image.layer.zPosition = -0.001
-                image.layer.name = oneLetter
-                imageLetters.append(image)
-            }
-        }
-        setupConstraints(imageLetters: imageLetters)
-    }
+//    func makeImage(letters: [String]) {
+//        var imageLetters: [UIImageView] = []
+//        for oneLetter in letters {
+//            if let imageLetter = UIImage(named: "lettersEmpty/\(oneLetter).png") {
+//                let image = UIImageView(image: imageLetter)
+//                image.contentMode = .scaleAspectFill
+//                image.layer.masksToBounds = true
+//                image.layer.cornerRadius = 5.0
+//                image.layer.borderWidth = 1.0
+//                image.layer.borderColor = UIColor.lightGray.cgColor
+//                image.clipsToBounds = true
+//                image.translatesAutoresizingMaskIntoConstraints = false
+//                image.layer.zPosition = -0.001
+//                image.layer.name = oneLetter
+//                imageLetters.append(image)
+//            }
+//        }
+//        setupConstraints(imageLetters: imageLetters)
+//    }
 
     func setupConstraints(imageLetters: [UIImageView]) {
 //        stack = UIStackView()
@@ -295,11 +295,14 @@ class SearchViewController: UIViewController {
     }
 
     func transitionForResultScreen(word: String) {
-        let storyboard = UIStoryboard(name: "SearchResult", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "searchResult")
-                as? SearchResultViewController else {fatalError()}
-        viewC.wordResult = word
-        viewC.modalPresentationStyle = .fullScreen
-        self.present(viewC, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "SearchResult", bundle: nil)
+//        guard let viewC =  storyboard.instantiateViewController(identifier: "searchResult")
+//                as? SearchResultViewController else {fatalError()}
+//        viewC.wordResult = word
+//        viewC.modalPresentationStyle = .fullScreen
+//        self.present(viewC, animated: true, completion: nil)
+        let controller = SearchResultViewController(wordResult: word)
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: true, completion: nil)
     }
 }

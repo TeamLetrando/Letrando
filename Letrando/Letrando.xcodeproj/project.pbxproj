@@ -28,7 +28,6 @@
 		7795200725680B0E00BC7367 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7795200625680B0E00BC7367 /* Alert.storyboard */; };
 		7795200E25680B5C00BC7367 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7795200D25680B5C00BC7367 /* Report.storyboard */; };
 		7795201425680B7300BC7367 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7795201325680B7300BC7367 /* Search.storyboard */; };
-		7795201925680B8200BC7367 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7795201825680B8200BC7367 /* SearchResult.storyboard */; };
 		7795201F25680BBD00BC7367 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795201E25680BBD00BC7367 /* Colors.swift */; };
 		7795202525680BCB00BC7367 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795202425680BCB00BC7367 /* Sounds.swift */; };
 		7795203425680C0500BC7367 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795203325680C0500BC7367 /* AlertViewController.swift */; };
@@ -126,7 +125,6 @@
 		7795200625680B0E00BC7367 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
 		7795200D25680B5C00BC7367 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		7795201325680B7300BC7367 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
-		7795201825680B8200BC7367 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
 		7795201E25680BBD00BC7367 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7795202425680BCB00BC7367 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		7795203325680C0500BC7367 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -395,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				7795201325680B7300BC7367 /* Search.storyboard */,
-				7795201825680B8200BC7367 /* SearchResult.storyboard */,
 				D12AC55526F0D36D0026967F /* GameView.swift */,
 				D12AC55726F0E21A0026967F /* LettersStackView.swift */,
 				D1CFDB4526FA06E30018F836 /* GameViewDelegate.swift */,
@@ -570,7 +567,6 @@
 		AFE7339626F4E1E00044E435 /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				7795201825680B8200BC7367 /* SearchResult.storyboard */,
 				AFE7339726F4E1FA0044E435 /* ResultView.swift */,
 				AF52F3CE26FA08D5002394CC /* ResultViewDelegate.swift */,
 			);
@@ -701,7 +697,6 @@
 				7795200725680B0E00BC7367 /* Alert.storyboard in Resources */,
 				AFC9656C26FB575900ED8FD2 /* mascoteResult.json in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
-				7795201925680B8200BC7367 /* SearchResult.storyboard in Resources */,
 				0BEDD1F126FB7D7100F24E04 /* mascotAlert.json in Resources */,
 				77951FD12568088100BC7367 /* LaunchScreen.storyboard in Resources */,
 				AFC9656A26FB575100ED8FD2 /* mascoteHome.json in Resources */,
