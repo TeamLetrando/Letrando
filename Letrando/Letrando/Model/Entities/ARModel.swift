@@ -34,10 +34,11 @@ class ARModel {
     }
 
     static func configureText(_ string: String) -> SCNText {
+        let colors: [UIColor] = [.purpleCustom, .yellowCustom, .pinkBaby,.blueCustom, .redCustom]
         let text = SCNText(string: string, extrusionDepth: 0.3)
         text.font = UIFont.systemFont(ofSize: 3.0)
         text.flatness = 0.01
-        text.firstMaterial?.diffuse.contents = UIColor.purpleLetters
+        text.firstMaterial?.diffuse.contents = UIColor.random(from: colors)
 
         return text
     }
