@@ -6,6 +6,9 @@
   
 */
 
+"alertMessage" = "Cuidado com os objetos ao seu redor";
+"alertAnimation" = "mascotAlert";
+
 "homeTitle" = "Vamos buscar letrinhas?";
 "mascotImage" = "mascot_home";
 "lettersImage" = "letters_home";
