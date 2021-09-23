@@ -111,21 +111,28 @@ class GameView: UIView, ViewCodable {
 
 extension GameView: GameViewDelegate {
     func changeMessageLabelHiding(for value: Bool) {
-        findAnotherPlaceMessageLabel.isHidden = value
+        DispatchQueue.main.async { [weak self] in
+            self?.findAnotherPlaceMessageLabel.isHidden = value
+        }
     }
     
     func changeLettersStackHiding(for value: Bool) {
-        lettersStackView.isHidden = value
+        DispatchQueue.main.async { [weak self] in
+            self?.lettersStackView.isHidden = value
+        }
     }
     
     func animateFeedBack(initialPosition: CGPoint, letter: String, sceneView: ARSCNView) {
-        if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool,
-           isAnimationEnable == false { return }
-        lettersStackView.subviews.forEach { view in
-            if let tappedLetter = view as? UIImageView,
-               let letterName = tappedLetter.layer.name,
+        if !(UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool ?? false) {
+            return
+        }
+        
+        lettersStackView.subviews.forEach {
+            if let letterImageView = $0 as? UIImageView,
+               let letterName = letterImageView.layer.name,
                letterName == letter {
-               let finalPosition = lettersStackView.convert(tappedLetter.layer.position, to: sceneView)
+
+                let finalPosition = lettersStackView.convert(letterImageView.layer.position, to: sceneView)
                 
                 let handImage = UIImageView(frame: CGRect(x: initialPosition.x,
                                                           y: initialPosition.y,
@@ -147,23 +154,6 @@ extension GameView: GameViewDelegate {
     func setHandButtonImage(for imageName: String) {
         handButton.setImage(UIImage(named: imageName), for: .normal)
     }
-    
-//    func endedState(tapLocation: CGPoint) {
-//        lettersStackView.subviews.forEach { (view) in
-//            if let image = view as? UIImageView {
-//                let convertPosition = lettersStackView.convert(image.layer.position, to: sceneView)
-//                let distance = tapLocation.distance(to: convertPosition)
-//                if distance <= 50 {
-//                    animateView(image)
-//                    checkAnswer(actualNode, image)
-//                } else {
-//                    let action = SCNAction.move(to: initialPosition, duration: 0.5)
-//                    action.timingMode = .easeInEaseOut
-//                    actualNode.runAction(action)
-//                }
-//            }
-//        }
-//    }
 }
  
 enum Multipliers {
