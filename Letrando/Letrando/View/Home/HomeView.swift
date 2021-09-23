@@ -37,6 +37,7 @@ class HomeView: UIView, ViewCodable {
         animation.loopMode = .loop
         animation.animationSpeed = 0.8
         animation.play()
+        animation.translatesAutoresizingMaskIntoConstraints = false
         return animation
     }()
     
@@ -85,11 +86,16 @@ class HomeView: UIView, ViewCodable {
             searchButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
             searchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             searchButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
-
+            
             lettersImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             lettersImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             lettersImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            lettersImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
+            lettersImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            
+            mascotAnimation.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            mascotAnimation.bottomAnchor.constraint(equalTo: lettersImage.topAnchor, constant: 50),
+            mascotAnimation.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            mascotAnimation.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
         ])
     }
     
