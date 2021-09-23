@@ -49,7 +49,7 @@ class HomeView: UIView, ViewCodable {
         return imageView
     }()
     
-    private lazy var searchButton: RoundedButton = {
+    private lazy var playButton: RoundedButton = {
         let buttonImage = UIImage(systemName: LocalizableBundle.searchButtonIcon.localize)
         let button = RoundedButton(backgroundImage: buttonImage,
                                    buttonAction: startGame,
@@ -67,7 +67,7 @@ class HomeView: UIView, ViewCodable {
         addSubview(mascotAnimation)
         addSubview(soundButton)
         addSubview(titleLabel)
-        addSubview(searchButton)
+        addSubview(playButton)
     }
     
     func setupConstraints() {
@@ -82,10 +82,10 @@ class HomeView: UIView, ViewCodable {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             
-            searchButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
-            searchButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
-            searchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            searchButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            playButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            playButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            playButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            playButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             
             lettersImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             lettersImage.trailingAnchor.constraint(equalTo: trailingAnchor),
