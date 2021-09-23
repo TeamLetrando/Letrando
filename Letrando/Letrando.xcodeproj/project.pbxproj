@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
+		0B46BA9B26F8D24B004F176D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46BA9A26F8D24B004F176D /* AlertView.swift */; };
 		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
+		0BEDD1F126FB7D7100F24E04 /* mascotAlert.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */; };
 		14C42DB4D3883BD297860320 /* Pods_LetrandoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */; };
 		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
 		778CC4D0257E66780042334F /* ReportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778CC4CF257E66780042334F /* ReportProtocol.swift */; };
@@ -92,7 +94,9 @@
 /* Begin PBXFileReference section */
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
+		0B46BA9A26F8D24B004F176D /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
+		0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mascotAlert.json; sourceTree = "<group>"; };
 		1196D6BE461625AF540961D9 /* Pods_Letrando.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Letrando.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D2A1575523AE8616B2AD2F /* Pods_LetrandoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetrandoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69936A939CC4425A751CA6E4 /* Pods-Letrando-LetrandoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Letrando-LetrandoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Letrando-LetrandoUITests/Pods-Letrando-LetrandoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 		7795200525680AFC00BC7367 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				0B46BA9A26F8D24B004F176D /* AlertView.swift */,
 				7795200625680B0E00BC7367 /* Alert.storyboard */,
 			);
 			path = Alert;
@@ -525,6 +530,7 @@
 		AF151AB82575621900E389E0 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */,
 				AFC9656B26FB575900ED8FD2 /* mascoteResult.json */,
 				AFC9656926FB575100ED8FD2 /* mascoteHome.json */,
 			);
@@ -686,6 +692,7 @@
 				AFC9656C26FB575900ED8FD2 /* mascoteResult.json in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
 				7795201925680B8200BC7367 /* SearchResult.storyboard in Resources */,
+				0BEDD1F126FB7D7100F24E04 /* mascotAlert.json in Resources */,
 				77951FD12568088100BC7367 /* LaunchScreen.storyboard in Resources */,
 				AFC9656A26FB575100ED8FD2 /* mascoteHome.json in Resources */,
 				7B4C2DEA257E654E00B3D4CE /* Curious_Kiddo.mp3 in Resources */,
@@ -851,6 +858,7 @@
 				778CC523257E6A9B0042334F /* Report+CoreDataClass.swift in Sources */,
 				7795206325680C9D00BC7367 /* NotificationsController.swift in Sources */,
 				778CC4D0257E66780042334F /* ReportProtocol.swift in Sources */,
+				0B46BA9B26F8D24B004F176D /* AlertView.swift in Sources */,
 				7795205425680C5400BC7367 /* SearchView+ARDelegate.swift in Sources */,
 				7795203425680C0500BC7367 /* AlertViewController.swift in Sources */,
 				77951FC22568088100BC7367 /* AppDelegate.swift in Sources */,
