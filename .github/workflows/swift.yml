@@ -17,9 +17,10 @@ jobs:
     - name: Test
       uses: actions/checkout@master
     - name: Build and Test
-      run: |
+      run: |        
         xcrun simctl list
-        xcodebuild clean test -workspace Letrando/Letrando.xcworkspace -scheme Letrando -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-        bash <(curl -s https://codecov.io/bash)
+        xcodebuild clean test -project Letrando/Letrando.xcodeproj -scheme Letrando -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        bash <(curl -s https://codecov.io/bash)-t "${CODECOV_TOKEN}"
       env: 
         destination: ${{ matrix.destination}}
+        CODECOV_TOKEN: ${{ secrets.codecov_token }}
