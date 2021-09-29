@@ -16,11 +16,6 @@ jobs:
     steps:
     - name: Test
       uses: actions/checkout@master
-    # Quando trocarmos para SPM, vamos tirar essa action
-    - name: Install Pods
-      run: |
-        cd Letrando
-        pod install
     - name: Build and Test
       run: |
         xcrun simctl list
