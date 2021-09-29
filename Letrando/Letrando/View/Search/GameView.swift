@@ -30,23 +30,19 @@ class GameView: UIView, ViewCodable {
     
     private lazy var feedbackGenerator =  UIImpactFeedbackGenerator(style: .medium)
     
-    private lazy var handButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "handButtonOn"), for: .normal)
-        button.imageView?.contentMode = .center
-        button.backgroundColor = .clear
+    private lazy var handButton: RoundedButton = {
+        let button = RoundedButton(backgroundImage: UIImage(named: "handButtonOn"),
+                                   buttonAction: handButtonAction,
+                                   tintColor: .greenActionLetrando)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handButtonAction), for: .touchUpInside)
         return button
     }()
     
     private lazy var backToHomeButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "back"), for: .normal)
-        button.imageView?.contentMode = .center
-        button.backgroundColor = .clear
+        let button = RoundedButton(backgroundImage: UIImage(named: "back"),
+                                   buttonAction: backToHomeButtonAction,
+                                   tintColor: .greenActionLetrando)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(backToHomeButtonAction), for: .touchUpInside)
         return button
     }()
     
@@ -71,10 +67,9 @@ class GameView: UIView, ViewCodable {
         NSLayoutConstraint.activate([
             backToHomeButton.heightAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             backToHomeButton.widthAnchor.constraint(equalToConstant: 50 * Multipliers.height),
-            backToHomeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16 * Multipliers.height),
+            backToHomeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,
+                                                  constant: 16 * Multipliers.height),
             backToHomeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16 * Multipliers.widht),
-//            backToHomeButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            backToHomeButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
             handButton.heightAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             handButton.widthAnchor.constraint(equalToConstant: 50 * Multipliers.height),
@@ -82,7 +77,8 @@ class GameView: UIView, ViewCodable {
             handButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16 * Multipliers.widht),
             
             findAnotherPlaceMessageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            findAnotherPlaceMessageLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20 * Multipliers.height),
+            findAnotherPlaceMessageLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,
+                                                              constant: 20 * Multipliers.height),
             findAnotherPlaceMessageLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             lettersStackView.heightAnchor.constraint(equalToConstant: 58 * Multipliers.height),
