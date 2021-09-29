@@ -12,11 +12,12 @@ class GameView: UIView, ViewCodable {
     
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
         let label = UILabel()
-        // TROCAR PARA O LOCALIZATION
-        label.text = "Procure um local mais espaçoso"
+        label.text = LocalizableBundle.findAnotherPlaceMessage.localize
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.textColor = .white
-        label.font = UIFont(name: "BubblegumSans-Regular", size: 40)
-        label.backgroundColor = .purpleLetters
+        label.font = UIFont(name: "BubblegumSans-Regular", size: 28)
+        label.backgroundColor = .greenActionLetrando
         label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -77,7 +78,7 @@ class GameView: UIView, ViewCodable {
             handButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16 * Multipliers.widht),
             
             findAnotherPlaceMessageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            findAnotherPlaceMessageLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,
+            findAnotherPlaceMessageLabel.topAnchor.constraint(equalTo: backToHomeButton.bottomAnchor,
                                                               constant: 20 * Multipliers.height),
             findAnotherPlaceMessageLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
             

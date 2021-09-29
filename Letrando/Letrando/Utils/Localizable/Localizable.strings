@@ -25,3 +25,6 @@
 "disabledSoundIcon" = "musicOff";
 "searchButtonIcon" = "play.circle.fill";
 "homeButtonIcon" = "house.circle.fill";
+
+// MARK: - Game View Message
+"findAnotherPlaceMessage" = "Procure um local mais espaçoso";
