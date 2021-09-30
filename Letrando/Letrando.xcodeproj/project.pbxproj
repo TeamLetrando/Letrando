@@ -197,13 +197,6 @@
 			path = LocalNotification;
 			sourceTree = "<group>";
 		};
-		372D210B45EC417F109935DF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		77951FB52568088100BC7367 = {
 			isa = PBXGroup;
 			children = (
@@ -211,7 +204,6 @@
 				77951FDA2568088200BC7367 /* LetrandoTests */,
 				77951FE52568088200BC7367 /* LetrandoUITests */,
 				77951FBF2568088100BC7367 /* Products */,
-				372D210B45EC417F109935DF /* Pods */,
 				89CE08703C5A101EB5E7653E /* Frameworks */,
 			);
 			sourceTree = "<group>";
