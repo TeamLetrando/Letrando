@@ -9,6 +9,7 @@ import UIKit
 import ARKit
 
 class GameView: UIView, ViewCodable {
+    weak var delegate: GameControlerDelegate?
     
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
         let label = UILabel()
@@ -91,6 +92,7 @@ class GameView: UIView, ViewCodable {
     
     func setupAditionalChanges() {
         feedbackGenerator.prepare()
+        handButtonAction()
     }
     
     func feedbackGeneratorImpactOccurred() {
@@ -98,11 +100,14 @@ class GameView: UIView, ViewCodable {
     }
     
     @objc private func handButtonAction() {
-        
+        if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool {
+            UserDefaults.standard.setValue(!isAnimationEnable, forKey: "showAnimationFeedback")
+            setHandButtonImage(for: isAnimationEnable ? "handButtonOn" : "handButtonOff")
+        }
     }
     
     @objc private func backToHomeButtonAction() {
-        
+        delegate?.backToHome()
     }
 }
 
@@ -120,7 +125,7 @@ extension GameView: GameViewDelegate {
     }
     
     func animateFeedBack(initialPosition: CGPoint, letter: String, sceneView: ARSCNView) {
-        if !(UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool ?? false) {
+        if !((UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool ?? false) == false) {
             return
         }
         
@@ -149,7 +154,9 @@ extension GameView: GameViewDelegate {
     }
     
     func setHandButtonImage(for imageName: String) {
-        handButton.setImage(UIImage(named: imageName), for: .normal)
+        DispatchQueue.main.async { [weak self] in
+            self?.handButton.setImage(UIImage(named: imageName), for: .normal)
+        }
     }
 }
  

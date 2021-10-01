@@ -29,13 +29,6 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
         delegate?.changeLettersStackHiding(for: !lettersAdded)
         delegate?.changeMessageLabelHiding(for: lettersAdded)
         
-//        if lettersAdded {
-//            self.stack.isHidden = false
-//            //self.messageLabel.isHidden = true
-//        } else {
-//            messageLabel.isHidden = false
-//
-//        }
         plane.update(planeAnchor)
     }
 }

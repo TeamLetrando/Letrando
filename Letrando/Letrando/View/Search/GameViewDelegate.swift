@@ -14,3 +14,7 @@ protocol GameViewDelegate: AnyObject {
     func animateFeedBack(initialPosition: CGPoint, letter: String, sceneView: ARSCNView)
     func setHandButtonImage(for imageName: String)
 }
+
+protocol GameControlerDelegate: AnyObject {
+    func backToHome()
+}

@@ -46,8 +46,6 @@ extension SearchViewController {
                 actualNode = node
                 sceneView.scene.rootNode.addChildNode(actualNode)
                 if let name = node.name {
-//                    animateFeedBack(initialPosition: tapLocation,
-//                                        letter: name)
                     delegate?.animateFeedBack(initialPosition: tapLocation, letter: name, sceneView: sceneView)
                     reproduceSound(string: name.lowercased())
                     
@@ -94,8 +92,6 @@ extension SearchViewController {
         
         if let hitResult = hitTestResult.first, let name = hitResult.node.name {
             reproduceSound(string: name.lowercased())
-//            animateFeedBack(initialPosition: tapLocation,
-//                            letter: name)
             delegate?.animateFeedBack(initialPosition: tapLocation, letter: name, sceneView: sceneView)
             
         }
