@@ -17,7 +17,6 @@ protocol ResultViewProtocol: UIView {
     init(wordResult: String)
 }
 
-
 class ResultView: UIView, ViewCodable, ResultViewProtocol {
     
     weak var delegate: ResultViewDelegate?

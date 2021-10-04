@@ -14,7 +14,8 @@ protocol ResultRouterLogic {
 }
 
 class ResultRouter: ResultRouterLogic {
-    required init(gameSceneFactory: GameFactory, homeSceneFatory: HomeFactory, navigationController: UINavigationController) {
+    required init(gameSceneFactory: GameFactory, homeSceneFatory: HomeFactory,
+                  navigationController: UINavigationController) {
         //
     }
     

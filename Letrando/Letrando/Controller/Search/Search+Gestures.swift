@@ -46,8 +46,7 @@ extension SearchViewController {
                 actualNode = node
                 sceneView.scene.rootNode.addChildNode(actualNode)
                 if let name = node.name {
-                    animateFeedBack(initialPosition: tapLocation,
-                                        letter: name)
+                    delegate?.animateFeedBack(initialPosition: tapLocation, letter: name, sceneView: sceneView)
                     reproduceSound(string: name.lowercased())
                     
                 }
@@ -68,9 +67,9 @@ extension SearchViewController {
     }
     
     func endedState(tapLocation: CGPoint) {
-        stack.subviews.forEach { (view) in
+        gameView.lettersStackView.subviews.forEach { (view) in
             if let image = view as? UIImageView {
-                let convertPosition = stack.convert(image.layer.position, to: sceneView)
+                let convertPosition = gameView.lettersStackView.convert(image.layer.position, to: sceneView)
                 let distance = tapLocation.distance(to: convertPosition)
                 if distance <= 50 {
                     animateView(image)
@@ -93,8 +92,7 @@ extension SearchViewController {
         
         if let hitResult = hitTestResult.first, let name = hitResult.node.name {
             reproduceSound(string: name.lowercased())
-            animateFeedBack(initialPosition: tapLocation,
-                            letter: name)
+            delegate?.animateFeedBack(initialPosition: tapLocation, letter: name, sceneView: sceneView)
             
         }
     }
