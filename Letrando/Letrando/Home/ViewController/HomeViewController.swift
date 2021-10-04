@@ -10,7 +10,6 @@ import Lottie
 import AVFoundation
 
 protocol HomeViewControllerProtocol: UIViewController {
-    
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic)
 }
 
@@ -20,7 +19,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     private var homeRouter: HomeRouterLogic?
     
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
-        homeView = view
+        self.homeView = view
         self.homeRouter = homeRouter
     }
     

@@ -9,9 +9,15 @@ import Foundation
 
 protocol AlertFactory {
     func instantiateAlertViewController() -> AlertViewController
+    func instantiateAlertView() -> AlertView
 }
 
 class AlertSceneFatory: AlertFactory {
+    
+    func instantiateAlertView() -> AlertView {
+        return AlertView()
+    }
+    
     func instantiateAlertViewController() -> AlertViewController {
         return AlertViewController()
     }

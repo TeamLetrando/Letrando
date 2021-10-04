@@ -24,7 +24,11 @@ class HomeRouter: HomeRouterLogic {
     }
     
     func startAlert() {
+        let alertView = alertSceneFactory.instantiateAlertView()
         let alertViewController = alertSceneFactory.instantiateAlertViewController()
+        alertViewController.setup(with: alertView,
+                                  alertRouter: AlertRouter(gameSceneFactory: GameSceneFactory(),
+                                                           navigationController: navigationController))
         navigationController.pushViewController(alertViewController, animated: true)
     }
 

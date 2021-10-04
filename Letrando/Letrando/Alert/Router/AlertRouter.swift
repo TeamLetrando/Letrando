@@ -5,12 +5,27 @@
 //  Created by Lidiane Gomes Barbosa on 01/10/21.
 //
 
-import Foundation
+import UIKit
 
 protocol AlertRouterLogic {
-   //
+    init(gameSceneFactory: GameFactory, navigationController: UINavigationController)
+    func startGame()
 }
 
 class AlertRouter: AlertRouterLogic {
-    //
+    
+    private var gameSceneFactory: GameFactory
+    private var navigationController: UINavigationController
+    
+    required init(gameSceneFactory: GameFactory, navigationController: UINavigationController) {
+        self.gameSceneFactory = gameSceneFactory
+        self.navigationController = navigationController
+    }
+    
+    func startGame() {
+        let storyboard = UIStoryboard(name: "Search", bundle: nil)
+        guard let gameViewController =  storyboard.instantiateViewController(identifier: "search")
+                as? SearchViewController else {fatalError()}
+        navigationController.pushViewController(gameViewController, animated: true)
+    }
 }

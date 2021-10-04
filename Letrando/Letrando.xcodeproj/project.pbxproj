@@ -55,6 +55,8 @@
 		AF3CFF0327074ADE00569BE0 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF0227074ADE00569BE0 /* HomeRouter.swift */; };
 		AF3CFF0827074BA200569BE0 /* AlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF0727074BA200569BE0 /* AlertRouter.swift */; };
 		AF3CFF0A27074BB300569BE0 /* AlertSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF0927074BB300569BE0 /* AlertSceneFactory.swift */; };
+		AF3CFF13270B252B00569BE0 /* GameSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF12270B252B00569BE0 /* GameSceneFactory.swift */; };
+		AF3CFF15270B256D00569BE0 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF14270B256D00569BE0 /* GameRouter.swift */; };
 		AF52F3CB26F8BA2B002394CC /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */; };
 		AF52F3CD26F8D0AA002394CC /* SoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CC26F8D0AA002394CC /* SoundButton.swift */; };
 		AF52F3CF26FA08D5002394CC /* ResultViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CE26FA08D5002394CC /* ResultViewDelegate.swift */; };
@@ -147,6 +149,8 @@
 		AF3CFF0227074ADE00569BE0 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		AF3CFF0727074BA200569BE0 /* AlertRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRouter.swift; sourceTree = "<group>"; };
 		AF3CFF0927074BB300569BE0 /* AlertSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSceneFactory.swift; sourceTree = "<group>"; };
+		AF3CFF12270B252B00569BE0 /* GameSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneFactory.swift; sourceTree = "<group>"; };
+		AF3CFF14270B256D00569BE0 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 		AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		AF52F3CC26F8D0AA002394CC /* SoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundButton.swift; sourceTree = "<group>"; };
 		AF52F3CE26FA08D5002394CC /* ResultViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewDelegate.swift; sourceTree = "<group>"; };
@@ -225,8 +229,9 @@
 		77951FC02568088100BC7367 /* Letrando */ = {
 			isa = PBXGroup;
 			children = (
-				7BA489ED2582C92600328DF0 /* LetrandoRelease.entitlements */,
 				778CFB1C257D80DA003A825E /* Letrando.entitlements */,
+				7BA489ED2582C92600328DF0 /* LetrandoRelease.entitlements */,
+				AF3CFF0D270B24CD00569BE0 /* Game */,
 				AF3CFF0427074B7400569BE0 /* Alert */,
 				AF3CFEEF27073EB000569BE0 /* Home */,
 				D10E873726EF741E00BABE51 /* Protocol */,
@@ -569,6 +574,31 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		AF3CFF0D270B24CD00569BE0 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				AF3CFF0F270B24DD00569BE0 /* Router */,
+				AF3CFF0E270B24D200569BE0 /* SceneFactory */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		AF3CFF0E270B24D200569BE0 /* SceneFactory */ = {
+			isa = PBXGroup;
+			children = (
+				AF3CFF12270B252B00569BE0 /* GameSceneFactory.swift */,
+			);
+			path = SceneFactory;
+			sourceTree = "<group>";
+		};
+		AF3CFF0F270B24DD00569BE0 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				AF3CFF14270B256D00569BE0 /* GameRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		AF52F3C926F8B9FC002394CC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,6 +814,7 @@
 				7795204C25680C3000BC7367 /* SearchViewController.swift in Sources */,
 				AF52F3CD26F8D0AA002394CC /* SoundButton.swift in Sources */,
 				AFE7339826F4E1FA0044E435 /* ResultView.swift in Sources */,
+				AF3CFF13270B252B00569BE0 /* GameSceneFactory.swift in Sources */,
 				7795201F25680BBD00BC7367 /* Colors.swift in Sources */,
 				778CC523257E6A9B0042334F /* Report+CoreDataClass.swift in Sources */,
 				7795206325680C9D00BC7367 /* NotificationsController.swift in Sources */,
@@ -803,6 +834,7 @@
 				77951FCC2568088100BC7367 /* Letrando.xcdatamodeld in Sources */,
 				AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */,
 				7795208425680D5800BC7367 /* Notifications.swift in Sources */,
+				AF3CFF15270B256D00569BE0 /* GameRouter.swift in Sources */,
 				7795204625680C2100BC7367 /* ReportViewController.swift in Sources */,
 				AF3CFEF527073F1500569BE0 /* MainRouter.swift in Sources */,
 				AF3CFF0327074ADE00569BE0 /* HomeRouter.swift in Sources */,

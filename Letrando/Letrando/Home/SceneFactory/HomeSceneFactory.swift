@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 protocol HomeFactory {
-
     func instantiateHomeView() -> HomeViewProtocol
     func instantiateHomeViewControler() -> HomeViewControllerProtocol
 }

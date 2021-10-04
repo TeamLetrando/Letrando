@@ -7,9 +7,20 @@
 
 import UIKit
 
-class AlertViewController: UIViewController {
+protocol AlertViewControllerProtocol: UIViewController {
+    func setup(with view: AlertView, alertRouter: AlertRouterLogic)
+}
+
+class AlertViewController: UIViewController, AlertViewControllerProtocol {
+  
+    private let transitionTime = CGFloat(3)
+    private var alertView: AlertView?
+    private var alertRouter: AlertRouterLogic?
     
-    private lazy var alertView = AlertView()
+    func setup(with view: AlertView, alertRouter: AlertRouterLogic) {
+        self.alertView = view
+        self.alertRouter = alertRouter
+    }
     
     override func loadView() {
         self.view = alertView
@@ -17,22 +28,12 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        transitionSearch()
+        transitionToGame()
     }
     
-    func transitionSearch() {
-        Timer.scheduledTimer(timeInterval: 4.0,
-                             target: self,
-                             selector: #selector(timerWork),
-                             userInfo: nil,
-                             repeats: false)
-    }
-    
-    @objc func timerWork() {
-        let storyboard = UIStoryboard(name: "Search", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "search")
-                as? SearchViewController else {fatalError()}
-        viewC.modalPresentationStyle = .fullScreen
-        self.present(viewC, animated: true, completion: nil)
+    func transitionToGame() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + transitionTime) { [weak self] in
+            self?.alertRouter?.startGame()
+        }
     }
 }
