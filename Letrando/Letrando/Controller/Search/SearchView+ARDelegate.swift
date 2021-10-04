@@ -8,6 +8,7 @@
 import Foundation
 import SceneKit
 import ARKit
+
 @available(iOS 13.0, *)
 extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
     func renderer (_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -23,14 +24,11 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         guard let plane  = self.planes.filter({ plane -> Bool in
             return plane.planeAnchor.identifier == anchor.identifier}).first else { return }
-        addWord(letters: letters, plane: plane)
-        if lettersAdded {
-            self.stack.isHidden = false
-            self.messageLabel.isHidden = true
-        } else {
-            messageLabel.isHidden = false
-          
-        }
+        addWord(letters: word?.breakInLetters() ?? [], plane: plane)
+        
+        delegate?.changeLettersStackHiding(for: !lettersAdded)
+        delegate?.changeMessageLabelHiding(for: lettersAdded)
+        
         plane.update(planeAnchor)
     }
 }

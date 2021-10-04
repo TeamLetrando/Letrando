@@ -29,6 +29,9 @@ enum LocalizableBundle: String {
     case disabledSoundIcon
     case searchButtonIcon
     case homeButtonIcon
+    
+    // MARK: - Game View Message
+    case findAnotherPlaceMessage
  
     var localize: String {
         return rawValue.localize(bundle: Bundle(for: HomeViewController.self))
