@@ -1,29 +1,32 @@
 //
-//  SearchResultViewController.swift
+//  ResultViewController.swift
 //  Letrando
 //
 //  Created by Ronaldo Gomes on 20/11/20.
 //
 
 import UIKit
-import Lottie
-import AVFoundation
-import ARKit
 
-class SearchResultViewController: UIViewController {
- 
-    var wordResult: String?
+protocol ResultViewControllerProtocol: UIViewController {
+    func setup(with view: ResultViewProtocol, wordResult: String, resultRouter: ResultRouterLogic)
+}
+
+class ResultViewController: UIViewController, ResultViewControllerProtocol {
+
+    private lazy var wordResult = String()
    
-    private lazy var resultView = ResultView(wordResult: wordResult ?? String())
+    private var resultView: ResultViewProtocol?
+    private var resultRouter: ResultRouterLogic?
     
-    convenience init(wordResult: String) {
-        self.init()
+    func setup(with view: ResultViewProtocol, wordResult: String, resultRouter: ResultRouterLogic) {
         self.wordResult = wordResult
+        self.resultView = view
+        self.resultRouter = resultRouter
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resultView.delegate = self
+        resultView?.delegate = self
     }
     
     override func loadView() {
@@ -32,7 +35,7 @@ class SearchResultViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Sounds.reproduceSound(string: wordResult ?? String())
+        Sounds.reproduceSound(string: wordResult)
         configSounds()
     }
     
@@ -41,7 +44,7 @@ class SearchResultViewController: UIViewController {
     }
 }
 
-extension SearchResultViewController: ResultViewDelegate {
+extension ResultViewController: ResultViewDelegate {
     func exitGame() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "home")

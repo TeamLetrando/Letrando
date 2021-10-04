@@ -268,8 +268,8 @@ class SearchViewController: UIViewController {
     func transitionForResultScreen(word: String) {
         let storyboard = UIStoryboard(name: "SearchResult", bundle: nil)
         guard let viewC =  storyboard.instantiateViewController(identifier: "searchResult")
-                as? SearchResultViewController else {fatalError()}
-        viewC.wordResult = word
+                as? ResultViewController else {fatalError()}
+      //  viewC.wordResult = word
         viewC.modalPresentationStyle = .fullScreen
         self.present(viewC, animated: true, completion: nil)
     }

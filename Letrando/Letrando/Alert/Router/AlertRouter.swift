@@ -23,9 +23,7 @@ class AlertRouter: AlertRouterLogic {
     }
     
     func startGame() {
-        let storyboard = UIStoryboard(name: "Search", bundle: nil)
-        guard let gameViewController =  storyboard.instantiateViewController(identifier: "search")
-                as? SearchViewController else {fatalError()}
+        let gameViewController = gameSceneFactory.instantiateGameViewController()
         navigationController.pushViewController(gameViewController, animated: true)
     }
 }

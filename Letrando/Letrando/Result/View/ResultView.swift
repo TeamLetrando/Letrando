@@ -7,7 +7,18 @@
 
 import UIKit
 
-class ResultView: UIView, ViewCodable {
+protocol ResultViewDelegate: AnyObject {
+    func startGame()
+    func exitGame()
+}
+
+protocol ResultViewProtocol: UIView {
+    var delegate: ResultViewDelegate? { get set }
+    init(wordResult: String)
+}
+
+
+class ResultView: UIView, ViewCodable, ResultViewProtocol {
     
     weak var delegate: ResultViewDelegate?
     private lazy var wordResult = String()
@@ -65,7 +76,7 @@ class ResultView: UIView, ViewCodable {
         return button
     }()
     
-    convenience init(wordResult: String) {
+    required convenience init(wordResult: String) {
         self.init()
         self.wordResult = wordResult
     }
