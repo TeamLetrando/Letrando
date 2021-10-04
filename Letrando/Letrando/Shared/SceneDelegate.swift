@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         window = UIWindow(windowScene: scene)
+        window?.overrideUserInterfaceStyle = .light
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
     }

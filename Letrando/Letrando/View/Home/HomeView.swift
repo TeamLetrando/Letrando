@@ -37,6 +37,7 @@ class HomeView: UIView, ViewCodable {
         animation.loopMode = .loop
         animation.animationSpeed = 0.8
         animation.play()
+        animation.translatesAutoresizingMaskIntoConstraints = false
         return animation
     }()
     
@@ -48,14 +49,11 @@ class HomeView: UIView, ViewCodable {
         return imageView
     }()
     
-    private lazy var searchButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .greenActionLetrando
-        button.setTitle(LocalizableBundle.searchButtonTitle.localize, for: .normal)
-        button.titleLabel?.textColor = .white
-        button.titleLabel?.font = UIFont.set(size: 32, weight: .bold, textStyle: .headline)
-        button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.addTarget(self, action: #selector(startGame), for: .touchUpInside)
+    private lazy var playButton: RoundedButton = {
+        let buttonImage = UIImage(systemName: LocalizableBundle.searchButtonIcon.localize)
+        let button = RoundedButton(backgroundImage: buttonImage,
+                                   buttonAction: startGame,
+                                   tintColor: .greenActionLetrando)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -69,7 +67,7 @@ class HomeView: UIView, ViewCodable {
         addSubview(mascotAnimation)
         addSubview(soundButton)
         addSubview(titleLabel)
-        addSubview(searchButton)
+        addSubview(playButton)
     }
     
     func setupConstraints() {
@@ -84,15 +82,20 @@ class HomeView: UIView, ViewCodable {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             
-            searchButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),
-            searchButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            searchButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            searchButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            lettersImage.bottomAnchor.constraint(equalTo: searchButton.topAnchor),
+            playButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            playButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            playButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            playButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            
+            lettersImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             lettersImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             lettersImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            lettersImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
+            lettersImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            
+            mascotAnimation.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            mascotAnimation.bottomAnchor.constraint(equalTo: lettersImage.topAnchor, constant: 50),
+            mascotAnimation.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            mascotAnimation.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
         ])
     }
     
