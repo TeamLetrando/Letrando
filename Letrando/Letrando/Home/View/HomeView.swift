@@ -8,7 +8,15 @@
 import Lottie
 import UIKit
 
-class HomeView: UIView, ViewCodable {
+protocol HomeViewDelegate: AnyObject {
+    func startGame()
+}
+
+protocol HomeViewProtocol: UIView {
+    var delegate: HomeViewDelegate? { get set }
+}
+
+class HomeView: UIView, ViewCodable, HomeViewProtocol {
 
     weak var delegate: HomeViewDelegate?
    
@@ -103,7 +111,7 @@ class HomeView: UIView, ViewCodable {
         backgroundColor = .lightGreenBackgroundLetrando
     }
  
-    @objc private func startGame() {
+    private func startGame() {
         delegate?.startGame()
     }
 }

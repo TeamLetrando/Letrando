@@ -9,9 +9,20 @@ import UIKit
 import Lottie
 import AVFoundation
 
-class HomeViewController: UIViewController {
+protocol HomeViewControllerProtocol: UIViewController {
     
-    private lazy var homeView = HomeView()
+    func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic)
+}
+
+class HomeViewController: UIViewController, HomeViewControllerProtocol {
+    
+    private var homeView: HomeViewProtocol?
+    private var homeRouter: HomeRouterLogic?
+    
+    func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
+        homeView = view
+        self.homeRouter = homeRouter
+    }
     
     override func loadView() {
         self.view = homeView
@@ -19,7 +30,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeView.delegate = self
+        homeView?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,10 +44,6 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewDelegate {
     func startGame() {
-        let storyboard = UIStoryboard(name: "Alert", bundle: nil)
-        guard let alertViewController =  storyboard.instantiateViewController(identifier: "alert")
-                as? AlertViewController else {fatalError()}
-        alertViewController.modalPresentationStyle = .fullScreen
-        self.present(alertViewController, animated: true, completion: nil)
-    } 
+        homeRouter?.startAlert()
+    }
 }

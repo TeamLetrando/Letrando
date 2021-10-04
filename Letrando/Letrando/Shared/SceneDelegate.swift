@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var mainRouter: MainRouterLogic?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,10 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Scene cannot be created")
         }
         
-        window = UIWindow(windowScene: scene)
-        window?.overrideUserInterfaceStyle = .light
-        window?.rootViewController = HomeViewController()
-        window?.makeKeyAndVisible()
+        mainRouter = MainRouter(scene: scene)
+        mainRouter?.startHome()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
