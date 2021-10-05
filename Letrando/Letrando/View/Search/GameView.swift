@@ -54,6 +54,14 @@ class GameView: UIView, ViewCodable {
         }
     }
     
+    private lazy var dogSearchingImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: LocalizableBundle.mascotSearchingImage.localize)
+        image.contentMode = .scaleAspectFit
+        image.isHidden = true
+        return image
+    }()
+    
     override func didMoveToSuperview() {
         setupView()
     }
@@ -63,6 +71,7 @@ class GameView: UIView, ViewCodable {
         addSubview(handButton)
         addSubview(findAnotherPlaceMessageLabel)
         addSubview(lettersStackView)
+        addSubview(dogSearchingImageView)
     }
     
     func setupConstraints() {

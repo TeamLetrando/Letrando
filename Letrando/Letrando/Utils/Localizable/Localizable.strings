@@ -16,6 +16,7 @@
 "mascotHomeAnimation" = "mascoteHome";
 "mascotResultAnimation" = "mascoteResult";
 "messageResult" = "PARABÉNS! você achou";
+"mascotSearchingImage" = "dogSearching";
 
 // MARK: - UserDefaults
 "userDefautlsKeySound" = "checkSound";
