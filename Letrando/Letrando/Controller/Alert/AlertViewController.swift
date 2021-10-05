@@ -10,14 +10,25 @@ import UIKit
 class AlertViewController: UIViewController {
     
     private lazy var alertView = AlertView()
+    private lazy var nameAlertAnimation = String()
+    private lazy var textAlertMessage = String()
+    private lazy var nextButton = RoundedButton()
+    private lazy var previewButton = RoundedButton()
     
-    override func loadView() {
-        self.view = alertView
+    convenience init(nameAlertAnimation: String, textAlertMessage: String) {
+        self.init()
+        self.nameAlertAnimation = nameAlertAnimation
+        self.textAlertMessage = textAlertMessage
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        transitionSearch()
+        alertView = AlertView(nameAlertAnimation: nameAlertAnimation, textAlertMessage: textAlertMessage)
+       // transitionSearch()
+    }
+    
+    override func loadView() {
+        self.view = alertView
     }
     
     func transitionSearch() {

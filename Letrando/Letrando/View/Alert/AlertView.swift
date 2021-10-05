@@ -10,8 +10,11 @@ import Lottie
 
 final class AlertView: UIView, ViewCodable {
     
+    private lazy var nameAnimation = String()
+    private lazy var textAlertMessage = String()
+    
     private lazy var mascotAnimation: AnimationView = {
-        let animation = AnimationView(name: LocalizableBundle.alertAnimation.localize)
+        let animation = AnimationView(name: nameAnimation)
         animation.contentMode = .scaleAspectFit
         animation.loopMode = .loop
         animation.animationSpeed = 0.8
@@ -22,8 +25,8 @@ final class AlertView: UIView, ViewCodable {
     
     private lazy var messageAlert: UILabel = {
         let messageAlert = UILabel()
-        let messageTextStyle = UIFont.TextStyle(rawValue: LocalizableBundle.alertMessage.localize)
-        messageAlert.text = LocalizableBundle.alertMessage.localize
+        let messageTextStyle = UIFont.TextStyle(rawValue: textAlertMessage)
+        messageAlert.text = textAlertMessage
         messageAlert.textAlignment = .center
         messageAlert.numberOfLines = .zero
         messageAlert.font = UIFont.set(size: 32, weight: .bold, textStyle: messageTextStyle)
@@ -31,6 +34,13 @@ final class AlertView: UIView, ViewCodable {
         messageAlert.translatesAutoresizingMaskIntoConstraints = false
         return messageAlert
     }()
+    
+    convenience init(nameAlertAnimation: String, textAlertMessage: String) {
+        self.init()
+        self.nameAnimation = nameAlertAnimation
+        self.textAlertMessage = textAlertMessage
+        
+    }
     
     override func didMoveToSuperview() {
         setupView()
