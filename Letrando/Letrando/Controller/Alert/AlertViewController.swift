@@ -9,6 +9,7 @@ import UIKit
 
 class AlertViewController: UIViewController {
     
+    weak var delegate: AlertViewDelegate?
     private lazy var alertView = AlertView()
     private lazy var nameAlertAnimation = String()
     private lazy var textAlertMessage = String()
@@ -21,14 +22,24 @@ class AlertViewController: UIViewController {
         self.textAlertMessage = textAlertMessage
     }
     
+    override func loadView() {
+        alertView = AlertView(nameAlertAnimation: nameAlertAnimation, textAlertMessage: textAlertMessage)
+        delegate = alertView
+        self.view = alertView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        alertView = AlertView(nameAlertAnimation: nameAlertAnimation, textAlertMessage: textAlertMessage)
        // transitionSearch()
     }
     
-    override func loadView() {
-        self.view = alertView
+    override func viewWillAppear(_ animated: Bool) {
+        delegate?.startAnimation()
+    }
+    
+    func starAnimation() {
+        delegate?.startAnimation()
+        view.layoutIfNeeded()
     }
     
     func transitionSearch() {

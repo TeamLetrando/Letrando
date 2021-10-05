@@ -7,30 +7,29 @@
 
 import UIKit
 
+private enum PageDirection {
+    case next
+    case preview
+}
+
 class OnboardingViewController: UIPageViewController {
-    
     private lazy var pages = [UIViewController]()
-    private lazy var initialPage = 0
+    private lazy var initialPage: Int = .zero
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
+        pageControl.addTarget(self, action: #selector(pageControlTapped(_:)), for: .valueChanged)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.currentPageIndicatorTintColor = .greenActionLetrando
         pageControl.pageIndicatorTintColor = .systemGray2
         return pageControl
     }()
-    
-    private lazy var nextButton: RoundedButton = {
-        let nextButton = RoundedButton(backgroundImage: <#T##UIImage?#>, buttonAction: <#T##(() -> Void)##(() -> Void)##() -> Void#>, tintColor: <#T##UIColor#>)
-        
-        return nextButton
-    }()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
         dataSource = self
-        config()
-        layout()
+        configure()
+        setLayout()
     }
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle,
@@ -42,28 +41,16 @@ class OnboardingViewController: UIPageViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func config() {
-        pageControl.addTarget(self, action: #selector(pageControlTapped(_:)), for: .valueChanged)
-        
-        let presentationPage = AlertViewController(nameAlertAnimation: LocalizableBundle.alertAnimation.localize,
-                                                   textAlertMessage: "Apresentando Lelê")
-        let alertPage = AlertViewController(nameAlertAnimation: LocalizableBundle.alertAnimation.localize,
-                                            textAlertMessage: LocalizableBundle.alertMessage.localize)
-        let tutorialPage = AlertViewController(nameAlertAnimation: LocalizableBundle.alertAnimation.localize,
-                                               textAlertMessage: "Mostrando como iniciar o jogo")
-        pages.append(presentationPage)
-        pages.append(alertPage)
-        pages.append(tutorialPage)
-        
-        setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
+
+    func configure() {
+        addPages()
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = initialPage
+        setViewControllers([pages[initialPage]], direction: .forward, animated: true, completion: nil)
     }
     
-    func layout() {
+    func setLayout() {
         view.addSubview(pageControl)
-        
         NSLayoutConstraint.activate([
             pageControl.widthAnchor.constraint(equalTo: view.widthAnchor),
             pageControl.heightAnchor.constraint(equalToConstant: 20),
@@ -71,8 +58,40 @@ class OnboardingViewController: UIPageViewController {
         ])
     }
     
+    func addPages() {
+        let firstAnimation = LocalizableBundle.firstOnboardingAnimation.localize
+        let firstMessage = LocalizableBundle.firstOnboardingMessage.localize
+        let presentationPage = AlertViewController(nameAlertAnimation: firstAnimation, textAlertMessage: firstMessage)
+        
+        let secondAnimation = LocalizableBundle.secondOnboardingAnimation.localize
+        let secondMessage = LocalizableBundle.secondOnboardingMessage.localize
+        let alertPage = AlertViewController(nameAlertAnimation: secondAnimation, textAlertMessage: secondMessage)
+        
+        let thirdAnimation = LocalizableBundle.thirdOnboardingAnimation.localize
+        let thirdMessage = LocalizableBundle.thirdOnboardingMessage.localize
+        let tutorialPage = AlertViewController(nameAlertAnimation: thirdAnimation, textAlertMessage: thirdMessage)
+        
+        pages.append(presentationPage)
+        pages.append(alertPage)
+        pages.append(tutorialPage)
+    }
+    
     @objc func pageControlTapped(_ sender: UIPageControl) {
         setViewControllers([pages[sender.currentPage]], direction: .forward, animated: true, completion: nil)
+    }
+    
+    fileprivate func getPage(direction: PageDirection, currentViewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pages.firstIndex(of: currentViewController) else { return nil }
+        var page: UIViewController?
+        
+        switch direction {
+        case .next:
+            page = currentIndex < pages.count - 1 ? pages[currentIndex + 1] : pages.first
+        case .preview:
+            page = currentIndex == .zero ? pages.last : pages[currentIndex - 1]
+        }
+        
+        return page
     }
 }
 
@@ -80,28 +99,19 @@ extension OnboardingViewController: UIPageViewControllerDelegate, UIPageViewCont
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
-        if currentIndex == 0 {
-            return pages.last
-        } else {
-            return pages[currentIndex - 1]
-        }
+        return getPage(direction: .preview, currentViewController: viewController)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
-        if currentIndex < pages.count - 1 {
-            return pages[currentIndex + 1]
-        } else {
-            return pages.first
-        }
+        return getPage(direction: .next, currentViewController: viewController)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
                             previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard let alertsViewControllers = pageViewController.viewControllers else { return }
-        guard let currentIndex = pages.firstIndex(of: alertsViewControllers[0]) else { return }
+        guard let alertViewController = pageViewController.viewControllers?.first,
+              let currentIndex = pages.firstIndex(of: alertViewController) else { return }
         pageControl.currentPage = currentIndex
     }
+    
 }
