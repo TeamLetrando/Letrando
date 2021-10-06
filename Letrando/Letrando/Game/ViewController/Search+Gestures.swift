@@ -67,10 +67,10 @@ extension SearchViewController {
     }
     
     func endedState(tapLocation: CGPoint) {
-        gameView.lettersStackView.subviews.forEach { (view) in
+        gameView?.lettersStackView.subviews.forEach { (view) in
             if let image = view as? UIImageView {
-                let convertPosition = gameView.lettersStackView.convert(image.layer.position, to: sceneView)
-                let distance = tapLocation.distance(to: convertPosition)
+                let convertPosition = gameView?.lettersStackView.convert(image.layer.position, to: sceneView)
+                let distance = tapLocation.distance(to: convertPosition ?? .zero)
                 if distance <= 50 {
                     animateView(image)
                     checkAnswer(actualNode, image)

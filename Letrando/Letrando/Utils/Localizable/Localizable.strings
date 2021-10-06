@@ -16,6 +16,7 @@
 "mascotHomeAnimation" = "mascoteHome";
 "mascotResultAnimation" = "mascoteResult";
 "messageResult" = "PARABÉNS! você achou";
+"letterName" = "lettersEmpty/%@.pdf";
 
 // MARK: - UserDefaults
 "userDefautlsKeySound" = "checkSound";

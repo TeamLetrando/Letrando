@@ -8,7 +8,12 @@
 import UIKit
 import ARKit
 
-class GameView: UIView, ViewCodable {
+protocol GameViewProtocol {
+    init(letters: [String]?)
+}
+
+class GameView: UIView, ViewCodable, GameViewProtocol {
+    
     weak var delegate: GameControlerDelegate?
     
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
@@ -48,12 +53,11 @@ class GameView: UIView, ViewCodable {
         return button
     }()
     
-    var letters: [String]? {
-        didSet {
-            lettersStackView.letters = letters
-        }
+    required convenience init(letters: [String]?) {
+        self.init()
+        lettersStackView.letters = letters
     }
-    
+   
     override func didMoveToSuperview() {
         setupView()
     }

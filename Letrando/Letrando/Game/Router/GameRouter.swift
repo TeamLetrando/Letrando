@@ -8,13 +8,14 @@
 import UIKit
 
 protocol GameRouterLogic {
-    init(resultSceneFactory: ResultFactory, wordResult: String, navigationController: UINavigationController)
+    init(resultSceneFactory: ResultFactory, wordResult: String?, navigationController: UINavigationController)
     func startResult()
 }
 
 class GameRouter: GameRouterLogic {
     
-    required init(resultSceneFactory: ResultFactory, wordResult: String, navigationController: UINavigationController) {
+    required init(resultSceneFactory: ResultFactory, wordResult: String?,
+                  navigationController: UINavigationController) {
         //
     }
     

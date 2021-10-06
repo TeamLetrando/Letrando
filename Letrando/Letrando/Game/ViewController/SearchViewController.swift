@@ -14,7 +14,13 @@ enum BodyType: Int {
     case  plane = 2
 }
 
-class SearchViewController: UIViewController {
+protocol GameViewControllerProtocol: UIViewController {
+    init(wordGame: Word?)
+    func setup(with view: GameView, gameRouter: GameRouterLogic)
+}
+
+class SearchViewController: UIViewController, GameViewControllerProtocol {
+
     var word: Word?
     var sceneController = Scene()
     var lettersAdded: Bool = false
@@ -26,15 +32,21 @@ class SearchViewController: UIViewController {
     
     var sceneView = ARSCNView()
     
-    lazy var gameView = GameView()
+    internal var gameView: GameView?
+    private var gameRouter: GameRouterLogic?
     weak var delegate: GameViewDelegate?
+    
+    required convenience init(wordGame: Word?) {
+        self.init()
+        self.word = word
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.modalPresentationStyle = .fullScreen
         
-        gameView.addSubview(sceneView)
+        gameView?.addSubview(sceneView)
         
         layoutSceneView()
         
@@ -43,17 +55,20 @@ class SearchViewController: UIViewController {
             sceneView.scene = scene
         }
         
-        gameView.delegate = self
+        gameView?.delegate = self
         delegate = gameView
-
-        word = JsonData().randomWord()
-        gameView.letters = word?.breakInLetters() ?? []
 
         setupCoachingOverlay()
         addMoveGesture()
         addTapGesture()
         configureUserDefaults()
     }
+    
+    func setup(with view: GameView, gameRouter: GameRouterLogic) {
+        self.gameView = view
+        self.gameRouter = gameRouter
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureSession()
@@ -100,7 +115,7 @@ class SearchViewController: UIViewController {
             object.removeFromParentNode()
             image.image = UIImage(named: "lettersFull/\(name)_full")
             image.layer.name = "\(name)_full"
-            gameView.feedbackGeneratorImpactOccurred()
+            gameView?.feedbackGeneratorImpactOccurred()
             score += 1
             if let word = word, score == word.word.count {
                 transitionForResultScreen(word: word.word)
@@ -178,6 +193,11 @@ class SearchViewController: UIViewController {
     
     private func layoutSceneView() {
         sceneView.translatesAutoresizingMaskIntoConstraints = false
+        
+        guard let gameView = gameView else {
+            return
+        }
+        
         NSLayoutConstraint.activate([
             sceneView.widthAnchor.constraint(equalTo: gameView.widthAnchor),
             sceneView.heightAnchor.constraint(equalTo: gameView.heightAnchor),

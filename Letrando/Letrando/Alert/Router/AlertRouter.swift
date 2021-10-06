@@ -23,7 +23,13 @@ class AlertRouter: AlertRouterLogic {
     }
     
     func startGame() {
+        let gameView = gameSceneFactory.instatiateGameView()
         let gameViewController = gameSceneFactory.instantiateGameViewController()
+        let gameRouter = GameRouter(resultSceneFactory: ResultSceneFactory(),
+                                    wordResult: gameSceneFactory.randomWord?.word,
+                                    navigationController: navigationController)
+        
+        gameViewController.setup(with: gameView, gameRouter: gameRouter)
         navigationController.pushViewController(gameViewController, animated: true)
     }
 }

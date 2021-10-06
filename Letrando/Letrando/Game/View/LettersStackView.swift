@@ -12,13 +12,13 @@ class LettersStackView: UIStackView, ViewCodable {
     private lazy var lettersImagesView: [UIImageView] = {
         var images = [UIImageView]()
         
-        letters?.forEach {
-            let image = UIImageView(image: UIImage(named: "lettersEmpty/\($0).pdf") )
+        letters?.forEach { letter in
+            let image = UIImageView(image: UIImage(named: String(format: LocalizableBundle.letterName.localize, letter)) )
             image.contentMode = .scaleAspectFill
             image.clipsToBounds = true
             image.layer.borderColor = UIColor.lightGray.cgColor
             image.layer.zPosition = -0.001
-            image.layer.name = $0
+            image.layer.name = letter
             image.translatesAutoresizingMaskIntoConstraints = false
             images.append(image)
         }
