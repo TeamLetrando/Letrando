@@ -8,23 +8,27 @@
 import UIKit
 
 protocol ResultRouterLogic {
-    init(gameSceneFactory: GameFactory, homeSceneFatory: HomeFactory, navigationController: UINavigationController)
+    init(gameSceneFactory: GameFactory, navigationController: UINavigationController)
     func startGame()
     func exitGame()
 }
 
 class ResultRouter: ResultRouterLogic {
-    required init(gameSceneFactory: GameFactory, homeSceneFatory: HomeFactory,
-                  navigationController: UINavigationController) {
-        //
+    
+    private let navigationController: UINavigationController
+    private let gameSceneFactory: GameFactory
+    
+    required init(gameSceneFactory: GameFactory, navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        self.gameSceneFactory = gameSceneFactory
     }
     
     func startGame() {
-        //
+        navigationController.popToViewController(gameSceneFactory.instantiateGameViewController(), animated: true)
     }
     
     func exitGame() {
-        //
+        navigationController.popToRootViewController(animated: true)
     }
     
 }
