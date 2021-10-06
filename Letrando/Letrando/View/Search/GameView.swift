@@ -95,7 +95,13 @@ class GameView: UIView, ViewCodable {
             lettersStackView.heightAnchor.constraint(equalToConstant: 58 * Multipliers.height),
             lettersStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             lettersStackView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
-            lettersStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25)
+            lettersStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25),
+            
+//            dogSearchingImageView.heightAnchor.constraint(equalToConstant: 380 * Multipliers.height),
+//            dogSearchingImageView.widthAnchor.constraint(equalToConstant: 259 * Multipliers.widht),
+            dogSearchingImageView.rightAnchor.constraint(equalTo: leftAnchor),
+            dogSearchingImageView.topAnchor.constraint(equalTo: findAnotherPlaceMessageLabel.bottomAnchor, constant: 20 * Multipliers.height),
+            dogSearchingImageView.bottomAnchor.constraint(equalTo: lettersStackView.topAnchor, constant: -20 * Multipliers.height)
         ])
     }
     
@@ -118,12 +124,28 @@ class GameView: UIView, ViewCodable {
     @objc private func backToHomeButtonAction() {
         delegate?.backToHome()
     }
+    
+    private func dogSearchingImageViewAnimation() {
+        UIView.animate(withDuration: 2.0) { [weak self] in
+            NSLayoutConstraint.activate([
+                self!.dogSearchingImageView.rightAnchor.constraint(equalTo: self!.centerXAnchor),
+                self!.dogSearchingImageView.leftAnchor.constraint(equalTo: self!.leftAnchor)
+            ])
+            
+            self?.layoutIfNeeded()
+        }
+    }
 }
 
 extension GameView: GameViewDelegate {
     func changeMessageLabelHiding(for value: Bool) {
         DispatchQueue.main.async { [weak self] in
             self?.findAnotherPlaceMessageLabel.isHidden = value
+            
+            if !value {
+                self?.dogSearchingImageViewAnimation()
+            }
+            
         }
     }
     
