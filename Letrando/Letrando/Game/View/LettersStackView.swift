@@ -11,9 +11,10 @@ class LettersStackView: UIStackView, ViewCodable {
     
     private lazy var lettersImagesView: [UIImageView] = {
         var images = [UIImageView]()
-        
+       
         letters?.forEach { letter in
-            let image = UIImageView(image: UIImage(named: String(format: LocalizableBundle.letterName.localize, letter)) )
+            let imageLetter = UIImage(named: String(format: LocalizableBundle.letterName.localize, letter))
+            let image = UIImageView(image: imageLetter)
             image.contentMode = .scaleAspectFill
             image.clipsToBounds = true
             image.layer.borderColor = UIColor.lightGray.cgColor
@@ -46,7 +47,7 @@ class LettersStackView: UIStackView, ViewCodable {
     
     func setupAditionalChanges() {
         self.axis = .horizontal
-        self.distribution = .fillEqually
+        self.distribution = .equalCentering
         self.spacing = 15
         self.isHidden = true
     }

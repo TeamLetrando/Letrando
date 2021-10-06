@@ -55,7 +55,6 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             sceneView.scene = scene
         }
         
-        gameView?.delegate = self
         delegate = gameView
 
         setupCoachingOverlay()
@@ -66,6 +65,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     
     func setup(with view: GameView, gameRouter: GameRouterLogic) {
         self.gameView = view
+        self.gameView?.delegate = self
         self.gameRouter = gameRouter
     }
 
@@ -207,16 +207,12 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     }
 
     func transitionForResultScreen(word: String) {
-        let controller = ResultViewController()
-        self.present(controller, animated: true, completion: nil)
+        gameRouter?.startResult()
     }
 }
 
 extension SearchViewController: GameControlerDelegate {
     func backToHome() {
-        UserDefaults.standard.setValue(false, forKey: "Launch")
-        let homeController = HomeViewController()
-        homeController.modalPresentationStyle = .fullScreen
-        self.present(homeController, animated: true, completion: nil)
+        gameRouter?.backToHome()
     }
 }
