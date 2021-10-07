@@ -12,7 +12,6 @@ class CGPointExtensionsTests: XCTestCase {
 
     func test_generateRandomPoint_returnValueBetweenValues() {
         let sut = CGPoint.generateRandomPoint()
-        
         let pointX = sut.x
         let pointY = sut.y
 
