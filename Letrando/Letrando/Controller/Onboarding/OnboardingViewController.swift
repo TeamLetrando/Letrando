@@ -7,11 +7,6 @@
 
 import UIKit
 
-private enum PageDirection {
-    case next
-    case preview
-}
-
 class OnboardingViewController: UIPageViewController {
     private lazy var pages = [UIViewController]()
     private lazy var initialPage: Int = .zero
@@ -22,6 +17,24 @@ class OnboardingViewController: UIPageViewController {
         pageControl.currentPageIndicatorTintColor = .greenActionLetrando
         pageControl.pageIndicatorTintColor = .systemGray2
         return pageControl
+    }()
+    
+    private lazy var nextButton: RoundedButton = {
+        let imageButton = UIImage(systemName: LocalizableBundle.nextButtonIcon.localize)
+        let nextButton = RoundedButton(backgroundImage: imageButton,
+                                       buttonAction: nextButtonAction,
+                                       tintColor: .greenActionLetrando)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        return nextButton
+    }()
+
+    private lazy var previewButton: RoundedButton = {
+        let imageButton = UIImage(systemName: LocalizableBundle.previewButtonIcon.localize)
+        let previewButton = RoundedButton(backgroundImage: imageButton,
+                                       buttonAction: previewButtonAction,
+                                       tintColor: .greenActionLetrando)
+        previewButton.translatesAutoresizingMaskIntoConstraints = false
+        return previewButton
     }()
    
     override func viewDidLoad() {
@@ -51,10 +64,22 @@ class OnboardingViewController: UIPageViewController {
     
     func setLayout() {
         view.addSubview(pageControl)
+        view.addSubview(nextButton)
+        view.addSubview(previewButton)
         NSLayoutConstraint.activate([
             pageControl.widthAnchor.constraint(equalTo: view.widthAnchor),
             pageControl.heightAnchor.constraint(equalToConstant: 20),
-            view.bottomAnchor.constraint(equalToSystemSpacingBelow: pageControl.bottomAnchor, multiplier: 1)
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: pageControl.bottomAnchor, multiplier: 1),
+            
+            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
+            nextButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13),
+            nextButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13),
+
+            previewButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            previewButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
+            previewButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13),
+            previewButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13)
         ])
     }
     
@@ -80,18 +105,40 @@ class OnboardingViewController: UIPageViewController {
         setViewControllers([pages[sender.currentPage]], direction: .forward, animated: true, completion: nil)
     }
     
-    fileprivate func getPage(direction: PageDirection, currentViewController: UIViewController) -> UIViewController? {
+    fileprivate func getPage(direction: NavigationDirection,
+                             currentViewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: currentViewController) else { return nil }
         var page: UIViewController?
-        
+    
         switch direction {
-        case .next:
+        case .forward:
             page = currentIndex < pages.count - 1 ? pages[currentIndex + 1] : pages.first
-        case .preview:
+        case .reverse:
             page = currentIndex == .zero ? pages.last : pages[currentIndex - 1]
+        @unknown default:
+            break
         }
         
         return page
+    }
+    
+    private func nextButtonAction() {
+        setCurrentPage(direction: .forward)
+    }
+    
+    private func previewButtonAction() {
+        setCurrentPage(direction: .reverse)
+    }
+    
+    private func setCurrentPage(direction: NavigationDirection) {
+        let currentPage = pages[pageControl.currentPage]
+        let newCurrentPage = getPage(direction: direction, currentViewController: currentPage)
+        let currentIndex = pages.firstIndex(of: newCurrentPage ?? UIViewController())
+        pageControl.currentPage = currentIndex ?? .zero
+        setViewControllers([newCurrentPage ?? UIViewController()],
+                           direction: direction,
+                           animated: true,
+                           completion: nil)
     }
 }
 
@@ -99,12 +146,12 @@ extension OnboardingViewController: UIPageViewControllerDelegate, UIPageViewCont
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return getPage(direction: .preview, currentViewController: viewController)
+        return getPage(direction: .reverse, currentViewController: viewController)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return getPage(direction: .next, currentViewController: viewController)
+        return getPage(direction: .forward, currentViewController: viewController)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool,
@@ -113,5 +160,4 @@ extension OnboardingViewController: UIPageViewControllerDelegate, UIPageViewCont
               let currentIndex = pages.firstIndex(of: alertViewController) else { return }
         pageControl.currentPage = currentIndex
     }
-    
 }

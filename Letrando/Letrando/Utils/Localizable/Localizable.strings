@@ -31,6 +31,6 @@
 "disabledSoundIcon" = "musicOff";
 "searchButtonIcon" = "play.circle.fill";
 "homeButtonIcon" = "house.circle.fill";
-"nextButtonIcon" = "arrow.right";
-"previewButtonIcon" = "arrow.backward";
-"doneButtonIcon" = "arrowtriangle.right.fill";
+"nextButtonIcon" = "arrow.right.circle.fill";
+"previewButtonIcon" = "arrow.backward.circle.fill";
+"doneButtonIcon" = "arrowtriangle.right.circle.fill";

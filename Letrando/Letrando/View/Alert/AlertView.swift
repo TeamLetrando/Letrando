@@ -71,10 +71,10 @@ final class AlertView: UIView, ViewCodable {
     func setupAditionalChanges() {
         backgroundColor = .lightGreenBackgroundLetrando
     }
-    
 }
 
 extension AlertView: AlertViewDelegate {
+    
     func startAnimation() {
         mascotAnimation.play()
         layoutIfNeeded()

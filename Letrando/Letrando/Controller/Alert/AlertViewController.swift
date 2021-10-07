@@ -13,8 +13,6 @@ class AlertViewController: UIViewController {
     private lazy var alertView = AlertView()
     private lazy var nameAlertAnimation = String()
     private lazy var textAlertMessage = String()
-    private lazy var nextButton = RoundedButton()
-    private lazy var previewButton = RoundedButton()
     
     convenience init(nameAlertAnimation: String, textAlertMessage: String) {
         self.init()
