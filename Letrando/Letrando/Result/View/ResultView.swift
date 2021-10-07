@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ResultViewDelegate: AnyObject {
-    func startGame()
+    func restartGame()
     func exitGame()
 }
 
@@ -59,7 +59,7 @@ class ResultView: UIView, ViewCodable, ResultViewProtocol {
     private lazy var searchButton: RoundedButton = {
         let backgroundImage = UIImage(systemName: LocalizableBundle.searchButtonIcon.localize)
         let button = RoundedButton(backgroundImage: backgroundImage,
-                                   buttonAction: startGame,
+                                   buttonAction: restartGame,
                                    tintColor: .greenActionLetrando)
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -131,8 +131,8 @@ class ResultView: UIView, ViewCodable, ResultViewProtocol {
         backgroundColor = .lightGreenBackgroundLetrando
     }
     
-    private func startGame() {
-        delegate?.startGame()
+    private func restartGame() {
+        delegate?.restartGame()
     }
     
     private func exitGame() {

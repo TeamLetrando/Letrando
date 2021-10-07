@@ -14,7 +14,6 @@ protocol ResultViewControllerProtocol: UIViewController {
 class ResultViewController: UIViewController, ResultViewControllerProtocol {
 
     private lazy var wordResult = String()
-   
     private var resultView: ResultViewProtocol?
     private var resultRouter: ResultRouterLogic?
     
@@ -46,18 +45,10 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
 
 extension ResultViewController: ResultViewDelegate {
     func exitGame() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "home")
-                as? HomeViewController else {fatalError()}
-        viewC.modalPresentationStyle = .fullScreen
-        self.present(viewC, animated: true, completion: nil)
+        resultRouter?.exitGame()
     }
     
-    func startGame() {
-        let storyboard = UIStoryboard(name: "Search", bundle: nil)
-        guard let viewC =  storyboard.instantiateViewController(identifier: "search")
-                as? SearchViewController else {fatalError()}
-        viewC.modalPresentationStyle = .fullScreen
-        self.present(viewC, animated: true, completion: nil)
+    func restartGame() {
+        resultRouter?.restartGame()
     }
 }

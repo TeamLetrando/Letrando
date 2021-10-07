@@ -24,7 +24,7 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         guard let plane  = self.planes.filter({ plane -> Bool in
             return plane.planeAnchor.identifier == anchor.identifier}).first else { return }
-        addWord(letters: word?.breakInLetters() ?? [], plane: plane)
+        addWord(letters: self.word?.breakInLetters() ?? [], plane: plane)
         
         delegate?.changeLettersStackHiding(for: !lettersAdded)
         delegate?.changeMessageLabelHiding(for: lettersAdded)

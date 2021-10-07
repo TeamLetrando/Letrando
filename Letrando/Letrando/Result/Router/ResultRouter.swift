@@ -8,26 +8,28 @@
 import UIKit
 
 protocol ResultRouterLogic {
-    init(gameSceneFactory: GameFactory, navigationController: UINavigationController)
-    func startGame()
+    init(alertRouter: AlertRouterLogic, navigationController: UINavigationController)
+    func restartGame()
     func exitGame()
 }
 
 class ResultRouter: ResultRouterLogic {
     
     private let navigationController: UINavigationController
-    private let gameSceneFactory: GameFactory
+    private let alertRouter: AlertRouterLogic
     
-    required init(gameSceneFactory: GameFactory, navigationController: UINavigationController) {
+    required init(alertRouter: AlertRouterLogic, navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.gameSceneFactory = gameSceneFactory
+        self.alertRouter = alertRouter
     }
     
-    func startGame() {
-        navigationController.popToViewController(gameSceneFactory.instantiateGameViewController(), animated: true)
+    func restartGame() {
+        alertRouter.startGame()
+        navigationController.dismiss(animated: true)
     }
     
     func exitGame() {
+        navigationController.dismiss(animated: true)
         navigationController.popToRootViewController(animated: true)
     }
     

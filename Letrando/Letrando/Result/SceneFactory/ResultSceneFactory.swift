@@ -9,7 +9,7 @@ import Foundation
 
 protocol ResultFactory {
     func instantiateResultViewController() -> ResultViewControllerProtocol
-    func instantiateResultView() -> ResultViewProtocol
+    func instantiateResultView(wordResult: String) -> ResultViewProtocol
 }
 
 class ResultSceneFactory: ResultFactory {
@@ -17,7 +17,7 @@ class ResultSceneFactory: ResultFactory {
         return ResultViewController()
     }
     
-    func instantiateResultView() -> ResultViewProtocol {
-        return ResultView()
+    func instantiateResultView(wordResult: String) -> ResultViewProtocol {
+        return ResultView(wordResult: wordResult)
     }
 }

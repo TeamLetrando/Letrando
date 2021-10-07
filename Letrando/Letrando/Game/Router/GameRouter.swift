@@ -27,13 +27,14 @@ class GameRouter: GameRouterLogic {
     }
     
     func startResult() {
-        let resultView = resultSceneFactory.instantiateResultView()
+        let resultView = resultSceneFactory.instantiateResultView(wordResult: wordResult)
         let resultViewController = resultSceneFactory.instantiateResultViewController()
-        let resultRouter = ResultRouter(gameSceneFactory: GameSceneFactory(),
-                                        navigationController: navigationController)
+        let alertRouter = AlertRouter(gameSceneFactory: GameSceneFactory(), navigationController: navigationController)
+        let resultRouter = ResultRouter(alertRouter: alertRouter, navigationController: navigationController)
         
         resultViewController.setup(with: resultView, wordResult: wordResult, resultRouter: resultRouter)
-        navigationController.pushViewController(resultViewController, animated: true)
+        resultViewController.modalPresentationStyle = .fullScreen
+        navigationController.present(resultViewController, animated: true)
     }
     
     func backToHome() {

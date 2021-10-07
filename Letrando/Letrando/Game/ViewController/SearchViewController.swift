@@ -38,7 +38,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     
     required convenience init(wordGame: Word?) {
         self.init()
-        self.word = word
+        self.word = wordGame
     }
     
     override func viewDidLoad() {
