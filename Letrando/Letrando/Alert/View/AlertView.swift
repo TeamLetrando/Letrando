@@ -8,29 +8,42 @@
 import UIKit
 import Lottie
 
+protocol AlertViewDelegate: AnyObject {
+    func startAnimation()
+}
+
 final class AlertView: UIView, ViewCodable {
     
-    private lazy var mascotAnimation: AnimationView = {
-        let animation = AnimationView(name: LocalizableBundle.alertAnimation.localize)
+    private lazy var nameAnimation = String()
+    private lazy var textAlertMessage = String()
+    
+    fileprivate lazy var mascotAnimation: AnimationView = {
+        let animation = AnimationView(name: nameAnimation)
         animation.contentMode = .scaleAspectFit
         animation.loopMode = .loop
         animation.animationSpeed = 0.8
         animation.play()
+        animation.backgroundBehavior = .pauseAndRestore
         animation.translatesAutoresizingMaskIntoConstraints = false
         return animation
     }()
     
     private lazy var messageAlert: UILabel = {
         let messageAlert = UILabel()
-        let messageTextStyle = UIFont.TextStyle(rawValue: LocalizableBundle.alertMessage.localize)
-        messageAlert.text = LocalizableBundle.alertMessage.localize
+        messageAlert.text = textAlertMessage
         messageAlert.textAlignment = .center
         messageAlert.numberOfLines = .zero
-        messageAlert.font = UIFont.set(size: 32, weight: .bold, textStyle: messageTextStyle)
+        messageAlert.font = UIFont.set(size: 28, weight: .bold, textStyle: .largeTitle)
         messageAlert.textColor = .customBrown
         messageAlert.translatesAutoresizingMaskIntoConstraints = false
         return messageAlert
     }()
+    
+    convenience init(nameAlertAnimation: String, textAlertMessage: String) {
+        self.init()
+        self.nameAnimation = nameAlertAnimation
+        self.textAlertMessage = textAlertMessage
+    }
     
     override func didMoveToSuperview() {
         setupView()
@@ -58,5 +71,12 @@ final class AlertView: UIView, ViewCodable {
     func setupAditionalChanges() {
         backgroundColor = .lightGreenBackgroundLetrando
     }
+}
+
+extension AlertView: AlertViewDelegate {
     
+    func startAnimation() {
+        mascotAnimation.play()
+        layoutIfNeeded()
+    }
 }

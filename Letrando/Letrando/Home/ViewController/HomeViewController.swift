@@ -7,7 +7,6 @@
 
 import UIKit
 import Lottie
-import AVFoundation
 
 protocol HomeViewControllerProtocol: UIViewController {
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic)
@@ -44,5 +43,9 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
 extension HomeViewController: HomeViewDelegate {
     func startGame() {
         homeRouter?.startAlert()
+ 
+//        let onboardingViewController = OnboardingViewController()
+//        onboardingViewController.modalPresentationStyle = .fullScreen
+//        self.present(onboardingViewController, animated: true, completion: nil)
     }
 }

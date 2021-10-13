@@ -29,7 +29,11 @@ class HomeRouter: HomeRouterLogic {
         alertViewController.setup(with: alertView,
                                   alertRouter: AlertRouter(gameSceneFactory: GameSceneFactory(),
                                                            navigationController: navigationController))
-        navigationController.pushViewController(alertViewController, animated: true)
+        
+        let onboardingViewController = OnboardingViewController()
+        onboardingViewController.modalPresentationStyle = .fullScreen
+      //  self.present(onboardingViewController, animated: true, completion: nil)
+        navigationController.present(onboardingViewController, animated: true)
     }
 
 }

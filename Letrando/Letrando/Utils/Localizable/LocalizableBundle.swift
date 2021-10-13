@@ -11,8 +11,12 @@ enum LocalizableBundle: String {
     
     case homeTitle
     
-    case alertMessage
-    case alertAnimation
+    case firstOnboardingMessage
+    case firstOnboardingAnimation
+    case secondOnboardingMessage
+    case secondOnboardingAnimation
+    case thirdOnboardingMessage
+    case thirdOnboardingAnimation
     
     case mascotImage
     case lettersImage
@@ -30,6 +34,9 @@ enum LocalizableBundle: String {
     case disabledSoundIcon
     case searchButtonIcon
     case homeButtonIcon
+    case nextButtonIcon
+    case previewButtonIcon
+    case doneButtonIcon
     
     // MARK: - Game View Message
     case findAnotherPlaceMessage
