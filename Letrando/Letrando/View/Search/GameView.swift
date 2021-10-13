@@ -144,11 +144,11 @@ extension GameView: GameViewDelegate {
                 
                 sceneView.addSubview(handImage)
                 
-                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear) {
+                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
                     handImage.layer.position = finalPosition
-                } completion: { _ in
+                }, completion: { _ in
                     handImage.removeFromSuperview()
-                }
+                })
             }
         }
     }

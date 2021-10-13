@@ -6,8 +6,14 @@
   
 */
 
-"alertMessage" = "Cuidado com os objetos ao seu redor";
-"alertAnimation" = "mascotAlert";
+"firstOnboardingMessage" = "Olá, sou o Lelê e vou te ajudar a cumprir este desafio!";
+"firstOnboardingAnimation" = "ola";
+
+"secondOnboardingMessage" = "Cuidado com os objetos ao seu redor";
+"secondOnboardingAnimation" = "mascotAlert";
+
+"thirdOnboardingMessage" = "Movimente o dispositivo dessa forma";
+"thirdOnboardingAnimation" = "tablet";
 
 "homeTitle" = "Vamos buscar letrinhas?";
 "mascotImage" = "mascot_home";
@@ -25,6 +31,9 @@
 "disabledSoundIcon" = "musicOff";
 "searchButtonIcon" = "play.circle.fill";
 "homeButtonIcon" = "house.circle.fill";
+"nextButtonIcon" = "arrow.right.circle.fill";
+"previewButtonIcon" = "arrow.backward.circle.fill";
+"doneButtonIcon" = "arrowtriangle.right.circle.fill";
 
 // MARK: - Game View Message
 "findAnotherPlaceMessage" = "Procure um local mais espaçoso";

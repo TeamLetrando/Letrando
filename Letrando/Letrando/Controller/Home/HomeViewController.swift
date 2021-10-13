@@ -7,7 +7,6 @@
 
 import UIKit
 import Lottie
-import AVFoundation
 
 class HomeViewController: UIViewController {
     
@@ -33,10 +32,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewDelegate {
     func startGame() {
-        let storyboard = UIStoryboard(name: "Alert", bundle: nil)
-        guard let alertViewController =  storyboard.instantiateViewController(identifier: "alert")
-                as? AlertViewController else {fatalError()}
-        alertViewController.modalPresentationStyle = .fullScreen
-        self.present(alertViewController, animated: true, completion: nil)
+        let onboardingViewController = OnboardingViewController()
+        onboardingViewController.modalPresentationStyle = .fullScreen
+        self.present(onboardingViewController, animated: true, completion: nil)
     } 
 }

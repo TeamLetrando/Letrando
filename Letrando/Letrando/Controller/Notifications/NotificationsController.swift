@@ -38,7 +38,6 @@ class NotificationsController: UIViewController {
         let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
-        //Add image
         guard let path = Bundle.main.path(forResource: "cao", ofType: "jpeg") else {return}
         let imageUrl = URL(fileURLWithPath: path)
         

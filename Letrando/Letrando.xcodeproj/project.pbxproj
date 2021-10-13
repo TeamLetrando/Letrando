@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B046268270B2A1C008C5103 /* tablet.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046267270B2A1C008C5103 /* tablet.json */; };
+		0B04626A270B2A33008C5103 /* ola.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046269270B2A33008C5103 /* ola.json */; };
+		0B06C67226FC052300876E64 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B06C67126FC052300876E64 /* OnboardingViewController.swift */; };
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
 		0B46BA9B26F8D24B004F176D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46BA9A26F8D24B004F176D /* AlertView.swift */; };
@@ -92,6 +95,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B046267270B2A1C008C5103 /* tablet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tablet.json; sourceTree = "<group>"; };
+		0B046269270B2A33008C5103 /* ola.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ola.json; sourceTree = "<group>"; };
+		0B06C67126FC052300876E64 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
 		0B46BA9A26F8D24B004F176D /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -193,6 +199,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BADFE3C27074AC000BF2405 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0B06C67126FC052300876E64 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		0BFD5EAC25810C8B00000B11 /* LocalNotification */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +309,7 @@
 		77951FFE25680A3D00BC7367 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0BADFE3C27074AC000BF2405 /* Onboarding */,
 				7795203B25680C0B00BC7367 /* Home */,
 				7795203225680BF400BC7367 /* Alert */,
 				7795204A25680C2600BC7367 /* Search */,
@@ -507,6 +522,8 @@
 		AF151AB82575621900E389E0 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				0B046269270B2A33008C5103 /* ola.json */,
+				0B046267270B2A1C008C5103 /* tablet.json */,
 				0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */,
 				AFC9656B26FB575900ED8FD2 /* mascoteResult.json */,
 				AFC9656926FB575100ED8FD2 /* mascoteHome.json */,
@@ -664,6 +681,7 @@
 			files = (
 				0B07357D256BE97E0002AC05 /* words.json in Resources */,
 				77951FF82568093900BC7367 /* .swiftlint.yml in Resources */,
+				0B04626A270B2A33008C5103 /* ola.json in Resources */,
 				7795200725680B0E00BC7367 /* Alert.storyboard in Resources */,
 				AFC9656C26FB575900ED8FD2 /* mascoteResult.json in Resources */,
 				D197911D270758DA00CA1813 /* Assets.xcassets in Resources */,
@@ -677,6 +695,7 @@
 				77951FC92568088100BC7367 /* Home.storyboard in Resources */,
 				AFDC55EF2575689E00F68374 /* BubblegumSans-Regular.ttf in Resources */,
 				AF177AD826FCC7BB00C9581D /* cao.jpeg in Resources */,
+				0B046268270B2A1C008C5103 /* tablet.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +772,7 @@
 				AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */,
 				7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */,
 				AF52F3D326FA1A6D002394CC /* AnimationLottieView.swift in Sources */,
+				0B06C67226FC052300876E64 /* OnboardingViewController.swift in Sources */,
 				AF52F3CB26F8BA2B002394CC /* RoundedButton.swift in Sources */,
 				AF00FC9E26F0E66100DC4CA4 /* UIFont.swift in Sources */,
 				7795207F25680D4D00BC7367 /* ARModel.swift in Sources */,
