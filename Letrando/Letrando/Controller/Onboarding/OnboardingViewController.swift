@@ -111,7 +111,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable {
     
         switch direction {
         case .forward:
-            page = currentIndexPage < pages.count - 1 ? pages[currentIndexPage + 1] : nil
+            page = currentIndexPage < (pages.count - 1) ? pages[currentIndexPage + 1] : nil
         case .reverse:
             page = currentIndexPage == .zero ? nil : pages[currentIndexPage - 1]
         @unknown default:
@@ -147,7 +147,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable {
         currentIndexPage = pages.firstIndex(of: currentViewController ?? UIViewController()) ?? .zero
         pageControl.currentPage = currentIndexPage
         
-        previewButton.isHidden = currentIndexPage == .zero ? true : false
+        previewButton.isHidden = currentIndexPage == .zero
         let imageIcon = currentIndexPage == (pages.count - 1) ?
         LocalizableBundle.doneButtonIcon.localize : LocalizableBundle.nextButtonIcon.localize
         
@@ -163,7 +163,6 @@ extension OnboardingViewController: UIPageViewControllerDelegate, UIPageViewCont
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
         updateLayout(viewController)
         return getPage(direction: .reverse)
-
     }
 
     func pageViewController(_ pageViewController: UIPageViewController,
