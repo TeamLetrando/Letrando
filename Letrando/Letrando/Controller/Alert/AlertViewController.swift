@@ -28,7 +28,6 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // transitionSearch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,19 +37,5 @@ class AlertViewController: UIViewController {
     func starAnimation() {
         delegate?.startAnimation()
         view.layoutIfNeeded()
-    }
-    
-    func transitionSearch() {
-        Timer.scheduledTimer(timeInterval: 4.0,
-                             target: self,
-                             selector: #selector(timerWork),
-                             userInfo: nil,
-                             repeats: false)
-    }
-    
-    @objc func timerWork() {
-        let controller = SearchViewController()
-        controller.modalPresentationStyle = .fullScreen
-        self.present(controller, animated: true, completion: nil)
     }
 }
