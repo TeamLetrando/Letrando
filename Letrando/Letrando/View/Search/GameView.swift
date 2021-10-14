@@ -58,6 +58,7 @@ class GameView: UIView, ViewCodable {
         let image = UIImageView()
         image.image = UIImage(named: LocalizableBundle.mascotSearchingImage.localize)
         image.contentMode = .scaleAspectFit
+        dogSearchingImageView.translatesAutoresizingMaskIntoConstraints = false
         image.isHidden = true
         return image
     }()
@@ -75,6 +76,9 @@ class GameView: UIView, ViewCodable {
     }
     
     func setupConstraints() {
+        let letterStackHeightConstraint = lettersStackView.heightAnchor.constraint(equalToConstant: 58 * Multipliers.height)
+        letterStackHeightConstraint.priority = .defaultHigh
+        
         NSLayoutConstraint.activate([
             backToHomeButton.heightAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             backToHomeButton.widthAnchor.constraint(equalToConstant: 50 * Multipliers.height),
@@ -92,16 +96,17 @@ class GameView: UIView, ViewCodable {
                                                               constant: 20 * Multipliers.height),
             findAnotherPlaceMessageLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
             
-            lettersStackView.heightAnchor.constraint(equalToConstant: 58 * Multipliers.height),
+            letterStackHeightConstraint,
             lettersStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             lettersStackView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
             lettersStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25),
             
-//            dogSearchingImageView.heightAnchor.constraint(equalToConstant: 380 * Multipliers.height),
-//            dogSearchingImageView.widthAnchor.constraint(equalToConstant: 259 * Multipliers.widht),
+            dogSearchingImageView.heightAnchor.constraint(equalToConstant: 100 * Multipliers.height),
+            dogSearchingImageView.widthAnchor.constraint(equalToConstant: 100 * Multipliers.widht),
             dogSearchingImageView.rightAnchor.constraint(equalTo: leftAnchor),
-            dogSearchingImageView.topAnchor.constraint(equalTo: findAnotherPlaceMessageLabel.bottomAnchor, constant: 20 * Multipliers.height),
-            dogSearchingImageView.bottomAnchor.constraint(equalTo: lettersStackView.topAnchor, constant: -20 * Multipliers.height)
+            dogSearchingImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
+//            dogSearchingImageView.topAnchor.constraint(equalTo: findAnotherPlaceMessageLabel.bottomAnchor, constant: 20 * Multipliers.height),
+//            dogSearchingImageView.bottomAnchor.constraint(equalTo: lettersStackView.topAnchor, constant: -20 * Multipliers.height)
         ])
     }
     
@@ -129,7 +134,7 @@ class GameView: UIView, ViewCodable {
         UIView.animate(withDuration: 2.0) { [weak self] in
             NSLayoutConstraint.activate([
                 self!.dogSearchingImageView.rightAnchor.constraint(equalTo: self!.centerXAnchor),
-                self!.dogSearchingImageView.leftAnchor.constraint(equalTo: self!.leftAnchor)
+//                self!.dogSearchingImageView.leftAnchor.constraint(equalTo: self!.leftAnchor)
             ])
             
             self?.layoutIfNeeded()
