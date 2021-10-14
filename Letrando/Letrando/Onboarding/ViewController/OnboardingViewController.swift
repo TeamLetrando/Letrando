@@ -7,10 +7,15 @@
 
 import UIKit
 
-class OnboardingViewController: UIPageViewController, ViewCodable {
- 
+protocol OnboardingViewControllerProtocol: UIViewController {
+    func setup(onboardingRouter: OnboardingRouterLogic)
+}
+
+class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingViewControllerProtocol {
+  
     private lazy var pages = [UIViewController]()
     private lazy var currentIndexPage: Int = .zero
+    private var onboardingRouter: OnboardingRouterLogic?
     
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -57,6 +62,10 @@ class OnboardingViewController: UIPageViewController, ViewCodable {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setup(onboardingRouter: OnboardingRouterLogic) {
+        self.onboardingRouter = onboardingRouter
+    }
+    
     func buildViewHierarchy() {
         view.addSubview(pageControl)
         view.addSubview(nextButton)
@@ -89,21 +98,24 @@ class OnboardingViewController: UIPageViewController, ViewCodable {
     }
 
     func configurePages() {
-        let firstAnimation = LocalizableBundle.firstOnboardingAnimation.localize
-        let firstMessage = LocalizableBundle.firstOnboardingMessage.localize
-        let presentationPage = AlertViewController(nameAlertAnimation: firstAnimation, textAlertMessage: firstMessage)
+        let presentationView = PageView(animationName: LocalizableBundle.firstOnboardingAnimation.localize,
+                                       message: LocalizableBundle.firstOnboardingMessage.localize)
+        let presentationController = PageViewController()
+        presentationController.setup(with: presentationView)
         
-        let secondAnimation = LocalizableBundle.secondOnboardingAnimation.localize
-        let secondMessage = LocalizableBundle.secondOnboardingMessage.localize
-        let alertPage = AlertViewController(nameAlertAnimation: secondAnimation, textAlertMessage: secondMessage)
+        let alertView = PageView(animationName: LocalizableBundle.secondOnboardingAnimation.localize,
+                                        message: LocalizableBundle.secondOnboardingMessage.localize)
+        let alertController = PageViewController()
+        alertController.setup(with: alertView)
         
-        let thirdAnimation = LocalizableBundle.thirdOnboardingAnimation.localize
-        let thirdMessage = LocalizableBundle.thirdOnboardingMessage.localize
-        let tutorialPage = AlertViewController(nameAlertAnimation: thirdAnimation, textAlertMessage: thirdMessage)
+        let tutorialView = PageView(animationName: LocalizableBundle.thirdOnboardingAnimation.localize,
+                                       message: LocalizableBundle.thirdOnboardingMessage.localize)
+        let tutorialController = PageViewController()
+        tutorialController.setup(with: tutorialView)
         
-        pages.append(presentationPage)
-        pages.append(alertPage)
-        pages.append(tutorialPage)
+        pages.append(presentationController)
+        pages.append(alertController)
+        pages.append(tutorialController)
     }
     
     fileprivate func getPage(direction: NavigationDirection) -> UIViewController? {
@@ -123,7 +135,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable {
     
     private func nextButtonAction() {
         if currentIndexPage == (pages.count - 1) {
-            dismiss(animated: true)
+            onboardingRouter?.dismissOnboarding()
             return
         }
         setCurrentPage(direction: .forward)

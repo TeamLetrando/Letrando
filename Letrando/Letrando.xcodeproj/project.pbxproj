@@ -12,7 +12,7 @@
 		0B06C67226FC052300876E64 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B06C67126FC052300876E64 /* OnboardingViewController.swift */; };
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
-		0B46BA9B26F8D24B004F176D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46BA9A26F8D24B004F176D /* AlertView.swift */; };
+		0B46BA9B26F8D24B004F176D /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46BA9A26F8D24B004F176D /* PageView.swift */; };
 		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
 		0BEDD1F126FB7D7100F24E04 /* mascotAlert.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */; };
 		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
@@ -28,7 +28,7 @@
 		7795200E25680B5C00BC7367 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7795200D25680B5C00BC7367 /* Report.storyboard */; };
 		7795201F25680BBD00BC7367 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795201E25680BBD00BC7367 /* Colors.swift */; };
 		7795202525680BCB00BC7367 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795202425680BCB00BC7367 /* Sounds.swift */; };
-		7795203425680C0500BC7367 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795203325680C0500BC7367 /* AlertViewController.swift */; };
+		7795203425680C0500BC7367 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795203325680C0500BC7367 /* PageViewController.swift */; };
 		7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795203C25680C1200BC7367 /* HomeViewController.swift */; };
 		7795204625680C2100BC7367 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795204525680C2100BC7367 /* ReportViewController.swift */; };
 		7795204C25680C3000BC7367 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795204B25680C3000BC7367 /* SearchViewController.swift */; };
@@ -53,8 +53,8 @@
 		AF3CFEF527073F1500569BE0 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFEF427073F1400569BE0 /* MainRouter.swift */; };
 		AF3CFEF727073FC400569BE0 /* HomeSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFEF627073FC400569BE0 /* HomeSceneFactory.swift */; };
 		AF3CFF0327074ADE00569BE0 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF0227074ADE00569BE0 /* HomeRouter.swift */; };
-		AF3CFF0827074BA200569BE0 /* AlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF0727074BA200569BE0 /* AlertRouter.swift */; };
-		AF3CFF0A27074BB300569BE0 /* AlertSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF0927074BB300569BE0 /* AlertSceneFactory.swift */; };
+		AF3CFF0827074BA200569BE0 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF0727074BA200569BE0 /* OnboardingRouter.swift */; };
+		AF3CFF0A27074BB300569BE0 /* OnboardingSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF0927074BB300569BE0 /* OnboardingSceneFactory.swift */; };
 		AF3CFF13270B252B00569BE0 /* GameSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF12270B252B00569BE0 /* GameSceneFactory.swift */; };
 		AF3CFF15270B256D00569BE0 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF14270B256D00569BE0 /* GameRouter.swift */; };
 		AF3CFF1D270B2B5500569BE0 /* ResultSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CFF1C270B2B5500569BE0 /* ResultSceneFactory.swift */; };
@@ -104,7 +104,7 @@
 		0B06C67126FC052300876E64 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
-		0B46BA9A26F8D24B004F176D /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		0B46BA9A26F8D24B004F176D /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
 		0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mascotAlert.json; sourceTree = "<group>"; };
 		7768A764256A1077005EA237 /* ARModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelTests.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		7795200D25680B5C00BC7367 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		7795201E25680BBD00BC7367 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7795202425680BCB00BC7367 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
-		7795203325680C0500BC7367 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		7795203325680C0500BC7367 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		7795203C25680C1200BC7367 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7795204525680C2100BC7367 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		7795204B25680C3000BC7367 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 		AF3CFEF427073F1400569BE0 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		AF3CFEF627073FC400569BE0 /* HomeSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneFactory.swift; sourceTree = "<group>"; };
 		AF3CFF0227074ADE00569BE0 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
-		AF3CFF0727074BA200569BE0 /* AlertRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRouter.swift; sourceTree = "<group>"; };
-		AF3CFF0927074BB300569BE0 /* AlertSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSceneFactory.swift; sourceTree = "<group>"; };
+		AF3CFF0727074BA200569BE0 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
+		AF3CFF0927074BB300569BE0 /* OnboardingSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSceneFactory.swift; sourceTree = "<group>"; };
 		AF3CFF12270B252B00569BE0 /* GameSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneFactory.swift; sourceTree = "<group>"; };
 		AF3CFF14270B256D00569BE0 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 		AF3CFF1C270B2B5500569BE0 /* ResultSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSceneFactory.swift; sourceTree = "<group>"; };
@@ -207,14 +207,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0BADFE3C27074AC000BF2405 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				0B06C67126FC052300876E64 /* OnboardingViewController.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 		0BFD5EAC25810C8B00000B11 /* LocalNotification */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,7 +243,7 @@
 				778CFB1C257D80DA003A825E /* Letrando.entitlements */,
 				AF3CFF16270B2A2B00569BE0 /* Result */,
 				AF3CFF0D270B24CD00569BE0 /* Game */,
-				AF3CFF0427074B7400569BE0 /* Alert */,
+				AF3CFF0427074B7400569BE0 /* Onboarding */,
 				AF3CFEEF27073EB000569BE0 /* Home */,
 				D10E873726EF741E00BABE51 /* Protocol */,
 				77951FFD25680A3800BC7367 /* View */,
@@ -318,7 +310,6 @@
 		77951FFE25680A3D00BC7367 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0BADFE3C27074AC000BF2405 /* Onboarding */,
 				7795204425680C1800BC7367 /* Report */,
 				7795206125680C8600BC7367 /* Notifications */,
 			);
@@ -522,7 +513,7 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		AF3CFF0427074B7400569BE0 /* Alert */ = {
+		AF3CFF0427074B7400569BE0 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				AF3CFF0C270754E200569BE0 /* ViewController */,
@@ -530,13 +521,13 @@
 				AF3CFF0627074B8500569BE0 /* SceneFatory */,
 				AF3CFF0527074B7F00569BE0 /* Router */,
 			);
-			path = Alert;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		AF3CFF0527074B7F00569BE0 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				AF3CFF0727074BA200569BE0 /* AlertRouter.swift */,
+				AF3CFF0727074BA200569BE0 /* OnboardingRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -544,7 +535,7 @@
 		AF3CFF0627074B8500569BE0 /* SceneFatory */ = {
 			isa = PBXGroup;
 			children = (
-				AF3CFF0927074BB300569BE0 /* AlertSceneFactory.swift */,
+				AF3CFF0927074BB300569BE0 /* OnboardingSceneFactory.swift */,
 			);
 			path = SceneFatory;
 			sourceTree = "<group>";
@@ -552,7 +543,7 @@
 		AF3CFF0B270754DC00569BE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0B46BA9A26F8D24B004F176D /* AlertView.swift */,
+				0B46BA9A26F8D24B004F176D /* PageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -560,7 +551,8 @@
 		AF3CFF0C270754E200569BE0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7795203325680C0500BC7367 /* AlertViewController.swift */,
+				0B06C67126FC052300876E64 /* OnboardingViewController.swift */,
+				7795203325680C0500BC7367 /* PageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -866,10 +858,10 @@
 				778CC523257E6A9B0042334F /* Report+CoreDataClass.swift in Sources */,
 				7795206325680C9D00BC7367 /* NotificationsController.swift in Sources */,
 				778CC4D0257E66780042334F /* ReportProtocol.swift in Sources */,
-				0B46BA9B26F8D24B004F176D /* AlertView.swift in Sources */,
-				AF3CFF0A27074BB300569BE0 /* AlertSceneFactory.swift in Sources */,
+				0B46BA9B26F8D24B004F176D /* PageView.swift in Sources */,
+				AF3CFF0A27074BB300569BE0 /* OnboardingSceneFactory.swift in Sources */,
 				7795205425680C5400BC7367 /* SearchView+ARDelegate.swift in Sources */,
-				7795203425680C0500BC7367 /* AlertViewController.swift in Sources */,
+				7795203425680C0500BC7367 /* PageViewController.swift in Sources */,
 				77951FC22568088100BC7367 /* AppDelegate.swift in Sources */,
 				0B073585256BF2300002AC05 /* JsonData.swift in Sources */,
 				AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */,
@@ -895,7 +887,7 @@
 				7795207F25680D4D00BC7367 /* ARModel.swift in Sources */,
 				7795205A25680C7700BC7367 /* ResultViewController.swift in Sources */,
 				AF3CFF1D270B2B5500569BE0 /* ResultSceneFactory.swift in Sources */,
-				AF3CFF0827074BA200569BE0 /* AlertRouter.swift in Sources */,
+				AF3CFF0827074BA200569BE0 /* OnboardingRouter.swift in Sources */,
 				AF3CFEF727073FC400569BE0 /* HomeSceneFactory.swift in Sources */,
 				D12AC55826F0E21A0026967F /* LettersStackView.swift in Sources */,
 				D12AC55626F0D36D0026967F /* GameView.swift in Sources */,

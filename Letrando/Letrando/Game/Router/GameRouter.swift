@@ -29,8 +29,11 @@ class GameRouter: GameRouterLogic {
     func startResult() {
         let resultView = resultSceneFactory.instantiateResultView(wordResult: wordResult)
         let resultViewController = resultSceneFactory.instantiateResultViewController()
-        let alertRouter = AlertRouter(gameSceneFactory: GameSceneFactory(), navigationController: navigationController)
-        let resultRouter = ResultRouter(alertRouter: alertRouter, navigationController: navigationController)
+        
+        let homeRouter = HomeRouter(onboardingSceneFactory: OnboardingSceneFactory(),
+                                    gameSceneFactory: GameSceneFactory(),
+                                    navigationController: navigationController)
+        let resultRouter = ResultRouter(homeRouter: homeRouter, navigationController: navigationController)
         
         resultViewController.setup(with: resultView, wordResult: wordResult, resultRouter: resultRouter)
         resultViewController.modalPresentationStyle = .fullScreen

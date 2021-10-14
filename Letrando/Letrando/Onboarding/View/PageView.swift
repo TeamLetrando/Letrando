@@ -8,17 +8,17 @@
 import UIKit
 import Lottie
 
-protocol AlertViewDelegate: AnyObject {
+protocol PageViewDelegate: AnyObject {
     func startAnimation()
 }
 
-final class AlertView: UIView, ViewCodable {
+final class PageView: UIView, ViewCodable {
     
-    private lazy var nameAnimation = String()
-    private lazy var textAlertMessage = String()
+    private lazy var animationName = String()
+    private lazy var message = String()
     
     fileprivate lazy var mascotAnimation: AnimationView = {
-        let animation = AnimationView(name: nameAnimation)
+        let animation = AnimationView(name: animationName)
         animation.contentMode = .scaleAspectFit
         animation.loopMode = .loop
         animation.animationSpeed = 0.8
@@ -30,7 +30,7 @@ final class AlertView: UIView, ViewCodable {
     
     private lazy var messageAlert: UILabel = {
         let messageAlert = UILabel()
-        messageAlert.text = textAlertMessage
+        messageAlert.text = message
         messageAlert.textAlignment = .center
         messageAlert.numberOfLines = .zero
         messageAlert.font = UIFont.set(size: 28, weight: .bold, textStyle: .largeTitle)
@@ -39,10 +39,10 @@ final class AlertView: UIView, ViewCodable {
         return messageAlert
     }()
     
-    convenience init(nameAlertAnimation: String, textAlertMessage: String) {
+    convenience init(animationName: String, message: String) {
         self.init()
-        self.nameAnimation = nameAlertAnimation
-        self.textAlertMessage = textAlertMessage
+        self.animationName = animationName
+        self.message = message
     }
     
     override func didMoveToSuperview() {
@@ -73,7 +73,7 @@ final class AlertView: UIView, ViewCodable {
     }
 }
 
-extension AlertView: AlertViewDelegate {
+extension PageView: PageViewDelegate {
     
     func startAnimation() {
         mascotAnimation.play()

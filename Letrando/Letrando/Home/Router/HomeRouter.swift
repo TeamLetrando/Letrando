@@ -9,31 +9,42 @@ import Foundation
 import UIKit
 
 protocol HomeRouterLogic {
-    init(alertSceneFactory: AlertFactory, navigationController: UINavigationController)
-    func startAlert()
+    init(onboardingSceneFactory: OnboardingFactory,
+         gameSceneFactory: GameFactory, navigationController: UINavigationController)
+    func startOnboarding()
+    func startGame()
 }
 
 class HomeRouter: HomeRouterLogic {
     
-    private var alertSceneFactory: AlertFactory
+    private var gameSceneFactory: GameFactory
+    private var onboardingSceneFactory: OnboardingFactory
     private var navigationController: UINavigationController
     
-    required init(alertSceneFactory: AlertFactory, navigationController: UINavigationController) {
-        self.alertSceneFactory = alertSceneFactory
+    required init(onboardingSceneFactory: OnboardingFactory,
+                  gameSceneFactory: GameFactory, navigationController: UINavigationController) {
+        self.onboardingSceneFactory = onboardingSceneFactory
+        self.gameSceneFactory = gameSceneFactory
         self.navigationController = navigationController
     }
     
-    func startAlert() {
-        let alertView = alertSceneFactory.instantiateAlertView()
-        let alertViewController = alertSceneFactory.instantiateAlertViewController()
-        alertViewController.setup(with: alertView,
-                                  alertRouter: AlertRouter(gameSceneFactory: GameSceneFactory(),
-                                                           navigationController: navigationController))
-        
-        let onboardingViewController = OnboardingViewController()
-        onboardingViewController.modalPresentationStyle = .fullScreen
-      //  self.present(onboardingViewController, animated: true, completion: nil)
+    func startOnboarding() {
+        let onboardingViewController = onboardingSceneFactory.instantiateOnboardingViewController()
+        let onboardingRouter = OnboardingRouter(navigationController: navigationController)
+        onboardingViewController.setup(onboardingRouter: onboardingRouter)
+      
+        onboardingViewController.isModalInPresentation = true
         navigationController.present(onboardingViewController, animated: true)
     }
-
+    
+    func startGame() {
+        let gameView = gameSceneFactory.instatiateGameView()
+        let gameViewController = gameSceneFactory.instantiateGameViewController()
+        let gameRouter = GameRouter(resultSceneFactory: ResultSceneFactory(),
+                                    wordResult: gameSceneFactory.randomWord?.word,
+                                    navigationController: navigationController)
+        
+        gameViewController.setup(with: gameView, gameRouter: gameRouter)
+        navigationController.pushViewController(gameViewController, animated: true)
+    }
 }

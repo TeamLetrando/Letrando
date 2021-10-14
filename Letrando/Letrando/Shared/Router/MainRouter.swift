@@ -32,7 +32,8 @@ class MainRouter: MainRouterLogic {
        
         navigationController.viewControllers = [homeViewController]
         homeViewController.setup(with: homeView,
-                                 homeRouter: HomeRouter(alertSceneFactory: AlertSceneFatory(),
+                                 homeRouter: HomeRouter(onboardingSceneFactory: OnboardingSceneFactory(),
+                                                        gameSceneFactory: GameSceneFactory(),
                                                         navigationController: navigationController))
         window?.overrideUserInterfaceStyle = .light
         window?.rootViewController = navigationController

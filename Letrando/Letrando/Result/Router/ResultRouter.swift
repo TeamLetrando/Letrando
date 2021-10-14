@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ResultRouterLogic {
-    init(alertRouter: AlertRouterLogic, navigationController: UINavigationController)
+    init(homeRouter: HomeRouterLogic, navigationController: UINavigationController)
     func restartGame()
     func exitGame()
 }
@@ -16,15 +16,15 @@ protocol ResultRouterLogic {
 class ResultRouter: ResultRouterLogic {
     
     private let navigationController: UINavigationController
-    private let alertRouter: AlertRouterLogic
+    private let homeRouter: HomeRouterLogic
     
-    required init(alertRouter: AlertRouterLogic, navigationController: UINavigationController) {
+    required init(homeRouter: HomeRouterLogic, navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.alertRouter = alertRouter
+        self.homeRouter = homeRouter
     }
     
     func restartGame() {
-        alertRouter.startGame()
+        homeRouter.startGame()
         navigationController.dismiss(animated: true)
     }
     

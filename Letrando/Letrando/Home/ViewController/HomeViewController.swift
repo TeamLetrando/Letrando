@@ -16,7 +16,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     private var homeView: HomeViewProtocol?
     private var homeRouter: HomeRouterLogic?
-    
+  
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
         self.homeView = view
         self.homeRouter = homeRouter
@@ -41,11 +41,9 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
 }
 
 extension HomeViewController: HomeViewDelegate {
+    
     func startGame() {
-        homeRouter?.startAlert()
- 
-//        let onboardingViewController = OnboardingViewController()
-//        onboardingViewController.modalPresentationStyle = .fullScreen
-//        self.present(onboardingViewController, animated: true, completion: nil)
+        homeRouter?.startGame()
+        homeRouter?.startOnboarding()
     }
 }
