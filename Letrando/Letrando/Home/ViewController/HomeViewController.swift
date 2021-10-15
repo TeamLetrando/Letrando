@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     private var homeView: HomeViewProtocol?
     private var homeRouter: HomeRouterLogic?
+    private var onboardingKey = "onboarding"
   
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
         self.homeView = view
@@ -29,6 +30,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView?.delegate = self
+        setUserDefaults()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,12 +40,22 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     private func configSounds() {
         Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
     }
+    
+    private func setUserDefaults() {
+        if UserDefaults.standard.object(forKey: onboardingKey) == nil {
+            UserDefaults.standard.set(false, forKey: onboardingKey)
+        }
+    }
 }
 
 extension HomeViewController: HomeViewDelegate {
     
     func startGame() {
         homeRouter?.startGame()
-        homeRouter?.startOnboarding()
+        
+        if !UserDefaults.standard.bool(forKey: onboardingKey) {
+            homeRouter?.startOnboarding()
+            UserDefaults.standard.set(true, forKey: onboardingKey)
+        }
     }
 }
