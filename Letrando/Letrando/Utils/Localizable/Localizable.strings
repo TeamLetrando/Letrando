@@ -35,6 +35,7 @@
 "nextButtonIcon" = "arrow.right.circle.fill";
 "previewButtonIcon" = "arrow.backward.circle.fill";
 "doneButtonIcon" = "arrowtriangle.right.circle.fill";
+"helpButtonIcon" = "questionmark.circle.fill";
 
 // MARK: - Game View Message
 "findAnotherPlaceMessage" = "Procure um local mais espaçoso";

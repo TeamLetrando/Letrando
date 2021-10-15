@@ -33,6 +33,7 @@ enum LocalizableBundle: String {
     case activatedSoundIcon
     case disabledSoundIcon
     case searchButtonIcon
+    case helpButtonIcon
     case homeButtonIcon
     case nextButtonIcon
     case previewButtonIcon

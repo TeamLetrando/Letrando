@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeViewDelegate: AnyObject {
     func startGame()
+    func showHelp()
 }
 
 protocol HomeViewProtocol: UIView {
@@ -66,6 +67,15 @@ class HomeView: UIView, ViewCodable, HomeViewProtocol {
         return button
     }()
     
+    private lazy var helpButton: RoundedButton = {
+        let buttonImage = UIImage(systemName: LocalizableBundle.helpButtonIcon.localize)
+        let button = RoundedButton(backgroundImage: buttonImage,
+                                   buttonAction: showHelp,
+                                   tintColor: .greenActionLetrando)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func didMoveToSuperview() {
         setupView()
     }
@@ -74,6 +84,7 @@ class HomeView: UIView, ViewCodable, HomeViewProtocol {
         addSubview(lettersImage)
         addSubview(mascotAnimation)
         addSubview(soundButton)
+        addSubview(helpButton)
         addSubview(titleLabel)
         addSubview(playButton)
     }
@@ -85,13 +96,18 @@ class HomeView: UIView, ViewCodable, HomeViewProtocol {
             soundButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13),
             soundButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13),
             
+            helpButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            helpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            helpButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13),
+            helpButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13),
+            
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 80),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             
-            playButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
-            playButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            playButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
+            playButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
             playButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             playButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             
@@ -113,5 +129,9 @@ class HomeView: UIView, ViewCodable, HomeViewProtocol {
  
     private func startGame() {
         delegate?.startGame()
+    }
+    
+    private func showHelp() {
+        delegate?.showHelp()
     }
 }

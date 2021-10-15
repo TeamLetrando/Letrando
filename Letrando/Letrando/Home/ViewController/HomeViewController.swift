@@ -50,6 +50,10 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
 
 extension HomeViewController: HomeViewDelegate {
     
+    func showHelp() {
+        homeRouter?.startOnboarding()
+    }
+    
     func startGame() {
         homeRouter?.startGame()
         
