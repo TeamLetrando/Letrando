@@ -38,6 +38,7 @@ enum LocalizableBundle: String {
     case nextButtonIcon
     case previewButtonIcon
     case doneButtonIcon
+    case exitButtonIcon
     
     // MARK: - Game View Message
     case findAnotherPlaceMessage

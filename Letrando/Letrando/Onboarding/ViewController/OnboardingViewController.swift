@@ -44,7 +44,16 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         previewButton.translatesAutoresizingMaskIntoConstraints = false
         return previewButton
     }()
-   
+    
+    private lazy var dismissButton: RoundedButton = {
+        let buttonImage = UIImage(systemName: LocalizableBundle.exitButtonIcon.localize)
+        let button = RoundedButton(backgroundImage: buttonImage,
+                                   buttonAction: dismissAction,
+                                   tintColor: .greenActionLetrando)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
@@ -67,6 +76,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }
     
     func buildViewHierarchy() {
+        view.addSubview(dismissButton)
         view.addSubview(pageControl)
         view.addSubview(nextButton)
         view.addSubview(previewButton)
@@ -77,6 +87,11 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
             pageControl.widthAnchor.constraint(equalTo: view.widthAnchor),
             pageControl.heightAnchor.constraint(equalToConstant: 20),
             view.bottomAnchor.constraint(equalToSystemSpacingBelow: pageControl.bottomAnchor, multiplier: 1),
+            
+            dismissButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            dismissButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            dismissButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13),
+            dismissButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13),
             
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
@@ -166,6 +181,10 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         let nextButtonImage = UIImage(systemName: imageIcon)
         nextButton.setBackgroundImage(nextButtonImage, for: .normal)
         nextButton.layoutSubviews()
+    }
+    
+    private func dismissAction() {
+        dismiss(animated: true, completion: nil)
     }
 }
 

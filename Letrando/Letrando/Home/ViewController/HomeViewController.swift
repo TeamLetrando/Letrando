@@ -30,6 +30,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView?.delegate = self
+        UserDefaults.standard.set(nil, forKey: onboardingKey)
         setUserDefaults()
     }
     
