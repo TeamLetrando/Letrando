@@ -18,6 +18,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     private var animationKey = "showAnimationFeedback"
     private let handButtonImageOn = "handButtonOn"
     private let handButtonImageOff = "handButtonOff"
+    private let backButtonImage = "chevron.left.circle.fill"
     
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
         let label = UILabel()
@@ -49,7 +50,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     }()
     
     private lazy var backToHomeButton: UIButton = {
-        let button = RoundedButton(backgroundImage: UIImage(named: "back"),
+        let button = RoundedButton(backgroundImage: UIImage(systemName: backButtonImage),
                                    buttonAction: backToHomeButtonAction,
                                    tintColor: .greenActionLetrando)
         button.translatesAutoresizingMaskIntoConstraints = false
