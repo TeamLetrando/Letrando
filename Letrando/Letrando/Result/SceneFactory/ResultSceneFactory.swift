@@ -29,7 +29,7 @@ class ResultSceneFactory: SceneFactory {
         resultViewController.setup(with: resultView, resultRouter: instantiateResultRouter())
       
         resultViewController.modalPresentationStyle = .fullScreen
-        return ResultViewController()
+        return resultViewController
     }
     
     private func instantiateOnboardingSceneFactory() -> SceneFactory {

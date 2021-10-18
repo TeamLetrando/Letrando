@@ -15,6 +15,9 @@ protocol GameViewProtocol {
 class GameView: UIView, ViewCodable, GameViewProtocol {
     
     weak var delegate: GameControlerDelegate?
+    private var animationKey = "showAnimationFeedback"
+    private let handButtonImageOn = "handButtonOn"
+    private let handButtonImageOff = "handButtonOff"
     
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
         let label = UILabel()
@@ -96,7 +99,8 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     
     func setupAditionalChanges() {
         feedbackGenerator.prepare()
-        handButtonAction()
+        let isAnimationEnable = UserDefaults.standard.bool(forKey: animationKey)
+        setHandButtonImage(for: isAnimationEnable ? handButtonImageOn : handButtonImageOff)
     }
     
     func feedbackGeneratorImpactOccurred() {
@@ -104,10 +108,9 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     }
     
     @objc private func handButtonAction() {
-        if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool {
-            UserDefaults.standard.setValue(!isAnimationEnable, forKey: "showAnimationFeedback")
-            setHandButtonImage(for: isAnimationEnable ? "handButtonOn" : "handButtonOff")
-        }
+        let isAnimationEnable = UserDefaults.standard.bool(forKey: animationKey)
+        UserDefaults.standard.set(!isAnimationEnable, forKey: animationKey)
+        setHandButtonImage(for: !isAnimationEnable ? handButtonImageOn : handButtonImageOff)
     }
     
     @objc private func backToHomeButtonAction() {
@@ -129,7 +132,7 @@ extension GameView: GameViewDelegate {
     }
     
     func animateFeedBack(initialPosition: CGPoint, letter: String, sceneView: ARSCNView) {
-        if !((UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool ?? false) == false) {
+        if !UserDefaults.standard.bool(forKey: animationKey) {
             return
         }
         
@@ -160,6 +163,7 @@ extension GameView: GameViewDelegate {
     func setHandButtonImage(for imageName: String) {
         DispatchQueue.main.async { [weak self] in
             self?.handButton.setImage(UIImage(named: imageName), for: .normal)
+            self?.layoutIfNeeded()
         }
     }
 }

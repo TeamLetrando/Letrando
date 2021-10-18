@@ -29,7 +29,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
     var score = 0
-    
+   
     var sceneView = ARSCNView()
     
     internal var gameView: GameView?
@@ -60,7 +60,6 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         setupCoachingOverlay()
         addMoveGesture()
         addTapGesture()
-        configureUserDefaults()
     }
     
     func setup(with view: GameView, gameRouter: GameRouterLogic) {
@@ -81,14 +80,6 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     
     override func loadView() {
         self.view = gameView
-    }
-    
-    func configureUserDefaults() {
-        if UserDefaults.standard.object(forKey: "showAnimationFeedback") == nil {
-            UserDefaults.standard.setValue(true, forKey: "showAnimationFeedback")
-        } else if let isAnimationEnable = UserDefaults.standard.object(forKey: "showAnimationFeedback") as? Bool {
-            delegate?.setHandButtonImage(for: isAnimationEnable ? "handButtonOn" : "handButtonOff")
-        }
     }
     
     func reproduceSound(string: String) {
@@ -118,7 +109,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             gameView?.feedbackGeneratorImpactOccurred()
             score += 1
             if let word = word, score == word.word.count {
-                transitionForResultScreen(word: word.word)
+                transitionForResultScreen()
             }
         }
     }
@@ -206,7 +197,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         ])
     }
 
-    func transitionForResultScreen(word: String) {
+    func transitionForResultScreen() {
         gameRouter?.startResult()
     }
 }

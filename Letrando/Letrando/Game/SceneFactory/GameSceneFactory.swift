@@ -33,7 +33,7 @@ class GameSceneFactory: SceneFactory {
                           navigationController: navigationController)
     }
     
-    private func instantiateResultSceneFactory() -> ResultSceneFactory {
+    private func instantiateResultSceneFactory() -> SceneFactory {
         return ResultSceneFactory(navigationController: navigationController, wordResult: randomWord)
     }
    
