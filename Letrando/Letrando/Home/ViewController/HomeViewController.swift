@@ -30,7 +30,6 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView?.delegate = self
-        UserDefaults.standard.set(nil, forKey: onboardingKey)
         setUserDefaults()
     }
     
@@ -57,10 +56,5 @@ extension HomeViewController: HomeViewDelegate {
     
     func startGame() {
         homeRouter?.startGame()
-        
-        if !UserDefaults.standard.bool(forKey: onboardingKey) {
-            homeRouter?.startOnboarding()
-            UserDefaults.standard.set(true, forKey: onboardingKey)
-        }
     }
 }

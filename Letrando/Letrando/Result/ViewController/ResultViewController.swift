@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ResultViewControllerProtocol: UIViewController {
-    func setup(with view: ResultViewProtocol, wordResult: String, resultRouter: ResultRouterLogic)
+    func setup(with view: ResultViewProtocol, resultRouter: ResultRouterLogic)
 }
 
 class ResultViewController: UIViewController, ResultViewControllerProtocol {
@@ -17,10 +17,10 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
     private var resultView: ResultViewProtocol?
     private var resultRouter: ResultRouterLogic?
     
-    func setup(with view: ResultViewProtocol, wordResult: String, resultRouter: ResultRouterLogic) {
-        self.wordResult = wordResult
+    func setup(with view: ResultViewProtocol, resultRouter: ResultRouterLogic) {
         self.resultView = view
         self.resultRouter = resultRouter
+        self.wordResult = resultView?.wordResult ?? String()
     }
     
     override func viewDidLoad() {

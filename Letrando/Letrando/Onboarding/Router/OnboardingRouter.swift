@@ -8,20 +8,20 @@
 import UIKit
 
 protocol OnboardingRouterLogic {
-    init(navigationController: UINavigationController)
+    init(navigationController: UINavigationController?)
     func dismissOnboarding()
 }
 
 class OnboardingRouter: OnboardingRouterLogic {
     
-    private var navigationController: UINavigationController
+    private var navigationController: UINavigationController?
     
-    required init(navigationController: UINavigationController) {
+    required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
     
     func dismissOnboarding() {
-        navigationController.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
 }

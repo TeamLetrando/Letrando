@@ -8,29 +8,29 @@
 import UIKit
 
 protocol ResultRouterLogic {
-    init(homeRouter: HomeRouterLogic, navigationController: UINavigationController)
+    init(homeRouter: HomeRouterLogic, navigationController: UINavigationController?)
     func restartGame()
     func exitGame()
 }
 
 class ResultRouter: ResultRouterLogic {
     
-    private let navigationController: UINavigationController
+    private let navigationController: UINavigationController?
     private let homeRouter: HomeRouterLogic
     
-    required init(homeRouter: HomeRouterLogic, navigationController: UINavigationController) {
+    required init(homeRouter: HomeRouterLogic, navigationController: UINavigationController?) {
         self.navigationController = navigationController
         self.homeRouter = homeRouter
     }
     
     func restartGame() {
         homeRouter.startGame()
-        navigationController.dismiss(animated: true)
+        navigationController?.dismiss(animated: true)
     }
     
     func exitGame() {
-        navigationController.dismiss(animated: true)
-        navigationController.popToRootViewController(animated: true)
+        navigationController?.dismiss(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
 }

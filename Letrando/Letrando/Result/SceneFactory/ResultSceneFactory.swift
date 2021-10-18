@@ -6,18 +6,51 @@
 //
 
 import Foundation
+import UIKit
 
-protocol ResultFactory {
-    func instantiateResultViewController() -> ResultViewControllerProtocol
-    func instantiateResultView(wordResult: String) -> ResultViewProtocol
-}
-
-class ResultSceneFactory: ResultFactory {
-    func instantiateResultViewController() -> ResultViewControllerProtocol {
+class ResultSceneFactory: SceneFactory {
+    
+    private var navigationController: UINavigationController?
+    private var wordResult: Word?
+    
+    convenience init(navigationController: UINavigationController?, wordResult: Word?) {
+        self.init(navigationController: navigationController)
+        self.navigationController = navigationController
+        self.wordResult = wordResult
+    }
+    
+    required init(navigationController: UINavigationController?) {
+        self.navigationController = navigationController
+    }
+    
+    func instantiateViewController() -> UIViewController {
+        let resultView = instantiateResultView()
+        let resultViewController = ResultViewController()
+        resultViewController.setup(with: resultView, resultRouter: instantiateResultRouter())
+      
+        resultViewController.modalPresentationStyle = .fullScreen
         return ResultViewController()
     }
     
-    func instantiateResultView(wordResult: String) -> ResultViewProtocol {
-        return ResultView(wordResult: wordResult)
+    private func instantiateOnboardingSceneFactory() -> SceneFactory {
+        return OnboardingSceneFactory(navigationController: navigationController)
+    }
+    
+    private func instantiateGameSceneFactory() -> SceneFactory {
+        return GameSceneFactory(navigationController: navigationController)
+    }
+    
+    private func instantiateHomeRouter() -> HomeRouterLogic {
+        return HomeRouter(onboardingSceneFactory: instantiateOnboardingSceneFactory(),
+                          gameSceneFactory: instantiateGameSceneFactory(),
+                          navigationController: navigationController)
+    }
+    
+    private func instantiateResultRouter() -> ResultRouterLogic {
+        return ResultRouter(homeRouter: instantiateHomeRouter(), navigationController: navigationController)
+    }
+    
+    private func instantiateResultView() -> ResultViewProtocol {
+        return ResultView(wordResult: wordResult?.word ?? String())
     }
 }

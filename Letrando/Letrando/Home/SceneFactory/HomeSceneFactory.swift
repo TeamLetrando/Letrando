@@ -8,18 +8,37 @@
 import Foundation
 import UIKit
 
-protocol HomeFactory {
-    func instantiateHomeView() -> HomeViewProtocol
-    func instantiateHomeViewControler() -> HomeViewControllerProtocol
-}
-
-class HomeSceneFactory: HomeFactory {
+class HomeSceneFactory: SceneFactory {
+   
+    private let navigationController: UINavigationController?
     
-    func instantiateHomeView() -> HomeViewProtocol {
+    required init(navigationController: UINavigationController?) {
+        self.navigationController = navigationController
+    }
+    
+    func instantiateViewController() -> UIViewController {
+        let homeView = instantiateHomeView()
+        let homeViewController = HomeViewController()
+       
+        homeViewController.setup(with: homeView, homeRouter: instantiateHomeRouter())
+        return homeViewController
+    }
+    
+    private func instantiateHomeView() -> HomeViewProtocol {
         return HomeView()
     }
     
-    func instantiateHomeViewControler() -> HomeViewControllerProtocol {
-        return HomeViewController()
+    private func instantiateOnboardingSceneFactory() -> SceneFactory {
+        return OnboardingSceneFactory(navigationController: navigationController)
+    }
+    
+    private func instantiateGameSceneFactory() -> SceneFactory {
+        return GameSceneFactory(navigationController: navigationController)
+    }
+    
+    private func instantiateHomeRouter() -> HomeRouterLogic {
+        return HomeRouter(onboardingSceneFactory: instantiateOnboardingSceneFactory(),
+                          gameSceneFactory: instantiateGameSceneFactory(),
+                          navigationController: navigationController)
     }
 }

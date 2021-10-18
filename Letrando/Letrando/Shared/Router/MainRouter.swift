@@ -9,32 +9,26 @@ import Foundation
 import UIKit
 
 protocol MainRouterLogic {
-    
-    init(scene: UIWindowScene, homeSceneFatory: HomeFactory)
+    init(scene: UIWindowScene, homeSceneFatory: SceneFactory, navigationController: UINavigationController)
     func startHome()
 }
 
 class MainRouter: MainRouterLogic {
     
-    private let navigationController = UINavigationController()
+    private var navigationController: UINavigationController
     private var window: UIWindow?
-    private var homeSceneFactory: HomeFactory
+    private var homeSceneFactory: SceneFactory
     
-    required init(scene: UIWindowScene, homeSceneFatory: HomeFactory = HomeSceneFactory()) {
+    required init(scene: UIWindowScene, homeSceneFatory: SceneFactory, navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        self.homeSceneFactory = homeSceneFatory
         window = UIWindow(windowScene: scene)
-        homeSceneFactory = HomeSceneFactory()
     }
     
     func startHome() {
+        let homeViewController = homeSceneFactory.instantiateViewController()
         navigationController.isNavigationBarHidden = true
-        let homeView = homeSceneFactory.instantiateHomeView()
-        let homeViewController = homeSceneFactory.instantiateHomeViewControler()
-       
         navigationController.viewControllers = [homeViewController]
-        homeViewController.setup(with: homeView,
-                                 homeRouter: HomeRouter(onboardingSceneFactory: OnboardingSceneFactory(),
-                                                        gameSceneFactory: GameSceneFactory(),
-                                                        navigationController: navigationController))
         window?.overrideUserInterfaceStyle = .light
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

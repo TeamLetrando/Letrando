@@ -14,13 +14,14 @@ protocol ResultViewDelegate: AnyObject {
 
 protocol ResultViewProtocol: UIView {
     var delegate: ResultViewDelegate? { get set }
+    var wordResult: String { get set }
     init(wordResult: String)
 }
 
 class ResultView: UIView, ViewCodable, ResultViewProtocol {
     
     weak var delegate: ResultViewDelegate?
-    private lazy var wordResult = String()
+    lazy var wordResult = String()
     
     private lazy var soundButton: SoundButton = {
         let button = SoundButton()

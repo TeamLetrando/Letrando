@@ -7,21 +7,34 @@
 
 import UIKit
 
-protocol GameFactory {
-    var randomWord: Word? { get set }
-    func instatiateGameView() -> GameView
-    func instantiateGameViewController() -> SearchViewController
-}
-
-class GameSceneFactory: GameFactory {
-
+class GameSceneFactory: SceneFactory {
+  
     lazy var randomWord = JsonData().randomWord()
+    private let navigationController: UINavigationController?
     
-    func instatiateGameView() -> GameView {
+    required init(navigationController: UINavigationController?) {
+        self.navigationController = navigationController
+    }
+    
+    func instantiateViewController() -> UIViewController {
+        let gameViewController = SearchViewController(wordGame: randomWord)
+        gameViewController.setup(with: instatiateGameView(), gameRouter: instantiateGameRouter())
+        
+        return gameViewController
+    }
+    
+    private func instatiateGameView() -> GameView {
         return GameView(letters: randomWord?.breakInLetters())
     }
     
-    func instantiateGameViewController() -> SearchViewController {
-        return SearchViewController(wordGame: randomWord)
+    private func instantiateGameRouter() -> GameRouterLogic {
+        return GameRouter(resultSceneFactory: instantiateResultSceneFactory(),
+                          wordResult: randomWord?.word,
+                          navigationController: navigationController)
     }
+    
+    private func instantiateResultSceneFactory() -> ResultSceneFactory {
+        return ResultSceneFactory(navigationController: navigationController, wordResult: randomWord)
+    }
+   
 }

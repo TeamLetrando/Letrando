@@ -9,42 +9,38 @@ import Foundation
 import UIKit
 
 protocol HomeRouterLogic {
-    init(onboardingSceneFactory: OnboardingFactory,
-         gameSceneFactory: GameFactory, navigationController: UINavigationController)
+    init(onboardingSceneFactory: SceneFactory,
+         gameSceneFactory: SceneFactory, navigationController: UINavigationController?)
     func startOnboarding()
     func startGame()
 }
 
 class HomeRouter: HomeRouterLogic {
     
-    private var gameSceneFactory: GameFactory
-    private var onboardingSceneFactory: OnboardingFactory
-    private var navigationController: UINavigationController
+    private var gameSceneFactory: SceneFactory
+    private var onboardingSceneFactory: SceneFactory
+    private var navigationController: UINavigationController?
+    private var onboardingKey = "onboarding"
     
-    required init(onboardingSceneFactory: OnboardingFactory,
-                  gameSceneFactory: GameFactory, navigationController: UINavigationController) {
+    required init(onboardingSceneFactory: SceneFactory,
+                  gameSceneFactory: SceneFactory, navigationController: UINavigationController?) {
         self.onboardingSceneFactory = onboardingSceneFactory
         self.gameSceneFactory = gameSceneFactory
         self.navigationController = navigationController
     }
     
     func startOnboarding() {
-        let onboardingViewController = onboardingSceneFactory.instantiateOnboardingViewController()
-        let onboardingRouter = OnboardingRouter(navigationController: navigationController)
-        onboardingViewController.setup(onboardingRouter: onboardingRouter)
-      
-        onboardingViewController.isModalInPresentation = true
-        navigationController.present(onboardingViewController, animated: true)
+        let onboardingViewController = onboardingSceneFactory.instantiateViewController()
+        navigationController?.present(onboardingViewController, animated: true)
     }
     
     func startGame() {
-        let gameView = gameSceneFactory.instatiateGameView()
-        let gameViewController = gameSceneFactory.instantiateGameViewController()
-        let gameRouter = GameRouter(resultSceneFactory: ResultSceneFactory(),
-                                    wordResult: gameSceneFactory.randomWord?.word,
-                                    navigationController: navigationController)
+        let gameViewController = gameSceneFactory.instantiateViewController()
+        navigationController?.pushViewController(gameViewController, animated: true)
         
-        gameViewController.setup(with: gameView, gameRouter: gameRouter)
-        navigationController.pushViewController(gameViewController, animated: true)
+        if !UserDefaults.standard.bool(forKey: onboardingKey) {
+            startOnboarding()
+            UserDefaults.standard.set(true, forKey: onboardingKey)
+        }
     }
 }

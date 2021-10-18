@@ -19,7 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Scene cannot be created")
         }
         
-        mainRouter = MainRouter(scene: scene)
+        let navigationController = UINavigationController()
+        let homeSceneFactory = HomeSceneFactory(navigationController: navigationController)
+        mainRouter = MainRouter(scene: scene, homeSceneFatory: homeSceneFactory, navigationController: navigationController)
         mainRouter?.startHome()
     }
 
