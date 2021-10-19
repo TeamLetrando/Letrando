@@ -52,13 +52,13 @@ class ResultView: UIView, ViewCodable, ResultViewProtocol {
     }()
     
     private lazy var animationView: AnimationLottieView = {
-        let view = AnimationLottieView(named: LocalizableBundle.mascotResultAnimation.localize)
+        let view = AnimationLottieView(named: JsonAnimations.mascotResultAnimation.rawValue)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var searchButton: RoundedButton = {
-        let backgroundImage = UIImage(systemName: LocalizableBundle.searchButtonIcon.localize)
+        let backgroundImage = UIImage(systemName: SystemIcons.searchButtonIcon.rawValue)
         let button = RoundedButton(backgroundImage: backgroundImage,
                                    buttonAction: restartGame,
                                    tintColor: .greenActionLetrando)
@@ -68,7 +68,7 @@ class ResultView: UIView, ViewCodable, ResultViewProtocol {
     }()
     
     private lazy var exitButton: RoundedButton = {
-        let backgroundImage = UIImage(systemName: LocalizableBundle.homeButtonIcon.localize)
+        let backgroundImage = UIImage(systemName: SystemIcons.homeButtonIcon.rawValue)
         let button = RoundedButton(backgroundImage: backgroundImage,
                                    buttonAction: exitGame,
                                    tintColor: .customBrown)

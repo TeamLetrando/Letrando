@@ -27,7 +27,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }()
     
     private lazy var nextButton: RoundedButton = {
-        let imageButton = UIImage(systemName: LocalizableBundle.nextButtonIcon.localize)
+        let imageButton = UIImage(systemName: SystemIcons.nextButtonIcon.rawValue)
         let nextButton = RoundedButton(backgroundImage: imageButton,
                                        buttonAction: nextButtonAction,
                                        tintColor: .greenActionLetrando)
@@ -36,7 +36,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }()
 
     private lazy var previewButton: RoundedButton = {
-        let imageButton = UIImage(systemName: LocalizableBundle.previewButtonIcon.localize)
+        let imageButton = UIImage(systemName: SystemIcons.previewButtonIcon.rawValue)
         let previewButton = RoundedButton(backgroundImage: imageButton,
                                        buttonAction: previewButtonAction,
                                        tintColor: .greenActionLetrando)
@@ -46,7 +46,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }()
     
     private lazy var dismissButton: RoundedButton = {
-        let buttonImage = UIImage(systemName: LocalizableBundle.exitButtonIcon.localize)
+        let buttonImage = UIImage(systemName: SystemIcons.exitButtonIcon.rawValue)
         let button = RoundedButton(backgroundImage: buttonImage,
                                    buttonAction: dismissAction,
                                    tintColor: .greenActionLetrando)
@@ -113,17 +113,17 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }
 
     func configurePages() {
-        let presentationView = PageView(animationName: LocalizableBundle.firstOnboardingAnimation.localize,
+        let presentationView = PageView(animationName: JsonAnimations.firstOnboardingAnimation.rawValue,
                                        message: LocalizableBundle.firstOnboardingMessage.localize)
         let presentationController = PageViewController()
         presentationController.setup(with: presentationView)
         
-        let alertView = PageView(animationName: LocalizableBundle.secondOnboardingAnimation.localize,
+        let alertView = PageView(animationName: JsonAnimations.secondOnboardingAnimation.rawValue,
                                         message: LocalizableBundle.secondOnboardingMessage.localize)
         let alertController = PageViewController()
         alertController.setup(with: alertView)
         
-        let tutorialView = PageView(animationName: LocalizableBundle.thirdOnboardingAnimation.localize,
+        let tutorialView = PageView(animationName: JsonAnimations.thirdOnboardingAnimation.rawValue,
                                        message: LocalizableBundle.thirdOnboardingMessage.localize)
         let tutorialController = PageViewController()
         tutorialController.setup(with: tutorialView)
@@ -176,7 +176,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         
         previewButton.isHidden = currentIndexPage == .zero
         let imageIcon = currentIndexPage == (pages.count - 1) ?
-        LocalizableBundle.doneButtonIcon.localize : LocalizableBundle.nextButtonIcon.localize
+        SystemIcons.doneButtonIcon.rawValue : SystemIcons.nextButtonIcon.rawValue
         
         let nextButtonImage = UIImage(systemName: imageIcon)
         nextButton.setBackgroundImage(nextButtonImage, for: .normal)

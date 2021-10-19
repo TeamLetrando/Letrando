@@ -19,7 +19,6 @@ class HomeRouter: HomeRouterLogic {
     private var gameSceneFactory: SceneFactory
     private var onboardingSceneFactory: SceneFactory
     private var navigationController: UINavigationController?
-    private var onboardingKey = "onboarding"
     
     required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
@@ -36,9 +35,9 @@ class HomeRouter: HomeRouterLogic {
         let gameViewController = gameSceneFactory.instantiateViewController()
         navigationController?.pushViewController(gameViewController, animated: true)
         
-        if !UserDefaults.standard.bool(forKey: onboardingKey) {
+        if !UserDefaults.standard.bool(forKey: UserDefaultsKey.onboarding.rawValue) {
             startOnboarding()
-            UserDefaults.standard.set(true, forKey: onboardingKey)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKey.onboarding.rawValue)
         }
     }
 }

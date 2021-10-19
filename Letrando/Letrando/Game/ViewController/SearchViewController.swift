@@ -104,8 +104,8 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         guard let name = object.name else {return}
         if name == image.layer.name {
             object.removeFromParentNode()
-            image.image = UIImage(named: "lettersFull/\(name)_full")
-            image.layer.name = "\(name)_full"
+            image.image = UIImage(named: String(format: ImageAssets.letterFull.rawValue, name))
+            image.layer.name = String(format: ImageAssets.letterFullName.rawValue, name)
             gameView?.feedbackGeneratorImpactOccurred()
             score += 1
             if let word = word, score == word.word.count {
