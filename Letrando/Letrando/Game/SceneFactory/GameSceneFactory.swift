@@ -9,7 +9,7 @@ import UIKit
 
 class GameSceneFactory: SceneFactory {
   
-    private lazy var randomWord = JsonData().randomWord()
+    private var randomWord: Word?
     private let navigationController: UINavigationController?
     
     required init(navigationController: UINavigationController?) {
@@ -17,6 +17,7 @@ class GameSceneFactory: SceneFactory {
     }
     
     func instantiateViewController() -> UIViewController {
+        randomWord = JsonData().randomWord()
         let gameViewController = SearchViewController(wordGame: randomWord)
         gameViewController.setup(with: instatiateGameView(), gameRouter: instantiateGameRouter())
         
