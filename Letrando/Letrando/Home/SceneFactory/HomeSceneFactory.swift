@@ -28,17 +28,7 @@ class HomeSceneFactory: SceneFactory {
         return HomeView()
     }
     
-    private func instantiateOnboardingSceneFactory() -> SceneFactory {
-        return OnboardingSceneFactory(navigationController: navigationController)
-    }
-    
-    private func instantiateGameSceneFactory() -> SceneFactory {
-        return GameSceneFactory(navigationController: navigationController)
-    }
-    
     private func instantiateHomeRouter() -> HomeRouterLogic {
-        return HomeRouter(onboardingSceneFactory: instantiateOnboardingSceneFactory(),
-                          gameSceneFactory: instantiateGameSceneFactory(),
-                          navigationController: navigationController)
+        return HomeRouter(navigationController: navigationController)
     }
 }

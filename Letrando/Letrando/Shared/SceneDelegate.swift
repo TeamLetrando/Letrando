@@ -20,8 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let navigationController = UINavigationController()
-        let homeSceneFactory = HomeSceneFactory(navigationController: navigationController)
-        mainRouter = MainRouter(scene: scene, homeSceneFatory: homeSceneFactory, navigationController: navigationController)
+        mainRouter = MainRouter(scene: scene, navigationController: navigationController)
         mainRouter?.startHome()
     }
 

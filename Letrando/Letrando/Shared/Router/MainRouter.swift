@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MainRouterLogic {
-    init(scene: UIWindowScene, homeSceneFatory: SceneFactory, navigationController: UINavigationController)
+    init(scene: UIWindowScene, navigationController: UINavigationController)
     func startHome()
 }
 
@@ -19,9 +19,9 @@ class MainRouter: MainRouterLogic {
     private var window: UIWindow?
     private var homeSceneFactory: SceneFactory
     
-    required init(scene: UIWindowScene, homeSceneFatory: SceneFactory, navigationController: UINavigationController) {
+    required init(scene: UIWindowScene, navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.homeSceneFactory = homeSceneFatory
+        homeSceneFactory = HomeSceneFactory(navigationController: navigationController)
         window = UIWindow(windowScene: scene)
     }
     

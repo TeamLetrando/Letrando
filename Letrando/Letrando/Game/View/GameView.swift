@@ -42,7 +42,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     private lazy var feedbackGenerator =  UIImpactFeedbackGenerator(style: .medium)
     
     private lazy var handButton: RoundedButton = {
-        let button = RoundedButton(backgroundImage: UIImage(named: "handButtonOn"),
+        let button = RoundedButton(backgroundImage: UIImage(named: handButtonImageOn),
                                    buttonAction: handButtonAction,
                                    tintColor: .greenActionLetrando)
         button.translatesAutoresizingMaskIntoConstraints = false

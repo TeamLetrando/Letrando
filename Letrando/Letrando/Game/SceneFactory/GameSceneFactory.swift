@@ -9,7 +9,7 @@ import UIKit
 
 class GameSceneFactory: SceneFactory {
   
-    lazy var randomWord = JsonData().randomWord()
+    private lazy var randomWord = JsonData().randomWord()
     private let navigationController: UINavigationController?
     
     required init(navigationController: UINavigationController?) {
@@ -28,13 +28,7 @@ class GameSceneFactory: SceneFactory {
     }
     
     private func instantiateGameRouter() -> GameRouterLogic {
-        return GameRouter(resultSceneFactory: instantiateResultSceneFactory(),
-                          wordResult: randomWord?.word,
-                          navigationController: navigationController)
-    }
-    
-    private func instantiateResultSceneFactory() -> SceneFactory {
-        return ResultSceneFactory(navigationController: navigationController, wordResult: randomWord)
+        return GameRouter(wordResult: randomWord?.word, navigationController: navigationController)
     }
    
 }

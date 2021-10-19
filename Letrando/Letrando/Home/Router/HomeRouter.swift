@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 protocol HomeRouterLogic {
-    init(onboardingSceneFactory: SceneFactory,
-         gameSceneFactory: SceneFactory, navigationController: UINavigationController?)
+    init(navigationController: UINavigationController?)
     func startOnboarding()
     func startGame()
 }
@@ -22,13 +21,12 @@ class HomeRouter: HomeRouterLogic {
     private var navigationController: UINavigationController?
     private var onboardingKey = "onboarding"
     
-    required init(onboardingSceneFactory: SceneFactory,
-                  gameSceneFactory: SceneFactory, navigationController: UINavigationController?) {
-        self.onboardingSceneFactory = onboardingSceneFactory
-        self.gameSceneFactory = gameSceneFactory
+    required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
+        onboardingSceneFactory = OnboardingSceneFactory(navigationController: navigationController)
+        gameSceneFactory = GameSceneFactory(navigationController: navigationController)
     }
-    
+   
     func startOnboarding() {
         let onboardingViewController = onboardingSceneFactory.instantiateViewController()
         navigationController?.present(onboardingViewController, animated: true)

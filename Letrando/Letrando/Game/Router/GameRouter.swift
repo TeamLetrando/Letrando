@@ -8,7 +8,7 @@
 import UIKit
 
 protocol GameRouterLogic {
-    init(resultSceneFactory: SceneFactory, wordResult: String?, navigationController: UINavigationController?)
+    init(wordResult: String?, navigationController: UINavigationController?)
     func startResult()
     func backToHome()
 }
@@ -17,13 +17,12 @@ class GameRouter: GameRouterLogic {
     
     private var resultSceneFactory: SceneFactory
     private var navigationController: UINavigationController?
-    private var wordResult = String()
+    private var wordResult: String
     
-    required init(resultSceneFactory: SceneFactory, wordResult: String?,
-                  navigationController: UINavigationController?) {
-        self.resultSceneFactory = resultSceneFactory
+    required init(wordResult: String?, navigationController: UINavigationController?) {
         self.navigationController = navigationController
         self.wordResult = wordResult ?? String()
+        resultSceneFactory = ResultSceneFactory(navigationController: navigationController, wordResult: wordResult)
     }
     
     func startResult() {
