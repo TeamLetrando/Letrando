@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B046268270B2A1C008C5103 /* tablet.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046267270B2A1C008C5103 /* tablet.json */; };
-		0B04626A270B2A33008C5103 /* ola.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046269270B2A33008C5103 /* ola.json */; };
+		0B046268270B2A1C008C5103 /* tabletAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046267270B2A1C008C5103 /* tabletAnimation.json */; };
+		0B04626A270B2A33008C5103 /* mascotPresentation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046269270B2A33008C5103 /* mascotPresentation.json */; };
 		0B06C67226FC052300876E64 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B06C67126FC052300876E64 /* OnboardingViewController.swift */; };
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
@@ -104,8 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B046267270B2A1C008C5103 /* tablet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tablet.json; sourceTree = "<group>"; };
-		0B046269270B2A33008C5103 /* ola.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ola.json; sourceTree = "<group>"; };
+		0B046267270B2A1C008C5103 /* tabletAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tabletAnimation.json; sourceTree = "<group>"; };
+		0B046269270B2A33008C5103 /* mascotPresentation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mascotPresentation.json; sourceTree = "<group>"; };
 		0B06C67126FC052300876E64 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
@@ -463,8 +463,8 @@
 		AF151AB82575621900E389E0 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				0B046269270B2A33008C5103 /* ola.json */,
-				0B046267270B2A1C008C5103 /* tablet.json */,
+				0B046269270B2A33008C5103 /* mascotPresentation.json */,
+				0B046267270B2A1C008C5103 /* tabletAnimation.json */,
 				0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */,
 				AFC9656B26FB575900ED8FD2 /* mascoteResult.json */,
 				AFC9656926FB575100ED8FD2 /* mascoteHome.json */,
@@ -812,7 +812,7 @@
 			files = (
 				0B07357D256BE97E0002AC05 /* words.json in Resources */,
 				77951FF82568093900BC7367 /* .swiftlint.yml in Resources */,
-				0B04626A270B2A33008C5103 /* ola.json in Resources */,
+				0B04626A270B2A33008C5103 /* mascotPresentation.json in Resources */,
 				AFC9656C26FB575900ED8FD2 /* mascoteResult.json in Resources */,
 				D197911D270758DA00CA1813 /* Assets.xcassets in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
@@ -823,7 +823,7 @@
 				AF00FC9826F0DAA100DC4CA4 /* Localizable.strings in Resources */,
 				AFDC55EF2575689E00F68374 /* BubblegumSans-Regular.ttf in Resources */,
 				AF177AD826FCC7BB00C9581D /* cao.jpeg in Resources */,
-				0B046268270B2A1C008C5103 /* tablet.json in Resources */,
+				0B046268270B2A1C008C5103 /* tabletAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

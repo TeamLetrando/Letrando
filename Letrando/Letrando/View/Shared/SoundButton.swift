@@ -10,8 +10,8 @@ import UIKit
 class SoundButton: UIView, ViewCodable {
   
     private var currentBackgroundImage: UIImage? {
-        let buttonSoundImage = Sounds.checkAudio() ? ImageAssets.activatedSoundImage.rawValue :
-                ImageAssets.disabledSoundImage.rawValue
+        let buttonSoundImage = Sounds.checkAudio() ? ImageAssets.activatedSound.rawValue :
+                ImageAssets.disabledSound.rawValue
         
         return UIImage(named: buttonSoundImage)
     }

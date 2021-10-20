@@ -58,7 +58,7 @@ class ResultView: UIView, ViewCodable, ResultViewProtocol {
     }()
     
     private lazy var searchButton: RoundedButton = {
-        let backgroundImage = UIImage(systemName: SystemIcons.searchButtonIcon.rawValue)
+        let backgroundImage = UIImage(systemName: SystemIcons.play.rawValue)
         let button = RoundedButton(backgroundImage: backgroundImage,
                                    buttonAction: restartGame,
                                    tintColor: .greenActionLetrando)
@@ -68,7 +68,7 @@ class ResultView: UIView, ViewCodable, ResultViewProtocol {
     }()
     
     private lazy var exitButton: RoundedButton = {
-        let backgroundImage = UIImage(systemName: SystemIcons.homeButtonIcon.rawValue)
+        let backgroundImage = UIImage(systemName: SystemIcons.home.rawValue)
         let button = RoundedButton(backgroundImage: backgroundImage,
                                    buttonAction: exitGame,
                                    tintColor: .customBrown)

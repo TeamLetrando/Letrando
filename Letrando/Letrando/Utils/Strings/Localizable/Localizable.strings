@@ -6,9 +6,9 @@
   
 */
 
-"firstOnboardingMessage" = "Olá, sou o Lelê e vou te ajudar a cumprir este desafio!";
-"secondOnboardingMessage" = "Cuidado com os objetos ao seu redor";
-"thirdOnboardingMessage" = "Movimente o dispositivo dessa forma";
+"onboardingMessagePresentation" = "Olá, sou o Lelê e vou te ajudar a cumprir este desafio!";
+"onboardingMessageAlert" = "Cuidado com os objetos ao seu redor";
+"onboardingMessageInstruction" = "Movimente o dispositivo dessa forma";
 "homeTitle" = "Vamos buscar letrinhas?";
 "searchButtonTitle" = "Buscar";
 "messageResult" = "PARABÉNS! você achou";

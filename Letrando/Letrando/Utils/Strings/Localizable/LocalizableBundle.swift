@@ -10,9 +10,9 @@ import Foundation
 enum LocalizableBundle: String {
     
     case homeTitle
-    case firstOnboardingMessage
-    case secondOnboardingMessage
-    case thirdOnboardingMessage
+    case onboardingMessagePresentation
+    case onboardingMessageAlert
+    case onboardingMessageInstruction
     case searchButtonTitle
     case messageResult
     case findAnotherPlaceMessage

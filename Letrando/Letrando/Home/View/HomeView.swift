@@ -52,14 +52,14 @@ class HomeView: UIView, ViewCodable, HomeViewProtocol {
     
     private lazy var lettersImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: ImageAssets.lettersImage.rawValue)
+        imageView.image = UIImage(named: ImageAssets.lettersHome.rawValue)
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var playButton: RoundedButton = {
-        let buttonImage = UIImage(systemName: SystemIcons.searchButtonIcon.rawValue)
+        let buttonImage = UIImage(systemName: SystemIcons.play.rawValue)
         let button = RoundedButton(backgroundImage: buttonImage,
                                    buttonAction: startGame,
                                    tintColor: .greenActionLetrando)
@@ -68,7 +68,7 @@ class HomeView: UIView, ViewCodable, HomeViewProtocol {
     }()
     
     private lazy var helpButton: RoundedButton = {
-        let buttonImage = UIImage(systemName: SystemIcons.helpButtonIcon.rawValue)
+        let buttonImage = UIImage(systemName: SystemIcons.help.rawValue)
         let button = RoundedButton(backgroundImage: buttonImage,
                                    buttonAction: showHelp,
                                    tintColor: .greenActionLetrando)

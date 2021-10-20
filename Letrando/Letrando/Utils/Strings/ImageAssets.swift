@@ -8,14 +8,14 @@
 import Foundation
 
 enum ImageAssets: String {
-    case mascotImage = "mascot_home"
-    case lettersImage = "letters_home"
-    case letterEmpty = "lettersEmpty/%@"
-    case letterFull =  "lettersFull/%@_full"
+    case mascotHome = "mascot_home"
+    case lettersHome = "letters_home"
+    case letterStackEmpty = "lettersEmpty/%@"
+    case letterStackFull =  "lettersFull/%@_full"
     case letterFullName = "%@_full"
-    case activatedSoundImage = "musicOn"
-    case disabledSoundImage = "musicOff"
-    case handImage = "hand"
-    case handButtonImageOn = "handButtonOn"
-    case handButtonImageOff = "handButtonOff"
+    case activatedSound = "musicOn"
+    case disabledSound = "musicOff"
+    case handAnimation = "hand"
+    case handButtonOn = "handButtonOn"
+    case handButtonOff = "handButtonOff"
 }

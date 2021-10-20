@@ -8,9 +8,9 @@
 import Foundation
 
 enum JsonAnimations: String {
-    case firstOnboardingAnimation = "ola"
-    case secondOnboardingAnimation = "mascotAlert"
-    case thirdOnboardingAnimation = "tablet"
+    case onboardingPresentation = "mascotPresentation"
+    case onboardingAlert = "mascotAlert"
+    case onboardingTablet = "tabletAnimation"
     case mascotHomeAnimation = "mascoteHome"
     case mascotResultAnimation = "mascoteResult"
 }
