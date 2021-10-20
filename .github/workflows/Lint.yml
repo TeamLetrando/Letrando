@@ -1,4 +1,4 @@
-name: Swift
+name: Lint
 
 on:
   pull_request:
@@ -7,11 +7,7 @@ on:
       - develop
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    SwiftLint:
+  SwiftLint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
