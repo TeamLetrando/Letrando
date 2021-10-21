@@ -11,13 +11,13 @@ import XCTest
 class WordTests: XCTestCase {
 
     func test_breakWordsInLetters_wordBola_returnBolaSeparated() {
-        //Given
+        // Given
         let sut = Word(word: "Bola", accessFrequency: 1)
 
-        //When
+        // When
         let wordBreak = sut.breakInLetters()
 
-        //Then
+        // Then
         XCTAssertEqual(wordBreak, ["B", "O", "L", "A"])
     }
 

@@ -26,97 +26,97 @@ class ReportTests: XCTestCase {
     }
 
     func test_numberOfLearnedWords_reportsMocks_returnFour() {
-        //When
+        // When
         let reportsMocks = self.reportsMocks()
 
-        //Given
+        // Given
         let sut = Report.numberOfLearnedWords(reports: reportsMocks)
 
-        //Then
+        // Then
         XCTAssertEqual(sut!, 4)
     }
 
     func test_numberOfLearnedWords_nilReports_returnNil() {
-        //Given
+        // Given
         let sut = Report.numberOfLearnedWords(reports: nil)
 
-        //Then
+        // Then
         XCTAssertNil(sut)
     }
 
     func test_mediaOfWordsInWeek_fourteenWords_returnTwo() {
-        //Givem
+        // Givem
         let sut = Report.mediaOfWordsInWeek(learnedWords: 14)
 
-        //Then
+        // Then
         XCTAssertEqual(sut, 2)
     }
 
     func test_mediaOfWordsInWeek_nilWords_returnNil() {
-        //Given
+        // Given
         let sut = Report.mediaOfWordsInWeek(learnedWords: nil)
 
-        //Then
+        // Then
         XCTAssertNil(sut)
     }
 
     func test_getMostSearchWords_reportsMocks_returnsTreeWords() {
-        //When
+        // When
         let reportsMocks = self.reportsMocks()
 
-        //Given
+        // Given
         let sut = Report.getMostSearchWords(reports: reportsMocks)
 
-        //Then
+        // Then
         XCTAssertEqual(sut?.count, 3)
     }
 
     func test_getMostSearchWords_reportsMocks_returnsBola() {
-        //When
+        // When
         let reportsMocks = self.reportsMocks()
 
-        //Given
+        // Given
         let sut = Report.getMostSearchWords(reports: reportsMocks)
 
-        //Then
+        // Then
         XCTAssertEqual(sut?[0], "Bola")
     }
 
     func test_getMostSearchWords_nilReports_returnsNil() {
-        //Given
+        // Given
         let sut = Report.getMostSearchWords(reports: nil)
 
-        //Then
+        // Then
         XCTAssertNil(sut)
     }
 
     func test_getMostSearchWords_nilWords_returnsNil() {
-        //When
+        // When
         let report = ReportMock(word: nil, date: nil)
 
-        //Given
+        // Given
         let sut = Report.getMostSearchWords(reports: [report])
 
-        //Then
+        // Then
         XCTAssertNil(sut)
     }
 
     func test_getWordsADay_reportssMocks_returnsSevenDays() {
-        //When
+        // When
         let report = self.reportsMocks()
 
-        //Given
+        // Given
         let sut = Report.getWordsADay(reports: report)
 
-        //Then
+        // Then
         XCTAssertEqual(sut?.count, 7)
     }
 
     func test_getWordsADay_nilReports_returnsNil() {
-        //Given
+        // Given
         let sut = Report.getWordsADay(reports: nil)
 
-        //Then
+        // Then
         XCTAssertNil(sut)
     }
 }
