@@ -74,9 +74,9 @@ class ReportViewController: UIViewController {
                     CGRect(x: xRect3, y: yRect3, width: cellLength, height: 0.35 * viewHeight)
                 ])
                 // swiftlint:disable all
-                let atts = [ NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.whiteViews]
-                let attsWords = [ NSAttributedString.Key.font: fontWords, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
-                let attsTitle = [ NSAttributedString.Key.font: fontTitle, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
+                let atts = [ NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white]
+                let attsWords = [ NSAttributedString.Key.font: fontWords, NSAttributedString.Key.foregroundColor: UIColor.customBrown]
+                let attsTitle = [ NSAttributedString.Key.font: fontTitle, NSAttributedString.Key.foregroundColor: UIColor.customBrown]
                 ("1" as NSString).draw(at:CGPoint(x: xRect1 + (cellLength / 2.15), y: 0.60 * viewHeight), withAttributes: atts)
                 ((ranking?[0] ?? "") as NSString).draw(at:CGPoint(x: 1.03 * xRect1, y: viewHeight * 0.12), withAttributes: attsWords)
                 ("2" as NSString).draw(at:CGPoint(x: xRect2 + (cellLength / 2.15), y: 0.675 * viewHeight), withAttributes: atts)
@@ -125,7 +125,7 @@ class ReportViewController: UIViewController {
                     CGRect(x: xRect7, y: yRect7, width: cellLength, height: (self.bar[6]) * viewHeight)
                 ])
 
-                context.cgContext.setStrokeColor(UIColor.bronwLetters.cgColor)
+                context.cgContext.setStrokeColor(UIColor.customBrown.cgColor)
                 context.cgContext.setLineWidth(2.0)
                 // swiftlint:disable all
                 context.cgContext.addLines(between: [CGPoint(x: xRect1, y: viewHeight + 30), CGPoint(x: xRect7 + cellLength + 20, y: viewHeight + 30)])
@@ -139,8 +139,8 @@ class ReportViewController: UIViewController {
                 let fontWords = UIFont.systemFont(ofSize: 17.0)
                 let fontTitle = UIFont.boldSystemFont(ofSize: 22.0)
                 
-                let attsWords = [ NSAttributedString.Key.font: fontWords, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
-                let attsTitle = [ NSAttributedString.Key.font: fontTitle, NSAttributedString.Key.foregroundColor: UIColor.bronwLetters]
+                let attsWords = [ NSAttributedString.Key.font: fontWords, NSAttributedString.Key.foregroundColor: UIColor.customBrown]
+                let attsTitle = [ NSAttributedString.Key.font: fontTitle, NSAttributedString.Key.foregroundColor: UIColor.customBrown]
                 ("Percentual de Palavras por dia" as NSString).draw(at:CGPoint(x: (viewWidth/8), y: 0.0), withAttributes: attsTitle)
                 ("Dom" as NSString).draw(at:CGPoint(x: xRect1 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
                 ("Seg" as NSString).draw(at:CGPoint(x: xRect2 + (cellLength/8), y: viewHeight + 32), withAttributes: attsWords)
