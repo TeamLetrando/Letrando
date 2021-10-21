@@ -104,9 +104,9 @@ class GameView: UIView, ViewCodable {
             dogSearchingImageView.heightAnchor.constraint(equalToConstant: 100 * Multipliers.height),
             dogSearchingImageView.widthAnchor.constraint(equalToConstant: 100 * Multipliers.widht),
             dogSearchingImageView.rightAnchor.constraint(equalTo: leftAnchor),
-            dogSearchingImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
-//            dogSearchingImageView.topAnchor.constraint(equalTo: findAnotherPlaceMessageLabel.bottomAnchor, constant: 20 * Multipliers.height),
-//            dogSearchingImageView.bottomAnchor.constraint(equalTo: lettersStackView.topAnchor, constant: -20 * Multipliers.height)
+            dogSearchingImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            dogSearchingImageView.topAnchor.constraint(equalTo: findAnotherPlaceMessageLabel.bottomAnchor, constant: 20 * Multipliers.height),
+            dogSearchingImageView.bottomAnchor.constraint(equalTo: lettersStackView.topAnchor, constant: -20 * Multipliers.height)
         ])
     }
     
@@ -131,12 +131,10 @@ class GameView: UIView, ViewCodable {
     }
     
     private func dogSearchingImageViewAnimation() {
+        let topDog = dogSearchingImageView.topAnchor.constraint(equalTo: findAnotherPlaceMessageLabel.bottomAnchor, constant: 20 * Multipliers.height)
+        let bottomDog = dogSearchingImageView.bottomAnchor.constraint(equalTo: lettersStackView.topAnchor, constant: -20 * Multipliers.height)
         UIView.animate(withDuration: 2.0) { [weak self] in
-            NSLayoutConstraint.activate([
-                self!.dogSearchingImageView.rightAnchor.constraint(equalTo: self!.centerXAnchor),
-//                self!.dogSearchingImageView.leftAnchor.constraint(equalTo: self!.leftAnchor)
-            ])
-            
+            NSLayoutConstraint.activate([topDog,bottomDog])
             self?.layoutIfNeeded()
         }
     }
@@ -146,7 +144,6 @@ extension GameView: GameViewDelegate {
     func changeMessageLabelHiding(for value: Bool) {
         DispatchQueue.main.async { [weak self] in
             self?.findAnotherPlaceMessageLabel.isHidden = value
-            
             if !value {
                 self?.dogSearchingImageViewAnimation()
             }
