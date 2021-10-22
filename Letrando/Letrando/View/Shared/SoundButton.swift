@@ -10,8 +10,8 @@ import UIKit
 class SoundButton: UIView, ViewCodable {
   
     private var currentBackgroundImage: UIImage? {
-        let buttonSoundImage = Sounds.checkAudio() ? LocalizableBundle.activatedSoundIcon.localize :
-                LocalizableBundle.disabledSoundIcon.localize
+        let buttonSoundImage = Sounds.checkAudio() ? ImageAssets.activatedSound.rawValue :
+                ImageAssets.disabledSound.rawValue
         
         return UIImage(named: buttonSoundImage)
     }
@@ -30,7 +30,7 @@ class SoundButton: UIView, ViewCodable {
     }
     
     @objc private func setAudio() {
-        UserDefaults.standard.set(!Sounds.checkAudio(), forKey:LocalizableBundle.userDefautlsKeySound.localize)
+        UserDefaults.standard.set(!Sounds.checkAudio(), forKey: UserDefaultsKey.backgroundMusic.rawValue)
         
         Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
         

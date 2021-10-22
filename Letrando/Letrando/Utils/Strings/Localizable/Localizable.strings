@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Letrando
+
+  Created by Lidiane Gomes Barbosa on 14/09/21.
+  
+*/
+
+"onboardingMessagePresentation" = "Olá, sou o Lelê e vou te ajudar a cumprir este desafio!";
+"onboardingMessageAlert" = "Cuidado com os objetos ao seu redor";
+"onboardingMessageInstruction" = "Movimente o dispositivo dessa forma";
+"homeTitle" = "Vamos buscar letrinhas?";
+"searchButtonTitle" = "Buscar";
+"messageResult" = "PARABÉNS! você achou";
+"findAnotherPlaceMessage" = "Procure um local mais espaçoso";

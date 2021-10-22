@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B046268270B2A1C008C5103 /* tablet.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046267270B2A1C008C5103 /* tablet.json */; };
-		0B04626A270B2A33008C5103 /* ola.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046269270B2A33008C5103 /* ola.json */; };
+		0B046268270B2A1C008C5103 /* tabletAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046267270B2A1C008C5103 /* tabletAnimation.json */; };
+		0B04626A270B2A33008C5103 /* mascotPresentation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B046269270B2A33008C5103 /* mascotPresentation.json */; };
 		0B06C67226FC052300876E64 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B06C67126FC052300876E64 /* OnboardingViewController.swift */; };
 		0B07357D256BE97E0002AC05 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B07357C256BE97E0002AC05 /* words.json */; };
 		0B073585256BF2300002AC05 /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B073584256BF2300002AC05 /* JsonData.swift */; };
@@ -62,6 +62,10 @@
 		AF52F3CB26F8BA2B002394CC /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */; };
 		AF52F3CD26F8D0AA002394CC /* SoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3CC26F8D0AA002394CC /* SoundButton.swift */; };
 		AF52F3D326FA1A6D002394CC /* AnimationLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF52F3D226FA1A6D002394CC /* AnimationLottieView.swift */; };
+		AF657DAC271F825600642A61 /* SystemIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF657DAB271F825600642A61 /* SystemIcons.swift */; };
+		AF657DAE271F826D00642A61 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF657DAD271F826D00642A61 /* UserDefaultsKey.swift */; };
+		AF657DB0271F82B500642A61 /* ImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF657DAF271F82B500642A61 /* ImageAssets.swift */; };
+		AF657DB2271F83B700642A61 /* JsonAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF657DB1271F83B700642A61 /* JsonAnimations.swift */; };
 		AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */; };
 		AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */; };
 		AFC234ED2571AD6E005EC149 /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234EC2571AD6E005EC149 /* SceneTests.swift */; };
@@ -100,8 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B046267270B2A1C008C5103 /* tablet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tablet.json; sourceTree = "<group>"; };
-		0B046269270B2A33008C5103 /* ola.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ola.json; sourceTree = "<group>"; };
+		0B046267270B2A1C008C5103 /* tabletAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tabletAnimation.json; sourceTree = "<group>"; };
+		0B046269270B2A33008C5103 /* mascotPresentation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mascotPresentation.json; sourceTree = "<group>"; };
 		0B06C67126FC052300876E64 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0B07357C256BE97E0002AC05 /* words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		0B073584256BF2300002AC05 /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
@@ -162,6 +166,10 @@
 		AF52F3CA26F8BA2B002394CC /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		AF52F3CC26F8D0AA002394CC /* SoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundButton.swift; sourceTree = "<group>"; };
 		AF52F3D226FA1A6D002394CC /* AnimationLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLottieView.swift; sourceTree = "<group>"; };
+		AF657DAB271F825600642A61 /* SystemIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIcons.swift; sourceTree = "<group>"; };
+		AF657DAD271F826D00642A61 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		AF657DAF271F82B500642A61 /* ImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssets.swift; sourceTree = "<group>"; };
+		AF657DB1271F83B700642A61 /* JsonAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonAnimations.swift; sourceTree = "<group>"; };
 		AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Gestures.swift"; sourceTree = "<group>"; };
 		AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtensionsTests.swift; sourceTree = "<group>"; };
 		AFC234EC2571AD6E005EC149 /* SceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTests.swift; sourceTree = "<group>"; };
@@ -321,7 +329,7 @@
 		77951FFF25680A4B00BC7367 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AF00FC9426F0DA5100DC4CA4 /* Localizable */,
+				AF657DAA271F823500642A61 /* Strings */,
 				0BFD5EAC25810C8B00000B11 /* LocalNotification */,
 				AFE007F4256E7D1A00C2DA6C /* Extensions */,
 				7795202925680BCF00BC7367 /* Fonts */,
@@ -455,8 +463,8 @@
 		AF151AB82575621900E389E0 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				0B046269270B2A33008C5103 /* ola.json */,
-				0B046267270B2A1C008C5103 /* tablet.json */,
+				0B046269270B2A33008C5103 /* mascotPresentation.json */,
+				0B046267270B2A1C008C5103 /* tabletAnimation.json */,
 				0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */,
 				AFC9656B26FB575900ED8FD2 /* mascoteResult.json */,
 				AFC9656926FB575100ED8FD2 /* mascoteHome.json */,
@@ -660,6 +668,18 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		AF657DAA271F823500642A61 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				AF657DB1271F83B700642A61 /* JsonAnimations.swift */,
+				AF657DAF271F82B500642A61 /* ImageAssets.swift */,
+				AF657DAD271F826D00642A61 /* UserDefaultsKey.swift */,
+				AF657DAB271F825600642A61 /* SystemIcons.swift */,
+				AF00FC9426F0DA5100DC4CA4 /* Localizable */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
 		AFE007F4256E7D1A00C2DA6C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,7 +812,7 @@
 			files = (
 				0B07357D256BE97E0002AC05 /* words.json in Resources */,
 				77951FF82568093900BC7367 /* .swiftlint.yml in Resources */,
-				0B04626A270B2A33008C5103 /* ola.json in Resources */,
+				0B04626A270B2A33008C5103 /* mascotPresentation.json in Resources */,
 				AFC9656C26FB575900ED8FD2 /* mascoteResult.json in Resources */,
 				D197911D270758DA00CA1813 /* Assets.xcassets in Resources */,
 				7795200E25680B5C00BC7367 /* Report.storyboard in Resources */,
@@ -803,7 +823,7 @@
 				AF00FC9826F0DAA100DC4CA4 /* Localizable.strings in Resources */,
 				AFDC55EF2575689E00F68374 /* BubblegumSans-Regular.ttf in Resources */,
 				AF177AD826FCC7BB00C9581D /* cao.jpeg in Resources */,
-				0B046268270B2A1C008C5103 /* tablet.json in Resources */,
+				0B046268270B2A1C008C5103 /* tabletAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +891,8 @@
 				AFE007F0256E7B7B00C2DA6C /* Scene.swift in Sources */,
 				D1CFDB4626FA06E30018F836 /* GameViewDelegate.swift in Sources */,
 				7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */,
+				AF657DB0271F82B500642A61 /* ImageAssets.swift in Sources */,
+				AF657DB2271F83B700642A61 /* JsonAnimations.swift in Sources */,
 				7795202525680BCB00BC7367 /* Sounds.swift in Sources */,
 				AFE007E3256E794000C2DA6C /* Plane.swift in Sources */,
 				AF00FC9626F0DA7C00DC4CA4 /* LocalizableBundle.swift in Sources */,
@@ -882,7 +904,9 @@
 				7795204625680C2100BC7367 /* ReportViewController.swift in Sources */,
 				AF3CFEF527073F1500569BE0 /* MainRouter.swift in Sources */,
 				AF3CFF0327074ADE00569BE0 /* HomeRouter.swift in Sources */,
+				AF657DAE271F826D00642A61 /* UserDefaultsKey.swift in Sources */,
 				AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */,
+				AF657DAC271F825600642A61 /* SystemIcons.swift in Sources */,
 				7795207A25680D3C00BC7367 /* CloudKit.swift in Sources */,
 				AF52F3D326FA1A6D002394CC /* AnimationLottieView.swift in Sources */,
 				0B06C67226FC052300876E64 /* OnboardingViewController.swift in Sources */,

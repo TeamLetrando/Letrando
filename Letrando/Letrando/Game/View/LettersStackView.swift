@@ -13,7 +13,7 @@ class LettersStackView: UIStackView, ViewCodable {
         var images = [UIImageView]()
        
         letters?.forEach { letter in
-            let imageLetter = UIImage(named: String(format: LocalizableBundle.letterName.localize, letter))
+            let imageLetter = UIImage(named: String(format: ImageAssets.letterStackEmpty.rawValue, letter))
             let image = UIImageView(image: imageLetter)
             image.contentMode = .scaleAspectFill
             image.clipsToBounds = true

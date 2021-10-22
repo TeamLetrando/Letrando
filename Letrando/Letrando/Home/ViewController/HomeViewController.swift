@@ -16,7 +16,6 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     private var homeView: HomeViewProtocol?
     private var homeRouter: HomeRouterLogic?
-    private var onboardingKey = "onboarding"
   
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
         self.homeView = view
@@ -42,8 +41,8 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     }
     
     private func setUserDefaults() {
-        if UserDefaults.standard.object(forKey: onboardingKey) == nil {
-            UserDefaults.standard.set(false, forKey: onboardingKey)
+        if UserDefaults.standard.object(forKey: UserDefaultsKey.onboarding.rawValue) == nil {
+            UserDefaults.standard.set(false, forKey: UserDefaultsKey.onboarding.rawValue)
         }
     }
 }

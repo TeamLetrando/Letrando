@@ -15,11 +15,7 @@ protocol GameViewProtocol {
 class GameView: UIView, ViewCodable, GameViewProtocol {
     
     weak var delegate: GameControlerDelegate?
-    private var animationKey = "showAnimationFeedback"
-    private let handButtonImageOn = "handButtonOn"
-    private let handButtonImageOff = "handButtonOff"
-    private let backButtonImage = "chevron.left.circle.fill"
-    
+
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
         let label = UILabel()
         label.text = LocalizableBundle.findAnotherPlaceMessage.localize
@@ -42,7 +38,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     private lazy var feedbackGenerator =  UIImpactFeedbackGenerator(style: .medium)
     
     private lazy var handButton: RoundedButton = {
-        let button = RoundedButton(backgroundImage: UIImage(named: handButtonImageOn),
+        let button = RoundedButton(backgroundImage: UIImage(named: ImageAssets.handButtonOn.rawValue),
                                    buttonAction: handButtonAction,
                                    tintColor: .greenActionLetrando)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +46,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     }()
     
     private lazy var backToHomeButton: UIButton = {
-        let button = RoundedButton(backgroundImage: UIImage(systemName: backButtonImage),
+        let button = RoundedButton(backgroundImage: UIImage(systemName: SystemIcons.back.rawValue),
                                    buttonAction: backToHomeButtonAction,
                                    tintColor: .greenActionLetrando)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -100,8 +96,9 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     
     func setupAditionalChanges() {
         feedbackGenerator.prepare()
-        let isAnimationEnable = UserDefaults.standard.bool(forKey: animationKey)
-        setHandButtonImage(for: isAnimationEnable ? handButtonImageOn : handButtonImageOff)
+        let isAnimationEnable = UserDefaults.standard.bool(forKey: UserDefaultsKey.animationFeedback.rawValue)
+        setHandButtonImage(for: isAnimationEnable ? ImageAssets.handButtonOn.rawValue :
+                                ImageAssets.handButtonOff.rawValue)
     }
     
     func feedbackGeneratorImpactOccurred() {
@@ -109,9 +106,10 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     }
     
     @objc private func handButtonAction() {
-        let isAnimationEnable = UserDefaults.standard.bool(forKey: animationKey)
-        UserDefaults.standard.set(!isAnimationEnable, forKey: animationKey)
-        setHandButtonImage(for: !isAnimationEnable ? handButtonImageOn : handButtonImageOff)
+        let isAnimationEnable = UserDefaults.standard.bool(forKey: UserDefaultsKey.animationFeedback.rawValue)
+        UserDefaults.standard.set(!isAnimationEnable, forKey: UserDefaultsKey.animationFeedback.rawValue)
+        setHandButtonImage(for: !isAnimationEnable ? ImageAssets.handButtonOn.rawValue :
+                                ImageAssets.handButtonOff.rawValue)
     }
     
     @objc private func backToHomeButtonAction() {
@@ -133,7 +131,7 @@ extension GameView: GameViewDelegate {
     }
     
     func animateFeedBack(initialPosition: CGPoint, letter: String, sceneView: ARSCNView) {
-        if !UserDefaults.standard.bool(forKey: animationKey) {
+        if !UserDefaults.standard.bool(forKey: UserDefaultsKey.animationFeedback.rawValue) {
             return
         }
         
@@ -148,7 +146,7 @@ extension GameView: GameViewDelegate {
                                                           y: initialPosition.y,
                                                           width: 50,
                                                           height: 80))
-                handImage.image = UIImage(named: "hand")
+                handImage.image = UIImage(named: ImageAssets.handAnimation.rawValue)
                 
                 sceneView.addSubview(handImage)
                 
