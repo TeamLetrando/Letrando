@@ -42,5 +42,5 @@ Posso atualizar nossa Política de Privacidade eventualmente. Portanto, recomend
 
 Esta política entra em vigor a partir de 08-12-2020.
 
-## Contate-Nos
+## Contate-nos
 Se você tiver dúvidas ou sugestões sobre a minha Política de Privacidade, não hesite em entrar em contato comigo pelo e-mail gomes.ronaldo96@gmail.com.
