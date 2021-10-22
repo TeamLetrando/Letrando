@@ -11,22 +11,22 @@ import XCTest
 class ARModelTests: XCTestCase {
 
     func test_configureText_returnNotNil() {
-        //Given
+        // Given
         let str = "Bola"
-        //When
+        // When
         let scnText = ARModel.configureText(str)
 
         XCTAssertNotNil(scnText)
     }
 
     func test_createTextNode_returnNotNil() {
-        //Given
+        // Given
         let str = "Bola"
 
-        //When
+        // When
         let scnNode = ARModel.createTextNode(string: str)
 
-        //Then
+        // Then
         XCTAssertNotNil(scnNode)
     }
 }
