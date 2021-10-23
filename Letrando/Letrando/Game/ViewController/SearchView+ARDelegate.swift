@@ -42,7 +42,7 @@ extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
         node?.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         node?.physicsBody?.categoryBitMask = BodyType.letter.rawValue
         node?.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
-        node?.name = name.uppercased()
+        node?.name = name
         
         return node
     }
