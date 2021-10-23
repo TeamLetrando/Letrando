@@ -11,7 +11,7 @@ import AVFoundation
 
 enum BodyType: Int {
     case letter = 1
-    case  plane = 2
+    case plane = 2
 }
 
 protocol GameViewControllerProtocol: UIViewController {
@@ -23,8 +23,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
 
     var word: Word?
     var sceneController = Scene()
-    var lettersAdded: Bool = false
-    var planes = [Plane]()
+    var isPlaneAdded: Bool = false
     let coachingOverlay = ARCoachingOverlayView()
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
@@ -131,54 +130,17 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         sceneView.session.run(configuration)
     }
 
-    func addWord(letters: [String], plane: Plane) {
-        
-        var lettersNode = [SCNNode]()
-        letters.forEach { (letter) in
-            let node = ARModel.createTextNode(string: String(letter))
-            node.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-            node.physicsBody?.categoryBitMask = BodyType.letter.rawValue
-            
-            lettersNode.append(node)
-            sceneController.addLetterToScene(letterNode: node)
-        }
-        
-        if plane.planeGeometry.width >= 1 {
-            
-            generatePositionX(width: Float(plane.planeGeometry.width), nodes: lettersNode)
-            generatePositionZ(heigth: Float(plane.planeGeometry.height), nodes: lettersNode)
-            generatePositionY(plane: plane, nodes: lettersNode)
-        
-            if !lettersAdded {
-                lettersAdded = true
-                lettersNode.forEach { node in
-                    plane.addChildNode(node)
-                }
-            }
-        }
-      
-    }
+    func generatePositions(planeSize: CGSize, nodes: [SCNNode?]) {
+        let spaceX = 2 * (planeSize.width / CGFloat(nodes.count + 2))
+        var positionX = -planeSize.width
     
-    func generatePositionX(width: Float, nodes: [SCNNode]) {
-        let inter = 2 * (width / Float(nodes.count + 2))
-        var value = -width
+        let positionZ = -Float(planeSize.height)
+        
         nodes.forEach { node in
-            value += inter
-            node.position.x = value
-        }
-    }
-    
-    func generatePositionY(plane: SCNNode, nodes: [SCNNode]) {
-        nodes.forEach { node in
-            node.position.y = plane.position.y
-        }
-    }
-    
-    func generatePositionZ(heigth: Float, nodes: [SCNNode]) {
-        let inter = heigth / Float(nodes.count)
-        let value = heigth - inter
-        nodes.forEach { node in
-            node.position.z = Float.random(in: -value...value)
+            positionX += spaceX
+            node?.position.x = Float(positionX)
+            node?.position.z = Float.random(in: positionZ...0)
+            node?.position.y = .zero
         }
     }
     

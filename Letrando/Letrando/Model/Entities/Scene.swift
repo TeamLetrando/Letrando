@@ -24,13 +24,13 @@ struct Scene {
         return scene
     }
 
-    func setDefaults(scene: SCNScene) {
+    func setDefaults(scene: SCNScene?) {
 
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light?.type = SCNLight.LightType.ambient
         ambientLightNode.light?.color = UIColor(white: 0.4, alpha: 1.0)
-        scene.rootNode.addChildNode(ambientLightNode)
+        scene?.rootNode.addChildNode(ambientLightNode)
 
         let directionalLight = SCNLight()
         directionalLight.type = .directional
@@ -44,7 +44,7 @@ struct Scene {
                                                      GLKMathDegreesToRadians(0),
                                                      GLKMathDegreesToRadians(0))
         directionalNode.light = directionalLight
-        scene.rootNode.addChildNode(directionalNode)
+        scene?.rootNode.addChildNode(directionalNode)
     }
 
     mutating func addLetterToScene(letterNode: SCNNode) {
