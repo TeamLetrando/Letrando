@@ -23,7 +23,6 @@
 		0BBAC5B12722F6C100FB9E21 /* B.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0BBAC5A82722F6C000FB9E21 /* B.usdz */; };
 		0BBAC5B22722F6C100FB9E21 /* I.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0BBAC5A92722F6C100FB9E21 /* I.usdz */; };
 		0BBAC5B32722F6C100FB9E21 /* E.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0BBAC5AA2722F6C100FB9E21 /* E.usdz */; };
-		0BBAC5B52722F85200FB9E21 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBAC5B42722F85200FB9E21 /* Letter.swift */; };
 		0BBAC5BA2722FA4D00FB9E21 /* N.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0BBAC5B62722FA4C00FB9E21 /* N.usdz */; };
 		0BBAC5BB2722FA4D00FB9E21 /* K.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0BBAC5B72722FA4C00FB9E21 /* K.usdz */; };
 		0BBAC5BC2722FA4D00FB9E21 /* M.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0BBAC5B82722FA4D00FB9E21 /* M.usdz */; };
@@ -146,7 +145,6 @@
 		0BBAC5A82722F6C000FB9E21 /* B.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = B.usdz; sourceTree = "<group>"; };
 		0BBAC5A92722F6C100FB9E21 /* I.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = I.usdz; sourceTree = "<group>"; };
 		0BBAC5AA2722F6C100FB9E21 /* E.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = E.usdz; sourceTree = "<group>"; };
-		0BBAC5B42722F85200FB9E21 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		0BBAC5B62722FA4C00FB9E21 /* N.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = N.usdz; sourceTree = "<group>"; };
 		0BBAC5B72722FA4C00FB9E21 /* K.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = K.usdz; sourceTree = "<group>"; };
 		0BBAC5B82722FA4D00FB9E21 /* M.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = M.usdz; sourceTree = "<group>"; };
@@ -508,7 +506,6 @@
 				7795208325680D5800BC7367 /* Notifications.swift */,
 				AFE007E2256E794000C2DA6C /* Plane.swift */,
 				AFE007EF256E7B7B00C2DA6C /* Scene.swift */,
-				0BBAC5B42722F85200FB9E21 /* Letter.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1010,7 +1007,6 @@
 				77951FCC2568088100BC7367 /* Letrando.xcdatamodeld in Sources */,
 				AFE007F6256E7D2800C2DA6C /* CGPoint.swift in Sources */,
 				7795208425680D5800BC7367 /* Notifications.swift in Sources */,
-				0BBAC5B52722F85200FB9E21 /* Letter.swift in Sources */,
 				AF3CFF15270B256D00569BE0 /* GameRouter.swift in Sources */,
 				AF3CFF1F270B2B6A00569BE0 /* ResultRouter.swift in Sources */,
 				7795204625680C2100BC7367 /* ReportViewController.swift in Sources */,
