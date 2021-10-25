@@ -12,7 +12,10 @@ jobs:
         matrix:
           destination: ['platform=iOS Simulator,OS=14.4,name=iPhone 12']
 
-    steps:
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@master
+      
     - name: Cache
       uses: actions/cache@v2
       with:
@@ -21,9 +24,6 @@ jobs:
         key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
         restore-keys: |
           ${{ runner.os }}-spm-
-          
-    - name: Test
-      uses: actions/checkout@master
       
     - name: Build and Test
       run: |
