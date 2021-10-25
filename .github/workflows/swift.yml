@@ -23,6 +23,7 @@ jobs:
         path: .build
         key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
         restore-keys: |
+        if: steps.spm-cache.outputs.cache-hit != 'true'
           ${{ runner.os }}-spm-
       
     - name: Build and Test
