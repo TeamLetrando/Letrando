@@ -19,9 +19,7 @@ jobs:
       uses: actions/cache@v2
       with:
         id: spm-cache
-        path: |
-          ~/cache
-          !~/cache/exclude
+        path: .build
         key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
         restore-keys: |
         if: steps.spm-cache.outputs.cache-hit != 'true'
