@@ -13,7 +13,7 @@ class Sounds {
     static var audioPlayer: AVAudioPlayer?
     
     static func checkAudio() -> Bool {
-        if UserDefaults.standard.bool(forKey: "checkSound") == true {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKey.backgroundMusic.rawValue) == true {
             return true
         } else {
             return false

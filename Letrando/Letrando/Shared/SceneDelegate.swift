@@ -3,13 +3,14 @@
 //  Letrando
 //
 //  Created by Ronaldo Gomes on 20/11/20.
-//swiftlint:disable all
+// swiftlint:disable all
 
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var mainRouter: MainRouterLogic?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,10 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Scene cannot be created")
         }
         
-        window = UIWindow(windowScene: scene)
-        window?.overrideUserInterfaceStyle = .light
-        window?.rootViewController = HomeViewController()
-        window?.makeKeyAndVisible()
+        let navigationController = UINavigationController()
+        mainRouter = MainRouter(scene: scene, navigationController: navigationController)
+        mainRouter?.startHome()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
