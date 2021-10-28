@@ -14,6 +14,8 @@ protocol GameViewProtocol {
 
 class GameView: UIView, ViewCodable, GameViewProtocol {
     
+    private var isDogAnimated: Bool = false
+    
     weak var delegate: GameControlerDelegate?
 
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
@@ -61,8 +63,9 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     private lazy var dogSearchingImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: ImageAssets.mascotSearchingImage.rawValue)
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.layer.masksToBounds = true
         image.isHidden = true
         return image
     }()
@@ -74,9 +77,9 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     func buildViewHierarchy() {
         addSubview(backToHomeButton)
         addSubview(handButton)
+        addSubview(dogSearchingImageView)
         addSubview(findAnotherPlaceMessageLabel)
         addSubview(lettersStackView)
-        addSubview(dogSearchingImageView)
     }
     
     func setupConstraints() {
@@ -105,12 +108,12 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
             lettersStackView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
             lettersStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25),
             
-            dogSearchingImageView.heightAnchor.constraint(equalToConstant: 100 * Multipliers.height),
-            dogSearchingImageView.widthAnchor.constraint(equalToConstant: 100 * Multipliers.widht),
-//            dogSearchingImageView.rightAnchor.constraint(equalTo: leftAnchor),
-//            dogSearchingImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            dogSearchingImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20 * Multipliers.height),
-            dogSearchingImageView.bottomAnchor.constraint(equalTo: lettersStackView.topAnchor, constant: -20 * Multipliers.height)
+            dogSearchingImageView.heightAnchor.constraint(equalToConstant: 250 * Multipliers.height),
+            dogSearchingImageView.widthAnchor.constraint(equalToConstant: 200 * Multipliers.widht),
+            dogSearchingImageView.topAnchor.constraint(equalTo:
+                                                        findAnotherPlaceMessageLabel.bottomAnchor,
+                                                       constant: 20 * Multipliers.height),
+            dogSearchingImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -200 * Multipliers.widht)
         ])
     }
     
@@ -133,27 +136,42 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     }
     
     @objc private func backToHomeButtonAction() {
+        self.dogSearchingImageView.isHidden = true
+        dogSearchingImageView.layer.removeAllAnimations()
         delegate?.backToHome()
     }
     
     private func dogSearchingImageViewAnimation() {
-        let topDog = dogSearchingImageView.topAnchor.constraint(equalTo: findAnotherPlaceMessageLabel.bottomAnchor, constant: 20 * Multipliers.height)
-        let bottomDog = dogSearchingImageView.bottomAnchor.constraint(equalTo: lettersStackView.topAnchor, constant: -20 * Multipliers.height)
-        UIView.animate(withDuration: 2.0) { [weak self] in
-            NSLayoutConstraint.activate([topDog,bottomDog])
-            self?.layoutIfNeeded()
+        let initialPositionX = dogSearchingImageView.layer.position.x
+        dogSearchingImageView.isHidden = false
+        UIView.animate(withDuration: 1.0,
+                       delay: 0.0,
+                       options: [.curveEaseInOut],
+                       animations: {
+            self.dogSearchingImageView.layer.position.x = initialPositionX + (200 * Multipliers.widht)
+        }, completion: { [weak self] _ in
+            self?.animateDogOut(initialPositionX)
+        })
+    }
+    
+    private func animateDogOut(_ initialPositionX: CGFloat) {
+        UIView.animate(withDuration: 1.0, delay: 2.0) {
+            self.dogSearchingImageView.layer.position.x = initialPositionX - (200 * Multipliers.widht)
+        } completion: { [weak self] _ in
+            self?.dogSearchingImageView.isHidden = true
         }
     }
 }
 
 extension GameView: GameViewDelegate {
+    
     func changeMessageLabelHiding(for value: Bool) {
         DispatchQueue.main.async { [weak self] in
             self?.findAnotherPlaceMessageLabel.isHidden = value
-            if !value {
+            if !(self?.isDogAnimated ?? false) {
                 self?.dogSearchingImageViewAnimation()
+                self?.isDogAnimated = true
             }
-            
         }
     }
     
