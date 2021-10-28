@@ -1099,14 +1099,14 @@
 				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 937MK3AF6X;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.patriciasampaiosiqueira.Letrando;
+				PRODUCT_BUNDLE_IDENTIFIER = com.patriciasampaio.Letrando;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1129,7 +1129,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.patriciasampaiosiqueira.Letrando;
+				PRODUCT_BUNDLE_IDENTIFIER = com.patriciasampaio.Letrando;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
