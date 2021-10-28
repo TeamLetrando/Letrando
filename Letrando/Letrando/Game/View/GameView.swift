@@ -83,7 +83,8 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     }
     
     func setupConstraints() {
-        let letterStackHeightConstraint = lettersStackView.heightAnchor.constraint(equalToConstant: 58 * Multipliers.height)
+        let letterStackHeightConstraint = lettersStackView.heightAnchor.constraint(
+            equalToConstant: 58 * Multipliers.height)
         letterStackHeightConstraint.priority = .defaultHigh
         
         NSLayoutConstraint.activate([
