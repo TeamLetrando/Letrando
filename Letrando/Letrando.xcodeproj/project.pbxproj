@@ -44,6 +44,7 @@
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
 		7B15F9602704926900A9AEC2 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7B15F95F2704926900A9AEC2 /* Lottie */; };
 		7B4C2DEA257E654E00B3D4CE /* Curious_Kiddo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */; };
+		7BDE4743272C8AC6003E91CF /* SoundsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BDE4742272C8AC6003E91CF /* SoundsKit */; };
 		AF00FC9626F0DA7C00DC4CA4 /* LocalizableBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9526F0DA7C00DC4CA4 /* LocalizableBundle.swift */; };
 		AF00FC9826F0DAA100DC4CA4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF00FC9726F0DAA100DC4CA4 /* Localizable.strings */; };
 		AF00FC9A26F0DB9100DC4CA4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9926F0DB9100DC4CA4 /* String.swift */; };
@@ -197,6 +198,7 @@
 			files = (
 				778CFB21257D80DD003A825E /* CloudKit.framework in Frameworks */,
 				7B15F9602704926900A9AEC2 /* Lottie in Frameworks */,
+				7BDE4743272C8AC6003E91CF /* SoundsKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +720,7 @@
 			name = Letrando;
 			packageProductDependencies = (
 				7B15F95F2704926900A9AEC2 /* Lottie */,
+				7BDE4742272C8AC6003E91CF /* SoundsKit */,
 			);
 			productName = Letrando;
 			productReference = 77951FBE2568088100BC7367 /* Letrando.app */;
@@ -793,6 +796,7 @@
 			mainGroup = 77951FB52568088100BC7367;
 			packageReferences = (
 				7B15F95E2704926900A9AEC2 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				7BDE4741272C8AC6003E91CF /* XCRemoteSwiftPackageReference "SoundsKit" */,
 			);
 			productRefGroup = 77951FBF2568088100BC7367 /* Products */;
 			projectDirPath = "";
@@ -1275,6 +1279,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		7BDE4741272C8AC6003E91CF /* XCRemoteSwiftPackageReference "SoundsKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TeamLetrando/SoundsKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1282,6 +1294,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7B15F95E2704926900A9AEC2 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		7BDE4742272C8AC6003E91CF /* SoundsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BDE4741272C8AC6003E91CF /* XCRemoteSwiftPackageReference "SoundsKit" */;
+			productName = SoundsKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

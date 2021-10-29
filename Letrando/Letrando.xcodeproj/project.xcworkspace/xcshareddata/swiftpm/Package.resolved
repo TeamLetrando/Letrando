@@ -9,6 +9,15 @@
           "revision": "79a0b70547f7c40ea54c67487f935fa2f2eaaadc",
           "version": "3.2.3"
         }
+      },
+      {
+        "package": "SoundsKit",
+        "repositoryURL": "https://github.com/TeamLetrando/SoundsKit",
+        "state": {
+          "branch": "main",
+          "revision": "03394969c165e39cf6b962039334b60521bc6491",
+          "version": null
+        }
       }
     ]
   },
