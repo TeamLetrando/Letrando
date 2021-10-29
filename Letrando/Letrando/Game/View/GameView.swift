@@ -14,7 +14,7 @@ protocol GameViewProtocol {
 
 class GameView: UIView, ViewCodable, GameViewProtocol {
     
-    private var isDogAnimated: Bool = false
+    private lazy var isDogAnimated = false
     
     weak var delegate: GameControlerDelegate?
 
