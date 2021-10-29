@@ -18,4 +18,5 @@ enum ImageAssets: String {
     case handAnimation = "hand"
     case handButtonOn = "handButtonOn"
     case handButtonOff = "handButtonOff"
+    case mascotSearchingImage = "dogSearching"
 }
