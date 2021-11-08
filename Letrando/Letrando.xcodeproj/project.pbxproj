@@ -27,7 +27,6 @@
 		77951FF82568093900BC7367 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 77951FF72568093900BC7367 /* .swiftlint.yml */; };
 		7795200E25680B5C00BC7367 /* Report.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7795200D25680B5C00BC7367 /* Report.storyboard */; };
 		7795201F25680BBD00BC7367 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795201E25680BBD00BC7367 /* Colors.swift */; };
-		7795202525680BCB00BC7367 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795202425680BCB00BC7367 /* Sounds.swift */; };
 		7795203425680C0500BC7367 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795203325680C0500BC7367 /* PageViewController.swift */; };
 		7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795203C25680C1200BC7367 /* HomeViewController.swift */; };
 		7795204625680C2100BC7367 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795204525680C2100BC7367 /* ReportViewController.swift */; };
@@ -43,7 +42,6 @@
 		77B9017D257FA5E400DC16F7 /* ReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B9017C257FA5E400DC16F7 /* ReportTests.swift */; };
 		77D621FE256BE14F007D905C /* WordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D621FD256BE14F007D905C /* WordTests.swift */; };
 		7B15F9602704926900A9AEC2 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7B15F95F2704926900A9AEC2 /* Lottie */; };
-		7B4C2DEA257E654E00B3D4CE /* Curious_Kiddo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */; };
 		7BDE4743272C8AC6003E91CF /* SoundsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BDE4742272C8AC6003E91CF /* SoundsKit */; };
 		AF00FC9626F0DA7C00DC4CA4 /* LocalizableBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF00FC9526F0DA7C00DC4CA4 /* LocalizableBundle.swift */; };
 		AF00FC9826F0DAA100DC4CA4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF00FC9726F0DAA100DC4CA4 /* Localizable.strings */; };
@@ -132,7 +130,6 @@
 		77951FF72568093900BC7367 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		7795200D25680B5C00BC7367 /* Report.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Report.storyboard; sourceTree = "<group>"; };
 		7795201E25680BBD00BC7367 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		7795202425680BCB00BC7367 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		7795203325680C0500BC7367 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		7795203C25680C1200BC7367 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7795204525680C2100BC7367 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +144,6 @@
 		77B90174257FA52700DC16F7 /* ReportMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMock.swift; sourceTree = "<group>"; };
 		77B9017C257FA5E400DC16F7 /* ReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTests.swift; sourceTree = "<group>"; };
 		77D621FD256BE14F007D905C /* WordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTests.swift; sourceTree = "<group>"; };
-		7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Curious_Kiddo.mp3; sourceTree = "<group>"; };
 		7BA489ED2582C92600328DF0 /* LetrandoRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LetrandoRelease.entitlements; sourceTree = "<group>"; };
 		AF00FC9526F0DA7C00DC4CA4 /* LocalizableBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableBundle.swift; sourceTree = "<group>"; };
 		AF00FC9726F0DAA100DC4CA4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -300,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				AF3CFEFB2707416C00569BE0 /* Router */,
-				7B4C2DE8257E653A00B3D4CE /* Sounds */,
 				AF151AB82575621900E389E0 /* Animation */,
 				77951FC12568088100BC7367 /* AppDelegate.swift */,
 				77951FC32568088100BC7367 /* SceneDelegate.swift */,
@@ -335,7 +330,6 @@
 				0BFD5EAC25810C8B00000B11 /* LocalNotification */,
 				AFE007F4256E7D1A00C2DA6C /* Extensions */,
 				7795202925680BCF00BC7367 /* Fonts */,
-				7795202325680BC300BC7367 /* Sounds */,
 				7795201D25680BB100BC7367 /* Colors */,
 			);
 			path = Utils;
@@ -372,14 +366,6 @@
 				7795201E25680BBD00BC7367 /* Colors.swift */,
 			);
 			path = Colors;
-			sourceTree = "<group>";
-		};
-		7795202325680BC300BC7367 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				7795202425680BCB00BC7367 /* Sounds.swift */,
-			);
-			path = Sounds;
 			sourceTree = "<group>";
 		};
 		7795202925680BCF00BC7367 /* Fonts */ = {
@@ -435,14 +421,6 @@
 				77B90174257FA52700DC16F7 /* ReportMock.swift */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		7B4C2DE8257E653A00B3D4CE /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				7B4C2DE9257E654E00B3D4CE /* Curious_Kiddo.mp3 */,
-			);
-			path = Sounds;
 			sourceTree = "<group>";
 		};
 		89CE08703C5A101EB5E7653E /* Frameworks */ = {
@@ -823,7 +801,6 @@
 				0BEDD1F126FB7D7100F24E04 /* mascotAlert.json in Resources */,
 				77951FD12568088100BC7367 /* LaunchScreen.storyboard in Resources */,
 				AFC9656A26FB575100ED8FD2 /* mascoteHome.json in Resources */,
-				7B4C2DEA257E654E00B3D4CE /* Curious_Kiddo.mp3 in Resources */,
 				AF00FC9826F0DAA100DC4CA4 /* Localizable.strings in Resources */,
 				AFDC55EF2575689E00F68374 /* BubblegumSans-Regular.ttf in Resources */,
 				AF177AD826FCC7BB00C9581D /* cao.jpeg in Resources */,
@@ -897,7 +874,6 @@
 				7795203D25680C1200BC7367 /* HomeViewController.swift in Sources */,
 				AF657DB0271F82B500642A61 /* ImageAssets.swift in Sources */,
 				AF657DB2271F83B700642A61 /* JsonAnimations.swift in Sources */,
-				7795202525680BCB00BC7367 /* Sounds.swift in Sources */,
 				AFE007E3256E794000C2DA6C /* Plane.swift in Sources */,
 				AF00FC9626F0DA7C00DC4CA4 /* LocalizableBundle.swift in Sources */,
 				77951FCC2568088100BC7367 /* Letrando.xcdatamodeld in Sources */,
@@ -1104,7 +1080,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 937MK3AF6X;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1125,6 +1101,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = "";

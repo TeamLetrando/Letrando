@@ -7,6 +7,7 @@
 
 import UIKit
 import ARKit
+import SoundsKit
 
 protocol GameViewProtocol {
     init(letters: [String]?)
@@ -153,6 +154,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
         }, completion: { [weak self] _ in
             self?.animateDogOut(initialPositionX)
         })
+        try? SoundsKit.playAlert()
     }
     
     private func animateDogOut(_ initialPositionX: CGFloat) {

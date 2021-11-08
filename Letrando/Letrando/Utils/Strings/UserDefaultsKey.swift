@@ -11,4 +11,6 @@ enum UserDefaultsKey: String {
     case backgroundMusic
     case animationFeedback
     case onboarding
+    case firstLaunch
+    case firstSound
 }

@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import SoundsKit
 
 class SoundButton: UIView, ViewCodable {
+    
+    private var userDefaults = UserDefaults.standard
   
     private var currentBackgroundImage: UIImage? {
-        let buttonSoundImage = Sounds.checkAudio() ? ImageAssets.activatedSound.rawValue :
-                ImageAssets.disabledSound.rawValue
-        
-        return UIImage(named: buttonSoundImage)
+       // let isFirstLaunch = (userDefaults.value(forKey: UserDefaultsKey.firstSound.rawValue) as? Bool) ?? false
+        if userDefaults.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
+            return UIImage(named: ImageAssets.activatedSound.rawValue)
+        } else {
+            let buttonSoundImage = SoundsKit.audioIsOn() ? ImageAssets.disabledSound.rawValue :
+            ImageAssets.activatedSound.rawValue
+            return UIImage(named: buttonSoundImage)
+        }
     }
     
     private lazy var roundedButton: RoundedButton = {
@@ -30,9 +37,8 @@ class SoundButton: UIView, ViewCodable {
     }
     
     @objc private func setAudio() {
-        UserDefaults.standard.set(!Sounds.checkAudio(), forKey: UserDefaultsKey.backgroundMusic.rawValue)
         
-        Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
+        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() :  SoundsKit.stop()
         
         roundedButton.setBackgroundImage(currentBackgroundImage, for: .normal)
         layoutSubviews()

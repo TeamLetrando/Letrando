@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SoundsKit
 
 protocol OnboardingViewControllerProtocol: UIViewController {
     func setup(onboardingRouter: OnboardingRouterLogic)
@@ -56,9 +57,8 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
-        dataSource = self
         setupView()
+        try? SoundsKit.playOnboardingLetrando(at: pageControl.currentPage)
     }
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle,
@@ -149,15 +149,17 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }
     
     private func nextButtonAction() {
-        if currentIndexPage == (pages.count - 1) {
+        if currentIndexPage == (pages.count - 1) && SoundsKit.isFinishOnboarding() {
             onboardingRouter?.dismissOnboarding()
             return
         }
         setCurrentPage(direction: .forward)
+        try? SoundsKit.playOnboardingLetrando(at: currentIndexPage)
     }
     
     private func previewButtonAction() {
         setCurrentPage(direction: .reverse)
+        try? SoundsKit.playOnboardingLetrando(at: currentIndexPage)
     }
     
     private func setCurrentPage(direction: NavigationDirection) {
@@ -184,21 +186,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }
     
     private func dismissAction() {
-        dismiss(animated: true, completion: nil)
+        onboardingRouter?.dismissOnboarding()
     }
-}
-
-extension OnboardingViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        updateLayout(viewController)
-        return getPage(direction: .reverse)
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        updateLayout(viewController)
-        return getPage(direction: .forward)
-    }
+    
 }
