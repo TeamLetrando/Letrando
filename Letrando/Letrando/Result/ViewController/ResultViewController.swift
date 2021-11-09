@@ -36,7 +36,7 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SoundsKit.reproduceSpeech(wordResult)
-        //configSounds()
+        // configSounds()
     }
     
     private func configSounds() {
