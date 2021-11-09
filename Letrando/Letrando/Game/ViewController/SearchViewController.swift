@@ -20,20 +20,26 @@ protocol GameViewControllerProtocol: UIViewController {
 }
 
 class SearchViewController: UIViewController, GameViewControllerProtocol {
-
-    var word: Word?
-    var sceneController = Scene()
-    var isPlaneAdded: Bool = false
-    let coachingOverlay = ARCoachingOverlayView()
-    var actualNode: SCNNode = SCNNode()
-    var initialPosition = SCNVector3(0, 0, 0)
-    var score = 0
-   
-    var sceneView = ARSCNView()
     
-    internal var gameView: GameView?
+    private var score: Int = .zero
     private var gameRouter: GameRouterLogic?
+   
+    let coachingOverlay = ARCoachingOverlayView()
+    
     weak var delegate: GameViewDelegate?
+    var word: Word?
+    var isLettersAdded: Bool = false
+    var isLettersGenerated: Bool = false
+    var gameView: GameView?
+    var sceneView = ARSCNView()
+    var initialPosition = SCNVector3(0, 0, 0)
+    var sceneController = Scene()
+    var actualNode: SCNNode = SCNNode()
+    let planeSize = CGSize(width: 1.5, height: 1.5)
+    
+    var session: ARSession {
+        return sceneView.session
+    }
     
     required convenience init(wordGame: Word?) {
         self.init()
@@ -107,6 +113,8 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             image.layer.name = String(format: ImageAssets.letterFullName.rawValue, name)
             gameView?.feedbackGeneratorImpactOccurred()
             score += 1
+            let index = sceneController.textNode.firstIndex(of: object) ?? .zero
+            sceneController.textNode.remove(at: index)
             if let word = word, score == word.word.count {
                 transitionForResultScreen()
             }
@@ -116,7 +124,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     func animateView(_ image: UIImageView) {
         let width = image.frame.size.width
         let height = image.frame.size.height
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: .zero, options: .curveEaseOut, animations: {
             image.frame.size = CGSize(width: width*1.4, height: height*1.2)
         }, completion: { _ in
             image.frame.size = CGSize(width: width, height: height)
@@ -126,6 +134,9 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     func configureSession() {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal]
+        configuration.isLightEstimationEnabled = true
+        sceneView.session.run(configuration,
+                              options: [.resetTracking, .removeExistingAnchors])
         sceneView.session.delegate = self
         sceneView.session.run(configuration)
     }
@@ -138,9 +149,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         
         nodes.forEach { node in
             positionX += spaceX
-            node?.position.x = Float(positionX)
-            node?.position.z = Float.random(in: positionZ...0)
-            node?.position.y = .zero
+            node?.position = SCNVector3Make(Float(positionX), -0.1, Float.random(in: positionZ...(.zero)))
         }
     }
     
