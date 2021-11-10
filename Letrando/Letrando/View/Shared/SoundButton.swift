@@ -13,7 +13,6 @@ class SoundButton: UIView, ViewCodable {
     private var userDefaults = UserDefaults.standard
   
     private var currentBackgroundImage: UIImage? {
-       // let isFirstLaunch = (userDefaults.value(forKey: UserDefaultsKey.firstSound.rawValue) as? Bool) ?? false
         if userDefaults.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
             return UIImage(named: ImageAssets.activatedSound.rawValue)
         } else {
