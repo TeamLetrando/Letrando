@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SoundsKit
 
 protocol GameRouterLogic {
     init(wordResult: String?, navigationController: UINavigationController?)
@@ -31,6 +32,7 @@ class GameRouter: GameRouterLogic {
     }
     
     func backToHome() {
+        SoundsKit.setKeyAudio(true)
         navigationController?.popToRootViewController(animated: true)
     }
 }

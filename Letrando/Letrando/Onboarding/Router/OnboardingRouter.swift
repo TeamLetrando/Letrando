@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SoundsKit
 
 protocol OnboardingRouterLogic {
     init(navigationController: UINavigationController?)
@@ -21,6 +22,10 @@ class OnboardingRouter: OnboardingRouterLogic {
     }
     
     func dismissOnboarding() {
+        SoundsKit.stop()
+        SoundsKit.file = "Curious_Kiddo"
+        SoundsKit.fileExtension = "mp3"
+        SoundsKit.audioIsOn() ? try? SoundsKit.play() : SoundsKit.stop()
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

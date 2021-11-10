@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import SoundsKit
 
 protocol HomeViewControllerProtocol: UIViewController {
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic)
@@ -16,6 +17,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     private var homeView: HomeViewProtocol?
     private var homeRouter: HomeRouterLogic?
+    private var userDefaults = UserDefaults.standard
   
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
         self.homeView = view
@@ -37,12 +39,13 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     }
     
     private func configSounds() {
-        Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
+        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando()  : SoundsKit.stop()
+            userDefaults.set(false, forKey: UserDefaultsKey.firstSound.rawValue)
     }
     
     private func setUserDefaults() {
-        if UserDefaults.standard.object(forKey: UserDefaultsKey.onboarding.rawValue) == nil {
-            UserDefaults.standard.set(false, forKey: UserDefaultsKey.onboarding.rawValue)
+        if userDefaults.object(forKey: UserDefaultsKey.onboarding.rawValue) == nil {
+            userDefaults.set(false, forKey: UserDefaultsKey.onboarding.rawValue)
         }
     }
 }
