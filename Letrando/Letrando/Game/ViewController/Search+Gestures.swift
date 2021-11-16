@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import ARKit
 import SceneKit
+import SoundsKit
 
 extension SearchViewController {
     @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
@@ -41,7 +42,7 @@ extension SearchViewController {
                 sceneView.scene.rootNode.addChildNode(actualNode)
                 if let name = node.name {
                     delegate?.animateFeedBack(initialPosition: tapLocation, letter: name, sceneView: sceneView)
-                    reproduceSound(string: name.lowercased())
+                    SoundsKit.reproduceSpeech(name.lowercased())
                 }
             }
         }
@@ -81,7 +82,7 @@ extension SearchViewController {
         let hitTestResult = sceneView.hitTest(tapLocation)
         
         if let hitResult = hitTestResult.first, let name = hitResult.node.name {
-            reproduceSound(string: name.lowercased())
+            SoundsKit.reproduceSpeech(name.lowercased())
             delegate?.animateFeedBack(initialPosition: tapLocation, letter: name, sceneView: sceneView)
         }
     }

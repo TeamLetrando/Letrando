@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SoundsKit
 
 protocol ResultViewControllerProtocol: UIViewController {
     func setup(with view: ResultViewProtocol, resultRouter: ResultRouterLogic)
@@ -34,17 +35,18 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Sounds.reproduceSound(string: wordResult)
-        configSounds()
+        SoundsKit.reproduceSpeech(wordResult)
+        // configSounds()
     }
     
     private func configSounds() {
-        Sounds.checkAudio() ? Sounds.playAudio() : Sounds.audioFinish()
+        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
     }
 }
 
 extension ResultViewController: ResultViewDelegate {
     func exitGame() {
+        SoundsKit.setKeyAudio(true)
         resultRouter?.exitGame()
     }
     

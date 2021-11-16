@@ -20,6 +20,18 @@
         "accessFrequency": 0
     },
     {
+        "word": "arroz",
+        "accessFrequency": 0
+    },
+    {
+        "word": "areia",
+        "accessFrequency": 0
+    },
+    {
+        "word": "ajuda",
+        "accessFrequency": 0
+    },
+    {
         "word": "bola",
         "accessFrequency": 0
     },
@@ -36,6 +48,18 @@
         "accessFrequency": 0
     },
     {
+        "word": "blusa",
+        "accessFrequency": 0
+    },
+    {
+        "word": "batom",
+        "accessFrequency": 0
+    },
+    {
+        "word": "bicho",
+        "accessFrequency": 0
+    },
+    {
         "word": "cobra",
         "accessFrequency": 0
     },
@@ -45,6 +69,18 @@
     },
     {
         "word": "copo",
+        "accessFrequency": 0
+    },
+    {
+        "word": "conto",
+        "accessFrequency": 0
+    },
+    {
+        "word": "carro",
+        "accessFrequency": 0
+    },
+    {
+        "word": "coala",
         "accessFrequency": 0
     },
     {
@@ -64,7 +100,39 @@
         "accessFrequency": 0
     },
     {
+        "word": "dardo",
+        "accessFrequency": 0
+    },
+    {
+        "word": "dama",
+        "accessFrequency": 0
+    },
+    {
+        "word": "doce",
+        "accessFrequency": 0
+    },
+    {
         "word": "esqui",
+        "accessFrequency": 0
+    },
+    {
+        "word": "etnia",
+        "accessFrequency": 0
+    },
+    {
+        "word": "exame",
+        "accessFrequency": 0
+    },
+    {
+        "word": "elite",
+        "accessFrequency": 0
+    },
+    {
+        "word": "enjoo",
+        "accessFrequency": 0
+    },
+    {
+        "word": "ela",
         "accessFrequency": 0
     },
     {
@@ -77,6 +145,30 @@
     },
     {
         "word": "foca",
+        "accessFrequency": 0
+    },
+    {
+        "word": "fonte",
+        "accessFrequency": 0
+    },
+    {
+        "word": "forma",
+        "accessFrequency": 0
+    },
+    {
+        "word": "fada",
+        "accessFrequency": 0
+    },
+    {
+        "word": "fera",
+        "accessFrequency": 0
+    },
+    {
+        "word": "febre",
+        "accessFrequency": 0
+    },
+    {
+        "word": "festa",
         "accessFrequency": 0
     },
     {
@@ -96,11 +188,43 @@
         "accessFrequency": 0
     },
     {
+        "word": "grito",
+        "accessFrequency": 0
+    },
+    {
+        "word": "ganso",
+        "accessFrequency": 0
+    },
+    {
+        "word": "grilo",
+        "accessFrequency": 0
+    },
+    {
         "word": "harpa",
         "accessFrequency": 0
     },
     {
         "word": "hora",
+        "accessFrequency": 0
+    },
+    {
+        "word": "hiena",
+        "accessFrequency": 0
+    },
+    {
+        "word": "horta",
+        "accessFrequency": 0
+    },
+    {
+        "word": "humor",
+        "accessFrequency": 0
+    },
+    {
+        "word": "hoje",
+        "accessFrequency": 0
+    },
+    {
+        "word": "honra",
         "accessFrequency": 0
     },
     {
@@ -116,7 +240,27 @@
         "accessFrequency": 0
     },
     {
+        "word": "idade",
+        "accessFrequency": 0
+    },
+    {
+        "word": "igual",
+        "accessFrequency": 0
+    },
+    {
+        "word": "item",
+        "accessFrequency": 0
+    },
+    {
         "word": "kiwi",
+        "accessFrequency": 0
+    },
+    {
+        "word": "kit",
+        "accessFrequency": 0
+    },
+    {
+        "word": "kart",
         "accessFrequency": 0
     },
     {
@@ -140,6 +284,14 @@
         "accessFrequency": 0
     },
     {
+        "word": "legal",
+        "accessFrequency": 0
+    },
+    {
+        "word": "lebre",
+        "accessFrequency": 0
+    },
+    {
         "word": "mundo",
         "accessFrequency": 0
     },
@@ -149,6 +301,22 @@
     },
     {
         "word": "mapa",
+        "accessFrequency": 0
+    },
+    {
+        "word": "massa",
+        "accessFrequency": 0
+    },
+    {
+        "word": "milho",
+        "accessFrequency": 0
+    },
+    {
+        "word": "morfo",
+        "accessFrequency": 0
+    },
+    {
+        "word": "mato",
         "accessFrequency": 0
     },
     {
@@ -164,11 +332,43 @@
         "accessFrequency": 0
     },
     {
+        "word": "natal",
+        "accessFrequency": 0
+    },
+    {
+        "word": "noiva",
+        "accessFrequency": 0
+    },
+    {
+        "word": "ninho",
+        "accessFrequency": 0
+    },
+    {
+        "word": "nariz",
+        "accessFrequency": 0
+    },
+    {
         "word": "zoada",
         "accessFrequency": 0
     },
     {
         "word": "zebra",
+        "accessFrequency": 0
+    },
+    {
+        "word": "zumbi",
+        "accessFrequency": 0
+    },
+    {
+        "word": "zero",
+        "accessFrequency": 0
+    },
+    {
+        "word": "zinco",
+        "accessFrequency": 0
+    },
+    {
+        "word": "zona",
         "accessFrequency": 0
     },
     {
@@ -188,11 +388,35 @@
         "accessFrequency": 0
     },
     {
+        "word": "porta",
+        "accessFrequency": 0
+    },
+    {
+        "word": "ponte",
+        "accessFrequency": 0
+    },
+    {
+        "word": "play",
+        "accessFrequency": 0
+    },
+    {
         "word": "quilo",
         "accessFrequency": 0
     },
     {
         "word": "quati",
+        "accessFrequency": 0
+    },
+    {
+        "word": "quiz",
+        "accessFrequency": 0
+    },
+    {
+        "word": "quico",
+        "accessFrequency": 0
+    },
+    {
+        "word": "quina",
         "accessFrequency": 0
     },
     {
@@ -216,6 +440,18 @@
         "accessFrequency": 0
     },
     {
+        "word": "rezar",
+        "accessFrequency": 0
+    },
+    {
+        "word": "raio",
+        "accessFrequency": 0
+    },
+    {
+        "word": "rei",
+        "accessFrequency": 0
+    },
+    {
         "word": "skate",
         "accessFrequency": 0
     },
@@ -232,6 +468,22 @@
         "accessFrequency": 0
     },
     {
+        "word": "sino",
+        "accessFrequency": 0
+    },
+    {
+        "word": "sauna",
+        "accessFrequency": 0
+    },
+    {
+        "word": "samba",
+        "accessFrequency": 0
+    },
+    {
+        "word": "sono",
+        "accessFrequency": 0
+    },
+    {
         "word": "uva",
         "accessFrequency": 0
     },
@@ -241,6 +493,22 @@
     },
     {
         "word": "unha",
+        "accessFrequency": 0
+    },
+    {
+        "word": "urna",
+        "accessFrequency": 0
+    },
+    {
+        "word": "urso",
+        "accessFrequency": 0
+    },
+    {
+        "word": "urubu",
+        "accessFrequency": 0
+    },
+    {
+        "word": "uivar",
         "accessFrequency": 0
     },
     {
@@ -260,11 +528,39 @@
         "accessFrequency": 0
     },
     {
+        "word": "viola",
+        "accessFrequency": 0
+    },
+    {
+        "word": "vazio",
+        "accessFrequency": 0
+    },
+    {
+        "word": "voz",
+        "accessFrequency": 0
+    },
+    {
+        "word": "voo",
+        "accessFrequency": 0
+    },
+    {
         "word": "xixi",
         "accessFrequency": 0
     },
     {
         "word": "xampu",
+        "accessFrequency": 0
+    },
+    {
+        "word": "xerox",
+        "accessFrequency": 0
+    },
+    {
+        "word": "xote",
+        "accessFrequency": 0
+    },
+    {
+        "word": "xale",
         "accessFrequency": 0
     },
     {
@@ -277,6 +573,30 @@
     },
     {
         "word": "jarro",
+        "accessFrequency": 0
+    },
+    {
+        "word": "jegue",
+        "accessFrequency": 0
+    },
+    {
+        "word": "jogo",
+        "accessFrequency": 0
+    },
+    {
+        "word": "jovem",
+        "accessFrequency": 0
+    },
+    {
+        "word": "jeito",
+        "accessFrequency": 0
+    },
+    {
+        "word": "jaca",
+        "accessFrequency": 0
+    },
+    {
+        "word": "jambo",
         "accessFrequency": 0
     }
 ]

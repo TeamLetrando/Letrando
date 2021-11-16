@@ -96,14 +96,6 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     
     // MARK: - Public Functions
     
-    func reproduceSound(string: String) {
-        let utterance =  AVSpeechUtterance(string: string)
-        let voice = AVSpeechSynthesisVoice(language: "pt-BR")
-        utterance.voice = voice
-        let sintetizer = AVSpeechSynthesizer()
-        sintetizer.speak(utterance)
-    }
-    
     func animateView(_ image: UIImageView) {
         let width = image.frame.size.width
         let height = image.frame.size.height
