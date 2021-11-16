@@ -20,12 +20,10 @@ struct Scene {
         let scene = SCNScene()
 
         setDefaults(scene: scene)
-
         return scene
     }
 
     func setDefaults(scene: SCNScene?) {
-
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light?.type = SCNLight.LightType.ambient
@@ -48,7 +46,6 @@ struct Scene {
     }
 
     mutating func addLetterToScene(letterNode: SCNNode) {
-            textNode.append(letterNode)
+        textNode.append(letterNode)
     }
-
 }
