@@ -15,7 +15,6 @@
 		0B46BA9B26F8D24B004F176D /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46BA9A26F8D24B004F176D /* PageView.swift */; };
 		0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */; };
 		0BEDD1F126FB7D7100F24E04 /* mascotAlert.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */; };
-		7768A765256A1077005EA237 /* ARModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768A764256A1077005EA237 /* ARModelTests.swift */; };
 		778CC4D0257E66780042334F /* ReportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778CC4CF257E66780042334F /* ReportProtocol.swift */; };
 		778CC523257E6A9B0042334F /* Report+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778CC521257E6A9B0042334F /* Report+CoreDataClass.swift */; };
 		778CFB21257D80DD003A825E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778CFB20257D80DD003A825E /* CloudKit.framework */; };
@@ -68,7 +67,6 @@
 		AFB545EF2590EC9700C1A927 /* Search+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */; };
 		AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */; };
 		AFC234ED2571AD6E005EC149 /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234EC2571AD6E005EC149 /* SceneTests.swift */; };
-		AFC234F22571AFD5005EC149 /* PlaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC234F12571AFD5005EC149 /* PlaneTests.swift */; };
 		AFC883152719BA24004B7F6E /* SceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC883142719BA24004B7F6E /* SceneFactory.swift */; };
 		AFC9656A26FB575100ED8FD2 /* mascoteHome.json in Resources */ = {isa = PBXBuildFile; fileRef = AFC9656926FB575100ED8FD2 /* mascoteHome.json */; };
 		AFC9656C26FB575900ED8FD2 /* mascoteResult.json in Resources */ = {isa = PBXBuildFile; fileRef = AFC9656B26FB575900ED8FD2 /* mascoteResult.json */; };
@@ -110,7 +108,6 @@
 		0B46BA9A26F8D24B004F176D /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTests.swift; sourceTree = "<group>"; };
 		0BEDD1F026FB7D7100F24E04 /* mascotAlert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mascotAlert.json; sourceTree = "<group>"; };
-		7768A764256A1077005EA237 /* ARModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelTests.swift; sourceTree = "<group>"; };
 		778CC4CF257E66780042334F /* ReportProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProtocol.swift; sourceTree = "<group>"; };
 		778CC521257E6A9B0042334F /* Report+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Report+CoreDataClass.swift"; sourceTree = "<group>"; };
 		778CFB1C257D80DA003A825E /* Letrando.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Letrando.entitlements; sourceTree = "<group>"; };
@@ -169,7 +166,6 @@
 		AFB545EE2590EC9700C1A927 /* Search+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search+Gestures.swift"; sourceTree = "<group>"; };
 		AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtensionsTests.swift; sourceTree = "<group>"; };
 		AFC234EC2571AD6E005EC149 /* SceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTests.swift; sourceTree = "<group>"; };
-		AFC234F12571AFD5005EC149 /* PlaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneTests.swift; sourceTree = "<group>"; };
 		AFC883142719BA24004B7F6E /* SceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFactory.swift; sourceTree = "<group>"; };
 		AFC9656926FB575100ED8FD2 /* mascoteHome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mascoteHome.json; sourceTree = "<group>"; };
 		AFC9656B26FB575900ED8FD2 /* mascoteResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mascoteResult.json; sourceTree = "<group>"; };
@@ -270,12 +266,10 @@
 			children = (
 				77B90173257FA51400DC16F7 /* Mocks */,
 				77951FDD2568088200BC7367 /* Info.plist */,
-				7768A764256A1077005EA237 /* ARModelTests.swift */,
 				77D621FD256BE14F007D905C /* WordTests.swift */,
 				0B8375F6256C28B2000B7E6F /* JsonDataTests.swift */,
 				AFC234E725719F4A005EC149 /* CGPointExtensionsTests.swift */,
 				AFC234EC2571AD6E005EC149 /* SceneTests.swift */,
-				AFC234F12571AFD5005EC149 /* PlaneTests.swift */,
 				77B9017C257FA5E400DC16F7 /* ReportTests.swift */,
 			);
 			path = LetrandoTests;
@@ -904,12 +898,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B8375F7256C28B2000B7E6F /* JsonDataTests.swift in Sources */,
-				7768A765256A1077005EA237 /* ARModelTests.swift in Sources */,
 				77B90175257FA52700DC16F7 /* ReportMock.swift in Sources */,
 				77B9017D257FA5E400DC16F7 /* ReportTests.swift in Sources */,
 				AFC234E825719F4A005EC149 /* CGPointExtensionsTests.swift in Sources */,
 				77D621FE256BE14F007D905C /* WordTests.swift in Sources */,
-				AFC234F22571AFD5005EC149 /* PlaneTests.swift in Sources */,
 				AFC234ED2571AD6E005EC149 /* SceneTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,16 +1066,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.patriciasampaio.Letrando;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.Letrando;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1098,16 +1090,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Letrando/Letrando.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T373QFGJQA;
 				INFOPLIST_FILE = Letrando/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.patriciasampaio.Letrando;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lidiane.Letrando;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
