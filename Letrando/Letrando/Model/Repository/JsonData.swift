@@ -7,9 +7,6 @@
 
 import Foundation
 
-//Load json
-//Create parse method
-
 class JsonData {
 
     let name = "words"

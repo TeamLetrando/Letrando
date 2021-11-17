@@ -13,12 +13,10 @@ import SceneKit
 class SceneTests: XCTestCase {
 
     func test_scene_isNotNil() {
-        //given
         let sut = Scene()
-        //when
+
         let scene = sut.scene
 
-        //then
        XCTAssertNotNil(scene)
     }
 

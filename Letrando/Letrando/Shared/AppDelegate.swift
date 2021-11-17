@@ -3,12 +3,13 @@
 //  Letrando
 //
 //  Created by Ronaldo Gomes on 20/11/20.
-//swiftlint:disable all
+// swiftlint:disable all
 
 import UIKit
 import CoreData
 import ARKit
 import AVFoundation
+import SoundsKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -20,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let isFirstLaunch = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? false
         UserDefaults.standard.set(true, forKey: "Launch")
         if !isFirstLaunch {
-            UserDefaults.standard.set(true, forKey: "FirstLaunch")
-            UserDefaults.standard.set(true, forKey: "checkSound")
+            UserDefaults.standard.set(true, forKey: UserDefaultsKey.firstLaunch.rawValue)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKey.firstSound.rawValue)
+            SoundsKit.setKeyAudio(true)
         }
 
 //        guard ARWorldTrackingConfiguration.isSupported else {
@@ -66,14 +68,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
+        if !SoundsKit.isFinishOnboarding() && !UserDefaults.standard.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
+            SoundsKit.audioIsOn() ? try? SoundsKit.play() : SoundsKit.stop()
+        }
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+        if !SoundsKit.isFinishOnboarding() && !UserDefaults.standard.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
+            SoundsKit.audioIsOn() ? try? SoundsKit.play() : SoundsKit.stop()
+        }
     }
 
     // MARK: - Core Data stack
