@@ -39,7 +39,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     }
     
     private func configSounds() {
-        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando()  : SoundsKit.stop()
+        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
             userDefaults.set(false, forKey: UserDefaultsKey.firstSound.rawValue)
     }
     
