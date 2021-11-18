@@ -87,6 +87,9 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
         let letterStackHeightConstraint = lettersStackView.heightAnchor.constraint(
             equalToConstant: 58 * Multipliers.height)
         letterStackHeightConstraint.priority = .defaultHigh
+        let letterStackWidthConstraint = lettersStackView.widthAnchor.constraint(
+            equalTo: widthAnchor, multiplier: 0.2)
+        letterStackWidthConstraint.priority = .defaultHigh
         
         NSLayoutConstraint.activate([
             backToHomeButton.heightAnchor.constraint(equalToConstant: 50 * Multipliers.height),
@@ -106,8 +109,8 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
             findAnotherPlaceMessageLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             letterStackHeightConstraint,
+            letterStackWidthConstraint,
             lettersStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            lettersStackView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
             lettersStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25),
             
             dogSearchingImageView.heightAnchor.constraint(equalToConstant: 250 * Multipliers.height),
@@ -158,11 +161,11 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     }
     
     private func animateDogOut(_ initialPositionX: CGFloat) {
-        UIView.animate(withDuration: 1.0, delay: 2.0) {
-            self.dogSearchingImageView.layer.position.x = initialPositionX - (200 * Multipliers.widht)
-        } completion: { [weak self] _ in
+        UIView.animate(withDuration: 1.0, delay: 2.0, animations: { [weak self] in
+            self?.dogSearchingImageView.layer.position.x = initialPositionX - (200 * Multipliers.widht)
+        }, completion: { [weak self] _ in
             self?.dogSearchingImageView.isHidden = true
-        }
+        })
     }
 }
 

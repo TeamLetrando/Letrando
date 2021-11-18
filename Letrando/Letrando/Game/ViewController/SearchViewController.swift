@@ -20,7 +20,7 @@ protocol GameViewControllerProtocol: UIViewController {
 }
 
 class SearchViewController: UIViewController, GameViewControllerProtocol {
-
+    
     var word: Word?
     var sceneController = Scene()
     var lettersAdded: Bool = false
@@ -29,7 +29,8 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     var actualNode: SCNNode = SCNNode()
     var initialPosition = SCNVector3(0, 0, 0)
     var score = 0
-   
+    private var stackViewWidth: NSLayoutConstraint?
+    
     var sceneView = ARSCNView()
     
     internal var gameView: GameView?
@@ -43,7 +44,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.modalPresentationStyle = .fullScreen
         
         gameView?.addSubview(sceneView)
@@ -56,10 +57,24 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         }
         
         delegate = gameView
-
+        
         setupCoachingOverlay()
         addMoveGesture()
         addTapGesture()
+        setOrientation()
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.landscape, .portrait]
+    }
+    
+    private func setOrientation() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.myOrientation = [.landscape, .portrait]
     }
     
     func setup(with view: GameView, gameRouter: GameRouterLogic) {
@@ -67,12 +82,13 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         self.gameView?.delegate = self
         self.gameRouter = gameRouter
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureSession()
+        setOrientation()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
@@ -89,17 +105,17 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         let sintetizer = AVSpeechSynthesizer()
         sintetizer.speak(utterance)
     }
-
+    
     func addTapGesture() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
         self.sceneView.addGestureRecognizer(tapRecognizer)
     }
-
+    
     func addMoveGesture() {
         let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(moveLetterGesture(_:)))
         self.sceneView.addGestureRecognizer(tapGesture)
     }
-
+    
     func checkAnswer(_ object: SCNNode, _ image: UIImageView) {
         guard let name = object.name else {return}
         if name == image.layer.name {
@@ -113,7 +129,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             }
         }
     }
-
+    
     func animateView(_ image: UIImageView) {
         let width = image.frame.size.width
         let height = image.frame.size.height
@@ -123,14 +139,14 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             image.frame.size = CGSize(width: width, height: height)
         })
     }
-
+    
     func configureSession() {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal]
         sceneView.session.delegate = self
         sceneView.session.run(configuration)
     }
-
+    
     func addWord(letters: [String], plane: Plane) {
         
         var lettersNode = [SCNNode]()
@@ -148,7 +164,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             generatePositionX(width: Float(plane.planeGeometry.width), nodes: lettersNode)
             generatePositionZ(heigth: Float(plane.planeGeometry.height), nodes: lettersNode)
             generatePositionY(plane: plane, nodes: lettersNode)
-        
+            
             if !lettersAdded {
                 lettersAdded = true
                 lettersNode.forEach { node in
@@ -156,7 +172,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
                 }
             }
         }
-      
+        
     }
     
     func generatePositionX(width: Float, nodes: [SCNNode]) {
@@ -196,7 +212,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             sceneView.centerXAnchor.constraint(equalTo: gameView.centerXAnchor)
         ])
     }
-
+    
     func transitionForResultScreen() {
         gameRouter?.startResult()
     }
