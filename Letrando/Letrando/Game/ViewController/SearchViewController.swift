@@ -9,55 +9,76 @@ import ARKit
 import SceneKit
 import AVFoundation
 
-enum BodyType: Int {
-    case letter = 1
-    case  plane = 2
-}
-
 protocol GameViewControllerProtocol: UIViewController {
     init(wordGame: Word?)
     func setup(with view: GameView, gameRouter: GameRouterLogic)
 }
 
 class SearchViewController: UIViewController, GameViewControllerProtocol {
+
+    // MARK: - Public Constants
     
-    var word: Word?
-    var sceneController = Scene()
-    var lettersAdded: Bool = false
-    var planes = [Plane]()
+    let minScale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
+    let maxScale = SCNVector3(x: 0.8, y: 0.8, z: 0.8)
     let coachingOverlay = ARCoachingOverlayView()
-    var actualNode: SCNNode = SCNNode()
-    var initialPosition = SCNVector3(0, 0, 0)
-    var score = 0
-    private var stackViewWidth: NSLayoutConstraint?
+    let minDistanceToStack: CGFloat = 50
+    let animationDuration = 0.5
     
-    var sceneView = ARSCNView()
+    // MARK: - Private Constants
     
-    internal var gameView: GameView?
-    private var gameRouter: GameRouterLogic?
+    private let totalSpace = CGSize(width: 1.5, height: 1.5)
+    
+    // MARK: - Public Variables
+    
     weak var delegate: GameViewDelegate?
+    var initialPosition = SCNVector3(0, 0, 0)
+    var areLettersAdded: Bool = false
+    var areLettersGenerated: Bool = false
+    var gameView: GameView?
+    var sceneView = ARSCNView()
+    var sceneController = Scene()
+    var actualNode = SCNNode()
+    var word: Word?
+   
+    // MARK: - Private Variables
+    
+    private var score: Int = .zero
+    private var gameRouter: GameRouterLogic?
+    private var session: ARSession {
+        return sceneView.session
+    }
+    
+    // MARK: - Initialization
     
     required convenience init(wordGame: Word?) {
         self.init()
         self.word = wordGame
     }
     
+    func setup(with view: GameView, gameRouter: GameRouterLogic) {
+        self.gameView = view
+        self.gameView?.delegate = self
+        self.gameRouter = gameRouter
+    }
+    
+    // MARK: - Life Cycle
+    
+    override func loadView() {
+        self.view = gameView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.modalPresentationStyle = .fullScreen
-        
         gameView?.addSubview(sceneView)
-        
         layoutSceneView()
-        
         sceneView.delegate = self
+        
         if let scene = sceneController.scene {
             sceneView.scene = scene
         }
         
         delegate = gameView
-        
         setupCoachingOverlay()
         addMoveGesture()
         addTapGesture()
@@ -76,13 +97,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.myOrientation = [.landscape, .portrait]
     }
-    
-    func setup(with view: GameView, gameRouter: GameRouterLogic) {
-        self.gameView = view
-        self.gameView?.delegate = self
-        self.gameRouter = gameRouter
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureSession()
@@ -94,26 +109,44 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         sceneView.session.pause()
     }
     
-    override func loadView() {
-        self.view = gameView
+    // MARK: - Public Functions
+    
+    func animateView(_ image: UIImageView) {
+        let width = image.frame.size.width
+        let height = image.frame.size.height
+        UIView.animate(withDuration: animationDuration, delay: .zero, options: .curveEaseOut, animations: {
+            image.frame.size = CGSize(width: width * 1.4, height: height * 1.2)
+        }, completion: { _ in
+            image.frame.size = CGSize(width: width, height: height)
+        })
     }
     
-    func reproduceSound(string: String) {
-        let utterance =  AVSpeechUtterance(string: string)
-        let voice = AVSpeechSynthesisVoice(language: "pt-BR")
-        utterance.voice = voice
-        let sintetizer = AVSpeechSynthesizer()
-        sintetizer.speak(utterance)
+    func generateNodes(letters: [String]?) -> [SCNNode?] {
+        var nodes: [SCNNode?] = []
+        let spaceX = 2 * (totalSpace.width / CGFloat(letters?.count ?? .zero + 2))
+        var positionX = -totalSpace.width
+        let positionZ = -Float(totalSpace.height)
+        
+        letters?.forEach { letter in
+            let node = getNodeFromSCN(nodeName: letter)
+            nodes.append(node)
+            positionX += spaceX
+            node.position = SCNVector3Make(Float(positionX), -0.1, Float.random(in: positionZ...(.zero)))
+        }
+        return nodes
     }
     
-    func addTapGesture() {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
-        self.sceneView.addGestureRecognizer(tapRecognizer)
+    func addNodesToScene(nodes: [SCNNode?]) {
+        nodes.forEach { node in
+            sceneController.addLetterToScene(letterNode: node ?? SCNNode())
+        }
     }
     
-    func addMoveGesture() {
-        let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(moveLetterGesture(_:)))
-        self.sceneView.addGestureRecognizer(tapGesture)
+    func addNodesToGame(nodes: [SCNNode?], parent: SCNNode) {
+        nodes.forEach { node in
+            node?.removeFromParentNode()
+            parent.addChildNode(node ?? SCNNode())
+        }
     }
     
     func checkAnswer(_ object: SCNNode, _ image: UIImageView) {
@@ -124,80 +157,36 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             image.layer.name = String(format: ImageAssets.letterFullName.rawValue, name)
             gameView?.feedbackGeneratorImpactOccurred()
             score += 1
+            let index = sceneController.textNode.firstIndex(of: object) ?? .zero
+            sceneController.textNode.remove(at: index)
             if let word = word, score == word.word.count {
                 transitionForResultScreen()
             }
         }
     }
+
+    // MARK: - Private functions
     
-    func animateView(_ image: UIImageView) {
-        let width = image.frame.size.width
-        let height = image.frame.size.height
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-            image.frame.size = CGSize(width: width*1.4, height: height*1.2)
-        }, completion: { _ in
-            image.frame.size = CGSize(width: width, height: height)
-        })
+    private func addTapGesture() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
+        self.sceneView.addGestureRecognizer(tapRecognizer)
     }
-    
-    func configureSession() {
+
+    private func addMoveGesture() {
+        let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(moveLetterGesture(_:)))
+        self.sceneView.addGestureRecognizer(tapGesture)
+    }
+
+    private func configureSession() {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal]
+        configuration.isLightEstimationEnabled = true
+        sceneView.session.run(configuration,
+                              options: [.resetTracking, .removeExistingAnchors])
         sceneView.session.delegate = self
         sceneView.session.run(configuration)
     }
-    
-    func addWord(letters: [String], plane: Plane) {
-        
-        var lettersNode = [SCNNode]()
-        letters.forEach { (letter) in
-            let node = ARModel.createTextNode(string: String(letter))
-            node.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-            node.physicsBody?.categoryBitMask = BodyType.letter.rawValue
-            
-            lettersNode.append(node)
-            sceneController.addLetterToScene(letterNode: node)
-        }
-        
-        if plane.planeGeometry.width >= 1 {
-            
-            generatePositionX(width: Float(plane.planeGeometry.width), nodes: lettersNode)
-            generatePositionZ(heigth: Float(plane.planeGeometry.height), nodes: lettersNode)
-            generatePositionY(plane: plane, nodes: lettersNode)
-            
-            if !lettersAdded {
-                lettersAdded = true
-                lettersNode.forEach { node in
-                    plane.addChildNode(node)
-                }
-            }
-        }
-        
-    }
-    
-    func generatePositionX(width: Float, nodes: [SCNNode]) {
-        let inter = 2 * (width / Float(nodes.count + 2))
-        var value = -width
-        nodes.forEach { node in
-            value += inter
-            node.position.x = value
-        }
-    }
-    
-    func generatePositionY(plane: SCNNode, nodes: [SCNNode]) {
-        nodes.forEach { node in
-            node.position.y = plane.position.y
-        }
-    }
-    
-    func generatePositionZ(heigth: Float, nodes: [SCNNode]) {
-        let inter = heigth / Float(nodes.count)
-        let value = heigth - inter
-        nodes.forEach { node in
-            node.position.z = Float.random(in: -value...value)
-        }
-    }
-    
+
     private func layoutSceneView() {
         sceneView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -212,9 +201,31 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
             sceneView.centerXAnchor.constraint(equalTo: gameView.centerXAnchor)
         ])
     }
-    
-    func transitionForResultScreen() {
+
+    private func transitionForResultScreen() {
         gameRouter?.startResult()
+    }
+    
+    private func getNodeFromSCN(nodeName: String) -> SCNNode {
+        guard let scene = SCNScene(named: "art.scnassets/\(nodeName).scn"),
+                let node = scene.rootNode.childNode(withName: nodeName, recursively: false) else { return SCNNode() }
+        node.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
+        node.position = SCNVector3Make(.zero, -0.1, .zero)
+
+        let boxNode = createBoxNode()
+        boxNode.castsShadow = true
+        boxNode.addChildNode(node)
+        boxNode.name = nodeName
+        return boxNode
+    }
+    
+    private func createBoxNode() -> SCNNode {
+        let box = SCNBox(width: 0.2, height: 0.3, length: 0.2, chamferRadius: .zero)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.clear
+        box.materials = [material]
+    
+        return SCNNode(geometry: box)
     }
 }
 

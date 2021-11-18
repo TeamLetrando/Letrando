@@ -11,24 +11,25 @@ import ARKit
 
 @available(iOS 13.0, *)
 extension SearchViewController : ARSCNViewDelegate, ARSessionDelegate {
+    
     func renderer (_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-        let plane = Plane(planeAnchor)
-        if !lettersAdded {
-            self.planes.append(plane)
-            node.addChildNode(plane)
+        guard !areLettersGenerated else { return }
+        areLettersGenerated = true
+        
+        let letters = generateNodes(letters: word?.breakInLetters())
+        addNodesToScene(nodes: letters)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        if !areLettersAdded {
+            areLettersAdded = true
+            addNodesToGame(nodes: sceneController.textNode, parent: node)
         }
+        delegate?.changeLettersStackHiding(for: !areLettersAdded)
+        delegate?.changeMessageLabelHiding(for: areLettersAdded)
     }
 
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-        guard let plane  = self.planes.filter({ plane -> Bool in
-            return plane.planeAnchor.identifier == anchor.identifier}).first else { return }
-        addWord(letters: self.word?.breakInLetters() ?? [], plane: plane)
-        
-        delegate?.changeLettersStackHiding(for: !lettersAdded)
-        delegate?.changeMessageLabelHiding(for: lettersAdded)
-        
-        plane.update(planeAnchor)
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        areLettersAdded = false
     }
 }

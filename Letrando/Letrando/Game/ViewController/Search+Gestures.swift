@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import ARKit
 import SceneKit
+import SoundsKit
 
 extension SearchViewController {
     @objc func moveLetterGesture(_ gesture: UIPanGestureRecognizer) {
@@ -16,19 +17,13 @@ extension SearchViewController {
         guard let nodeResult = sceneView.raycastQuery(from: tapLocation,
                                                       allowing: .existingPlaneGeometry,
                                                          alignment: .horizontal) else {return}
-//        let hitNode = sceneView.hitTest(tapLocation)
-    //    let tapLocation = gesture.location(in: sceneView)
-    //    let hitNode = sceneView.hitTest(tapLocation)
+        let hitNode = sceneView.hitTest(tapLocation)
         
-         let hitNode = sceneView.hitTest(tapLocation)
-
         switch gesture.state {
-
         case .began:
             beganState(hitNode: hitNode, nodeResult: nodeResult, tapLocation: tapLocation)
         case .changed:
           changedState(hitNode: hitNode, nodeResult: nodeResult)
-
         case .ended:
             endedState(tapLocation: tapLocation)
         default:
@@ -47,12 +42,10 @@ extension SearchViewController {
                 sceneView.scene.rootNode.addChildNode(actualNode)
                 if let name = node.name {
                     delegate?.animateFeedBack(initialPosition: tapLocation, letter: name, sceneView: sceneView)
-                    reproduceSound(string: name.lowercased())
-                    
+                    SoundsKit.reproduceSpeech(name.lowercased())
                 }
             }
         }
-
     }
     
     func changedState(hitNode: [SCNHitTestResult], nodeResult: ARRaycastQuery) {
@@ -63,7 +56,7 @@ extension SearchViewController {
                                                  newHitResult.worldTransform.columns.3.y,
                                                  newHitResult.worldTransform.columns.3.z)
         }
-        actualNode.scale = SCNVector3(Float(0.02), Float(0.02), Float(0.02))
+        actualNode.scale = minScale
     }
     
     func endedState(tapLocation: CGPoint) {
@@ -71,19 +64,17 @@ extension SearchViewController {
             if let image = view as? UIImageView {
                 let convertPosition = gameView?.lettersStackView.convert(image.layer.position, to: sceneView)
                 let distance = tapLocation.distance(to: convertPosition ?? .zero)
-                if distance <= 50 {
+                if distance <= minDistanceToStack {
                     animateView(image)
                     checkAnswer(actualNode, image)
                 } else {
-                    let action = SCNAction.move(to: initialPosition, duration: 0.5)
+                    let action = SCNAction.move(to: initialPosition, duration: animationDuration)
                     action.timingMode = .easeInEaseOut
                     actualNode.runAction(action)
                 }
             }
         }
-
-        actualNode.scale = SCNVector3(Float(0.07), Float(0.07), Float(0.07))
-
+        actualNode.scale = maxScale
     }
     
     @objc func didTapScreen(gesture: UITapGestureRecognizer) {
@@ -91,9 +82,8 @@ extension SearchViewController {
         let hitTestResult = sceneView.hitTest(tapLocation)
         
         if let hitResult = hitTestResult.first, let name = hitResult.node.name {
-            reproduceSound(string: name.lowercased())
+            SoundsKit.reproduceSpeech(name.lowercased())
             delegate?.animateFeedBack(initialPosition: tapLocation, letter: name, sceneView: sceneView)
-            
         }
     }
 }
