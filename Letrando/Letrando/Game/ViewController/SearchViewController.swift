@@ -92,11 +92,6 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.landscape, .portrait]
     }
-    
-    private func setOrientation() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.myOrientation = [.landscape, .portrait]
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -107,6 +102,14 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let smallerSize = size.width > size.height ? size.height : size.width
+        coordinator.animate { [weak self] _ in
+           self?.gameView?.setWidthStackConstraint(width: smallerSize)
+        }
+        view.setNeedsLayout()
     }
     
     // MARK: - Public Functions
@@ -166,6 +169,15 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     }
 
     // MARK: - Private functions
+    
+    private func setOrientation() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.myOrientation = [.landscape, .portrait]
+        
+        let isLandscapeOrientation = UIDevice.current.orientation.isLandscape
+        let smallerSize = isLandscapeOrientation ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
+        self.gameView?.setWidthStackConstraint(width: smallerSize)
+    }
     
     private func addTapGesture() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
