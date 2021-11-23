@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     private var homeView: HomeViewProtocol?
     private var homeRouter: HomeRouterLogic?
     private var userDefaults = UserDefaults.standard
-  
+    
     func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
         self.homeView = view
         self.homeRouter = homeRouter
@@ -32,15 +32,30 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
         super.viewDidLoad()
         homeView?.delegate = self
         setUserDefaults()
+        setOrientation()
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    private func setOrientation() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.myOrientation = .portrait
     }
     
     override func viewWillAppear(_ animated: Bool) {
         configSounds()
+        setOrientation()
     }
     
     private func configSounds() {
-        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
-            userDefaults.set(false, forKey: UserDefaultsKey.firstSound.rawValue)
+        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando()  : SoundsKit.stop()
+        userDefaults.set(false, forKey: UserDefaultsKey.firstSound.rawValue)
     }
     
     private func setUserDefaults() {

@@ -13,7 +13,7 @@ protocol ResultViewControllerProtocol: UIViewController {
 }
 
 class ResultViewController: UIViewController, ResultViewControllerProtocol {
-
+    
     private lazy var wordResult = String()
     private var resultView: ResultViewProtocol?
     private var resultRouter: ResultRouterLogic?
@@ -27,6 +27,15 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         resultView?.delegate = self
+        setOrientation()
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
     
     override func loadView() {
@@ -36,11 +45,17 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SoundsKit.reproduceSpeech(wordResult)
-        // configSounds()
+        setOrientation()
+        configSounds()
     }
     
     private func configSounds() {
         SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
+    }
+    
+    private func setOrientation() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.myOrientation = .portrait
     }
 }
 

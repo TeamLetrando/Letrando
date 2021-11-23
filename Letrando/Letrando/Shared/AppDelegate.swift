@@ -50,7 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         return true
     }
+    var myOrientation: UIInterfaceOrientationMask = .portrait
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return myOrientation
+    }
 
+    
 //    func applicationWillResignActive(_ application: UIApplication) {
 //        if let viewController = self.window?.rootViewController as? SearchViewController {
 //            viewController.blurView.isHidden = false
