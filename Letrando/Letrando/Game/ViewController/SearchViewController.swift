@@ -11,7 +11,7 @@ import AVFoundation
 
 protocol GameViewControllerProtocol: UIViewController {
     init(wordGame: Word?)
-    func setup(with view: GameView, gameRouter: GameRouterLogic)
+    func setup(with view: GameView?, gameRouter: GameRouterLogic?)
 }
 
 class SearchViewController: UIViewController, GameViewControllerProtocol {
@@ -31,10 +31,10 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     // MARK: - Public Variables
     
     weak var delegate: GameViewDelegate?
+    weak var gameView: GameView?
     var initialPosition = SCNVector3(0, 0, 0)
     var areLettersAdded: Bool = false
     var areLettersGenerated: Bool = false
-    var gameView: GameView?
     var sceneView = ARSCNView()
     var sceneController = Scene()
     var actualNode = SCNNode()
@@ -43,7 +43,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     // MARK: - Private Variables
     
     private var score: Int = .zero
-    private var gameRouter: GameRouterLogic?
+    private weak var gameRouter: GameRouterLogic?
     private var session: ARSession {
         return sceneView.session
     }
@@ -55,7 +55,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         self.word = wordGame
     }
     
-    func setup(with view: GameView, gameRouter: GameRouterLogic) {
+    func setup(with view: GameView?, gameRouter: GameRouterLogic?) {
         self.gameView = view
         self.gameView?.delegate = self
         self.gameRouter = gameRouter
@@ -217,7 +217,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     private func transitionForResultScreen() {
         gameRouter?.startResult()
     }
-    
+
     private func getNodeFromSCN(nodeName: String) -> SCNNode {
         guard let scene = SCNScene(named: "art.scnassets/\(nodeName).scn"),
                 let node = scene.rootNode.childNode(withName: nodeName, recursively: false) else { return SCNNode() }

@@ -60,7 +60,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
         self.init()
         lettersStackView.letters = letters
     }
-    
+
     private lazy var dogSearchingImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: ImageAssets.mascotSearchingImage.rawValue)

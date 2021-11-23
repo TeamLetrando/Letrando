@@ -10,16 +10,16 @@ import Lottie
 import SoundsKit
 
 protocol HomeViewControllerProtocol: UIViewController {
-    func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic)
+    func setup(with view: HomeViewProtocol?, homeRouter: HomeRouterLogic?)
 }
 
 class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
-    private var homeView: HomeViewProtocol?
-    private var homeRouter: HomeRouterLogic?
+    private weak var homeView: HomeViewProtocol?
+    private weak var homeRouter: HomeRouterLogic?
     private var userDefaults = UserDefaults.standard
     
-    func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
+    func setup(with view: HomeViewProtocol?, homeRouter: HomeRouterLogic?) {
         self.homeView = view
         self.homeRouter = homeRouter
     }
@@ -38,7 +38,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     override var shouldAutorotate: Bool {
         return false
     }
-    
+ 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }

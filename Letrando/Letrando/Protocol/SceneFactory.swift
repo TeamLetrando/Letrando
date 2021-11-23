@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol SceneFactory {
+protocol SceneFactory: AnyObject {
     init(navigationController: UINavigationController?)
     func instantiateViewController() -> UIViewController
 }
