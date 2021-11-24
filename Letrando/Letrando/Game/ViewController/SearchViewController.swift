@@ -44,7 +44,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     
     private var score: Int = .zero
     private weak var gameRouter: GameRouterLogic?
-    private var session: ARSession {
+    private weak var session: ARSession? {
         return sceneView.session
     }
     
