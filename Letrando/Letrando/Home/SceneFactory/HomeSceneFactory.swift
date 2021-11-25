@@ -11,17 +11,20 @@ import UIKit
 class HomeSceneFactory: SceneFactory {
    
     private let navigationController: UINavigationController?
+    private var homeView: HomeViewProtocol?
+    private var homeRouter: HomeRouterLogic?
+    private var homeViewController: HomeViewControllerProtocol?
     
     required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
+        homeRouter = instantiateHomeRouter()
+        homeView = instantiateHomeView()
+        homeViewController = HomeViewController()
     }
     
     func instantiateViewController() -> UIViewController {
-        let homeView = instantiateHomeView()
-        let homeViewController = HomeViewController()
-       
-        homeViewController.setup(with: homeView, homeRouter: instantiateHomeRouter())
-        return homeViewController
+        homeViewController?.setup(with: homeView, homeRouter: homeRouter)
+        return homeViewController ?? UIViewController()
     }
     
     private func instantiateHomeView() -> HomeViewProtocol {

@@ -9,16 +9,16 @@ import UIKit
 import SoundsKit
 
 protocol ResultViewControllerProtocol: UIViewController {
-    func setup(with view: ResultViewProtocol, resultRouter: ResultRouterLogic)
+    func setup(with view: ResultViewProtocol?, resultRouter: ResultRouterLogic?)
 }
 
 class ResultViewController: UIViewController, ResultViewControllerProtocol {
     
     private lazy var wordResult = String()
-    private var resultView: ResultViewProtocol?
-    private var resultRouter: ResultRouterLogic?
+    private weak var resultView: ResultViewProtocol?
+    private weak var resultRouter: ResultRouterLogic?
     
-    func setup(with view: ResultViewProtocol, resultRouter: ResultRouterLogic) {
+    func setup(with view: ResultViewProtocol?, resultRouter: ResultRouterLogic?) {
         self.resultView = view
         self.resultRouter = resultRouter
         self.wordResult = resultView?.wordResult ?? String()
