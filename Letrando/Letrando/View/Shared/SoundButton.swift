@@ -13,7 +13,7 @@ class SoundButton: UIView, ViewCodable {
     private var userDefaults = UserDefaults.standard
   
     private var currentBackgroundImage: UIImage? {
-        if userDefaults.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
+        if userDefaults.bool(forKey: UserDefaultsKey.firstSound.rawValue) {
             return UIImage(named: ImageAssets.activatedSound.rawValue)
         } else {
             let buttonSoundImage = SoundsKit.audioIsOn() ? ImageAssets.disabledSound.rawValue :

@@ -16,16 +16,15 @@ protocol OnboardingRouterLogic {
 class OnboardingRouter: OnboardingRouterLogic {
     
     private var navigationController: UINavigationController?
+    private var userDefaults = UserDefaults.standard
     
     required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
     
     func dismissOnboarding() {
-        SoundsKit.stop()
-        SoundsKit.file = "Curious_Kiddo"
-        SoundsKit.fileExtension = "mp3"
-        SoundsKit.audioIsOn() ? try? SoundsKit.play() : SoundsKit.stop()
+        SoundsKit.audioIsOn() ? SoundsKit.stop() : try? SoundsKit.playBackgroundLetrando()
+        userDefaults.set(false, forKey: UserDefaultsKey.onboardingIsOn.rawValue)
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

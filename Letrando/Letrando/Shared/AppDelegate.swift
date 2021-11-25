@@ -74,14 +74,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         if !SoundsKit.isFinishOnboarding() && !UserDefaults.standard.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
-            SoundsKit.audioIsOn() ? try? SoundsKit.play() : SoundsKit.stop()
+            SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
         }
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         if !SoundsKit.isFinishOnboarding() && !UserDefaults.standard.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
-            SoundsKit.audioIsOn() ? try? SoundsKit.play() : SoundsKit.stop()
+            SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
         }
     }
 
