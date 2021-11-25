@@ -9,7 +9,7 @@ import UIKit
 import SoundsKit
 
 protocol OnboardingViewControllerProtocol: UIViewController {
-    func setup(onboardingRouter: OnboardingRouterLogic)
+    func setup(onboardingRouter: OnboardingRouterLogic?)
 }
 
 class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingViewControllerProtocol {
@@ -71,7 +71,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     override var shouldAutorotate: Bool {
         return false
     }
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
@@ -91,7 +91,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(onboardingRouter: OnboardingRouterLogic) {
+    func setup(onboardingRouter: OnboardingRouterLogic?) {
         self.onboardingRouter = onboardingRouter
     }
     

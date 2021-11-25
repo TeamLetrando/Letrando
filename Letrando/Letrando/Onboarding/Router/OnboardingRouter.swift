@@ -8,7 +8,7 @@
 import UIKit
 import SoundsKit
 
-protocol OnboardingRouterLogic {
+protocol OnboardingRouterLogic: AnyObject {
     init(navigationController: UINavigationController?)
     func dismissOnboarding()
 }

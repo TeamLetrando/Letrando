@@ -11,6 +11,9 @@ class GameSceneFactory: SceneFactory {
   
     private var randomWord: Word?
     private let navigationController: UINavigationController?
+    private var gameView: GameView?
+    private var gameRouter: GameRouterLogic?
+    private var gameViewController: GameViewControllerProtocol?
     
     required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
@@ -18,10 +21,15 @@ class GameSceneFactory: SceneFactory {
     
     func instantiateViewController() -> UIViewController {
         randomWord = JsonData().randomWord()
-        let gameViewController = SearchViewController(wordGame: randomWord)
-        gameViewController.setup(with: instatiateGameView(), gameRouter: instantiateGameRouter())
+        gameView = nil
+        gameRouter = nil
+        gameViewController = nil
         
-        return gameViewController
+        gameView = instatiateGameView()
+        gameRouter = instantiateGameRouter()
+        gameViewController = SearchViewController(wordGame: randomWord)
+        gameViewController?.setup(with: gameView, gameRouter: gameRouter)
+        return gameViewController ?? UIViewController()
     }
     
     private func instatiateGameView() -> GameView {
@@ -29,7 +37,9 @@ class GameSceneFactory: SceneFactory {
     }
     
     private func instantiateGameRouter() -> GameRouterLogic {
-        return GameRouter(wordResult: randomWord?.word, navigationController: navigationController)
+        return GameRouter(wordResult: randomWord?.word,
+                          navigationController: navigationController,
+                          gameSceneFactory: self)
     }
    
 }
