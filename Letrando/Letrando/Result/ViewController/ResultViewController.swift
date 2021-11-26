@@ -9,16 +9,16 @@ import UIKit
 import SoundsKit
 
 protocol ResultViewControllerProtocol: UIViewController {
-    func setup(with view: ResultViewProtocol, resultRouter: ResultRouterLogic)
+    func setup(with view: ResultViewProtocol?, resultRouter: ResultRouterLogic?)
 }
 
 class ResultViewController: UIViewController, ResultViewControllerProtocol {
-
-    private lazy var wordResult = String()
-    private var resultView: ResultViewProtocol?
-    private var resultRouter: ResultRouterLogic?
     
-    func setup(with view: ResultViewProtocol, resultRouter: ResultRouterLogic) {
+    private lazy var wordResult = String()
+    private weak var resultView: ResultViewProtocol?
+    private weak var resultRouter: ResultRouterLogic?
+    
+    func setup(with view: ResultViewProtocol?, resultRouter: ResultRouterLogic?) {
         self.resultView = view
         self.resultRouter = resultRouter
         self.wordResult = resultView?.wordResult ?? String()
@@ -27,6 +27,15 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         resultView?.delegate = self
+        setOrientation()
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
     
     override func loadView() {
@@ -36,11 +45,12 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SoundsKit.reproduceSpeech(wordResult)
-        // configSounds()
+        setOrientation()
     }
-    
-    private func configSounds() {
-        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
+
+    private func setOrientation() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.myOrientation = .portrait
     }
 }
 

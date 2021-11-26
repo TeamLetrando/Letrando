@@ -41,13 +41,15 @@ class LettersStackView: UIStackView, ViewCodable {
     
     func setupConstraints() {
         lettersImagesView.forEach {
+            $0.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.18).isActive = true
             $0.heightAnchor.constraint(equalTo: $0.widthAnchor).isActive = true
         }
     }
     
     func setupAditionalChanges() {
         self.axis = .horizontal
-        self.distribution = .equalCentering
+        self.distribution = .equalSpacing
+        self.alignment = .center
         self.spacing = 15
         self.isHidden = true
     }

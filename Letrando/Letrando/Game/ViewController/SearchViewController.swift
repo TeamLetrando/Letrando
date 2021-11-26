@@ -11,11 +11,11 @@ import AVFoundation
 
 protocol GameViewControllerProtocol: UIViewController {
     init(wordGame: Word?)
-    func setup(with view: GameView, gameRouter: GameRouterLogic)
+    func setup(with view: GameView?, gameRouter: GameRouterLogic?)
 }
 
 class SearchViewController: UIViewController, GameViewControllerProtocol {
-    
+
     // MARK: - Public Constants
     
     let minScale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
@@ -31,10 +31,10 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     // MARK: - Public Variables
     
     weak var delegate: GameViewDelegate?
+    weak var gameView: GameView?
     var initialPosition = SCNVector3(0, 0, 0)
     var areLettersAdded: Bool = false
     var areLettersGenerated: Bool = false
-    var gameView: GameView?
     var sceneView = ARSCNView()
     var sceneController = Scene()
     var actualNode = SCNNode()
@@ -43,8 +43,8 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     // MARK: - Private Variables
     
     private var score: Int = .zero
-    private var gameRouter: GameRouterLogic?
-    private var session: ARSession {
+    private weak var gameRouter: GameRouterLogic?
+    private weak var session: ARSession? {
         return sceneView.session
     }
     
@@ -55,7 +55,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         self.word = wordGame
     }
     
-    func setup(with view: GameView, gameRouter: GameRouterLogic) {
+    func setup(with view: GameView?, gameRouter: GameRouterLogic?) {
         self.gameView = view
         self.gameView?.delegate = self
         self.gameRouter = gameRouter
@@ -82,16 +82,34 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
         setupCoachingOverlay()
         addMoveGesture()
         addTapGesture()
+        setOrientation()
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.landscape, .portrait]
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureSession()
+        setOrientation()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let smallerSize = size.width > size.height ? size.height : size.width
+        coordinator.animate { [weak self] _ in
+           self?.gameView?.setWidthStackConstraint(width: smallerSize)
+        }
+        view.setNeedsLayout()
     }
     
     // MARK: - Public Functions
@@ -152,6 +170,15 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
 
     // MARK: - Private functions
     
+    private func setOrientation() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.myOrientation = [.landscape, .portrait]
+        
+        let isLandscapeOrientation = UIDevice.current.orientation.isLandscape
+        let smallerSize = isLandscapeOrientation ? UIScreen.main.bounds.height : UIScreen.main.bounds.width
+        self.gameView?.setWidthStackConstraint(width: smallerSize)
+    }
+    
     private func addTapGesture() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.didTapScreen))
         self.sceneView.addGestureRecognizer(tapRecognizer)
@@ -190,7 +217,7 @@ class SearchViewController: UIViewController, GameViewControllerProtocol {
     private func transitionForResultScreen() {
         gameRouter?.startResult()
     }
-    
+
     private func getNodeFromSCN(nodeName: String) -> SCNNode {
         guard let scene = SCNScene(named: "art.scnassets/\(nodeName).scn"),
                 let node = scene.rootNode.childNode(withName: nodeName, recursively: false) else { return SCNNode() }

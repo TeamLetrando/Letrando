@@ -16,9 +16,10 @@ protocol GameViewProtocol {
 class GameView: UIView, ViewCodable, GameViewProtocol {
     
     private lazy var isDogAnimated = false
-    
+    private var stackWidthConstraint: NSLayoutConstraint?
     weak var delegate: GameControlerDelegate?
-
+    private var userDefaults = UserDefaults.standard
+    
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
         let label = UILabel()
         label.text = LocalizableBundle.findAnotherPlaceMessage.localize
@@ -60,7 +61,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
         self.init()
         lettersStackView.letters = letters
     }
-    
+
     private lazy var dogSearchingImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: ImageAssets.mascotSearchingImage.rawValue)
@@ -84,31 +85,26 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     }
     
     func setupConstraints() {
-        let letterStackHeightConstraint = lettersStackView.heightAnchor.constraint(
-            equalToConstant: 58 * Multipliers.height)
-        letterStackHeightConstraint.priority = .defaultHigh
-        
         NSLayoutConstraint.activate([
             backToHomeButton.heightAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             backToHomeButton.widthAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             backToHomeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,
                                                   constant: 16 * Multipliers.height),
-            backToHomeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16 * Multipliers.widht),
+            
+            backToHomeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16 * Multipliers.widht),
             
             handButton.heightAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             handButton.widthAnchor.constraint(equalToConstant: 50 * Multipliers.height),
             handButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16 * Multipliers.height),
-            handButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16 * Multipliers.widht),
+            handButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16 * Multipliers.widht),
             
-            findAnotherPlaceMessageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            findAnotherPlaceMessageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             findAnotherPlaceMessageLabel.topAnchor.constraint(equalTo: backToHomeButton.bottomAnchor,
                                                               constant: 20 * Multipliers.height),
-            findAnotherPlaceMessageLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
+            findAnotherPlaceMessageLabel.widthAnchor.constraint(equalTo: widthAnchor),
             
-            letterStackHeightConstraint,
             lettersStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            lettersStackView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40),
-            lettersStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -25),
+            lettersStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             
             dogSearchingImageView.heightAnchor.constraint(equalToConstant: 250 * Multipliers.height),
             dogSearchingImageView.widthAnchor.constraint(equalToConstant: 200 * Multipliers.widht),
@@ -117,6 +113,14 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
                                                        constant: 20 * Multipliers.height),
             dogSearchingImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -200 * Multipliers.widht)
         ])
+    }
+    
+    func setWidthStackConstraint(width: CGFloat) {
+        stackWidthConstraint?.isActive = false
+        stackWidthConstraint = lettersStackView.widthAnchor.constraint(equalToConstant: width * 0.9)
+        stackWidthConstraint?.isActive = true
+        
+        setNeedsLayout()
     }
     
     func setupAditionalChanges() {
@@ -154,15 +158,17 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
         }, completion: { [weak self] _ in
             self?.animateDogOut(initialPositionX)
         })
-        try? SoundsKit.playAlert()
+        if !userDefaults.bool(forKey: UserDefaultsKey.onboardingIsOn.rawValue) {
+            try? SoundsKit.playAlert()
+        }
     }
     
     private func animateDogOut(_ initialPositionX: CGFloat) {
-        UIView.animate(withDuration: 1.0, delay: 2.0) {
-            self.dogSearchingImageView.layer.position.x = initialPositionX - (200 * Multipliers.widht)
-        } completion: { [weak self] _ in
+        UIView.animate(withDuration: 1.0, delay: 2.0, animations: { [weak self] in
+            self?.dogSearchingImageView.layer.position.x = initialPositionX - (200 * Multipliers.widht)
+        }, completion: { [weak self] _ in
             self?.dogSearchingImageView.isHidden = true
-        }
+        })
     }
 }
 
@@ -193,7 +199,7 @@ extension GameView: GameViewDelegate {
             if let letterImageView = $0 as? UIImageView,
                let letterName = letterImageView.layer.name,
                letterName == letter {
-
+                
                 let finalPosition = lettersStackView.convert(letterImageView.layer.position, to: sceneView)
                 
                 let handImage = UIImageView(frame: CGRect(x: initialPosition.x,
@@ -220,7 +226,7 @@ extension GameView: GameViewDelegate {
         }
     }
 }
- 
+
 enum Multipliers {
     static let screenSize = UIScreen.main.bounds.size
     static let height = UIScreen.main.bounds.height / 812

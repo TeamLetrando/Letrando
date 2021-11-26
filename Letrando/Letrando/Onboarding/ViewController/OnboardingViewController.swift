@@ -9,14 +9,15 @@ import UIKit
 import SoundsKit
 
 protocol OnboardingViewControllerProtocol: UIViewController {
-    func setup(onboardingRouter: OnboardingRouterLogic)
+    func setup(onboardingRouter: OnboardingRouterLogic?)
 }
 
 class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingViewControllerProtocol {
-  
+    
     private lazy var pages = [UIViewController]()
     private lazy var currentIndexPage: Int = .zero
     private var onboardingRouter: OnboardingRouterLogic?
+    private var userDefaults = UserDefaults.standard
     
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -35,12 +36,12 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         return nextButton
     }()
-
+    
     private lazy var previewButton: RoundedButton = {
         let imageButton = UIImage(systemName: SystemIcons.arrowBackward.rawValue)
         let previewButton = RoundedButton(backgroundImage: imageButton,
-                                       buttonAction: previewButtonAction,
-                                       tintColor: .greenActionLetrando)
+                                          buttonAction: previewButtonAction,
+                                          tintColor: .greenActionLetrando)
         previewButton.isHidden = true
         previewButton.translatesAutoresizingMaskIntoConstraints = false
         return previewButton
@@ -59,6 +60,30 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         super.viewDidLoad()
         setupView()
         try? SoundsKit.playOnboardingLetrando(at: pageControl.currentPage)
+        userDefaults.set(true, forKey: UserDefaultsKey.onboardingIsOn.rawValue)
+        setOrientation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        currentIndexPage = .zero
+        setViewControllers([pages[currentIndexPage]], direction: .forward, animated: true, completion: nil)
+        updateLayout(pages[currentIndexPage])
+        try? SoundsKit.playOnboardingLetrando(at: pageControl.currentPage)
+        userDefaults.set(true, forKey: UserDefaultsKey.onboardingIsOn.rawValue)
+        setOrientation()
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    private func setOrientation() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.myOrientation = .portrait
     }
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle,
@@ -66,12 +91,12 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
                   options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(onboardingRouter: OnboardingRouterLogic) {
+    func setup(onboardingRouter: OnboardingRouterLogic?) {
         self.onboardingRouter = onboardingRouter
     }
     
@@ -97,7 +122,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
             nextButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13),
             nextButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13),
-
+            
             previewButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             previewButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
             previewButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.13),
@@ -111,20 +136,20 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         pageControl.currentPage = currentIndexPage
         setViewControllers([pages[currentIndexPage]], direction: .forward, animated: true, completion: nil)
     }
-
+    
     func configurePages() {
         let presentationView = PageView(animationName: JsonAnimations.onboardingPresentation.rawValue,
-                                       message: LocalizableBundle.onboardingMessagePresentation.localize)
+                                        message: LocalizableBundle.onboardingMessagePresentation.localize)
         let presentationController = PageViewController()
         presentationController.setup(with: presentationView)
         
         let alertView = PageView(animationName: JsonAnimations.onboardingAlert.rawValue,
-                                        message: LocalizableBundle.onboardingMessageAlert.localize)
+                                 message: LocalizableBundle.onboardingMessageAlert.localize)
         let alertController = PageViewController()
         alertController.setup(with: alertView)
         
         let tutorialView = PageView(animationName: JsonAnimations.onboardingTablet.rawValue,
-                                       message: LocalizableBundle.onboardingMessageInstruction.localize)
+                                    message: LocalizableBundle.onboardingMessageInstruction.localize)
         let tutorialController = PageViewController()
         tutorialController.setup(with: tutorialView)
         
@@ -135,7 +160,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     
     fileprivate func getPage(direction: NavigationDirection) -> UIViewController? {
         var page: UIViewController?
-    
+        
         switch direction {
         case .forward:
             page = currentIndexPage < (pages.count - 1) ? pages[currentIndexPage + 1] : nil
@@ -144,12 +169,12 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         @unknown default:
             break
         }
-    
+        
         return page
     }
     
     private func nextButtonAction() {
-        if currentIndexPage == (pages.count - 1) && SoundsKit.isFinishOnboarding() {
+        if currentIndexPage == (pages.count - 1) {
             onboardingRouter?.dismissOnboarding()
             return
         }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol HomeRouterLogic {
+protocol HomeRouterLogic: AnyObject {
     init(navigationController: UINavigationController?)
     func startOnboarding()
     func startGame()
@@ -22,8 +22,8 @@ class HomeRouter: HomeRouterLogic {
     
     required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
-        onboardingSceneFactory = OnboardingSceneFactory(navigationController: navigationController)
-        gameSceneFactory = GameSceneFactory(navigationController: navigationController)
+        self.onboardingSceneFactory = OnboardingSceneFactory(navigationController: navigationController)
+        self.gameSceneFactory = GameSceneFactory(navigationController: navigationController)
     }
    
     func startOnboarding() {

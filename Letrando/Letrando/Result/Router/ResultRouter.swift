@@ -7,24 +7,25 @@
 
 import UIKit
 
-protocol ResultRouterLogic {
+protocol ResultRouterLogic: AnyObject {
     init(navigationController: UINavigationController?)
     func restartGame()
     func exitGame()
+    var gameSceneFactory: SceneFactory? { get set }
 }
 
 class ResultRouter: ResultRouterLogic {
-    
+    weak var gameSceneFactory: SceneFactory?
     private let navigationController: UINavigationController?
-    private let homeRouter: HomeRouterLogic
-    
+
     required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
-        self.homeRouter = HomeRouter(navigationController: navigationController)
     }
     
     func restartGame() {
-        homeRouter.startGame()
+        let gameViewController = gameSceneFactory?.instantiateViewController()
+        navigationController?.popToRootViewController(animated: true)
+        navigationController?.pushViewController(gameViewController ?? UIViewController(), animated: true)
         navigationController?.dismiss(animated: true)
     }
     

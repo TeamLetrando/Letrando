@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Thread.sleep(forTimeInterval: 3.0)
         let isFirstLaunch = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? false
         UserDefaults.standard.set(true, forKey: "Launch")
+        UserDefaults.standard.set(true, forKey: UserDefaultsKey.firstLaunchHome.rawValue)
         if !isFirstLaunch {
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.firstLaunch.rawValue)
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.firstSound.rawValue)
@@ -50,7 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         return true
     }
+    var myOrientation: UIInterfaceOrientationMask = .portrait
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return myOrientation
+    }
 
+    
 //    func applicationWillResignActive(_ application: UIApplication) {
 //        if let viewController = self.window?.rootViewController as? SearchViewController {
 //            viewController.blurView.isHidden = false
@@ -69,14 +75,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         if !SoundsKit.isFinishOnboarding() && !UserDefaults.standard.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
-            SoundsKit.audioIsOn() ? try? SoundsKit.play() : SoundsKit.stop()
+            SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
         }
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         if !SoundsKit.isFinishOnboarding() && !UserDefaults.standard.bool(forKey: UserDefaultsKey.firstLaunch.rawValue) {
-            SoundsKit.audioIsOn() ? try? SoundsKit.play() : SoundsKit.stop()
+            SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
         }
     }
 

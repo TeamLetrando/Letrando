@@ -10,16 +10,16 @@ import Lottie
 import SoundsKit
 
 protocol HomeViewControllerProtocol: UIViewController {
-    func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic)
+    func setup(with view: HomeViewProtocol?, homeRouter: HomeRouterLogic?)
 }
 
 class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
-    private var homeView: HomeViewProtocol?
-    private var homeRouter: HomeRouterLogic?
+    private weak var homeView: HomeViewProtocol?
+    private weak var homeRouter: HomeRouterLogic?
     private var userDefaults = UserDefaults.standard
-  
-    func setup(with view: HomeViewProtocol, homeRouter: HomeRouterLogic) {
+    
+    func setup(with view: HomeViewProtocol?, homeRouter: HomeRouterLogic?) {
         self.homeView = view
         self.homeRouter = homeRouter
     }
@@ -32,15 +32,33 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
         super.viewDidLoad()
         homeView?.delegate = self
         setUserDefaults()
+        setOrientation()
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+ 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    private func setOrientation() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.myOrientation = .portrait
     }
     
     override func viewWillAppear(_ animated: Bool) {
         configSounds()
+        setOrientation()
     }
     
     private func configSounds() {
-        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
-            userDefaults.set(false, forKey: UserDefaultsKey.firstSound.rawValue)
+        if userDefaults.bool(forKey: UserDefaultsKey.firstLaunchHome.rawValue) {
+            SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
+            userDefaults.set(false, forKey: UserDefaultsKey.firstLaunchHome.rawValue)
+        }
+        userDefaults.set(false, forKey: UserDefaultsKey.firstSound.rawValue)
     }
     
     private func setUserDefaults() {
