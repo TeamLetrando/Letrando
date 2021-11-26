@@ -144,7 +144,6 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     @objc private func backToHomeButtonAction() {
         self.dogSearchingImageView.isHidden = true
         dogSearchingImageView.layer.removeAllAnimations()
-        SoundsKit.setKeyAudio(true)
         delegate?.backToHome()
     }
     
