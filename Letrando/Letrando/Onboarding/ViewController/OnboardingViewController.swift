@@ -65,7 +65,6 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setOrientation()
         currentIndexPage = .zero
         setViewControllers([pages[currentIndexPage]], direction: .forward, animated: true, completion: nil)
         updateLayout(pages[currentIndexPage])
