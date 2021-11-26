@@ -66,6 +66,12 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     
     override func viewWillAppear(_ animated: Bool) {
         setOrientation()
+        currentIndexPage = .zero
+        setViewControllers([pages[currentIndexPage]], direction: .forward, animated: true, completion: nil)
+        updateLayout(pages[currentIndexPage])
+        try? SoundsKit.playOnboardingLetrando(at: pageControl.currentPage)
+        userDefaults.set(true, forKey: UserDefaultsKey.onboardingIsOn.rawValue)
+        setOrientation()
     }
     
     override var shouldAutorotate: Bool {
@@ -169,7 +175,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     }
     
     private func nextButtonAction() {
-        if currentIndexPage == (pages.count - 1) && SoundsKit.isFinishOnboarding() {
+        if currentIndexPage == (pages.count - 1) {
             onboardingRouter?.dismissOnboarding()
             return
         }

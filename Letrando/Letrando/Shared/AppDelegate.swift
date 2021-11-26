@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Thread.sleep(forTimeInterval: 3.0)
         let isFirstLaunch = (UserDefaults.standard.value(forKey: "FirstLaunch") as? Bool) ?? false
         UserDefaults.standard.set(true, forKey: "Launch")
+        UserDefaults.standard.set(true, forKey: UserDefaultsKey.firstLaunchHome.rawValue)
         if !isFirstLaunch {
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.firstLaunch.rawValue)
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.firstSound.rawValue)

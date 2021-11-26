@@ -14,4 +14,5 @@ enum UserDefaultsKey: String {
     case onboardingIsOn
     case firstLaunch
     case firstSound
+    case firstLaunchHome
 }

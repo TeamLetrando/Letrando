@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SoundsKit
 
 protocol ResultViewDelegate: AnyObject {
     func restartGame()
