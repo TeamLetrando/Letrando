@@ -16,7 +16,8 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
     
     private lazy var pages = [UIViewController]()
     private lazy var currentIndexPage: Int = .zero
-    private weak var onboardingRouter: OnboardingRouterLogic?
+    private var onboardingRouter: OnboardingRouterLogic?
+    private var userDefaults = UserDefaults.standard
     
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -59,6 +60,7 @@ class OnboardingViewController: UIPageViewController, ViewCodable, OnboardingVie
         super.viewDidLoad()
         setupView()
         try? SoundsKit.playOnboardingLetrando(at: pageControl.currentPage)
+        userDefaults.set(true, forKey: UserDefaultsKey.onboardingIsOn.rawValue)
         setOrientation()
     }
     

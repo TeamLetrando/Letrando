@@ -18,6 +18,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     private lazy var isDogAnimated = false
     private var stackWidthConstraint: NSLayoutConstraint?
     weak var delegate: GameControlerDelegate?
+    private var userDefaults = UserDefaults.standard
     
     private lazy var findAnotherPlaceMessageLabel: UILabel = {
         let label = UILabel()
@@ -143,6 +144,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
     @objc private func backToHomeButtonAction() {
         self.dogSearchingImageView.isHidden = true
         dogSearchingImageView.layer.removeAllAnimations()
+        SoundsKit.setKeyAudio(true)
         delegate?.backToHome()
     }
     
@@ -157,7 +159,9 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
         }, completion: { [weak self] _ in
             self?.animateDogOut(initialPositionX)
         })
-        try? SoundsKit.playAlert()
+        if !userDefaults.bool(forKey: UserDefaultsKey.onboardingIsOn.rawValue) {
+            try? SoundsKit.playAlert()
+        }
     }
     
     private func animateDogOut(_ initialPositionX: CGFloat) {

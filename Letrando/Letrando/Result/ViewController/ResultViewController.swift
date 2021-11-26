@@ -46,13 +46,8 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
         super.viewWillAppear(animated)
         SoundsKit.reproduceSpeech(wordResult)
         setOrientation()
-        configSounds()
     }
-    
-    private func configSounds() {
-        SoundsKit.audioIsOn() ? try? SoundsKit.playBackgroundLetrando() : SoundsKit.stop()
-    }
-    
+
     private func setOrientation() {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.myOrientation = .portrait
