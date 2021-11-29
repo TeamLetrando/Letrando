@@ -158,9 +158,7 @@ class GameView: UIView, ViewCodable, GameViewProtocol {
         }, completion: { [weak self] _ in
             self?.animateDogOut(initialPositionX)
         })
-        if !userDefaults.bool(forKey: UserDefaultsKey.onboardingIsOn.rawValue) {
             try? SoundsKit.playAlert()
-        }
     }
     
     private func animateDogOut(_ initialPositionX: CGFloat) {
@@ -177,7 +175,8 @@ extension GameView: GameViewDelegate {
     func changeMessageLabelHiding(for value: Bool) {
         DispatchQueue.main.async { [weak self] in
             self?.findAnotherPlaceMessageLabel.isHidden = value
-            if !(self?.isDogAnimated ?? false) {
+            if !(self?.isDogAnimated ?? false) &&
+               !(self?.userDefaults.bool(forKey: UserDefaultsKey.onboardingIsOn.rawValue) ?? false) {
                 self?.dogSearchingImageViewAnimation()
                 self?.isDogAnimated = true
             }
